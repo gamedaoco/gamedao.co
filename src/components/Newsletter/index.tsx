@@ -4,9 +4,9 @@ import { Flex, Box, Card, Heading } from 'rebass'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
 import { Button } from '../'
-import { MAILCHIMP_URL } from 'config/env'
+import { MAILCHIMP } from 'config/env'
 
-console.log( MAILCHIMP_URL )
+console.log( MAILCHIMP )
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -110,7 +110,7 @@ const CustomForm: React.SFC<CustomFormProps> = ({ status, message, onValidated }
 const Newsletter: React.SFC = () => (
 	<Wrapper>
 		<MailchimpSubscribe
-			url={MAILCHIMP_URL || ''}
+			url={MAILCHIMP || ''}
 			render={({ subscribe, status, message }) => (
 				<CustomForm status={status} message={message} onValidated={formData => subscribe(formData)} />
 			)}
