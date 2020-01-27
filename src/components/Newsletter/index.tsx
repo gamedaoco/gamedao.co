@@ -6,8 +6,6 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import { Button } from '../'
 import { MAILCHIMP } from 'config/env'
 
-console.log( MAILCHIMP )
-
 const Wrapper = styled.div`
 	width: 100%;
 	height: 100px;
