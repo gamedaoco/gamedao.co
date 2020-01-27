@@ -1,7 +1,7 @@
 {
-	"name": "dao-zero",
+	"name": "play-zero",
 	"version": "0.1.0",
-	"description": "a dao for videogames",
+	"description": "a dao for videogames — landingpage",
 	"license": "UNLICENSED",
 	"scripts": {
 		"dev": "next -p 3007",
