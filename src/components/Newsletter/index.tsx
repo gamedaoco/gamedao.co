@@ -79,12 +79,14 @@ const CustomForm: React.SFC<CustomFormProps> = ({ status, message, onValidated }
 	}
 
 	return (
-		<form onSubmit={handleOnSubmit}>
+		<form>
 			<div className="formWrapper">
 				<div className="bar">
 					<input id="email" className="email" type="email" placeholder="Your email" onChange={handleOnChange} />
 				</div>
+				<a onClick={handleOnSubmit}>
 				<Button bType="sm" type="submit">Submit</Button>
+				</a>
 			</div>
 			{status === 'sending' && <div style={{ color: 'white', fontSize: '15x', paddingTop: '15px' }}>sending...</div>}
 			{status === 'error' && (
