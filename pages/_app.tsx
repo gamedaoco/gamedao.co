@@ -5,7 +5,6 @@ import { IconContext } from 'react-icons/lib'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { PageTransition } from 'next-page-transitions'
 import { Loader } from '../src/components'
-import { AuthProvider } from '../src/lib/AuthContext'
 
 const TIMEOUT = 500
 
@@ -81,25 +80,22 @@ interface AppProps {
 }
 
 class Application extends NextApp<AppProps> {
-	static async getInitialProps({ Component, ctx }: AppContext) {
-		const componentGetInitialProps = Component.getInitialProps || (() => Promise.resolve())
+	// static async getInitialProps({ Component, ctx }: AppContext) {
 
-		const [session, pageProps] = await Promise.all([
-			// getAuthenticationSession(),
-			componentGetInitialProps(ctx),
-		])
+	// 	const componentGetInitialProps = Component.getInitialProps || (() => Promise.resolve())
+	// 	const [pageProps] = await Promise.all([
+	// 		componentGetInitialProps(ctx),
+	// 	])
 
-		return {
-			// session,
-			pageProps,
-		}
-	}
+	// 	return {
+	// 		pageProps,
+	// 	}
+	// }
 
 	render() {
 		const { Component, pageProps } = this.props
 
 		return (
-			<AuthProvider>
 				<PageTransition
 					timeout={TIMEOUT}
 					classNames="page-transition"
@@ -118,7 +114,6 @@ class Application extends NextApp<AppProps> {
 						</IconContext.Provider>
 					</ThemeProvider>
 				</PageTransition>
-			</AuthProvider>
 		)
 	}
 }
