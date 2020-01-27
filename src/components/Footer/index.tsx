@@ -70,11 +70,13 @@ const Footer: React.FunctionComponent = ({}) => {
 						connecting and empowering loyal investors, gamers, creators and publishers.
 						<br />
 						<br />
+{/*
 						<Box width={[1, 1 / 2, 1]} color="#ff00ff">
 							<H4>Sign Up here to stay in touch:</H4>
 							<Newsletter />
 						</Box>
 						<br />
+*/}
 					</Text>
 				</Box>
 			</Flex>

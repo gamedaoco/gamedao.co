@@ -8,12 +8,6 @@ export { default as Button } from './Button'
 export { default as Image } from './Image'
 export { default as Divider } from './Divider'
 
-export { default as Input } from './Input'
-export { default as InputCode } from './InputCode'
-export { default as InputEmail } from './InputEmail'
-export { default as InputPassword } from './InputPassword'
-export { default as InputText } from './InputText'
-
 export { default as Link } from './Link'
 export { default as Intro } from './Intro'
 export { default as Loader } from './Loader'

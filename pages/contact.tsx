@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import Layout from '../src/layouts/default'
 import { Flex, Box, Heading, Text } from 'rebass/styled-components'
 import {
@@ -10,6 +11,30 @@ import {
   Checkbox,
 } from '@rebass/forms'
 import { Container, Button } from '../src/components'
+
+const Wrapper = styled.div`
+	input {
+		width: 100%;
+		height: 30px;
+		border: none;
+		border-bottom: 1px dotted white;
+		background: none;
+		font-size: 15px;
+		color: white;
+	}
+	textarea {
+		width: 100%;
+		min-height: 250px;
+		border: none;
+		border: 1px dotted white;
+		background: none;
+		font-size: 15px;
+		color: white;
+	}
+	label {
+		padding-bottom: 15px;
+	}
+`
 
 type TStatus = {
 	submitted: boolean
@@ -104,28 +129,27 @@ export default () => {
 							We will get back to you.
 						</Text>
 						<br/><br/>
-						<form onSubmit={handleOnSubmit}>
-
-							<Label htmlFor="name">Name</Label>
-							<Input id="name" type="name" onChange={handleOnChange} value={inputs.name} />
-							<br/><br/>
-							<Label htmlFor="email">Email</Label>
-							<Input id="email" type="email" onChange={handleOnChange} required value={inputs.email} />
-							<br/><br/>
-							<Label htmlFor="phone">Phone</Label>
-							<Input id="phone" type="phone" onChange={handleOnChange} value={inputs.phone} />
-							<br/><br/>
-							<Label htmlFor="message">Message</Label>
-							<Textarea id="message" onChange={handleOnChange} required value={inputs.message} />
-							<br/><br/>
-							<Button type="submit" disabled={status.submitting}>
-								{!status.submitting ? (!status.submitted ? 'Submit' : 'Submitted') : 'Submitting...'}
-							</Button>
-
-						</form>
-
-						{status.info.error && <div className="error"><br/><br/>Error: {status.info.msg}</div>}
-						{!status.info.error && status.info.msg && <div className="success"><br/><br/>{status.info.msg}</div>}
+						<Wrapper>
+							<form onSubmit={handleOnSubmit}>
+								<Label htmlFor="name">Name</Label>
+								<Input id="name" type="name" onChange={handleOnChange} value={inputs.name} />
+								<br/><br/>
+								<Label htmlFor="email">Email</Label>
+								<Input id="email" type="email" onChange={handleOnChange} required value={inputs.email} />
+								<br/><br/>
+								<Label htmlFor="phone">Phone</Label>
+								<Input id="phone" type="phone" onChange={handleOnChange} value={inputs.phone} />
+								<br/><br/>
+								<Label htmlFor="message">Message</Label>
+								<Textarea id="message" onChange={handleOnChange} required value={inputs.message} />
+								<br/><br/>
+								<Button type="submit" disabled={status.submitting}>
+									{!status.submitting ? (!status.submitted ? 'Submit' : 'Submitted') : 'Submitting...'}
+								</Button>
+							</form>
+							{status.info.error && <div className="error"><br/><br/>Error: {status.info.msg}</div>}
+							{!status.info.error && status.info.msg && <div className="success"><br/><br/>{status.info.msg}</div>}
+						</Wrapper>
 					</Box>
 					<Box width={[1, 1, 1, 1 / 2]} p={[2, 4]}>
 					</Box>
