@@ -1,0 +1,61 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: io.zero.dao
+  namespace: frontend
+  labels:
+    run: io.zero.dao
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+  selector:
+    run: io.zero.dao
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: io.zero.dao
+  namespace: frontend
+spec:
+  selector:
+    matchLabels:
+      run: io.zero.dao
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: io.zero.dao
+    spec:
+      containers:
+      - name: io.zero.dao
+        image: gitlab.com:4567/zero.io/dao.zero:{{latest}}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+      imagePullSecrets:
+      - name: gitlab-auth-dao
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: io.zero.dao
+  namespace: frontend
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
+    certmanager.k8s.io/acme-challenge-type: http01
+spec:
+  tls:
+    - hosts:
+        - dao.zero.io
+      secretName: dao-zero-tls  
+  rules:
+  - host: dao.zero.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: io.zero.dao
+          servicePort: 5000

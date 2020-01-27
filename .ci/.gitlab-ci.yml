@@ -1,0 +1,50 @@
+image: node:alpine
+
+services:
+  - docker:18-dind
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script:
+    - npm install
+    - npm test
+
+build:dev:
+  stage: build
+  image: docker:18
+  only:
+    - dev
+  script:
+    - apk update -q && apk add --no-cache nodejs -q
+    - VERSION=$(node ./.ci/bin/version.js)
+    - echo $DEFAULT_ENV > .env
+    - echo $VERSION-$CI_COMMIT_SHORT_SHA > .build
+    - docker build -f .ci/Dockerfile.dev -t $CI_REGISTRY/$CI_PROJECT_PATH .
+    - docker push $CI_REGISTRY/$CI_PROJECT_PATH
+    - docker tag $CI_REGISTRY/$CI_PROJECT_PATH $CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_SHORT_SHA
+    - docker push $CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_SHORT_SHA
+
+deploy:dev:
+  stage: deploy
+  only: 
+    - dev
+  script:
+    - echo "done"
+    # deploy with rancher to k8
+    # - apk update -q && apk add --no-cache sed curl wget tar libc6-compat ca-certificates -q
+    # - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+    # - chmod +x ./kubectl && mv ./kubectl /usr/bin/kubectl
+    # - wget https://github.com/rancher/cli/releases/download/v2.2.0/rancher-linux-amd64-v2.2.0.tar.gz -q
+    # - tar -xf rancher-linux-amd64-v2.2.0.tar.gz
+    # - mv rancher-v2.2.0/rancher /usr/bin/rancher && chmod a+x /usr/bin/rancher
+    # - rancher login "$RANCHER_URL" -t "$RANCHER_TOKEN"
+    # - cat .ci/app.yml | sed "s/{{latest}}/$CI_COMMIT_SHORT_SHA/g" | rancher kubectl --namespace frontend apply -f -

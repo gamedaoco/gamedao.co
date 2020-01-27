@@ -1,0 +1,17 @@
+# stage 0
+
+FROM node:lts-alpine as builder
+WORKDIR /build
+COPY . .
+RUN yarn install
+RUN export REACT_APP_BUILD_REF="$(cat .build)" && yarn build
+RUN yarn export
+
+# stage 1
+
+FROM node:lts-alpine
+WORKDIR /app
+COPY --from=builder /build/out .
+RUN npm install -g serve
+EXPOSE 5000
+CMD [ "serve", "." ]
