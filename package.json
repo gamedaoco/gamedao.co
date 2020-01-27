@@ -118,5 +118,11 @@
 		"extends": [
 			"@commitlint/config-conventional"
 		]
-	}
+	},
+  "env": {
+    "SENDGRID_API_KEY": "@zero-sendgrid",
+    "MAILCHIMP_URL": "@zero-mailchimp"
+  }
+}	
+
 }
