@@ -4,7 +4,9 @@ import { Flex, Box, Card, Heading } from 'rebass'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
 import { Button } from '../'
-import { MAILCHIMP_URL } from '../../../config/env'
+import { MAILCHIMP_URL } from 'config/env'
+
+console.log( MAILCHIMP_URL )
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -79,7 +81,7 @@ const CustomForm: React.SFC<CustomFormProps> = ({ status, message, onValidated }
 	}
 
 	return (
-		<form>
+		<div>
 			<div className="formWrapper">
 				<div className="bar">
 					<input id="email" className="email" type="email" placeholder="Your email" onChange={handleOnChange} />
@@ -101,7 +103,7 @@ const CustomForm: React.SFC<CustomFormProps> = ({ status, message, onValidated }
 					dangerouslySetInnerHTML={{ __html: message || '' }}
 				/>
 			)}			
-		</form>
+		</div>
 	)
 }
 
