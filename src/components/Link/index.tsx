@@ -3,12 +3,13 @@ import NextLink from 'next/link'
 
 interface ILinkProps {
 	href?: string
+	target?: string
 	children?: object | string
 }
 
-const Link: React.FunctionComponent<ILinkProps> = ({ href, children }) => (
+const Link: React.FunctionComponent<ILinkProps> = ({ href, target, children }) => (
 	<NextLink href={href || '#'}>
-		<a>{children}</a>
+		<a target={ target ? target : '_self' }>{children}</a>
 	</NextLink>
 )
 

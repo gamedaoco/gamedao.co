@@ -22,7 +22,7 @@ const Container = styled.div`
 	margin: 0;
 	padding: 0;
 	background: black;
-	color: #aabbcc;
+	color: #eee;
 	width: 100%;
 	height: auto;
 	#a {
@@ -94,19 +94,19 @@ const Footer: React.FunctionComponent = ({}) => {
 							<br />
 						</H3>
 
-						<Link href="https://github.com/playzero">
+						<Link href="https://github.com/playzero" target="_blank">
 							<FaGithub /> GitHub
 						</Link>
 						<br />
-						<Link href="https://discord.gg/rhwtr7p">
+						<Link href="https://discord.gg/rhwtr7p" target="_blank">
 							<FaDiscord /> Discord
 						</Link>
 						<br />
-						<Link href="https://twitter.com/zerodotio">
+						<Link href="https://twitter.com/zerodotio" target="_blank">
 							<FaTwitter /> Twitter
 						</Link>
 						<br />
-						<Link href="https://facebook.com/zerodotio">
+						<Link href="https://facebook.com/zerodotio" target="_blank">
 							<FaFacebook /> Facebook
 						</Link>
 						<br />
