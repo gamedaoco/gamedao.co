@@ -41,7 +41,7 @@ const Home = () => {
 
 			<Intro>
 				<Flex flexDirection="row" flexWrap="wrap">
-					<Box width={[1]} px={[4, 6]} pt={[4, 6]}>
+					<Box width={[1]} px={[4, 6]} pt={[2, 4]}>
 						<Box width={[1]} p={[4]} bg="rgba(0,0,0,0.5)">
 
 							<Text textAlign="left" fontSize={[5,6,7]} fontWeight={800} pb={2}>
