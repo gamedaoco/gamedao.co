@@ -78,6 +78,9 @@ export const Text = styled.div`
 
 export const SmallText = styled(Text)`
 	font-size: 10px;
+	* {
+		font-size: 10px;
+	}
 `
 
 export const Space = ({ size = 1 }) => styled.div`

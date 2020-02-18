@@ -38,6 +38,7 @@ const Wrapper = styled.div`
 	}
 	label {
 		font-size: 15px;
+		color: rgba( 255,255,255,0.5);
 		padding-bottom: 15px;
 	}
 `
@@ -138,11 +139,11 @@ export default () => {
 				<Flex flexDirection="row" flexWrap="wrap">
 					<Box width={[ 1 ]} px={[4, 6]} pt={[4, 6]}>
 
-						<Heading pb={4}>Contact</Heading>
+						<Heading fontSize={[5,6]} pb={4}>Contact</Heading>
 
 						{ status.visible &&
 
-							<Text>
+							<Text fontSize={[4,5]}>
 								Please fill in the following information.<br/>
 								We will get back to you.
 								<br/><br/>
@@ -170,8 +171,17 @@ export default () => {
 								</form>
 							}
 
-							{status.info.error && <div className="error"><br/><br/>Error: {status.info.msg}</div>}
-							{!status.info.error && status.info.msg && <div className="success">{status.info.msg}</div>}
+							{status.info.error &&
+								<Text fontSize={[4,5]} color="#ff0000">
+									{status.info.msg}
+								</Text>
+							}
+							{!status.info.error && status.info.msg &&
+								<Text fontSize={[4,5]}>
+									{status.info.msg}
+								</Text>
+							}
+
 						</Wrapper>
 					</Box>
 					<Box width={[1, 1, 1, 1 / 2]} p={[2, 4]}>
