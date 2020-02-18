@@ -15,16 +15,13 @@ const Container = styled.div`
 	margin: 0;
 	padding: 0;
 	background: black;
-	color: #eee;
 	width: 100%;
 	height: auto;
 	a {
-		color: white;
 		fill: white;
 	}
 	.icon {
 		margin-right: 25px;
-	}
 	}
 `
 

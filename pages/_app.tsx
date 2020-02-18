@@ -28,6 +28,12 @@ const GlobalStyle = createGlobalStyle`
 		font-weight: 400;
 		font-size: 15px;
 		box-sizing: border-box;
+		color: rgba(255,255,255,.75);
+		&:hover {
+			text-decoration: none;
+			color: rgba(255,255,255,1);
+			transition-duration:250ms;		
+		}		
 	}
 
 	div#__next, html, body {
@@ -36,9 +42,8 @@ const GlobalStyle = createGlobalStyle`
 		width: 100%;
 		display: flex;
 		justify-content: center;
-		// background-color: #000000;
-		color: #eeeeee;
 		scroll-behavior: smooth;
+
 	}
 
 	a {
@@ -46,6 +51,7 @@ const GlobalStyle = createGlobalStyle`
 		color: rgba(255,255,255,.5);
 		transition-duration:150ms;
 	}
+
 	a:hover {
 		text-decoration: none;
 		color: rgba(255,255,255,1);
