@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
 import { Flex, Box } from 'rebass'
@@ -66,90 +67,78 @@ const Right = styled.div`
 	text-align: right;
 `
 
-interface Props {}
-
-interface State {
+interface IHeader {
 	email?: string
 	message?: string
-	loggedIn: boolean
-	pathname?: string
+	loggedIn?: boolean
+	showContactView?: boolean
 }
 
-class Header extends React.Component<Props, State> {
-	constructor(props: any) {
-		super(props)
+const Header: React.FC<IHeader> = ({
+	loggedIn=false
+}) => {
 
-		this.state = {
-			email: 'play@zero.io',
-			message: 'message',
-			loggedIn: false,
-		}
-	}
+	const height = '100px'
+	const logoHeight = '50px'
+	const logoAlt = 'zero'
+	const logoHref = '/'
 
-	public componentDidMount() {}
+	const router = useRouter()
+	const showContactView = ( router.pathname == '/contact' ) ? false : true
 
-	public render() {
-		const { loggedIn, email, message } = this.state
+	return (
+		<Container>
+			{/*<Divider sm />*/}
 
-		const height = '100px'
-		const logoHeight = '50px'
-		const logoAlt = 'zero'
-		const logoHref = '/'
+			<Flex flexDirection="row" flexWrap="wrap">
+				{/* TOP */}
 
-		return (
-			<Container>
-				{/*<Divider sm />*/}
+				<Box order={1} pt={4} px={4} py={3} width={[1 / 3]}>
+					<Link href="/">
+						<img src={logo} height={logoHeight} alt={logoAlt} />
+					</Link>
+				</Box>
 
-				<Flex flexDirection="row" flexWrap="wrap">
-					{/* TOP */}
+				<Box order={2} pt={4} px={4} width={[2 / 3]}>
+					<MetaLink>
+						{/*!loggedIn && <Link href="/account/signin">Sign In</Link>*/}
+						{/*!loggedIn && <Link href="/account/signup">Sign Up</Link>*/}
+						{loggedIn && <Link href="/account">Account</Link>}
+						{loggedIn && <Link href="/account/signout">Sign Out</Link>}
+						{/*<Link href="/doc/help">Helpdesk</Link>*/}
+						{showContactView && <Link href="/contact">Contact</Link>}
+					</MetaLink>
+				</Box>
 
-					<Box order={1} pt={4} px={4} py={3} width={[1 / 3]}>
-						<Link href="/">
-							<img src={logo} height={logoHeight} alt={logoAlt} />
-						</Link>
-					</Box>
+				{/* MESSAGE */}
 
-					<Box order={2} pt={4} px={4} width={[2 / 3]}>
-						<MetaLink>
-							{/*!loggedIn && <Link href="/account/signin">Sign In</Link>*/}
-							{/*!loggedIn && <Link href="/account/signup">Sign Up</Link>*/}
-							{loggedIn && <Link href="/account">Account</Link>}
-							{loggedIn && <Link href="/account/signout">Sign Out</Link>}
-							{/*<Link href="/doc/help">Helpdesk</Link>*/}
-							<Link href="/contact">Contact</Link>
-						</MetaLink>
-					</Box>
-
-					{/* MESSAGE */}
-
-					{/*
-										<Box order={[4, 3]} px={4} width={[1, 1 / 2]}>
-											{loggedIn && (
-												<User>
-													Welcome, <Link href="/account">User</Link>.
-												</User>
-											)}
-										</Box>
-					
-										<Box order={[3, 4]} px={4} width={[1, 1 / 2]}>
-											{loggedIn && (
-												<Task>
-													<Right>{'Phase 1 / 3'}</Right>
-												</Task>
-											)}
-										</Box>				
+				{/*
+									<Box order={[4, 3]} px={4} width={[1, 1 / 2]}>
+										{loggedIn && (
+											<User>
+												Welcome, <Link href="/account">User</Link>.
+											</User>
+										)}
+									</Box>
+				
+									<Box order={[3, 4]} px={4} width={[1, 1 / 2]}>
+										{loggedIn && (
+											<Task>
+												<Right>{'Phase 1 / 3'}</Right>
+											</Task>
+										)}
+									</Box>				
 */}
 
-					{/* NAVBAR */}
-					{/*
-					<Box order={5} width={[1]}>
-						<Navigation />
-					</Box>
+				{/* NAVBAR */}
+				{/*
+				<Box order={5} width={[1]}>
+					<Navigation />
+				</Box>
 */}
-				</Flex>
-			</Container>
-		)
-	}
+			</Flex>
+		</Container>
+	)
 }
 
 export default Header
