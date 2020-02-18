@@ -7,7 +7,7 @@ import { H3, H4, Text, SmallText, Link, Newsletter, Divider } from '../'
 import logo from 'public/z-h-col.svg'
 import img from 'public/stripes-s.png'
 
-import { FaGithub, FaDiscord, FaTwitter, FaLinkedin, FaFacebook } from 'react-icons/fa'
+import { FaGitlab, FaDiscord, FaTwitter, FaLinkedin, FaFacebook } from 'react-icons/fa'
 
 // const Divider = styled.div`
 // 	min-width:100%;
@@ -95,7 +95,7 @@ const Footer: React.FC = ({}) => {
 						</H3>
 
 						<a href="https://github.com/playzero" target="_blank">
-							<FaGithub /> GitHub
+							<FaGitlab /> GitLab
 						</a>
 						<br />
 						<a href="https://discord.gg/rhwtr7p" target="_blank">
