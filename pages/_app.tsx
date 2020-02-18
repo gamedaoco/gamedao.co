@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
 		justify-content: center;
 		// background-color: #000000;
 		color: #eeeeee;
+		scroll-behavior: smooth;
 	}
 
 	a {
