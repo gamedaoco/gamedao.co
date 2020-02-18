@@ -90,8 +90,6 @@ const Footer: React.FC = ({}) => {
 					<Text>
 						<H3>
 							Join us
-							<br />
-							<br />
 						</H3>
 
 						<a href="https://github.com/playzero" target="_blank">
