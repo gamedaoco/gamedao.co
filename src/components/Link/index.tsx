@@ -7,7 +7,7 @@ interface ILinkProps {
 	children?: object | string
 }
 
-const Link: React.FunctionComponent<ILinkProps> = ({ href, target, children }) => (
+const Link: React.FC<ILinkProps> = ({ href, target, children }) => (
 	<NextLink href={href || '#'}>
 		<a target={ target ? target : '_self' }>{children}</a>
 	</NextLink>

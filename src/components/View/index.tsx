@@ -14,7 +14,7 @@ interface IView {
 	children?: string | React.ReactNodeArray | React.ReactNode
 }
 
-const View: React.FunctionComponent<IView> = ({ children }, props) => (
+const View: React.FC<IView> = ({ children }, props) => (
 	<Wrapper>
 		<Flex flexDirection="row" flexWrap="wrap">
 			<Box m={[2, 4]} {...props}>

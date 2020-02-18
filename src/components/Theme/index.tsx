@@ -1,5 +1,24 @@
 export default {
+
 	colors: {
-		primary: '0xffff00',
+		primary: '#0070f3',
+	},
+
+	fonts: {
+		default: 'Helvetica Neue, Helvetica, Lato, Arial, sans-serif',
+		sans: 'Helvetica Neue, Helvetica, Lato, Arial, sans-serif',
+		serif: 'Times New Roman, Times, Georgia, serif',
+		heading: 'inherit',
+		text: 'inherit',
+	},
+	fontWeights: {
+		body: 400,
+		heading: 800,
+		bold: 800,
+	},	
+	lineHeights: {
+		default: 4.5,
+		heading: 0.1,
+		text: 2.25,
 	},
 }

@@ -56,18 +56,13 @@ class CustomDocument extends Document {
 
 					<meta name="format-detection" content="telephone=no, address=no, email=no" />
 
-					{/*				<link
-							rel="stylesheet"
-							href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-							integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-							crossOrigin="anonymous"
-						/>*/}
-
 					<link rel="shortcut icon" href="/public/z-control-45-full.png" />
 
-					{/*					<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.find,Array.prototype.includes,String.prototype.includes,Array.prototype.findIndex,Object.entries" />
-					 */}
-					{/*					{!DEV && FB_TRACKING_ID && (
+					{/*
+						<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.find,Array.prototype.includes,String.prototype.includes,Array.prototype.findIndex,Object.entries" />
+					*/}
+				
+					{!DEV && FB_TRACKING_ID && (
 						<script
 							dangerouslySetInnerHTML={{
 								__html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window,document,'script', 'https://connect.facebook.net/en_US/fbevents.js');
@@ -85,9 +80,8 @@ class CustomDocument extends Document {
 								src={`//www.facebook.com/tr?id=${FB_TRACKING_ID}&ev=PageView&noscript=1`}
 							/>
 						</noscript>
-					)}*/}
+					)}
 
-					{/*this.props.styleTags*/}
 				</Head>
 
 				<body>

@@ -177,7 +177,7 @@ const ActiveLink = ({ router, children, ...props }) => {
 
 const NavLink = withRouter(ActiveLink)
 
-const NavBar: React.FunctionComponent = () => (
+const NavBar: React.FC = () => (
 	<Nav>
 		<label htmlFor="show-menu" className="show-menu">
 			Navigation

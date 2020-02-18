@@ -10,7 +10,7 @@ const getStyle = (bType: string = '', noBorder: boolean = false, stretch: boolea
 				fontSize: '12px',
 				height: 'auto',
 				width: stretch ? '100%' : 'auto',
-				border: noBorder ? 'none' : '2px solid',
+				// border: noBorder ? 'none' : '2px solid',
 				marginTop: '15px',
 				padding: '5px 10px',
 			}
@@ -30,6 +30,7 @@ const getStyle = (bType: string = '', noBorder: boolean = false, stretch: boolea
 
 const Button = styled('button')`
 	font-size: 20px;
+	font-weight: 600;
 	border-radius: 0px;
 	border: 2px solid white;
 	color: white;
@@ -39,8 +40,10 @@ const Button = styled('button')`
 	&:hover {
 		background-color: white;
 		color: #111111;
-		border: 2px solid black;
+	border: 2px solid white;
 	}
+	transition-duration:150ms;
+
 `
 interface Props {
 	children?: React.ReactNode
@@ -53,7 +56,7 @@ interface Props {
 	onClick?: any
 }
 
-const ButtonComponent: React.FunctionComponent<Props> = (
+const ButtonComponent: React.FC<Props> = (
 	{ onClick = null, bType = 'xl', stretch = false, noBorder = false, children, type = 'submit', disabled = false },
 	...props
 ) => {

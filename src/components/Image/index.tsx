@@ -18,7 +18,7 @@ interface IImageProps {
 	aspect?: number
 }
 
-const Image: React.FunctionComponent<IImageProps> = ({ src, alt, width, height }) => {
+const Image: React.FC<IImageProps> = ({ src, alt, width, height }) => {
 	// const baseSize = 512
 
 	return (

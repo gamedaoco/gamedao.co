@@ -6,37 +6,24 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { PageTransition } from 'next-page-transitions'
 import { Loader } from '../src/components'
 
-const TIMEOUT = 500
+import theme from '../src/components/Theme'
 
-const theme = {
-	colors: {
-		primary: '#0070f3',
-	},
-}
+const TIMEOUT = 500
 
 const GlobalStyle = createGlobalStyle`
 
-	/*@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');*/
+	/*
+		reset base styles
+	 */
 
-	html {
-		overflow: scroll;
-		overflow-x: hidden;
-		scroll-behavior: smooth;
-		scrollbar-width: thin;
-		scrollbar-color: #ff00ff
-	}
-	::-webkit-scrollbar {
-		width: 1px;
-		background: transparent;  /* Optional: just make scrollbar invisible */
-	}
-	::-webkit-scrollbar-thumb {
-		background: #FF00FF
+	*, div {
+		font-family: ${theme.fonts.sans};
+		font-weight: 300;
+		font-size: 25px;
+		box-sizing: border-box;
 	}
 
 	div#__next, html, body {
-		font-family: 'Helvetica Neue', Helvetica, sans-serif;
-		font-weight: 400;
-		font-size: 15px;
 		margin: 0;
 		height: 100%;
 		width: 100%;
@@ -46,7 +33,28 @@ const GlobalStyle = createGlobalStyle`
 		color: #eeeeee;
 	}
 
-	* { box-sizing: border-box; }
+	/*
+		scrollbar
+	 */
+
+	html {
+		overflow: scroll;
+		overflow-x: hidden;
+		scroll-behavior: smooth;
+		scrollbar-width: thin;
+		scrollbar-color: rgba( 255, 0, 255, 1 );
+	}
+	::-webkit-scrollbar {
+		width: 2px;
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background: rgba( 255, 0, 255, 1 );
+	}
+
+	/*
+		page transitions
+	 */
 
 	.page-transition-enter {
 		opacity: 0;
@@ -64,6 +72,11 @@ const GlobalStyle = createGlobalStyle`
 		opacity: 0;
 		transition: opacity ${TIMEOUT}ms;
 	}
+
+	/*
+		loader
+	 */
+	
 	.loading-indicator-appear,
 	.loading-indicator-enter {
 		opacity: 0;
@@ -75,22 +88,11 @@ const GlobalStyle = createGlobalStyle`
 	}  
 `
 
-interface AppProps {
+interface IApplication {
 	pageProps: any
 }
 
-class Application extends NextApp<AppProps> {
-	// static async getInitialProps({ Component, ctx }: AppContext) {
-
-	// 	const componentGetInitialProps = Component.getInitialProps || (() => Promise.resolve())
-	// 	const [pageProps] = await Promise.all([
-	// 		componentGetInitialProps(ctx),
-	// 	])
-
-	// 	return {
-	// 		pageProps,
-	// 	}
-	// }
+class Application extends NextApp<IApplication> {
 
 	render() {
 		const { Component, pageProps } = this.props
@@ -116,6 +118,7 @@ class Application extends NextApp<AppProps> {
 				</PageTransition>
 		)
 	}
+
 }
 
 export default Application

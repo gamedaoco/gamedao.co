@@ -30,13 +30,13 @@ const Container = styled.div`
 	}
 `
 
-const FooterBox: React.FunctionComponent = ({ children }) => (
+const FooterBox: React.FC = ({ children }) => (
 	<Box px={4} width={[1, 1 / 2, 1 / 2, 1 / 5]}>
 		{children}
 	</Box>
 )
 
-const Footer: React.FunctionComponent = ({}) => {
+const Footer: React.FC = ({}) => {
 	return (
 		<Container id="info">
 			<Flex flexDirection="row" flexWrap="wrap">

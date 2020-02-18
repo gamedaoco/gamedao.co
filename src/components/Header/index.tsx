@@ -15,6 +15,7 @@ const Container = styled.div`
 	background: #000;
 
 	* {
+		font-size: 15px;
 		// border: 1px dotted red;
 		transition-duration: 100ms;
 		transition-timing-function: ease-in-out;
@@ -23,6 +24,7 @@ const Container = styled.div`
 
 const MetaLink = styled.div`
 	a {
+		color: rgba(255,255,255,0.5);
 		margin-left: 25px;
 	}
 	text-align: right;
@@ -30,10 +32,10 @@ const MetaLink = styled.div`
 	a,
 	a: visited {
 		text-decoration: none;
-		color: white;
+		color: rgba(255,255,255,1);
 	}
 	a:hover {
-		color: white;
+		color: rgba(255,255,255,1);
 		border-bottom: 1px dotted;
 	}
 `
@@ -78,7 +80,7 @@ class Header extends React.Component<Props, State> {
 		super(props)
 
 		this.state = {
-			email: 'marco@one.io',
+			email: 'play@zero.io',
 			message: 'message',
 			loggedIn: false,
 		}

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import theme from './Theme'
 
 //
 // atoms
@@ -29,20 +30,21 @@ export { default as Footer } from './Footer'
 export { default as Navigation } from './Navigation'
 
 //
-// templates and wrappers
+// templates, wrappers, themes
 //
 
 export { default as View } from './View'
 export { default as Layout } from './Layout'
+export { default as theme } from './Theme'
 
 //
 //	other components
 //
 
 export const Headline = styled.div`
+	font-face: ${theme.fonts.sans}
+	font-weight: 800;
 	font-size: 15px;
-	line-height: 1.1;
-	letter-spacing: 0.5px;
 	margin-bottom: 15px;
 	display: block;
 `
@@ -60,9 +62,9 @@ export const H4 = styled(Headline)`
 `
 
 export const Text = styled.div`
-	line-height: 1.5;
 	font-size: 15px;
-	letter-spacing: 0.5px;
+	letter-spacing: 1.1px;
+	lineSpacing: 1.2;
 	margin-bottom: 15px;
 	a {
 		text-decoration: none;

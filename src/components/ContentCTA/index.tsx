@@ -13,7 +13,7 @@ interface ITeaserBox {
 	children?: React.ReactNode //object | string
 }
 
-const TeaserBox: React.FunctionComponent<ITeaserBox> = ({ children }) => (
+const TeaserBox: React.FC<ITeaserBox> = ({ children }) => (
 	<Box px={2} width={[1 / 2, 1 / 4]} pt={2} mb={1}>
 		<TeaserText>{children}</TeaserText>
 	</Box>
@@ -23,7 +23,7 @@ interface ITeaserImage {
 	title?: string
 }
 
-const TeaserImage: React.FunctionComponent<ITeaserImage> = ({ title }) => (
+const TeaserImage: React.FC<ITeaserImage> = ({ title }) => (
 	<Card width={'256px'} height={'256px'} color="white" bg="#eeeeee" px={4} py={6} mb={4}>
 		{title && (
 			<Heading
@@ -40,7 +40,7 @@ const TeaserImage: React.FunctionComponent<ITeaserImage> = ({ title }) => (
 	</Card>
 )
 
-const ContentCTA: React.FunctionComponent = () => (
+const ContentCTA: React.FC = () => (
 	<Flex flexDirection="row" flexWrap="wrap" p={'25px'}>
 		<Box px={2} width={1} pt={2} mb={1}>
 			<H1>Join now.</H1>

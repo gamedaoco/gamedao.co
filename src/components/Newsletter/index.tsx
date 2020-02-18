@@ -52,13 +52,13 @@ const Wrapper = styled.div`
 	}
 `
 
-type CustomFormProps = {
+type FormProps = {
 	status: string | null
 	message: string | null
 	onValidated: Function
 }
 
-const CustomForm: React.SFC<CustomFormProps> = ({ status, message, onValidated }) => {
+const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 
 	const [ inputs, setInputState ] = useState({ email: '' })
 
@@ -105,7 +105,7 @@ const CustomForm: React.SFC<CustomFormProps> = ({ status, message, onValidated }
 	)
 }
 
-const Newsletter: React.SFC = () => (
+const Newsletter: React.FC = () => (
 	<Wrapper>
 		<MailchimpSubscribe
 			url={MAILCHIMP || ''}

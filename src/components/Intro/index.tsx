@@ -43,7 +43,7 @@ const get = (mode: string = '', image: string = '') => {
 	}
 }
 
-const Intro: React.FunctionComponent<IIntro> = ({ mode, image, children }) => (
+const Intro: React.FC<IIntro> = ({ mode, image, children }) => (
 	<IntroWrapper style={get(mode, image)}>{children}</IntroWrapper>
 )
 

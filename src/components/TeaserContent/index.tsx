@@ -17,7 +17,7 @@ interface IGridItem {
 	id?: string
 }
 
-const GridItem: React.FunctionComponent<IGridItem> = ({ imageURL, headline, text, tags, id }) => (
+const GridItem: React.FC<IGridItem> = ({ imageURL, headline, text, tags, id }) => (
 	<Box width={[1, 1 / 2]} p={4}>
 		<ItemImage />
 		<Heading>Bingo Bongo Land</Heading>
@@ -44,7 +44,7 @@ interface IItemImage {
 	title?: string
 }
 
-const ItemImage: React.FunctionComponent<IItemImage> = ({ title }) => {
+const ItemImage: React.FC<IItemImage> = ({ title }) => {
 	return (
 		<Box
 			width={1}
@@ -93,7 +93,7 @@ const Tag = styled.button`
 	}
 `
 
-const TeaserContent: React.FunctionComponent = () => (
+const TeaserContent: React.FC = () => (
 	<Flex flexDirection="row" flexWrap="wrap">
 		<Box width={1} p={4}>
 			<H1>Open Campaigns</H1>
