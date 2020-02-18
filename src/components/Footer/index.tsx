@@ -94,21 +94,21 @@ const Footer: React.FunctionComponent = ({}) => {
 							<br />
 						</H3>
 
-						<Link href="https://github.com/playzero" target="_blank">
+						<a href="https://github.com/playzero" target="_blank">
 							<FaGithub /> GitHub
-						</Link>
+						</a>
 						<br />
-						<Link href="https://discord.gg/rhwtr7p" target="_blank">
+						<a href="https://discord.gg/rhwtr7p" target="_blank">
 							<FaDiscord /> Discord
-						</Link>
+						</a>
 						<br />
-						<Link href="https://twitter.com/zerodotio" target="_blank">
+						<a href="https://twitter.com/zerodotio" target="_blank">
 							<FaTwitter /> Twitter
-						</Link>
+						</a>
 						<br />
-						<Link href="https://facebook.com/zerodotio" target="_blank">
+						<a href="https://facebook.com/zerodotio" target="_blank">
 							<FaFacebook /> Facebook
-						</Link>
+						</a>
 						<br />
 						<br />
 
