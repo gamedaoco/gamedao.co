@@ -14,32 +14,42 @@ interface IIntro {
 	children?: object | React.ReactNodeArray
 }
 
-const get = (mode: string = '', image: string = '') => {
+const get = ( mode: string = '', image: string = '') => {
 	switch (mode) {
+
 		case 'white':
 			return {
 				background: '#fcfcfc',
 				color: '#111111',
 			}
+
 		case 'dark':
 			return {
 				background: 'black',
 				color: '#fcfcfc',
 			}
+
 		case 'gradient':
 			return {
 				backgroundImage: 'linear-gradient(red,yellow)',
 				color: '#111111',
 			}
-		default:
+
+		case 'image':
 			return {
-				// background: '#111',
 				color: '#eee',
 				background: `url('${image}') no-repeat center center`,
 				backgroundSize: 'cover',
 				height: '100%',
 				overflow: 'hidden',
 			}
+
+		default:
+			return {
+				background: 'none',
+				color: '#eee',
+			}
+
 	}
 }
 

@@ -56,7 +56,7 @@ class CustomDocument extends Document {
 
 					<meta name="format-detection" content="telephone=no, address=no, email=no" />
 
-					<link rel="shortcut icon" href="/public/z-control-45-full.png" />
+					<link rel="shortcut icon" href="/z-control-45-full.png" />
 
 					{/*
 						<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.find,Array.prototype.includes,String.prototype.includes,Array.prototype.findIndex,Object.entries" />

@@ -94,7 +94,7 @@ type IContainer = {
 }
 
 export const Container = styled.div<IContainer>(({ fill = 'true' }) => ({
-	backgroundColor: '#000',
+	// backgroundColor: '#000',
 	margin: '0',
 	padding: '0',
 	width: '100%',
@@ -106,7 +106,7 @@ type IContent = {
 }
 
 export const Content = styled.div<IContent>(({ fill = 'true' }) => ({
-	backgroundColor: '#000000',
+	// backgroundColor: '#000000',
 	margin: '0',
 	padding: '0',
 	width: '100%',

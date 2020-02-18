@@ -7,7 +7,7 @@ import { Border, H1, H2, Link, Intro, Space, Image, Container, Newsletter, Butto
 import img from 'public/img/1.png'
 import logo from 'public/z-ctrl-45-wht.svg'
 
-import { FaChevronDown } from 'react-icons/fa'
+import { IoIosArrowRoundDown } from 'react-icons/io'
 
 const LogoWrapper = styled.div``
 
@@ -42,7 +42,7 @@ const Home = () => {
 			<Intro>
 				<Flex flexDirection="row" flexWrap="wrap">
 					<Box width={[1]} px={[4, 6]} pt={[2, 4]}>
-						<Box width={[1]} p={[4]} bg="rgba(0,0,0,0.5)">
+						<Box width={[1]} p={[4]}>
 
 							<Text textAlign="left" fontSize={[5,6,7]} fontWeight={800} pb={2}>
 								GameDAO is rebooting video game funding
@@ -74,7 +74,7 @@ const Home = () => {
 
 							<Box width={1}>
 								<Heading textAlign="center" fontSize={[3]} pt={5}>
-									<Link href="/#info"><FaChevronDown/></Link>
+									<Link href="/#info"><IoIosArrowRoundDown size="48"/></Link>
 								</Heading>
 							</Box>
 

@@ -10,6 +10,13 @@ import theme from '../src/components/Theme'
 
 const TIMEOUT = 500
 
+const grid = {
+	bgcol:		'#000000',
+	dotcol:		'#ff00ff',
+	dotsize:	1,
+	space:		128,
+}
+
 const GlobalStyle = createGlobalStyle`
 
 	/*
@@ -29,8 +36,27 @@ const GlobalStyle = createGlobalStyle`
 		width: 100%;
 		display: flex;
 		justify-content: center;
-		background-color: #000000;
+		// background-color: #000000;
 		color: #eeeeee;
+	}
+
+	a {
+		text-decoration: none;
+		color: rgba(255,255,255,.5);
+		transition-duration:150ms;
+	}
+	a:hover {
+		text-decoration: none;
+		color: rgba(255,255,255,1);
+		transition-duration:150ms;		
+	}
+
+	body {
+		background:
+			linear-gradient( 90deg, ${grid.bgcol} ${ grid.space-grid.dotsize }px, transparent 1%) center,
+			linear-gradient( ${grid.bgcol} ${ grid.space-grid.dotsize }px, transparent 1%) center,
+			${grid.dotcol};
+		background-size: ${grid.space}px ${grid.space}px;
 	}
 
 	/*
