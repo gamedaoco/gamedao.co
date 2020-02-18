@@ -19,7 +19,7 @@ const Container = styled.div`
 	min-height: 100vh;
 `
 
-const Layout: React.FunctionComponent = props => (
+const Layout: React.FC = props => (
 	<Wrapper>
 		<Container>
 			<Header />

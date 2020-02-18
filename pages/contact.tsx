@@ -176,6 +176,7 @@ export default () => {
 									{status.info.msg}
 								</Text>
 							}
+
 							{!status.info.error && status.info.msg &&
 								<Text fontSize={[4,5]}>
 									{status.info.msg}
