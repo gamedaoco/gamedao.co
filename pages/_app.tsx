@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 	::-webkit-scrollbar {
 		width: 2px;
-		background: transparent;
+		background: black;
 	}
 	::-webkit-scrollbar-thumb {
 		background: rgba( 255, 0, 255, 1 );
