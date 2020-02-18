@@ -1,20 +1,13 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { Flex, Box } from 'rebass'
-import { H3, H4, Text, SmallText, Link, Newsletter, Divider } from '../'
+import { Flex, Box, Text } from 'rebass/styled-components'
+import { H3, H4, SmallText, Link, Newsletter, Divider } from '../'
 
 import logo from 'public/z-h-col.svg'
 import img from 'public/stripes-s.png'
 
-import { FaGitlab, FaDiscord, FaTwitter, FaLinkedin, FaFacebook } from 'react-icons/fa'
-
-// const Divider = styled.div`
-// 	min-width:100%;
-// 	height:16px;
-// 	background: repeat-x url('${img}');
-// 	margin-bottom:1em;
-// `
+import { FaGitlab, FaDiscord, FaTwitter } from 'react-icons/fa'
 
 const Container = styled.div`
 	// * { border: 1px dotted red; }
@@ -25,8 +18,13 @@ const Container = styled.div`
 	color: #eee;
 	width: 100%;
 	height: auto;
-	#a {
+	a {
+		color: white;
 		fill: white;
+	}
+	.icon {
+		margin-right: 25px;
+	}
 	}
 `
 
@@ -39,8 +37,9 @@ const FooterBox: React.FC = ({ children }) => (
 const Footer: React.FC = ({}) => {
 	return (
 		<Container id="info">
+
 			<Flex flexDirection="row" flexWrap="wrap">
-				<Box px={4} pt={4} width={[1, 1, 1 / 3, 2 / 5]}>
+				<Box px={4} pt={4} pb={3} width={[1, 1, 1 / 3, 2 / 5]}>
 					<Text>
 						<Link href="/">
 							<img src={logo} height="20px" alt="ecvan" />
@@ -52,12 +51,6 @@ const Footer: React.FC = ({}) => {
 			<Divider sm />
 
 			<Flex flexDirection="row" flexWrap="wrap">
-				{/*				<Box px={4} width={[1, 1, 1/3, 2 / 5]}>
-					<Text>
-						<img src={logo} height="25px" alt="ecvan" />
-					</Text>						
-				</Box>*/}
-
 				<Box px={4} width={[1, 1, 1 / 2, 3 / 5]}>
 					<Text>
 						zero.io is building gameDAO, a distributed autonomous organisation,
@@ -67,93 +60,36 @@ const Footer: React.FC = ({}) => {
 						<br />
 						<br />
 						we provide matchmaking and crowd based funding instruments,
-						connecting and empowering loyal investors, gamers, creators and publishers.
-						<br />
-						<br />
-{/*
-						<Box width={[1, 1 / 2, 1]} color="#ff00ff">
-							<H4>Sign Up here to stay in touch:</H4>
-							<Newsletter />
-						</Box>
-						<br />
-*/}
-					</Text>
-				</Box>
-			</Flex>
-			{/*
-
-*/}
-			<Flex flexDirection="row" flexWrap="wrap">
-
-
-				<Box px={4} width={[1 / 2, 1 / 2, 1 / 3, 1 / 5]} color="#ccff00">
-					<Text>
-						<H3>
-							Join us
-						</H3>
-
-						<a href="https://github.com/playzero" target="_blank">
-							<FaGitlab /> GitLab
-						</a>
-						<br />
-						<a href="https://discord.gg/rhwtr7p" target="_blank">
-							<FaDiscord /> Discord
-						</a>
-						<br />
-						<a href="https://twitter.com/zerodotio" target="_blank">
-							<FaTwitter /> Twitter
-						</a>
-						<br />
-						<a href="https://facebook.com/zerodotio" target="_blank">
-							<FaFacebook /> Facebook
-						</a>
-						<br />
-						<br />
-
-						{/*
-						<Link href="/dao/culture">How we work</Link>
-						<br />
-						<Link href="/doc/how-to-dao">How to DAO</Link>
-						<br />
-						<Link href="/dao/team">Team</Link>
-						<br />
-						<br />
-						<Link href="/team#product">Product</Link>
-						<br />
-						<Link href="/team#design">Design</Link>
-						<br />
-						<Link href="/team#software">Software</Link>
-						<br />
-						<Link href="/team#biz">Business Development</Link>
-						<br />
-						<Link href="/team#community">Community</Link>
-						<br />
-*/}
-						{/*<Link href="/dao/invest">gameDAO</Link>*/}
+						connecting and empowering loyal gamers, creators, publishers and investors.
 					</Text>
 				</Box>
 			</Flex>
 
 			<Flex flexDirection="row" flexWrap="wrap">
-				{/*
-				<Box px={4} py={1} width={[1]}>
-					<Text>
-						<FaGithub/> <Link href="https://github.com/playzero">GitHub</Link> —
-						<FaDiscord /> <Link href="https://discord.gg/rhwtr7p">Discord</Link> —
-						<FaTwitter/> <Link href="https://twitter.com/zerodotio">Twitter</Link> —
-						<FaFacebook/> <Link href="https://facebook.com/zerodotio">Facebook</Link>
-					</Text>
+				<Box p={4} width={[1]} color="#ccff00">
+					<a className="icon" href="https://discord.gg/rhwtr7p" target="_blank">
+						<FaDiscord size={25}/>
+					</a>&nbsp;
+					<a className="icon" href="https://twitter.com/zerodotio" target="_blank">
+						<FaTwitter size={25}/>
+					</a>
+					<a className="icon" href="https://github.com/playzero" target="_blank">
+						<FaGitlab size={25}/>
+					</a>&nbsp;
 				</Box>
-*/}
-				<Box px={4} py={1} width={[1]}>
+			</Flex>
+
+			<Flex flexDirection="row" flexWrap="wrap">
+				<Box px={4} py={1} width={[1,1/2]}>
 					<SmallText>
-						© 2019 gameDAO — zero.io.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;made on earth.
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link href="/imprint">Imprint</Link>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link href="/imprint">Privacy</Link>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link href="/imprint">Terms of Use</Link>
+						©&nbsp;2019&nbsp;gameDAO&nbsp;—&nbsp;zero.io.&nbsp;&nbsp;&nbsp;made&nbsp;on&nbsp;earth.&nbsp;&nbsp;&nbsp;
+						<Link href="/imprint">Imprint</Link>&nbsp;&nbsp;&nbsp;
+						<Link href="/imprint">Privacy</Link>&nbsp;&nbsp;&nbsp;
+						{/*<Link href="/imprint">Terms</Link>*/}
 					</SmallText>
 				</Box>
 			</Flex>
+
 		</Container>
 	)
 }
