@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
 	*, div {
 		font-family: ${theme.fonts.sans};
-		font-weight: 300;
+		font-weight: 400;
 		font-size: 15px;
 		box-sizing: border-box;
 	}
