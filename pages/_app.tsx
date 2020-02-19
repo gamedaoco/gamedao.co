@@ -10,9 +10,15 @@ import theme from '../src/components/Theme'
 
 const TIMEOUT = 500
 
+const col = () => {
+	const colors = [ '#00ADEE', '#EC297B', '#F6921E', '#37B34A' ]
+	const index = Math.floor( Math.random() * colors.length )
+	return colors[ index ]
+}
+
 const grid = {
 	bgcol:		'#000000',
-	dotcol:		'#ff00ff',
+	dotcol:		col(),
 	dotsize:	1,
 	space:		128,
 }
