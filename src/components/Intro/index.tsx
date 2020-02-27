@@ -14,9 +14,8 @@ interface IIntro {
 	children?: object | React.ReactNodeArray
 }
 
-const get = ( mode: string = '', image: string = '') => {
+const get = (mode: string = '', image: string = '') => {
 	switch (mode) {
-
 		case 'white':
 			return {
 				background: '#fcfcfc',
@@ -49,7 +48,6 @@ const get = ( mode: string = '', image: string = '') => {
 				background: 'none',
 				color: '#eee',
 			}
-
 	}
 }
 

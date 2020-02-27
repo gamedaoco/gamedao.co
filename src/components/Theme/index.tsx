@@ -1,5 +1,4 @@
 export default {
-
 	colors: {
 		primary: '#0070f3',
 	},
@@ -15,7 +14,7 @@ export default {
 		body: 400,
 		heading: 800,
 		bold: 800,
-	},	
+	},
 	lineHeights: {
 		default: 4.5,
 		heading: 0.1,

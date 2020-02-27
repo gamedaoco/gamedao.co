@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Flex, Box, Card, Heading } from 'rebass'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
@@ -59,12 +59,11 @@ type FormProps = {
 }
 
 const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
-
-	const [ inputs, setInputState ] = useState({ email: '' })
+	const [inputs, setInputState] = useState({ email: '' })
 
 	const handleOnChange = e => {
 		e.persist()
-		setInputState( prev => ({
+		setInputState(prev => ({
 			...prev,
 			[e.target.id]: e.target.value,
 		}))
@@ -73,22 +72,32 @@ const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 	const handleOnSubmit = e => {
 		e.preventDefault()
 		inputs.email.indexOf('@') > -1 &&
-		onValidated({
-			EMAIL: inputs.email,
-		})
+			onValidated({
+				EMAIL: inputs.email,
+			})
 	}
 
 	return (
 		<div>
 			<div className="formWrapper">
 				<div className="bar">
-					<input id="email" className="email" type="email" placeholder="Your email" onChange={handleOnChange} />
+					<input
+						id="email"
+						className="email"
+						type="email"
+						placeholder="Your email"
+						onChange={handleOnChange}
+					/>
 				</div>
 				<a onClick={handleOnSubmit}>
-				<Button bType="sm" type="submit">Submit</Button>
+					<Button bType="sm" type="submit">
+						Submit
+					</Button>
 				</a>
 			</div>
-			{status === 'sending' && <div style={{ color: 'white', fontSize: '15x', paddingTop: '15px' }}>sending...</div>}
+			{status === 'sending' && (
+				<div style={{ color: 'white', fontSize: '15x', paddingTop: '15px' }}>sending...</div>
+			)}
 			{status === 'error' && (
 				<div
 					style={{ color: 'red', fontSize: '15px', paddingTop: '15px' }}
@@ -100,7 +109,7 @@ const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 					style={{ color: 'white', fontSize: '15px', paddingTop: '15px' }}
 					dangerouslySetInnerHTML={{ __html: message || '' }}
 				/>
-			)}			
+			)}
 		</div>
 	)
 }

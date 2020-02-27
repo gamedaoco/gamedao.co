@@ -9,7 +9,7 @@ interface ILinkProps {
 
 const Link: React.FC<ILinkProps> = ({ href, target, children }) => (
 	<NextLink href={href || '#'}>
-		<a target={ target ? target : '_self' }>{children}</a>
+		<a target={target ? target : '_self'}>{children}</a>
 	</NextLink>
 )
 

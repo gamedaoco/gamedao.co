@@ -64,7 +64,7 @@ export const H4 = styled(Headline)`
 export const Text = styled.div`
 	font-size: 15px;
 	letter-spacing: 1.1px;
-	lineSpacing: 1.2;
+	linespacing: 1.2;
 	margin-bottom: 15px;
 	a {
 		text-decoration: none;

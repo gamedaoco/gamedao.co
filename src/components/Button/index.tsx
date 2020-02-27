@@ -40,10 +40,9 @@ const Button = styled('button')`
 	&:hover {
 		background-color: white;
 		color: #111111;
-	border: 2px solid white;
+		border: 2px solid white;
 	}
-	transition-duration:150ms;
-
+	transition-duration: 150ms;
 `
 interface Props {
 	children?: React.ReactNode

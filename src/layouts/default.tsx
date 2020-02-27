@@ -4,6 +4,8 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import { Header, Footer } from 'components'
 
+import { SITE_TITLE } from '../../config/env'
+
 const Wrapper = styled.div`
 	margin: 0;
 	padding: 0;
@@ -19,8 +21,17 @@ const Container = styled.div`
 	min-height: 100vh;
 `
 
-const Layout: React.FC = props => (
+interface ILayoutProps {
+	title?: string
+}
+
+const Layout: React.FC<ILayoutProps> = ({ title, ...props }) => (
 	<Wrapper>
+		<Head>
+			<title>
+				{title || 'GameDAO'} | {SITE_TITLE}
+			</title>
+		</Head>
 		<Container>
 			<Header />
 			{props.children}

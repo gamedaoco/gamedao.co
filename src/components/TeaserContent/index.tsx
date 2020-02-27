@@ -53,7 +53,13 @@ const ItemImage: React.FC<IItemImage> = ({ title }) => {
 				backgroundImage: `url(https://source.unsplash.com/random/800x600?jungle&k=${Math.random()})`,
 				backgroundSize: 'cover',
 				borderRadius: 3,
-			}} bg={bgColor()} color="white" px={4} py={6} mb={4}>
+			}}
+			bg={bgColor()}
+			color="white"
+			px={4}
+			py={6}
+			mb={4}
+		>
 			{title && (
 				<Heading
 					style={{
