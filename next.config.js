@@ -4,6 +4,22 @@ const path = require('path')
 const dotenv = require('dotenv').config()
 const webpack = require('webpack')
 
+const sitemap = require('nextjs-sitemap-generator')
+
+sitemap({
+	ignoredPaths: ['api'],
+	baseUrl: 'https://gamedao.co',
+	pagesDirectory: __dirname + '/pages',
+	targetDirectory: 'public/',
+	ignoreIndexFiles: true,
+	pagesConfig: {
+		'/index': {
+			priority: '1',
+			changefreq: 'daily',
+		},
+	},
+})
+
 module.exports = withImages({
 	poweredByHeader: false,
 

@@ -41,6 +41,10 @@ class CustomDocument extends Document {
 						key="viewport"
 						content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
 					/>
+					<meta http-equiv="content-language" content="en" />
+
+					<title>{SITE_TITLE}</title>
+					<meta name="description" content={SITE_DESCRIPTION} />
 
 					<meta property="og:type" content="website" />
 					<meta property="og:site_name" content={SITE_NAME} />
@@ -61,7 +65,7 @@ class CustomDocument extends Document {
 					{/*
 						<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.find,Array.prototype.includes,String.prototype.includes,Array.prototype.findIndex,Object.entries" />
 					*/}
-				
+
 					{!DEV && FB_TRACKING_ID && (
 						<script
 							dangerouslySetInnerHTML={{
@@ -81,7 +85,6 @@ class CustomDocument extends Document {
 							/>
 						</noscript>
 					)}
-
 				</Head>
 
 				<body>

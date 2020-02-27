@@ -4,7 +4,7 @@ root = true
 
 [*.{js,jsx,ts,tsx,sol}]
 indent_style = tab
-indent_size = 6
+indent_size = 4
 trim_trailing_whitespace = true
 insert_final_newline = true
 charset = utf-8

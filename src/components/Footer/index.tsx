@@ -34,7 +34,6 @@ const FooterBox: React.FC = ({ children }) => (
 const Footer: React.FC = ({}) => {
 	return (
 		<Container id="info">
-
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} pt={4} pb={3} width={[1, 1, 1 / 3, 2 / 5]}>
 					<Text>
@@ -50,14 +49,13 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} width={[1, 1, 1 / 2, 3 / 5]}>
 					<Text>
-						zero.io is building gameDAO, a distributed autonomous organisation,
-						summoned to solve the problems of sustainability and
-						financing in videogames, creative content,
-						digital arts, e-sports and gaming as a profession.
+						zero.io is building gameDAO, a distributed autonomous organisation, summoned to foster
+						sustainability and improve financing in videogames, creative content, digital arts, e-sports and
+						gaming as a profession.
 						<br />
 						<br />
-						we provide matchmaking and crowd based funding instruments,
-						connecting and empowering loyal gamers, creators, publishers and investors.
+						we provide matchmaking and crowd based funding instruments, connecting and empowering loyal
+						gamers, creators, publishers and investors.
 					</Text>
 				</Box>
 			</Flex>
@@ -65,19 +63,21 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box p={4} width={[1]} color="#ccff00">
 					<a className="icon" href="https://discord.gg/rhwtr7p" target="_blank">
-						<FaDiscord size={25}/>
-					</a>&nbsp;
+						<FaDiscord size={25} />
+					</a>
+					&nbsp;
 					<a className="icon" href="https://twitter.com/zerodotio" target="_blank">
-						<FaTwitter size={25}/>
+						<FaTwitter size={25} />
 					</a>
 					<a className="icon" href="https://github.com/playzero" target="_blank">
-						<FaGitlab size={25}/>
-					</a>&nbsp;
+						<FaGitlab size={25} />
+					</a>
+					&nbsp;
 				</Box>
 			</Flex>
 
 			<Flex flexDirection="row" flexWrap="wrap">
-				<Box px={4} py={1} width={[1,1/2]}>
+				<Box px={4} py={1} width={[1, 1 / 2]}>
 					<SmallText>
 						©&nbsp;2019&nbsp;gameDAO&nbsp;—&nbsp;zero.io.&nbsp;&nbsp;&nbsp;made&nbsp;on&nbsp;earth.&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Imprint</Link>&nbsp;&nbsp;&nbsp;
@@ -86,7 +86,6 @@ const Footer: React.FC = ({}) => {
 					</SmallText>
 				</Box>
 			</Flex>
-
 		</Container>
 	)
 }

@@ -7,20 +7,71 @@ import { PageTransition } from 'next-page-transitions'
 import { Loader } from '../src/components'
 
 import theme from '../src/components/Theme'
+// graphql config
+// import { ApolloProvider } from '@apollo/react-hooks'
+// import { ApolloProvider } from 'react-apollo'
+// import { ApolloClient } from 'apollo-client'
+// import { createHttpLink } from 'apollo-link-http'
+// import { InMemoryCache } from 'apollo-cache-inmemory'
+
+// graphql subscription for ticker data
+
+// import { WebSocketLink } from 'apollo-link-ws'
+// import { SubscriptionClient } from 'subscriptions-transport-ws'
+// import ws from 'ws'
+
+// const initialState={}
+// const uri = `http://localhost:9090/graphql`
+// const wsUri = `ws://localhost:9090/cable`
+
+// import { ApolloLink } from 'apollo-link'
+// import ActionCable from '@rails/actioncable'
+// import { ActionCableLink } from 'graphql-ruby-client'
+
+// const cable = ActionCable.createConsumer()
+
+// const link = createHttpLink({
+// 	uri,
+// 	fetch,
+// 	credentials: 'same-origin'
+// })
+
+// const wsClient = new SubscriptionClient(wsUri, { reconnect: true }, ws);
+// const wsLink = new WebSocketLink(wsClient);
+
+// const hasSubscriptionOperation = ({ query: { definitions } }) => {
+// 	return definitions.some(
+// 		({ kind, operation }) => kind === 'OperationDefinition' && operation === 'subscription'
+// 	)
+// }
+
+// const link = ApolloLink.split(
+// 	hasSubscriptionOperation,
+// 	new ActionCableLink({cable}),
+// 	httpLink
+// )
+
+// const client = new ApolloClient({
+//     ssrMode: true,
+// 	link: link,
+//     cache: new InMemoryCache().restore(initialState),
+// })
+
+//
 
 const TIMEOUT = 500
 
 const col = () => {
-	const colors = [ '#00ADEE', '#EC297B', '#F6921E', '#37B34A' ]
-	const index = Math.floor( Math.random() * colors.length )
-	return colors[ index ]
+	const colors = ['#00ADEE', '#EC297B', '#F6921E', '#37B34A']
+	const index = Math.floor(Math.random() * colors.length)
+	return colors[index]
 }
 
 const grid = {
-	bgcol:		'#000000',
-	dotcol:		col(),
-	dotsize:	1,
-	space:		128,
+	bgcol: '#000000',
+	dotcol: col(),
+	dotsize: 1,
+	space: 128,
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -38,8 +89,8 @@ const GlobalStyle = createGlobalStyle`
 		&:hover {
 			text-decoration: none;
 			color: rgba(255,255,255,1);
-			transition-duration:250ms;		
-		}		
+			transition-duration:250ms;
+		}
 	}
 
 	div#__next, html, body {
@@ -61,13 +112,13 @@ const GlobalStyle = createGlobalStyle`
 	a:hover {
 		text-decoration: none;
 		color: rgba(255,255,255,1);
-		transition-duration:150ms;		
+		transition-duration:150ms;
 	}
 
 	body {
 		background:
-			linear-gradient( 90deg, ${grid.bgcol} ${ grid.space-grid.dotsize }px, transparent 1%) center,
-			linear-gradient( ${grid.bgcol} ${ grid.space-grid.dotsize }px, transparent 1%) center,
+			linear-gradient( 90deg, ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
+			linear-gradient( ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
 			${grid.dotcol};
 		background-size: ${grid.space}px ${grid.space}px;
 	}
@@ -115,7 +166,7 @@ const GlobalStyle = createGlobalStyle`
 	/*
 		loader
 	 */
-	
+
 	.loading-indicator-appear,
 	.loading-indicator-enter {
 		opacity: 0;
@@ -124,7 +175,7 @@ const GlobalStyle = createGlobalStyle`
 	.loading-indicator-enter-active {
 		opacity: 1;
 		transition: opacity ${TIMEOUT}ms;
-	}  
+	}
 `
 
 interface IApplication {
@@ -132,32 +183,30 @@ interface IApplication {
 }
 
 class Application extends NextApp<IApplication> {
-
 	render() {
 		const { Component, pageProps } = this.props
 
 		return (
-				<PageTransition
-					timeout={TIMEOUT}
-					classNames="page-transition"
-					loadingComponent={<Loader />}
-					loadingDelay={5000}
-					loadingTimeout={{
-						enter: TIMEOUT,
-						exit: 0,
-					}}
-					loadingClassNames="loading-indicator"
-				>
-					<ThemeProvider theme={theme} key="key">
-						<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
-							<GlobalStyle />
-							<Component {...pageProps} />
-						</IconContext.Provider>
-					</ThemeProvider>
-				</PageTransition>
+			<PageTransition
+				timeout={TIMEOUT}
+				classNames="page-transition"
+				loadingComponent={<Loader />}
+				loadingDelay={5000}
+				loadingTimeout={{
+					enter: TIMEOUT,
+					exit: 0,
+				}}
+				loadingClassNames="loading-indicator"
+			>
+				<ThemeProvider theme={theme} key="key">
+					<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
+						<GlobalStyle />
+						<Component {...pageProps} />
+					</IconContext.Provider>
+				</ThemeProvider>
+			</PageTransition>
 		)
 	}
-
 }
 
 export default Application
