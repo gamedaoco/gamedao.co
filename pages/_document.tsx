@@ -3,7 +3,7 @@ import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/do
 
 import { ServerStyleSheet } from 'styled-components'
 
-import { DEV, FB_TRACKING_ID, SITE_DESCRIPTION, SITE_IMAGE, SITE_NAME, SITE_TITLE } from '../config/env'
+import { DEV, FB_TRACKING_ID, SITE_DESCRIPTION, SITE_IMAGE, SITE_NAME, SITE_TITLE, SITE_TW_NAME } from '../config/env'
 
 class CustomDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
@@ -43,7 +43,6 @@ class CustomDocument extends Document {
 					/>
 					<meta http-equiv="content-language" content="en" />
 
-					<title>{SITE_TITLE}</title>
 					<meta name="description" content={SITE_DESCRIPTION} />
 
 					<meta property="og:type" content="website" />
@@ -53,14 +52,17 @@ class CustomDocument extends Document {
 					<meta property="og:image" content={SITE_IMAGE} />
 
 					<meta name="twitter:card" content="summary_large_image" />
-					<meta name="twitter:site" content={SITE_NAME} />
+					<meta name="twitter:site" content={SITE_TW_NAME} />
+					<meta name="twitter:creator" content={SITE_TW_NAME} />
 					<meta name="twitter:title" content={SITE_TITLE} />
 					<meta name="twitter:description" content={SITE_DESCRIPTION} />
 					<meta property="twitter:image" content={SITE_IMAGE} />
 
 					<meta name="format-detection" content="telephone=no, address=no, email=no" />
 
-					<link rel="shortcut icon" href="/z-control-45-full.png" />
+					<link rel="shortcut icon" href={SITE_IMAGE} />
+					<link rel="icon" type="image/png" href={SITE_IMAGE} />
+					<link rel="apple-touch-icon" href={SITE_IMAGE} />
 
 					{/*
 						<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.find,Array.prototype.includes,String.prototype.includes,Array.prototype.findIndex,Object.entries" />

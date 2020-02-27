@@ -9,19 +9,19 @@ import { Loader } from '../src/components'
 import theme from '../src/components/Theme'
 // graphql config
 // import { ApolloProvider } from '@apollo/react-hooks'
-// import { ApolloProvider } from 'react-apollo'
-// import { ApolloClient } from 'apollo-client'
-// import { createHttpLink } from 'apollo-link-http'
-// import { InMemoryCache } from 'apollo-cache-inmemory'
-
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import fetch from 'isomorphic-unfetch'
 // graphql subscription for ticker data
 
 // import { WebSocketLink } from 'apollo-link-ws'
 // import { SubscriptionClient } from 'subscriptions-transport-ws'
 // import ws from 'ws'
 
-// const initialState={}
-// const uri = `http://localhost:9090/graphql`
+const initialState = {}
+const uri = `http://localhost:9090/graphql`
 // const wsUri = `ws://localhost:9090/cable`
 
 // import { ApolloLink } from 'apollo-link'
@@ -30,11 +30,11 @@ import theme from '../src/components/Theme'
 
 // const cable = ActionCable.createConsumer()
 
-// const link = createHttpLink({
-// 	uri,
-// 	fetch,
-// 	credentials: 'same-origin'
-// })
+const link = createHttpLink({
+	uri,
+	fetch,
+	credentials: 'same-origin',
+})
 
 // const wsClient = new SubscriptionClient(wsUri, { reconnect: true }, ws);
 // const wsLink = new WebSocketLink(wsClient);
@@ -51,11 +51,11 @@ import theme from '../src/components/Theme'
 // 	httpLink
 // )
 
-// const client = new ApolloClient({
-//     ssrMode: true,
-// 	link: link,
-//     cache: new InMemoryCache().restore(initialState),
-// })
+const client = new ApolloClient({
+	ssrMode: true,
+	link: link,
+	cache: new InMemoryCache().restore(initialState),
+})
 
 //
 
@@ -201,7 +201,9 @@ class Application extends NextApp<IApplication> {
 				<ThemeProvider theme={theme} key="key">
 					<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
 						<GlobalStyle />
-						<Component {...pageProps} />
+						<ApolloProvider client={client}>
+							<Component {...pageProps} />
+						</ApolloProvider>
 					</IconContext.Provider>
 				</ThemeProvider>
 			</PageTransition>

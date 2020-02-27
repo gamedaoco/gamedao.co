@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Layout } from '../src/components'
+import Layout from '../src/layouts/default'
 import { Home } from '../src/containers'
 
 const Page = () => {
