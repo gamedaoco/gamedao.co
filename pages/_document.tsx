@@ -3,7 +3,7 @@ import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/do
 
 import { ServerStyleSheet } from 'styled-components'
 
-import { DEV, FB_TRACKING_ID, SITE_DESCRIPTION, SITE_IMAGE, SITE_NAME, SITE_TITLE, SITE_TW_NAME } from '../config/env'
+import { DEV, FB_TRACKING_ID, SITE_DESCRIPTION, SITE_IMAGE, SITE_NAME, SITE_TITLE, SITE_TW_NAME } from 'config/env'
 
 class CustomDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
@@ -41,7 +41,7 @@ class CustomDocument extends Document {
 						key="viewport"
 						content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
 					/>
-					<meta http-equiv="content-language" content="en" />
+					<meta httpEquiv="content-language" content="en" />
 
 					<meta name="description" content={SITE_DESCRIPTION} />
 

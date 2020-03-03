@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+
 import styled from 'styled-components'
-import Layout from '../src/layouts/default'
 import { Flex, Box, Heading, Text } from 'rebass/styled-components'
 import { Label, Input, Select, Textarea, Radio, Checkbox } from '@rebass/forms'
-import { Container, Button } from '../src/components'
+import Layout from 'layouts'
+import { Container, Button } from 'components'
 
 const Wrapper = styled.div`
 	transition-duration: 150ms;

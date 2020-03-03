@@ -2,12 +2,11 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import { Flex, Box, Text } from 'rebass/styled-components'
-import { H3, H4, SmallText, Link, Newsletter, Divider } from '../'
+import { FaGitlab, FaDiscord, FaTwitter } from 'react-icons/fa'
+import { H3, H4, SmallText, Link, Newsletter, Divider } from 'components'
 
 import logo from 'public/z-h-col.svg'
 import img from 'public/stripes-s.png'
-
-import { FaGitlab, FaDiscord, FaTwitter } from 'react-icons/fa'
 
 const Container = styled.div`
 	// * { border: 1px dotted red; }
@@ -38,7 +37,7 @@ const Footer: React.FC = ({}) => {
 				<Box px={4} pt={4} pb={3} width={[1, 1, 1 / 3, 2 / 5]}>
 					<Text>
 						<Link href="/">
-							<img src={logo} height="20px" alt="ecvan" />
+							<img src={logo} height="20px" alt="zero" />
 						</Link>
 					</Text>
 				</Box>

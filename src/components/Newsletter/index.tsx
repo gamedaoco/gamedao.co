@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Flex, Box, Card, Heading } from 'rebass'
+
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
-import { Button } from '../'
+import styled from 'styled-components'
+import { Flex, Box, Card, Heading } from 'rebass'
+import { Button } from 'components'
+
 import { MAILCHIMP } from 'config/env'
 
 const Wrapper = styled.div`

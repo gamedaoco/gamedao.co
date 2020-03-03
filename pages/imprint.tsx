@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import { Flex, Box } from 'rebass'
-import { Layout, Container, H2, H3 } from 'components'
-
 import styled from 'styled-components'
+import { Flex, Box } from 'rebass/styled-components'
+import Layout from 'layouts'
+import { Container, H2, H3 } from 'components'
 
 const Page = () => (
 	<Layout>

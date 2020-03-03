@@ -1,4 +1,4 @@
-export default {
+export const base = {
 	colors: {
 		primary: '#0070f3',
 	},
@@ -21,3 +21,5 @@ export default {
 		text: 2.25,
 	},
 }
+
+export default base

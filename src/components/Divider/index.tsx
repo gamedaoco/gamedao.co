@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+
 import img16 from 'public/stripes-s.png'
 import img32 from 'public/stripes-m.png'
 

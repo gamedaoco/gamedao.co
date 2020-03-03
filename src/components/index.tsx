@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from './Theme'
+import theme from '../themes/base'
 
 //
 // atoms
@@ -34,8 +34,6 @@ export { default as Navigation } from './Navigation'
 //
 
 export { default as View } from './View'
-export { default as Layout } from './Layout'
-export { default as theme } from './Theme'
 
 //
 //	other components

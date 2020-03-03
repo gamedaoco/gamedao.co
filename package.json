@@ -4,7 +4,7 @@
 	"description": "a dao for videogames — landingpage",
 	"license": "UNLICENSED",
 	"scripts": {
-		"dev": "next -p 3007",
+		"dev": "next -p 3030",
 		"build": "next build",
 		"start": "next start",
 		"export": "next export",
@@ -16,6 +16,7 @@
 		"@apollo/react-hooks": "^3.1.3",
 		"@rails/actioncable": "^6.0.2-1",
 		"@rebass/forms": "^4.0.6",
+		"@rebass/preset": "^4.0.5",
 		"@sendgrid/mail": "^6.5.1",
 		"apollo-cache-inmemory": "^1.6.5",
 		"apollo-client": "^2.6.8",

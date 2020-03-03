@@ -1,12 +1,18 @@
 import * as React from 'react'
 import NextApp, { AppContext } from 'next/app'
 
-import { IconContext } from 'react-icons/lib'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { IconContext } from 'react-icons/lib'
 import { PageTransition } from 'next-page-transitions'
-import { Loader } from '../src/components'
 
-import theme from '../src/components/Theme'
+import { Loader } from 'components'
+import preset from '@rebass/preset'
+import base from 'src/themes/base'
+
+const theme = {
+	...preset,
+	...base,
+}
 // graphql config
 // import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloProvider } from 'react-apollo'
@@ -86,6 +92,7 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 15px;
 		box-sizing: border-box;
 		color: rgba(255,255,255,.75);
+
 		&:hover {
 			text-decoration: none;
 			color: rgba(255,255,255,1);
@@ -141,6 +148,8 @@ const GlobalStyle = createGlobalStyle`
 	::-webkit-scrollbar-thumb {
 		background: rgba( 255, 0, 255, 1 );
 	}
+
+	textarea, select, input, button { outline: none; }
 
 	/*
 		page transitions

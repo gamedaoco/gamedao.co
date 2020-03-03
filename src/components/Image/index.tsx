@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import dummy from '../../../public/svg/box.svg'
+import dummy from 'public/svg/box.svg'
 
 const Wrapper = styled.div`
 	margin: 0;

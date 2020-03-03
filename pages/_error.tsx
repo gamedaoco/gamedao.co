@@ -1,14 +1,9 @@
 import * as React from 'react'
 
 import Layout from 'layouts'
-import { Home } from 'containers'
 
 const Page = () => {
-	return (
-		<Layout>
-			<Home />
-		</Layout>
-	)
+	return <Layout></Layout>
 }
 
 export default Page

@@ -1,2 +1,4 @@
-export { default as Default } from './default'
-export { default as Floating } from './floating'
+import Fixed from './Fixed'
+export { default as Fixed } from './Fixed'
+export { default as Floating } from './Floating'
+export default Fixed
