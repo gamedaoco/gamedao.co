@@ -1,8 +1,7 @@
-export const base = {
-	colors: {
-		primary: '#0070f3',
-	},
+import React from 'react'
+import preset from '@rebass/preset'
 
+export const base = {
 	fonts: {
 		default: 'Helvetica Neue, Helvetica, Lato, Arial, sans-serif',
 		sans: 'Helvetica Neue, Helvetica, Lato, Arial, sans-serif',
@@ -22,4 +21,7 @@ export const base = {
 	},
 }
 
-export default base
+export default {
+	...preset,
+	...base,
+}
