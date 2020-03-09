@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 
+import { DEV } from 'config/env'
+
 import styled from 'styled-components'
 import { Flex, Box } from 'rebass/styled-components'
 import { Navigation, Link, Divider } from 'components'
@@ -55,7 +57,7 @@ interface IHeader {
 	showContactView?: boolean
 }
 
-const Header: React.FC<IHeader> = ({ loggedIn = true }) => {
+const Header: React.FC<IHeader> = ({ loggedIn }) => {
 	const height = '100px'
 	const logoHeight = '50px'
 	const logoAlt = 'zero'

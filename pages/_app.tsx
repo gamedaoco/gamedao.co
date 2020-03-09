@@ -1,6 +1,8 @@
 import React from 'react'
 import NextApp, { AppContext } from 'next/app'
 
+import { GQL_URI } from 'config/env'
+
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
@@ -31,7 +33,7 @@ const theme = {
 
 const initialState = {}
 
-const uri = `http://localhost:9090/graphql`
+const uri = GQL_URI
 const httpLink = createHttpLink({
 	uri,
 	fetch,
