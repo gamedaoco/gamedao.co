@@ -49,6 +49,12 @@ type TStatus = {
 }
 
 const initialState = {
+	project_name: '',
+	project_website: '',
+
+	//address to receive funding
+	address: '',
+	//
 	firstname: '',
 	lastname: '',
 	email: '',
@@ -73,7 +79,6 @@ const initialState = {
 	company_city: '',
 	company_country: '',
 	// project data
-	project_name: '',
 	project_pitch: '',
 	project_startdate: Date.now(),
 	project_metrics: '',
@@ -212,24 +217,29 @@ const Page = () => {
 
 							<form onSubmit={handleOnSubmit}>
 								{/*
-								LEAD APPLICANT
+	LEAD APPLICANT
 */}
 								<Text fontSize={[3, 4, 5]} fontWeight={400} py={4} color="#ffcc00">
-									Personal Data Application Lead
+									Application
 								</Text>
-
+								<Label htmlFor="project_name">Project Name</Label>
+								<Input
+									id="project_name"
+									type="text"
+									onChange={handleOnChange}
+									value={inputs.project_name}
+								/>
+								<Label htmlFor="website">Website</Label>
+								<Input id="website" type="text" onChange={handleOnChange} value={inputs.website} />
+								//
 								<Label htmlFor="firstname">Firstname</Label>
 								<Input id="firstname" type="text" onChange={handleOnChange} value={inputs.firstname} />
-
 								<Label htmlFor="lastname">Lastname</Label>
 								<Input id="lastname" type="text" onChange={handleOnChange} value={inputs.lastname} />
-
 								<Label htmlFor="email">Email</Label>
 								<Input id="email" type="email" onChange={handleOnChange} value={inputs.email} />
-
 								<Label htmlFor="phone">Phone</Label>
 								<Input id="phone" type="phone" onChange={handleOnChange} value={inputs.phone} />
-
 								<Box width={[1, 1 / 2]}>
 									<Label>
 										<Checkbox
@@ -252,15 +262,12 @@ const Page = () => {
 										I am a public or politically exposed person
 									</Label>
 								</Box>
-
 								{/*
-			CATEGORIES
+	CATEGORIES
 */}
-
 								<Text fontSize={[3, 4, 5]} fontWeight={400} py={4} color="#ffcc00">
 									Areas of Interest
 								</Text>
-
 								<Box>
 									<Label>
 										<Checkbox
@@ -316,18 +323,14 @@ const Page = () => {
 										Professional Investor, VC
 									</Label>
 								</Box>
-
 								{/*
-			COMPANY DATA
+	COMPANY DATA
 */}
-
 								<Text fontSize={[3, 4, 5]} fontWeight={400} py={4} color="#ffcc00">
 									Company Data ( if applicable )
 								</Text>
-
 								<Label htmlFor="company">Legal Company Name</Label>
 								<Input id="company" type="text" onChange={handleOnChange} value={inputs.company} />
-
 								<Label htmlFor="company_incorporation_date">Date of Incorporation</Label>
 								<Input
 									id="company_incorporation_date"
@@ -335,7 +338,6 @@ const Page = () => {
 									onChange={handleOnChange}
 									value={inputs.company_incorporation_date}
 								/>
-
 								<Label htmlFor="company_address_1">Address</Label>
 								<Input
 									id="company_address_1"
@@ -350,7 +352,6 @@ const Page = () => {
 									onChange={handleOnChange}
 									value={inputs.company_address_2}
 								/>
-
 								<Label htmlFor="company_zip">ZIP</Label>
 								<Input
 									id="company_zip"
@@ -372,25 +373,20 @@ const Page = () => {
 									onChange={handleOnChange}
 									value={inputs.company_country}
 								/>
-
 								<Label htmlFor="company_team_description">Short Team Description</Label>
 								<Textarea
 									id="company_team_description"
 									onChange={handleOnChange}
 									value={inputs.company_team_description}
 								/>
-
 								{/*
-			PROJECT DATA
+	PROJECT DATA
 */}
-
 								<Text fontSize={[2, 3, 4]} fontWeight={400} py={4} color="#ffcc00">
 									Please tell us something about your project, team and/or interests
 								</Text>
-
 								<Label htmlFor="project_pitch">Project Description (if applicable)</Label>
 								<Textarea id="project_pitch" onChange={handleOnChange} value={inputs.project_pitch} />
-
 								<Button type="submit" disabled={status.submitting}>
 									{!status.submitting
 										? !status.submitted
