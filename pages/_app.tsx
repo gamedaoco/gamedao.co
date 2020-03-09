@@ -1,15 +1,19 @@
 import React from 'react'
 import NextApp, { AppContext } from 'next/app'
 
+import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { setContext } from 'apollo-link-context'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import fetch from 'isomorphic-unfetch'
+
 import { ThemeProvider } from 'styled-components'
 import { IconContext } from 'react-icons/lib'
 import { PageTransition } from 'next-page-transitions'
 
 import { Loader } from 'components'
 import { GlobalStyle, TIMEOUT } from 'src/themes/global'
-
-// import { useTheme } from "themes/ThemeContext"
-
 import preset from '@rebass/preset'
 import base from 'src/themes/base'
 import dark from 'src/themes/dark'
@@ -19,19 +23,11 @@ const defaultContext = {
 	light: true,
 	toggle: () => {},
 }
-
 const theme = {
 	...preset,
 	...base,
 	...light,
 }
-
-// graphql config
-import { ApolloProvider } from '@apollo/react-hooks'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import fetch from 'isomorphic-unfetch'
 
 const initialState = {}
 
@@ -41,14 +37,21 @@ const httpLink = createHttpLink({
 	fetch,
 	credentials: 'same-origin',
 })
+const authLink = setContext((_, { headers }) => {
+	const token = localStorage.getItem('token')
+	return {
+		headers: {
+			...headers,
+			authorization: token ? `Bearer ${token}` : '',
+		},
+	}
+})
 
 const client = new ApolloClient({
 	ssrMode: true,
-	link: httpLink, // change to link when ws or actioncable
+	link: authLink.concat(httpLink),
 	cache: new InMemoryCache().restore(initialState),
 })
-
-//
 
 interface IApplication {
 	pageProps: any
