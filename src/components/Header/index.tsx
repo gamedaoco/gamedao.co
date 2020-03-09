@@ -1,108 +1,52 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
+
 import styled from 'styled-components'
-
-import { Flex, Box } from 'rebass'
+import { Flex, Box } from 'rebass/styled-components'
 import { Navigation, Link, Divider } from 'components'
-
+import { RatesWrapper, Container, MetaLink, User, Task, Right } from './styles'
 import logo from 'public/z-ctrl-45-col.svg'
 import img from 'public/stripes-s.png'
 
-import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+import { useQuery } from '@apollo/react-hooks'
 
-const FX = gql`
+const GET_FX = gql`
 	query {
 		fx {
 			id
-			name
 			askQuote
+			askCurrency
 			bidQuote
+			bidCurrency
 		}
 	}
 `
 
-const Rates = () => (
-	<Query query={FX}>
-		{({ loading, error, data }) => {
-			if (loading) return <div>Loading...</div>
-			if (error) return null //<div>Error</div>
+const Rates = () => {
+	const { loading, error, data } = useQuery(GET_FX)
 
-			const fx = data.fx
+	if (loading) return <RatesWrapper>Loading...</RatesWrapper>
+	if (error) return null // <RatesWrapper>Error: ${error.message}</RatesWrapper>
 
-			return (
-				<div>
-					{fx.map(rate => (
-						<Link key={rate.id} href="/account/wallet">
-							{rate.name}&nbsp;{rate.askQuote || 0}
-						</Link>
-					))}
-				</div>
-			)
-		}}
-	</Query>
-)
+	const fx = data.fx
+	console.log(data)
 
-const Container = styled.div`
-	// * { border: 1px dotted red; }
-
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: auto;
-	background: #000;
-
-	* {
-		// font-size: 10px;
-		transition-duration: 100ms;
-		transition-timing-function: ease-in-out;
-	}
-`
-
-const MetaLink = styled.div`
-	text-align: right;
-	color: white;
-	a {
-		font-size: 10px;
-		color: rgba(255, 255, 255, 0.5);
-		margin-left: 25px;
-	}
-	a,
-	a: visited {
-		text-decoration: none;
-		color: rgba(255, 255, 255, 1);
-	}
-	a:hover {
-		color: rgba(255, 255, 255, 1);
-		border-bottom: 1px dotted;
-	}
-`
-
-const User = styled.div`
-	color: white;
-	height: 100px;
-	display: flex;
-	align-items: flex-end;
-	a,a: visited {
-		text-decoration: none;
-		color: white;
-	}
-	a:hover {
-		color: white;
-		border-bottom: 1px dotted;
-	}
-`
-const Task = styled.div`
-	color: white;
-	height: 50px;
-	display: flex;
-	align-items: flex-end;
-`
-const Right = styled.div`
-	font-size: 40px;
-	width: 100%;
-	text-align: right;
-`
+	return (
+		<RatesWrapper>
+			{fx.map(rate => (
+				<Link key={rate.id} href="/account/wallet">
+					{rate.name}&nbsp;{rate.askQuote || 0}
+				</Link>
+			))}
+			{/*
+			{<Link href="/account/wallet#xp">XP&nbsp;{ token.XP || 0 }</Link>}
+			{<Link href="/account/wallet#rep">REP&nbsp;{ token.REP || 0 }</Link>}
+			{<Link href="/account/wallet#play">PLAY&nbsp;{ token.PLAY || 0 }</Link>}
+*/}
+		</RatesWrapper>
+	)
+}
 
 interface IHeader {
 	email?: string
@@ -111,7 +55,7 @@ interface IHeader {
 	showContactView?: boolean
 }
 
-const Header: React.FC<IHeader> = ({ loggedIn }) => {
+const Header: React.FC<IHeader> = ({ loggedIn = true }) => {
 	const height = '100px'
 	const logoHeight = '50px'
 	const logoAlt = 'zero'
@@ -147,14 +91,7 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 				</Box>
 
 				<Box order={[3, 2]} pt={[0, 4]} px={4} width={[1, 3 / 8]}>
-					<MetaLink>
-						{loggedIn && <Rates />}
-						{
-							// {loggedIn && <Link href="/account/wallet#xp">XP&nbsp;{ token.XP || 0 }</Link>}
-							// {loggedIn && <Link href="/account/wallet#rep">REP&nbsp;{ token.REP || 0 }</Link>}
-							// {loggedIn && <Link href="/account/wallet#play">PLAY&nbsp;{ token.PLAY || 0 }</Link>}
-						}
-					</MetaLink>
+					<MetaLink>{loggedIn && <Rates />}</MetaLink>
 				</Box>
 
 				<Box order={[2, 3]} pt={4} px={4} width={[2 / 3, 4 / 8]}>
