@@ -29,7 +29,7 @@ const resolvers = {
 		users(parent, args, context) {
 			return [
 				{
-					nick: 'Anonymous',
+					nick: 'Anonymouse',
 					firstname: 'Anon',
 					lastname: 'Ymous',
 					email: 'm+anon@zero.io',
@@ -42,11 +42,28 @@ const resolvers = {
 		fx(parent, args, context) {
 			return [
 				{
+					id: 0101,
 					name: 'EURPLAY',
-					bid_name: 'Euro',
-					bid_quote: 1,
-					ask_name: 'PLAY',
+					ask_currency: 'Euro',
 					ask_quote: 1.1,
+					bid_currency: 'PLAY',
+					bid_quote: 0.9,
+				},
+				{
+					id: 0102,
+					name: 'EURETH',
+					ask_currency: 'Euro',
+					ask_quote: 220,
+					bid_currency: 'ETH',
+					bid_quote: 1,
+				},
+				{
+					id: 0103,
+					name: 'EURGAME',
+					ask_currency: 'Euro',
+					ask_quote: 1000,
+					bid_currency: 'Game',
+					bid_quote: 1,
 				},
 			]
 		},
