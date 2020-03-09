@@ -83,13 +83,7 @@ const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 		<div>
 			<div className="formWrapper">
 				<div className="bar">
-					<input
-						id="email"
-						className="email"
-						type="email"
-						placeholder="Your email"
-						onChange={handleOnChange}
-					/>
+					<input id="email" className="email" type="email" placeholder="Your email" onChange={handleOnChange} />
 				</div>
 				<a onClick={handleOnSubmit}>
 					<Button bType="sm" type="submit">
@@ -97,20 +91,10 @@ const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 					</Button>
 				</a>
 			</div>
-			{status === 'sending' && (
-				<div style={{ color: 'white', fontSize: '15x', paddingTop: '15px' }}>sending...</div>
-			)}
-			{status === 'error' && (
-				<div
-					style={{ color: 'red', fontSize: '15px', paddingTop: '15px' }}
-					dangerouslySetInnerHTML={{ __html: message || '' }}
-				/>
-			)}
+			{status === 'sending' && <div style={{ color: 'white', fontSize: '15x', paddingTop: '15px' }}>sending...</div>}
+			{status === 'error' && <div style={{ color: 'red', fontSize: '15px', paddingTop: '15px' }} dangerouslySetInnerHTML={{ __html: message || '' }} />}
 			{status === 'success' && (
-				<div
-					style={{ color: 'white', fontSize: '15px', paddingTop: '15px' }}
-					dangerouslySetInnerHTML={{ __html: message || '' }}
-				/>
+				<div style={{ color: 'white', fontSize: '15px', paddingTop: '15px' }} dangerouslySetInnerHTML={{ __html: message || '' }} />
 			)}
 		</div>
 	)
@@ -120,9 +104,7 @@ const Newsletter: React.FC = () => (
 	<Wrapper>
 		<MailchimpSubscribe
 			url={MAILCHIMP || ''}
-			render={({ subscribe, status, message }) => (
-				<CustomForm status={status} message={message} onValidated={formData => subscribe(formData)} />
-			)}
+			render={({ subscribe, status, message }) => <CustomForm status={status} message={message} onValidated={formData => subscribe(formData)} />}
 		/>
 	</Wrapper>
 )

@@ -42,7 +42,7 @@ const resolvers = {
 		fx(parent, args, context) {
 			return [
 				{
-					id: 0101,
+					id: 101,
 					name: 'EURPLAY',
 					ask_currency: 'Euro',
 					ask_quote: 1.1,
@@ -50,7 +50,7 @@ const resolvers = {
 					bid_quote: 0.9,
 				},
 				{
-					id: 0102,
+					id: 102,
 					name: 'EURETH',
 					ask_currency: 'Euro',
 					ask_quote: 220,
@@ -58,7 +58,7 @@ const resolvers = {
 					bid_quote: 1,
 				},
 				{
-					id: 0103,
+					id: 103,
 					name: 'EURGAME',
 					ask_currency: 'Euro',
 					ask_quote: 1000,

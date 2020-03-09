@@ -51,8 +51,6 @@ const get = (mode: string = '', image: string = '') => {
 	}
 }
 
-const Intro: React.FC<IIntro> = ({ mode, image, children }) => (
-	<IntroWrapper style={get(mode, image)}>{children}</IntroWrapper>
-)
+const Intro: React.FC<IIntro> = ({ mode, image, children }) => <IntroWrapper style={get(mode, image)}>{children}</IntroWrapper>
 
 export default Intro

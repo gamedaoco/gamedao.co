@@ -148,23 +148,13 @@ export default () => {
 									<Label htmlFor="name">Name</Label>
 									<Input id="name" type="name" onChange={handleOnChange} value={inputs.name} />
 									<Label htmlFor="email">Email</Label>
-									<Input
-										id="email"
-										type="email"
-										onChange={handleOnChange}
-										required
-										value={inputs.email}
-									/>
+									<Input id="email" type="email" onChange={handleOnChange} required value={inputs.email} />
 									<Label htmlFor="phone">Phone</Label>
 									<Input id="phone" type="phone" onChange={handleOnChange} value={inputs.phone} />
 									<Label htmlFor="message">Message</Label>
 									<Textarea id="message" onChange={handleOnChange} required value={inputs.message} />
 									<Button type="submit" disabled={status.submitting}>
-										{!status.submitting
-											? !status.submitted
-												? 'Submit'
-												: 'Submitted'
-											: 'Submitting...'}
+										{!status.submitting ? (!status.submitted ? 'Submit' : 'Submitted') : 'Submitting...'}
 									</Button>
 								</form>
 							)}

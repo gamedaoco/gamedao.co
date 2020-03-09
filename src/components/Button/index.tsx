@@ -62,13 +62,7 @@ const ButtonComponent: React.FC<Props> = (
 	const style = getStyle(bType, noBorder, stretch)
 
 	return (
-		<Button
-			onClick={onClick}
-			style={style}
-			type={props['type'] || 'submit'}
-			disabled={disabled || false}
-			{...props}
-		>
+		<Button onClick={onClick} style={style} type={props['type'] || 'submit'} disabled={disabled || false} {...props}>
 			{' '}
 			{children}{' '}
 		</Button>

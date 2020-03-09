@@ -36,11 +36,7 @@ class CustomDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
-					<meta
-						name="viewport"
-						key="viewport"
-						content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
-					/>
+					<meta name="viewport" key="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 					<meta httpEquiv="content-language" content="en" />
 
 					<meta name="description" content={SITE_DESCRIPTION} />
@@ -80,11 +76,7 @@ class CustomDocument extends Document {
 
 					{!DEV && FB_TRACKING_ID && (
 						<noscript>
-							<img
-								height="1"
-								width="1"
-								src={`//www.facebook.com/tr?id=${FB_TRACKING_ID}&ev=PageView&noscript=1`}
-							/>
+							<img height="1" width="1" src={`//www.facebook.com/tr?id=${FB_TRACKING_ID}&ev=PageView&noscript=1`} />
 						</noscript>
 					)}
 				</Head>

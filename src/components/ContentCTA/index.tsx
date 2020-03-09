@@ -48,10 +48,7 @@ const ContentCTA: React.FC = () => (
 
 		<Box px={[4]} width={[1, 1, 1 / 2]} pt={3} pb={2} backgroundColor="#00ccff">
 			<H1>Fund your next idea</H1>
-			<Text>
-				Our dedicated teams support you through all relevant steps, from initial assessment until your specific
-				business goal.
-			</Text>
+			<Text>Our dedicated teams support you through all relevant steps, from initial assessment until your specific business goal.</Text>
 			<Button bType="sm" href="#">
 				{' '}
 				Apply Now{' '}
@@ -65,8 +62,7 @@ const ContentCTA: React.FC = () => (
 					Don't be just a user:
 					<br />
 					<br />
-					Generate steady income as a gamer and investor with alternative investment and innovative
-					participation opportunity
+					Generate steady income as a gamer and investor with alternative investment and innovative participation opportunity
 				</Text>
 				<Button bType="sm" href="#">
 					{' '}
@@ -80,8 +76,7 @@ const ContentCTA: React.FC = () => (
 				Creators
 			</Heading>
 			<Text textAlign="left" fontSize={[3, 4]}>
-				Apply new funding and participation mechanics to develop sustainable business models and realise your
-				vision.
+				Apply new funding and participation mechanics to develop sustainable business models and realise your vision.
 			</Text>
 		</Box>
 
@@ -93,8 +88,7 @@ const ContentCTA: React.FC = () => (
 				Don't be just a user:
 				<br />
 				<br />
-				Generate steady income as a gamer and investor with alternative investment and innovative participation
-				opportunity
+				Generate steady income as a gamer and investor with alternative investment and innovative participation opportunity
 			</Text>
 		</Box>
 	</Flex>

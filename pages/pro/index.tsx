@@ -173,9 +173,8 @@ const Page = () => {
 							</Text>
 
 							<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={400} pb={2}>
-								You are a game developer, publisher, production studio or professional investor? With
-								thousands of legit gamers ready to invest into the best ideas and productions at scale,
-								GameDAO is for you.
+								You are a game developer, publisher, production studio or professional investor? With thousands of legit gamers ready to invest
+								into the best ideas and productions at scale, GameDAO is for you.
 							</Text>
 
 							<Text fontSize={[3, 4, 5]} fontWeight={400} pt={4} pb={2} color="#ff9900">
@@ -186,8 +185,7 @@ const Page = () => {
 								Pitch your production and build sustainable business.
 							</Text>
 							<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={400} pb={2}>
-								Start building sustainable business in a growing ecosystem powered by the GameDAO
-								community.
+								Start building sustainable business in a growing ecosystem powered by the GameDAO community.
 							</Text>
 
 							<Text fontSize={[2, 3, 4]} fontWeight={400} pb={2} color="#ffcc00">
@@ -205,8 +203,8 @@ const Page = () => {
 							</Text>
 
 							<Text textAlign="left" fontSize={[1, 2, 3]} fontWeight={400} pb={2}>
-								All applications will be manually checked, therefore your information is important to
-								keep up the quality of the platform and to create a good experience for you.
+								All applications will be manually checked, therefore your information is important to keep up the quality of the platform and to
+								create a good experience for you.
 							</Text>
 
 							{status.info.error && (
@@ -223,14 +221,9 @@ const Page = () => {
 									Application
 								</Text>
 								<Label htmlFor="project_name">Project Name</Label>
-								<Input
-									id="project_name"
-									type="text"
-									onChange={handleOnChange}
-									value={inputs.project_name}
-								/>
-								<Label htmlFor="website">Website</Label>
-								<Input id="website" type="text" onChange={handleOnChange} value={inputs.website} />
+								<Input id="project_name" type="text" onChange={handleOnChange} value={inputs.project_name} />
+								<Label htmlFor="project_website">Website</Label>
+								<Input id="project_website" type="text" onChange={handleOnChange} value={inputs.project_website} />
 								//
 								<Label htmlFor="firstname">Firstname</Label>
 								<Input id="firstname" type="text" onChange={handleOnChange} value={inputs.firstname} />
@@ -242,24 +235,13 @@ const Page = () => {
 								<Input id="phone" type="phone" onChange={handleOnChange} value={inputs.phone} />
 								<Box width={[1, 1 / 2]}>
 									<Label>
-										<Checkbox
-											id="usa_tax"
-											name="usa_tax"
-											value={inputs.usa_tax}
-											onChange={handleOnChange}
-										/>
-										I am tax liable in the USA
+										<Checkbox id="usa_tax" name="usa_tax" value={inputs.usa_tax} onChange={handleOnChange} />I am tax liable in the USA
 									</Label>
 								</Box>
 								<Box width={[1, 1 / 2]}>
 									<Label>
-										<Checkbox
-											id="exposed_person"
-											name="exposed_person"
-											value={inputs.exposed_person}
-											onChange={handleOnChange}
-										/>
-										I am a public or politically exposed person
+										<Checkbox id="exposed_person" name="exposed_person" value={inputs.exposed_person} onChange={handleOnChange} />I am a
+										public or politically exposed person
 									</Label>
 								</Box>
 								{/*
@@ -270,13 +252,8 @@ const Page = () => {
 								</Text>
 								<Box>
 									<Label>
-										<Checkbox
-											id="apply_project"
-											name="apply_project"
-											value={inputs.apply_project}
-											onChange={handleOnChange}
-										/>
-										I want to submit a project
+										<Checkbox id="apply_project" name="apply_project" value={inputs.apply_project} onChange={handleOnChange} />I want to
+										submit a project
 									</Label>
 								</Box>
 								<Box>
@@ -292,34 +269,19 @@ const Page = () => {
 								</Box>
 								<Box>
 									<Label>
-										<Checkbox
-											id="apply_creator"
-											name="apply_creator"
-											value={inputs.apply_creator}
-											onChange={handleOnChange}
-										/>
+										<Checkbox id="apply_creator" name="apply_creator" value={inputs.apply_creator} onChange={handleOnChange} />
 										Creator, Developer, Game Studio
 									</Label>
 								</Box>
 								<Box>
 									<Label>
-										<Checkbox
-											id="apply_publisher"
-											name="apply_publisher"
-											value={inputs.apply_publisher}
-											onChange={handleOnChange}
-										/>
+										<Checkbox id="apply_publisher" name="apply_publisher" value={inputs.apply_publisher} onChange={handleOnChange} />
 										Publisher, Distributor
 									</Label>
 								</Box>
 								<Box>
 									<Label>
-										<Checkbox
-											id="apply_investor"
-											name="apply_investor"
-											value={inputs.apply_investor}
-											onChange={handleOnChange}
-										/>
+										<Checkbox id="apply_investor" name="apply_investor" value={inputs.apply_investor} onChange={handleOnChange} />
 										Professional Investor, VC
 									</Label>
 								</Box>
@@ -332,53 +294,19 @@ const Page = () => {
 								<Label htmlFor="company">Legal Company Name</Label>
 								<Input id="company" type="text" onChange={handleOnChange} value={inputs.company} />
 								<Label htmlFor="company_incorporation_date">Date of Incorporation</Label>
-								<Input
-									id="company_incorporation_date"
-									type="text"
-									onChange={handleOnChange}
-									value={inputs.company_incorporation_date}
-								/>
+								<Input id="company_incorporation_date" type="text" onChange={handleOnChange} value={inputs.company_incorporation_date} />
 								<Label htmlFor="company_address_1">Address</Label>
-								<Input
-									id="company_address_1"
-									type="text"
-									onChange={handleOnChange}
-									value={inputs.company_address_1}
-								/>
+								<Input id="company_address_1" type="text" onChange={handleOnChange} value={inputs.company_address_1} />
 								<Label htmlFor="company_address_2">Address</Label>
-								<Input
-									id="company_address_2"
-									type="text"
-									onChange={handleOnChange}
-									value={inputs.company_address_2}
-								/>
+								<Input id="company_address_2" type="text" onChange={handleOnChange} value={inputs.company_address_2} />
 								<Label htmlFor="company_zip">ZIP</Label>
-								<Input
-									id="company_zip"
-									type="text"
-									onChange={handleOnChange}
-									value={inputs.company_zip}
-								/>
+								<Input id="company_zip" type="text" onChange={handleOnChange} value={inputs.company_zip} />
 								<Label htmlFor="company_city">City</Label>
-								<Input
-									id="company_city"
-									type="text"
-									onChange={handleOnChange}
-									value={inputs.company_city}
-								/>
+								<Input id="company_city" type="text" onChange={handleOnChange} value={inputs.company_city} />
 								<Label htmlFor="company_country">Country</Label>
-								<Input
-									id="company_country"
-									type="text"
-									onChange={handleOnChange}
-									value={inputs.company_country}
-								/>
+								<Input id="company_country" type="text" onChange={handleOnChange} value={inputs.company_country} />
 								<Label htmlFor="company_team_description">Short Team Description</Label>
-								<Textarea
-									id="company_team_description"
-									onChange={handleOnChange}
-									value={inputs.company_team_description}
-								/>
+								<Textarea id="company_team_description" onChange={handleOnChange} value={inputs.company_team_description} />
 								{/*
 	PROJECT DATA
 */}
@@ -388,11 +316,7 @@ const Page = () => {
 								<Label htmlFor="project_pitch">Project Description (if applicable)</Label>
 								<Textarea id="project_pitch" onChange={handleOnChange} value={inputs.project_pitch} />
 								<Button type="submit" disabled={status.submitting}>
-									{!status.submitting
-										? !status.submitted
-											? 'Apply'
-											: 'Application sent.'
-										: 'Sending your application...'}
+									{!status.submitting ? (!status.submitted ? 'Apply' : 'Application sent.') : 'Sending your application...'}
 								</Button>
 							</form>
 						</Box>

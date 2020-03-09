@@ -51,8 +51,7 @@ const Items = [
 	</Box>,
 	<Box width={[1, 1, 3 / 4]}>
 		<Text fontSize={[4, 5]} pb={12}>
-			Long gone seem the times where gamers were not degraded to swipe monkeys or a meaningless daily active user
-			metric.
+			Long gone seem the times where gamers were not degraded to swipe monkeys or a meaningless daily active user metric.
 		</Text>
 	</Box>,
 	<Box width={[1, 1, 3 / 4]}>
