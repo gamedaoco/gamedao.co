@@ -7,7 +7,7 @@ import { Container, H2, H3 } from 'components'
 
 const Page = () => (
 	<Layout>
-		<Container fill>
+		<Container>
 			<Flex flexDirection="row" flexWrap="wrap" px={4}>
 				<Box width={[1, 1, 1 / 2]} p={[2, 4]}>
 					<H2>Imprint</H2>

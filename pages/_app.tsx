@@ -13,7 +13,6 @@ import fetch from 'isomorphic-unfetch'
 import { ThemeProvider } from 'styled-components'
 import { IconContext } from 'react-icons/lib'
 import { PageTransition } from 'next-page-transitions'
-
 import { Loader } from 'components'
 import { GlobalStyle, TIMEOUT } from 'src/themes/global'
 import preset from '@rebass/preset'

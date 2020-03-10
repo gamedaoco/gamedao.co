@@ -12,3 +12,5 @@ export const SITE_TW_NAME = process.env.SITE_TW_NAME || '@zerodotio'
 export const MAILCHIMP = process.env.MAILCHIMP || 'https://zero.us5.list-manage.com/subscribe/post?u=9b3f3ef14c871758185754652&amp;id=d09264f8c7'
 
 export const GQL_URI = DEV ? `http://localhost:9090/graphql` : `https://gamedao.co/api/graphql`
+
+export const FEATURE_FOOTER_NAV = DEV
