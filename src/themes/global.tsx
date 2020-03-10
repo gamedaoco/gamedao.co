@@ -36,12 +36,6 @@ export const GlobalStyle = createGlobalStyle`
 		font-weight: 400;
 		font-size: 15px;
 		box-sizing: border-box;
-
-		&:hover {
-			text-decoration: none;
-			opcaity: 1;
-			transition-duration:250ms;
-		}
 	}
 
 	div#__next, html, body {
@@ -56,14 +50,14 @@ export const GlobalStyle = createGlobalStyle`
 
 	a {
 		text-decoration: none;
-		// color: rgba(255,255,255,.5);
+		color: rgba(255,255,255,.75);
 		opacity: 0.75;
 		transition-duration:150ms;
 	}
 
 	a:hover {
 		text-decoration: none;
-		// color: rgba(255,255,255,1);
+		color: rgba(255,255,255,1);
 		opacity: 1;
 		transition-duration:150ms;
 	}
@@ -74,6 +68,16 @@ export const GlobalStyle = createGlobalStyle`
 			linear-gradient( ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
 			${grid.dotcol};
 		background-size: ${grid.space}px ${grid.space}px;
+
+		color: rgba(255,255,255,.5);
+		transition-duration: 250ms;
+		& :hover {
+			text-decoration: none;
+			transition-duration:250ms;
+		}
+
+
+
 	}
 
 	h1,h2,h3,h4,h5,h6 {

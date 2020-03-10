@@ -39,23 +39,16 @@ export { default as View } from './View'
 //	other components
 //
 
-export const Headline = styled.div`
-	font-face: ${theme.fonts.sans}
-	font-weight: 800;
-	font-size: 15px;
-	margin-bottom: 15px;
-	display: block;
-`
-export const H1 = styled(Headline)`
+export const H1 = styled.h1`
 	font-size: 30px;
 `
-export const H2 = styled(Headline)`
+export const H2 = styled.h2`
 	font-size: 25px;
 `
-export const H3 = styled(Headline)`
+export const H3 = styled.h3`
 	font-size: 20px;
 `
-export const H4 = styled(Headline)`
+export const H4 = styled.h4`
 	font-size: 15px;
 `
 
@@ -66,7 +59,7 @@ export const Text = styled.div`
 	margin-bottom: 15px;
 	a {
 		text-decoration: none;
-		color: white;
+		// color: white;
 	}
 	a:hover {
 		border-bottom: 1px dotted;
@@ -84,7 +77,6 @@ export const SmallText = styled(Text)`
 export const Space = ({ size = 1 }) => styled.div`
 	width: 100%;
 	margin-bottom: ${size * 15}px;
-	border: 1px solid red;
 `
 
 type IContainer = {
@@ -92,7 +84,6 @@ type IContainer = {
 }
 
 export const Container = styled.div<IContainer>(({ fill = 'true' }) => ({
-	// backgroundColor: '#000',
 	margin: '0',
 	padding: '0',
 	width: '100%',
@@ -104,7 +95,6 @@ type IContent = {
 }
 
 export const Content = styled.div<IContent>(({ fill = 'true' }) => ({
-	// backgroundColor: '#000000',
 	margin: '0',
 	padding: '0',
 	width: '100%',

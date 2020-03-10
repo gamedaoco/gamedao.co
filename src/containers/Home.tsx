@@ -13,13 +13,9 @@ import { useDecrypt } from 'src/lib/useDecrypt'
 
 const Wrapper = styled.div`
 	// line-height:50px;
-	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5),
-		// 0 0 20px #fff,
-			// 0 0 30px #e60073,
-			// 0 0 40px #e60073,
-			// 0 0 50px #e60073,
-			// 0 0 60px #e60073,
-			0 0 70px rgba(192, 0, 96, 1); //#e60073;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 70px rgba(32, 255, 192, 1);
+	// 0 0 70px rgba(192, 0, 96, 1);
+	// 0 0 70px rgba(0,96,192,1);
 `
 
 const Items = title => (
@@ -97,7 +93,7 @@ const Home = () => {
 					</Box>
 				</Flex>
 			</Intro>
-			<Flex id="content" flexDirection="row" flexWrap="wrap">
+			<Flex id="content" flexDirection="row" flexWrap="wrap" color="rgba(255,255,255,.65)">
 				<Box width={[1]} px={[4, 6]} py={[2, 4]}>
 					<Items />
 				</Box>
