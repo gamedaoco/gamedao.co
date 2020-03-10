@@ -12,10 +12,18 @@ import { IoIosArrowRoundDown } from 'react-icons/io'
 import { useDecrypt } from 'src/lib/useDecrypt'
 
 const Wrapper = styled.div`
-	// line-height:50px;
-	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 70px rgba(32, 255, 192, 1);
+	// pink
 	// 0 0 70px rgba(192, 0, 96, 1);
+	// blue
 	// 0 0 70px rgba(0,96,192,1);
+
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 70px rgba(32, 255, 192, 1);
+	// > * {
+	// 	transition-duration: 0ms;
+	// }
+	// :hover {
+	// 	text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 70px rgba(32, 255, 192, 1);
+	// }
 `
 
 const Items = title => (
@@ -60,7 +68,10 @@ const Home = () => {
 	const { result, decrypt } = useDecrypt()
 	const [title, setTitle] = useState('')
 
-	const t = 'GameDAO creates crowdfinance tools for video game creators, publishers, investors and gamers.'
+	const t =
+		// 'GameDAO creates crowdfinance tools for video game creators, publishers, investors and gamers.'
+		// 'GameDAO is the next generation democratic transparent crowdfunding platform for video game creators, publishers, investors and gamers.'
+		'GameDAO is democratic and transparent crowdfunding for video game creators, publishers, investors and gamers.'
 
 	useEffect(() => {
 		handleChangeTitle(t)

@@ -26,10 +26,10 @@ const Container = styled.div`
 	color: rgba(255, 255, 255, 0.65);
 	transition-duration: 250ms;
 
-	> :hover {
-		color: rgba(255, 255, 255, 1);
-		transition-duration: 250ms;
-	}
+	// > :hover {
+	// 	color: rgba(255, 255, 255, 1);
+	// 	transition-duration: 250ms;
+	// }
 
 	a {
 		fill: white;
