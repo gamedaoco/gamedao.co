@@ -12,7 +12,7 @@ const Divider = styled.div<IDivider>(({ sm }) => ({
 	minWidth: `100%`,
 	height: `${sm ? '16' : '32'}px`,
 	background: `repeat-x url('${sm ? img16 : img32}')`,
-	marginBottom: `1em`,
+	// marginBottom: `1em`,
 }))
 
 export default Divider

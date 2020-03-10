@@ -11,6 +11,17 @@ import { IoIosArrowRoundDown } from 'react-icons/io'
 
 import { useDecrypt } from 'src/lib/useDecrypt'
 
+const Wrapper = styled.div`
+	// line-height:50px;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5),
+		// 0 0 20px #fff,
+			// 0 0 30px #e60073,
+			// 0 0 40px #e60073,
+			// 0 0 50px #e60073,
+			// 0 0 60px #e60073,
+			0 0 70px rgba(192, 0, 96, 1); //#e60073;
+`
+
 const Items = title => (
 	<>
 		<Box width={[1, 1, 3 / 4]} pt={4}>
@@ -40,7 +51,7 @@ const Items = title => (
 			<Newsletter />
 		</Box>
 		<Box width={1}>
-			<Heading textAlign="center" fontSize={[3]} pt={5}>
+			<Heading textAlign="center" fontSize={[3]} py={5}>
 				<Link href="/#info">
 					<IoIosArrowRoundDown size="48" />
 				</Link>
@@ -69,13 +80,15 @@ const Home = () => {
 			<Intro>
 				<Flex flexDirection="row" flexWrap="wrap">
 					<Box width={[1]} px={[4, 6]} pt={[2, 4]}>
-						<Box width={[1]} p={[4]}>
-							<Text textAlign="left" fontSize={[5, 6, 7]} fontWeight={800} pb={2}>
-								{result}
-							</Text>
-						</Box>
+						<Wrapper>
+							<Box width={[1]} p={[4]}>
+								<Text textAlign="left" fontSize={[5, 6, 7]} fontWeight={800} pb={2}>
+									{result}
+								</Text>
+							</Box>
+						</Wrapper>
 						<Box width={1}>
-							<Heading textAlign="center" fontSize={[3]} pt={5}>
+							<Heading textAlign="center" fontSize={[3]} py={5}>
 								<Link href="/#content">
 									<IoIosArrowRoundDown size="48" />
 								</Link>
@@ -85,7 +98,7 @@ const Home = () => {
 				</Flex>
 			</Intro>
 			<Flex id="content" flexDirection="row" flexWrap="wrap">
-				<Box width={[1]} px={[4, 6]} pt={[2, 4]}>
+				<Box width={[1]} px={[4, 6]} py={[2, 4]}>
 					<Items />
 				</Box>
 			</Flex>

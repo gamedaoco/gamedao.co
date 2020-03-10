@@ -9,7 +9,7 @@ export const TIMEOUT = 500
 
 const theme = {
 	...base,
-	...light,
+	...dark,
 }
 
 const col = () => {
@@ -36,11 +36,10 @@ export const GlobalStyle = createGlobalStyle`
 		font-weight: 400;
 		font-size: 15px;
 		box-sizing: border-box;
-		color: rgba(255,255,255,0.65);
 
 		&:hover {
 			text-decoration: none;
-			color: rgba(255,255,255,1);
+			opcaity: 1;
 			transition-duration:250ms;
 		}
 	}
@@ -57,13 +56,15 @@ export const GlobalStyle = createGlobalStyle`
 
 	a {
 		text-decoration: none;
-		color: rgba(255,255,255,.5);
+		// color: rgba(255,255,255,.5);
+		opacity: 0.75;
 		transition-duration:150ms;
 	}
 
 	a:hover {
 		text-decoration: none;
-		color: rgba(255,255,255,1);
+		// color: rgba(255,255,255,1);
+		opacity: 1;
 		transition-duration:150ms;
 	}
 
@@ -73,6 +74,14 @@ export const GlobalStyle = createGlobalStyle`
 			linear-gradient( ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
 			${grid.dotcol};
 		background-size: ${grid.space}px ${grid.space}px;
+	}
+
+	h1,h2,h3,h4,h5,h6 {
+		font-face: ${theme.fonts.sans}
+		font-weight: 800;
+		font-size: 15px;
+		margin-bottom: 15px;
+		display: block;
 	}
 
 	/*

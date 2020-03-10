@@ -2,6 +2,10 @@ import React from 'react'
 import preset from '@rebass/preset'
 
 export const base = {
+	colors: {
+		background: 'green',
+		default: 'rgba( 255,255,0,0.65)',
+	},
 	fonts: {
 		default: 'Helvetica Neue, Helvetica, Lato, Arial, sans-serif',
 		sans: 'Helvetica Neue, Helvetica, Lato, Arial, sans-serif',
