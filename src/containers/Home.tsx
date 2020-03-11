@@ -25,36 +25,52 @@ const Wrapper = styled.div`
 	// 	text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 70px rgba(32, 255, 192, 1);
 	// }
 `
+const hover = {
+	transitionDuration: '250ms',
+	opacity: '.75',
+	':hover': { opacity: 1 },
+}
+
+const hoverStyle = {
+	...hover,
+	transitionDuration: '250ms',
+	opacity: '.75',
+	textShadow: '0 0 10px rgba(255, 255, 255, .5), 0 0 50px rgba(32, 255, 192, .5)',
+	':hover': {
+		opacity: 1,
+		textShadow: '0 0 10px rgba(255, 255, 255, 1), 0 0 50px rgba(32, 255, 192, 1)',
+	},
+}
 
 const Items = title => (
 	<>
-		<Box width={[1, 1, 3 / 4]} pt={4}>
+		<Box sx={hoverStyle} width={[1, 1, 3 / 4]} pt={4}>
 			<Text fontSize={[4, 5]} pb={12}>
 				Funding is one of the hardest parts in creating games, creative content or becoming a professional gamer.
 			</Text>
 		</Box>
-		<Box width={[1, 1, 3 / 4]}>
+		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
 			<Text fontSize={[4, 5]} pb={12}>
 				Gamers and creators deserve better than fast paced invest and release cycles.
 			</Text>
 		</Box>
-		<Box width={[1, 1, 3 / 4]}>
+		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
 			<Text fontSize={[4, 5]} pb={12}>
 				Long gone seem the times where gamers were not degraded to swipe monkeys or a meaningless daily active user metric.
 			</Text>
 		</Box>
-		<Box width={[1, 1, 3 / 4]}>
+		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
 			<Text fontSize={[4, 5]} pb={12}>
 				Our tools empower creators and communities to run projects they love in a cooperative way.
 			</Text>
 		</Box>
-		<Box width={[1, 1 / 2]} pt={4}>
+		<Box sx={hover} width={[1, 1 / 2]} pt={4}>
 			<Text textAlign="left" fontSize={[2]} fontWeight={600} color="#ff00cc">
 				Get an invite before we launch.
 			</Text>
 			<Newsletter />
 		</Box>
-		<Box width={1}>
+		<Box sx={hoverStyle} width={1}>
 			<Heading textAlign="center" fontSize={[3]} py={5}>
 				<Link href="/#info">
 					<IoIosArrowRoundDown size="48" />

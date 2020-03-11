@@ -45,7 +45,6 @@ export const GlobalStyle = createGlobalStyle`
 		display: flex;
 		justify-content: center;
 		scroll-behavior: smooth;
-
 	}
 
 	a {
@@ -68,16 +67,6 @@ export const GlobalStyle = createGlobalStyle`
 			linear-gradient( ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
 			${grid.dotcol};
 		background-size: ${grid.space}px ${grid.space}px;
-
-		color: rgba(255,255,255,.5);
-		transition-duration: 250ms;
-		& :hover {
-			text-decoration: none;
-			transition-duration:250ms;
-		}
-
-
-
 	}
 
 	h1,h2,h3,h4,h5,h6 {
