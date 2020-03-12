@@ -1,7 +1,6 @@
 export const DEV = process.env.NODE_ENV !== 'production'
 
 export const GA_TRACKING_ID = process.env.GA_TRACKING_ID
-export const FB_TRACKING_ID = process.env.FB_TRACKING_ID
 
 export const SITE_NAME = process.env.SITE_NAME || 'GameDAO'
 export const SITE_TITLE = process.env.SITE_TITLE || 'Crowdfunding for Videogames'
