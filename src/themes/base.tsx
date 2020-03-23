@@ -5,6 +5,7 @@ export const base = {
 	colors: {
 		background: 'green',
 		default: 'white',
+		red: 'red',
 	},
 	fonts: {
 		default: 'Helvetica Neue, Helvetica, Lato, Arial, sans-serif',

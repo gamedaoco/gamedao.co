@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import Router from 'next/router'
 
 import styled from 'styled-components'
 import { Flex, Box, Heading, Text } from 'rebass/styled-components'
@@ -36,11 +37,15 @@ const Wrapper = styled.div`
 		padding-bottom: 15px;
 		padding-top: 15px;
 	}
+	button:disabled {
+		opacity: 0.25;
+	}
 `
 
 type TStatus = {
 	submitted: boolean
 	submitting: boolean
+	submitEnabled: boolean
 	visible: boolean
 	info: {
 		error: boolean
@@ -94,34 +99,14 @@ const Page = () => {
 	const [status, setStatus] = useState<TStatus>({
 		submitted: false,
 		submitting: false,
+		submitEnabled: false,
 		visible: true,
 		info: { error: false, msg: '' },
 	})
 
 	const [inputs, setInputs] = useState(initialState)
 
-	const handleResponse = (httpStatus: number, msg: string): void => {
-		if (httpStatus === 200) {
-			setStatus({
-				submitted: true,
-				submitting: false,
-				visible: false,
-				info: { error: false, msg: msg },
-			})
-
-			setInputs(initialState)
-
-			if (document) {
-				document.body.scrollTop = 0
-				document.documentElement.scrollTop = 0
-			}
-		} else {
-			setStatus({
-				...status,
-				info: { error: true, msg: msg },
-			})
-		}
-	}
+	const msgRef = useRef()
 
 	const handleOnChange = e => {
 		e.persist()
@@ -135,6 +120,7 @@ const Page = () => {
 			...status,
 			submitted: false,
 			submitting: false,
+			submitEnabled: initialState !== inputs,
 			visible: true,
 			info: { error: false, msg: null },
 		})
@@ -145,26 +131,59 @@ const Page = () => {
 
 		setStatus(prevStatus => ({ ...prevStatus, submitting: true }))
 
-		console.log(JSON.stringify(inputs))
+		let status, text
 
-		const res = await fetch('/api/apply', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(inputs),
-		})
-		const text = await res.text()
+		if (initialState == inputs) {
+			status = 0
+			text = 'Please enter Some Information.'
+		} else {
+			const res = await fetch('/api/apply', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(inputs),
+			})
+			status = res.status
+			text = await res.text()
+		}
+		handleResponse(status, text, msgRef)
+	}
 
-		handleResponse(res.status, text)
+	const handleResponse = (httpStatus: number, msg: string, msgRef): void => {
+		if (httpStatus === 200) {
+			setStatus({
+				submitted: true,
+				submitting: false,
+				submitEnabled: false,
+				visible: false,
+				info: { error: false, msg: msg },
+			})
+			setInputs(initialState)
+			Router.push('#success')
+		} else {
+			setStatus({
+				...status,
+				submitted: false,
+				submitting: false,
+				submitEnabled: true,
+				visible: false,
+				info: { error: true, msg: msg },
+			})
+
+			msgRef.current.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			})
+		}
 	}
 
 	return (
 		<Layout>
 			<Container>
 				<Wrapper>
-					<Flex flexDirection="row" flexWrap="wrap" px={4}>
-						<Box width={[1, 1, 3 / 4]} p={[2, 4]}>
+					<Flex flexDirection="row" flexWrap="wrap">
+						<Box width={[1, 1, 3 / 4]} px={[4]} pt={4}>
 							<Text fontSize={[4, 5, 6]} fontWeight={800} pb={[2, 4]} color="#ff00cc">
 								GameDAO for professionals.
 							</Text>
@@ -194,10 +213,14 @@ const Page = () => {
 							<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={400} pb={2}>
 								Join industry leaders and enthusiasts in democratised decisions.
 							</Text>
+						</Box>
+					</Flex>
 
+					<Flex flexDirection="row" flexWrap="wrap">
+						<Box width={[1, 1, 3 / 4]} px={[4]}>
 							{/*
 							 *							APPLICATION
-							 */}
+							 **/}
 							<Text fontSize={[3, 4, 5]} fontWeight={800} pt={4} pb={2} color="#ffcc00">
 								Apply now for a Professional Account
 							</Text>
@@ -206,25 +229,34 @@ const Page = () => {
 								All applications will be manually checked, therefore your information is important to keep up the quality of the platform and to
 								create a good experience for you.
 							</Text>
+						</Box>
+					</Flex>
 
-							{status.info.error && (
-								<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={400} py={2} color="#ff3300">
+					{status.info.error && (
+						<Flex id="error" ref={msgRef} flexDirection="row" flexWrap="wrap" px={0}>
+							<Box width={[1, 1, 3 / 4]} p={[4]} backgroundColor={'red'} color="#ffffff">
+								<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={700} py={2}>
 									{status.info.msg}
 								</Text>
-							)}
+							</Box>
+						</Flex>
+					)}
 
+					<Flex flexDirection="row" flexWrap="wrap">
+						<Box width={[1, 1, 3 / 4]} p={[4]}>
 							<form onSubmit={handleOnSubmit}>
 								{/*
-	LEAD APPLICANT
-*/}
+								 *	LEAD APPLICANT
+								 **/}
 								<Text fontSize={[3, 4, 5]} fontWeight={400} py={4} color="#ffcc00">
 									Application
 								</Text>
+
 								<Label htmlFor="project_name">Project Name</Label>
 								<Input id="project_name" type="text" onChange={handleOnChange} value={inputs.project_name} />
 								<Label htmlFor="project_website">Website</Label>
 								<Input id="project_website" type="text" onChange={handleOnChange} value={inputs.project_website} />
-								//
+
 								<Label htmlFor="firstname">Firstname</Label>
 								<Input id="firstname" type="text" onChange={handleOnChange} value={inputs.firstname} />
 								<Label htmlFor="lastname">Lastname</Label>
@@ -233,6 +265,7 @@ const Page = () => {
 								<Input id="email" type="email" onChange={handleOnChange} value={inputs.email} />
 								<Label htmlFor="phone">Phone</Label>
 								<Input id="phone" type="phone" onChange={handleOnChange} value={inputs.phone} />
+
 								<Box width={[1, 1 / 2]}>
 									<Label>
 										<Checkbox id="usa_tax" name="usa_tax" value={inputs.usa_tax} onChange={handleOnChange} />I am tax liable in the USA
@@ -315,12 +348,26 @@ const Page = () => {
 								</Text>
 								<Label htmlFor="project_pitch">Project Description (if applicable)</Label>
 								<Textarea id="project_pitch" onChange={handleOnChange} value={inputs.project_pitch} />
-								<Button type="submit" disabled={status.submitting}>
-									{!status.submitting ? (!status.submitted ? 'Apply' : 'Application sent.') : 'Sending your application...'}
-								</Button>
+
+								{!status.submitted && (
+									<Button type="submit" disabled={status.submitting || !status.submitEnabled}>
+										{!status.submitting ? (!status.submitted ? 'Apply' : 'Application sent.') : 'Sending your application...'}
+									</Button>
+								)}
 							</form>
 						</Box>
 					</Flex>
+					{!status.info.error && status.submitted && (
+						<Flex id="success" flexDirection="row" flexWrap="wrap" px={0}>
+							<Box width={[1, 1, 3 / 4]} p={[4]} backgroundColor="#009900" color="#ffffff">
+								<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={700} py={2}>
+									Thank you. Your application has been sent.
+									<br />
+									We will get back to you with further information.
+								</Text>
+							</Box>
+						</Flex>
+					)}
 				</Wrapper>
 			</Container>
 		</Layout>
