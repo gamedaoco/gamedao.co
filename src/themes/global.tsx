@@ -45,6 +45,7 @@ export const GlobalStyle = createGlobalStyle`
 		display: flex;
 		justify-content: center;
 		scroll-behavior: smooth;
+		color: #eeeeee;
 	}
 
 	a {
