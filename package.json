@@ -1,6 +1,7 @@
 {
 	"name": "play-zero",
 	"description": "a dao for videogames — landingpage",
+	"version": "0.1.0",
 	"license": "UNLICENSED",
 	"scripts": {
 		"dev": "next -p 3030",
@@ -114,10 +115,9 @@
 	},
 	"husky": {
 		"hooks": {
-			"prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-			"pre-commit": "lint-staged && yarn format",
-			"pre-push": "yarn format"
+			"pre-commit": "lint-staged",
+			"pre-push": "yarn release"
 		}
 	},
 	"prettier": {
@@ -131,9 +131,7 @@
 	},
 	"lint-staged": {
 		"*.{js,ts,jsx,tsx,json,css}": [
-			"git add",
-			"yarn release -t patch",
-			"git add"
+			"yarn format"
 		]
 	},
 	"commitlint": {
