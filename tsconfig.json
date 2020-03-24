@@ -5,7 +5,7 @@
 			"src": ["./src/"],
 			"lib": ["./src/lib/"],
 			"public": ["./public/"],
-			"config": ["./config/"],
+			"config": ["./src/config/"],
 			"components": ["./src/components/"],
 			"containers": ["./src/containers/"],
 			"layouts": ["./src/layouts/"],
