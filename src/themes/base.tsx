@@ -2,6 +2,39 @@ import React from 'react'
 import preset from '@rebass/preset'
 
 export const base = {
+	radii: {
+		default: 0,
+	},
+	forms: {
+		input: {
+			background: 'prime',
+			color: 'prime',
+			border: 'none',
+			radius: 0,
+			borderBottomStyle: 'dotted',
+			borderBottomWidth: '1px',
+			mb: '4',
+		},
+		textarea: {
+			background: 'prime',
+			color: 'prime',
+			// border: 'none',
+			radius: 0,
+			borderStyle: 'dotted',
+			borderWidth: '1px',
+			mb: '2',
+		},
+		label: {
+			mb: '4',
+			alignItems: 'center',
+		},
+		checkbox: {
+			mr: 2,
+			label: {
+				pt: '1',
+			},
+		},
+	},
 	colors: {
 		background: 'green',
 		default: 'white',

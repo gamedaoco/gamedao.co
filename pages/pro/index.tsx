@@ -3,7 +3,7 @@ import Router from 'next/router'
 
 import styled from 'styled-components'
 import { Flex, Box, Heading, Text } from 'rebass/styled-components'
-import { Label, Input, Select, Textarea, Radio, Checkbox } from '@rebass/forms'
+import { Label, Input, Select, Textarea, Radio, Checkbox } from '@rebass/forms/styled-components'
 import Layout from 'layouts'
 import { Button, Container } from 'components'
 
@@ -11,32 +11,32 @@ const Wrapper = styled.div`
 	// transition-duration: 150ms;
 	// display: flex;
 
-	input {
-		width: 100%;
-		height: 45px;
-		border: none;
-		border-bottom: 1px dotted white;
-		background: none;
-		font-size: 25px;
-		color: white;
-		margin-bottom: 25px;
-	}
-	textarea {
-		width: 100%;
-		min-height: 250px;
-		border: none;
-		border: 1px dotted white;
-		background: none;
-		font-size: 25px;
-		color: white;
-		margin-bottom: 25px;
-	}
-	label {
-		font-size: 15px;
-		color: rgba(255, 255, 255, 0.5);
-		padding-bottom: 15px;
-		padding-top: 15px;
-	}
+	// input {
+	// 	width: 100%;
+	// 	height: 45px;
+	// 	border: none;
+	// 	border-bottom: 1px dotted white;
+	// 	background: none;
+	// 	font-size: 25px;
+	// 	color: white;
+	// 	margin-bottom: 25px;
+	// }
+	// textarea {
+	// 	width: 100%;
+	// 	min-height: 250px;
+	// 	border: none;
+	// 	border: 1px dotted white;
+	// 	background: none;
+	// 	font-size: 25px;
+	// 	color: white;
+	// 	margin-bottom: 25px;
+	// }
+	// label {
+	// 	font-size: 15px;
+	// 	color: rgba(255, 255, 255, 0.5);
+	// 	padding-bottom: 15px;
+	// 	padding-top: 15px;
+	// }
 	button:disabled {
 		opacity: 0.25;
 	}
@@ -233,7 +233,7 @@ const Page = () => {
 					</Flex>
 
 					{status.info.error && (
-						<Flex id="error" ref={msgRef} flexDirection="row" flexWrap="wrap" px={0}>
+						<Flex id="error" ref={msgRef} flexDirection="row" flexWrap="wrap" px={0} mt={4}>
 							<Box width={[1, 1, 3 / 4]} p={[4]} backgroundColor={'red'} color="#ffffff">
 								<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={700} py={2}>
 									{status.info.msg}
@@ -339,7 +339,7 @@ const Page = () => {
 								<Label htmlFor="company_country">Country</Label>
 								<Input id="company_country" type="text" onChange={handleOnChange} value={inputs.company_country} />
 								<Label htmlFor="company_team_description">Short Team Description</Label>
-								<Textarea id="company_team_description" onChange={handleOnChange} value={inputs.company_team_description} />
+								<Textarea id="company_team_description" height={250} onChange={handleOnChange} value={inputs.company_team_description} />
 								{/*
 	PROJECT DATA
 */}
@@ -347,7 +347,7 @@ const Page = () => {
 									Please tell us something about your project, team and/or interests
 								</Text>
 								<Label htmlFor="project_pitch">Project Description (if applicable)</Label>
-								<Textarea id="project_pitch" onChange={handleOnChange} value={inputs.project_pitch} />
+								<Textarea id="project_pitch" height={250} onChange={handleOnChange} value={inputs.project_pitch} />
 
 								{!status.submitted && (
 									<Button type="submit" disabled={status.submitting || !status.submitEnabled}>
