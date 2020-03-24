@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Flex, Box, Card, Heading } from 'rebass'
 import { Button } from 'components'
 
-import { MAILCHIMP } from 'config/env'
+import { MAILCHIMP } from 'src/config/env'
 
 const Wrapper = styled.div`
 	width: 100%;

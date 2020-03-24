@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { Flex, Box } from 'rebass'
 import { Header, Footer, Content, H1 } from 'components'
 
-import { SITE_TITLE } from 'config/env'
+import { SITE_TITLE } from 'src/config/env'
 
 const Wrapper = styled.div`
 	margin: 0;

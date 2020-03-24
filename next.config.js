@@ -14,7 +14,7 @@ if (dev) {
 sitemap({
 	ignoredPaths: ['api'],
 	baseUrl: 'https://gamedao.co',
-	pagesDirectory: __dirname + '/pages',
+	pagesDirectory: __dirname + '/src/pages',
 	targetDirectory: 'public/',
 	ignoreIndexFiles: true,
 	pagesConfig: {

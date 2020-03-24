@@ -1,7 +1,7 @@
 import React from 'react'
 import NextApp, { AppContext } from 'next/app'
 
-import { GQL_URI } from 'config/env'
+import { GQL_URI } from 'src/config/env'
 
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloClient } from 'apollo-client'

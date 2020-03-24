@@ -5,7 +5,7 @@ import { Flex, Box, Text } from 'rebass/styled-components'
 import { FaGitlab, FaDiscord, FaTwitter } from 'react-icons/fa'
 import { H3, H4, SmallText, Link, Newsletter, Divider } from 'components'
 
-import { FEATURE_FOOTER_NAV } from 'config/env'
+import { FEATURE_FOOTER_NAV } from 'src/config/env'
 
 import logo from 'public/z-h-col.svg'
 import img from 'public/stripes-s.png'
@@ -227,6 +227,10 @@ const Footer: React.FC = ({}) => {
 						<Link href="/imprint">Privacy</Link>&nbsp;&nbsp;&nbsp;
 						{/*<Link href="/imprint">Terms</Link>*/}
 					</SmallText>
+				</Box>
+				<Box mx="auto" />
+				<Box px={4} py={1}>
+					<SmallText>{process.env.APP_VERSION}</SmallText>
 				</Box>
 			</Flex>
 		</Container>

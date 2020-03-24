@@ -1,4 +1,4 @@
-const pkg = require('../../package.json')
+const pkg = require('../../../package.json')
 
 export default (req, res) => {
 	res.json({

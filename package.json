@@ -8,8 +8,8 @@
 		"build": "next build",
 		"start": "next start",
 		"export": "next export",
-		"format": "prettier --loglevel error --write '{src,pages}/**/*.{js,json,jsx,ts,tsx}'",
-		"format:verify": "prettier --loglevel error --list-different '{src,pages}/**/*.{js,json,jsx,ts,tsx}'",
+		"format": "prettier --loglevel error --write 'src/**/*.{js,json,jsx,ts,tsx}'",
+		"format:verify": "prettier --loglevel error --list-different 'src/**/*.{js,json,jsx,ts,tsx}'",
 		"test": "echo test"
 	},
 	"dependencies": {

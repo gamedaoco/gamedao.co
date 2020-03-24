@@ -4,7 +4,7 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import { Header, Footer } from 'components'
 
-import { SITE_TITLE } from 'config/env'
+import { SITE_TITLE } from 'src/config/env'
 
 const Wrapper = styled.div`
 	margin: 0;

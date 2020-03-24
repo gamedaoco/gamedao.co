@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 
-import { DEV } from 'config/env'
+import { DEV } from 'src/config/env'
 
 import styled from 'styled-components'
 import { Flex, Box } from 'rebass/styled-components'
