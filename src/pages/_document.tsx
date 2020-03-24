@@ -3,7 +3,7 @@ import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/do
 
 import { ServerStyleSheet } from 'styled-components'
 
-import { DEV, SITE_DESCRIPTION, SITE_IMAGE, SITE_NAME, SITE_TITLE, SITE_TW_NAME } from 'config/env'
+import { DEV, SITE_DESCRIPTION, SITE_IMAGE, SITE_NAME, SITE_TITLE, SITE_TW_NAME } from 'src/config/env'
 
 class CustomDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
