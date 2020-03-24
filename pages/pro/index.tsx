@@ -108,10 +108,10 @@ const Page = () => {
 
 	const msgRef = useRef()
 
-	const handleOnChange = e => {
+	const handleOnChange = (e) => {
 		e.persist()
 
-		setInputs(prev => ({
+		setInputs((prev) => ({
 			...prev,
 			[e.target.id]: e.target.value,
 		}))
@@ -129,7 +129,7 @@ const Page = () => {
 	const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
 		e.preventDefault()
 
-		setStatus(prevStatus => ({ ...prevStatus, submitting: true }))
+		setStatus((prevStatus) => ({ ...prevStatus, submitting: true }))
 
 		let status, text
 

@@ -89,10 +89,10 @@ export default () => {
 		}
 	}
 
-	const handleOnChange = e => {
+	const handleOnChange = (e) => {
 		e.persist()
 
-		setInputs(prev => ({
+		setInputs((prev) => ({
 			...prev,
 			[e.target.id]: e.target.value,
 		}))
@@ -109,7 +109,7 @@ export default () => {
 	const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
 		e.preventDefault()
 
-		setStatus(prevStatus => ({ ...prevStatus, submitting: true }))
+		setStatus((prevStatus) => ({ ...prevStatus, submitting: true }))
 
 		const res = await fetch('/api/send', {
 			method: 'POST',

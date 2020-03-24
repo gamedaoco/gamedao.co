@@ -36,7 +36,7 @@ const Rates = () => {
 
 	return (
 		<RatesWrapper>
-			{fx.map(rate => (
+			{fx.map((rate) => (
 				<Link key={rate.id} href="/account/wallet">
 					{rate.name}&nbsp;{rate.askQuote || 0}
 				</Link>

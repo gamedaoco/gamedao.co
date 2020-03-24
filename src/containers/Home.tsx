@@ -42,7 +42,7 @@ const hoverStyle = {
 	},
 }
 
-const Items = title => (
+const Items = (title) => (
 	<>
 		<Box sx={hoverStyle} width={[1, 1, 3 / 4]} pt={4}>
 			<Text fontSize={[4, 5]} pb={12}>
@@ -93,7 +93,7 @@ const Home = () => {
 		handleChangeTitle(t)
 	}, [])
 
-	const handleChangeTitle = title => {
+	const handleChangeTitle = (title) => {
 		decrypt(t)
 		setTitle(t)
 	}

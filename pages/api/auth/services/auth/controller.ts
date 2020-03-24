@@ -15,7 +15,7 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 			////////////////////////////////////////////////////
 			// Step 1: Get the user with the given publicAddress
 			////////////////////////////////////////////////////
-			.then(user => {
+			.then((user) => {
 				if (!user)
 					return res.status(401).send({
 						error: `User with publicAddress ${publicAddress} is not found in database`,
@@ -25,7 +25,7 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 			////////////////////////////////////////////////////
 			// Step 2: Verify digital signature
 			////////////////////////////////////////////////////
-			.then(user => {
+			.then((user) => {
 				if (!(user instanceof User)) {
 					// Should not happen, we should have already sent the response
 					throw new Error('User is not defined in "Verify digital signature".')
@@ -52,7 +52,7 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 			////////////////////////////////////////////////////
 			// Step 3: Generate a new nonce for the user
 			////////////////////////////////////////////////////
-			.then(user => {
+			.then((user) => {
 				if (!(user instanceof User)) {
 					// Should not happen, we should have already sent the response
 
@@ -65,7 +65,7 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 			////////////////////////////////////////////////////
 			// Step 4: Create JWT
 			////////////////////////////////////////////////////
-			.then(user => {
+			.then((user) => {
 				return new Promise<string>((resolve, reject) =>
 					// https://github.com/auth0/node-jsonwebtoken
 					jwt.sign(
@@ -86,7 +86,7 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 					)
 				)
 			})
-			.then(accessToken => res.json({ accessToken }))
+			.then((accessToken) => res.json({ accessToken }))
 			.catch(next)
 	)
 }

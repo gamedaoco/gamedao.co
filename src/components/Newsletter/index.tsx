@@ -63,15 +63,15 @@ type FormProps = {
 const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 	const [inputs, setInputState] = useState({ email: '' })
 
-	const handleOnChange = e => {
+	const handleOnChange = (e) => {
 		e.persist()
-		setInputState(prev => ({
+		setInputState((prev) => ({
 			...prev,
 			[e.target.id]: e.target.value,
 		}))
 	}
 
-	const handleOnSubmit = e => {
+	const handleOnSubmit = (e) => {
 		e.preventDefault()
 		inputs.email.indexOf('@') > -1 &&
 			onValidated({
@@ -104,7 +104,7 @@ const Newsletter: React.FC = () => (
 	<Wrapper>
 		<MailchimpSubscribe
 			url={MAILCHIMP || ''}
-			render={({ subscribe, status, message }) => <CustomForm status={status} message={message} onValidated={formData => subscribe(formData)} />}
+			render={({ subscribe, status, message }) => <CustomForm status={status} message={message} onValidated={(formData) => subscribe(formData)} />}
 		/>
 	</Wrapper>
 )

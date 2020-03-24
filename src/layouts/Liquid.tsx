@@ -22,7 +22,7 @@ const Viewport = styled.div`
 	min-height: 100vh;
 `
 
-const Layout = props => (
+const Layout = (props) => (
 	<Wrapper>
 		<Head>
 			<title>Hello{SITE_TITLE}</title>
