@@ -1,10 +1,15 @@
 const withImages = require('next-images')
-
 const path = require('path')
 const dotenv = require('dotenv').config()
 const webpack = require('webpack')
-
 const sitemap = require('nextjs-sitemap-generator')
+const pkg = require('./package')
+
+const date = new Date()
+const dev = process.env.NODE_ENV !== 'production'
+if (dev) {
+	require('dotenv').config()
+}
 
 sitemap({
 	ignoredPaths: ['api'],
@@ -21,7 +26,13 @@ sitemap({
 })
 
 module.exports = withImages({
-	poweredByHeader: false,
+	env: {
+		BUILD_TIME: date.toString(),
+		BUILD_TIMESTAMP: +date,
+		APP_NAME: pkg.name,
+		APP_VERSION: pkg.version,
+	},
+	poweredByHeader: 'ecvan loves you',
 
 	webpack: (config, options) => {
 		config.node = {
