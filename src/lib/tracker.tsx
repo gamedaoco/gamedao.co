@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import mixpanel from 'mixpanel-browser'
 import { MIXPANEL, DEV } from 'src/config/env'
 
-const production = !DEV
+const production = process.env.NODE_ENV
 
 const actions = {
 	init: async () => {
