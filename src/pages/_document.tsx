@@ -6,7 +6,7 @@ import { ServerStyleSheet } from 'styled-components'
 import { DEV, SITE_DESCRIPTION, SITE_IMAGE, SITE_NAME, SITE_TITLE, SITE_TW_NAME } from 'src/config/env'
 
 class CustomDocument extends Document {
-	static async getInitialProps(ctx: DocumentContext) {
+	static async getStaticProps(ctx: DocumentContext) {
 		const sheet = new ServerStyleSheet()
 		const originalRenderPage = ctx.renderPage
 

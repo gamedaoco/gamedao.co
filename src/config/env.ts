@@ -13,3 +13,5 @@ export const MAILCHIMP = process.env.MAILCHIMP || 'https://zero.us5.list-manage.
 export const GQL_URI = DEV ? `http://localhost:9090/graphql` : `https://gamedao.co/api/graphql`
 
 export const FEATURE_FOOTER_NAV = DEV
+
+export const MIXPANEL = 'd7b5745581cf3b11e7d1709ba4d715cd'

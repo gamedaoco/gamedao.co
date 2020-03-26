@@ -1,10 +1,13 @@
 import * as React from 'react'
+
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import styled from 'styled-components'
 import { Header, Footer } from 'components'
+import { SITE_TITLE, DEV } from 'src/config/env'
 
-import { SITE_TITLE } from 'src/config/env'
+import { Mixpanel } from 'src/lib/tracking'
 
 const Wrapper = styled.div`
 	margin: 0;
@@ -21,23 +24,24 @@ const Container = styled.div`
 	min-height: 100vh;
 `
 
-interface ILayoutProps {
-	title?: string
+const Layout = (props) => {
+	const router = useRouter()
+	const path = router.pathname.substr(1, 1).toUpperCase() + router.pathname.substr(2)
+	if (!DEV) Mixpanel.track(path, {})
+
+	return (
+		<Wrapper>
+			<Head>
+				<title>
+					{path || 'GameDAO'} | {SITE_TITLE}
+				</title>
+			</Head>
+			<Container>
+				<Header />
+				{props.children}
+				<Footer />
+			</Container>
+		</Wrapper>
+	)
 }
-
-const Layout: React.FC<ILayoutProps> = ({ title, ...props }) => (
-	<Wrapper>
-		<Head>
-			<title>
-				{title || 'GameDAO'} | {SITE_TITLE}
-			</title>
-		</Head>
-		<Container>
-			<Header />
-			{props.children}
-			<Footer />
-		</Container>
-	</Wrapper>
-)
-
 export default Layout

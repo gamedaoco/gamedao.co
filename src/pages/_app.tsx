@@ -1,14 +1,14 @@
 import React from 'react'
-import NextApp, { AppContext } from 'next/app'
+import NextApp from 'next/app'
 
-import { GQL_URI } from 'src/config/env'
+import fetch from 'isomorphic-unfetch'
 
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import fetch from 'isomorphic-unfetch'
+import { GQL_URI } from 'src/config/env'
 
 import { ThemeProvider } from 'styled-components'
 import { IconContext } from 'react-icons/lib'
@@ -47,7 +47,6 @@ const authLink = setContext((_, { headers }) => {
 		},
 	}
 })
-
 const client = new ApolloClient({
 	ssrMode: true,
 	link: authLink.concat(httpLink),
