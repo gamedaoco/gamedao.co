@@ -2,7 +2,12 @@ import mixpanel from 'mixpanel-browser'
 import { MIXPANEL, DEV } from 'src/config/env'
 
 const production = !DEV
-if ( production ) mixpanel.init(MIXPANEL)
+if ( production ) {
+	mixpanel.init(
+		MIXPANEL,
+		{ api_host: "https://api.mixpanel.com" }
+	)
+}
 
 const actions = {
 	identify: (id) => {
