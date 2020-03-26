@@ -1,6 +1,10 @@
 import React from 'react'
 import NextApp from 'next/app'
 
+import Router, { useRouter } from 'next/router'
+import mixpanel from 'mixpanel-browser'
+import { Tracker } from 'src/lib/tracker'
+
 import fetch from 'isomorphic-unfetch'
 
 import { ApolloProvider } from '@apollo/react-hooks'
@@ -58,6 +62,16 @@ interface IApplication {
 }
 
 class Application extends NextApp<IApplication> {
+	componentDidMount() {
+		Tracker.init()
+		Tracker.track('page', { path: 'Index' })
+
+		Router.events.on('routeChangeComplete', () => {
+			const path = Router.pathname.substr(1, 1).toUpperCase() + Router.pathname.substr(2)
+			Tracker.track('page', { path: path || 'Index' })
+		})
+	}
+
 	render() {
 		const { Component, pageProps } = this.props
 

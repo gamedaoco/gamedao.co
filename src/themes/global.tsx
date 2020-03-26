@@ -5,7 +5,7 @@ import base from 'src/themes/base'
 import dark from 'src/themes/dark'
 import light from 'src/themes/light'
 
-export const TIMEOUT = 500
+export const TIMEOUT = 1000
 
 const theme = {
 	...base,
