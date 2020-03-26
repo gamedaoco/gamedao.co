@@ -64,7 +64,7 @@ interface IApplication {
 class Application extends NextApp<IApplication> {
 	componentDidMount() {
 		Tracker.init()
-		Tracker.track('page', { path: 'Index' })
+		// Tracker.track('page', { path: 'Index' })
 
 		Router.events.on('routeChangeComplete', () => {
 			const path = Router.pathname.substr(1, 1).toUpperCase() + Router.pathname.substr(2)
