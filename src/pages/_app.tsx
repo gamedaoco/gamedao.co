@@ -12,7 +12,7 @@ import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { GQL_URI } from 'src/config/env'
+import { GQL_URI, GQL_DEVKEY, DEV } from 'src/config/env'
 
 import { ThemeProvider } from 'styled-components'
 import { IconContext } from 'react-icons/lib'
@@ -40,14 +40,17 @@ const uri = GQL_URI
 const httpLink = createHttpLink({
 	uri,
 	fetch,
-	credentials: 'same-origin',
+	credentials: 'same-origin', // include, *same-origin, omit
 })
 const authLink = setContext((_, { headers }) => {
 	const token = localStorage.getItem('token')
+	console.warn('access token', token)
+	console.warn('headers', headers)
 	return {
 		headers: {
 			...headers,
-			authorization: token ? `Bearer ${token}` : '',
+			'x-hasura-admin-secret': DEV ? GQL_DEVKEY : '',
+			// authorization: token ? `Bearer ${token}` : '',
 		},
 	}
 })
@@ -63,13 +66,11 @@ interface IApplication {
 
 class Application extends NextApp<IApplication> {
 	componentDidMount() {
-		Tracker.init()
-		// Tracker.track('page', { path: 'Index' })
-
-		Router.events.on('routeChangeComplete', () => {
-			const path = Router.pathname.substr(1, 1).toUpperCase() + Router.pathname.substr(2)
-			Tracker.track('page', { path: path || 'Index' })
-		})
+		// Tracker.init()
+		// Router.events.on('routeChangeComplete', () => {
+		// 	const path = Router.pathname.substr(1, 1).toUpperCase() + Router.pathname.substr(2)
+		// 	Tracker.track('page', { path: path || 'Index' })
+		// })
 	}
 
 	render() {
