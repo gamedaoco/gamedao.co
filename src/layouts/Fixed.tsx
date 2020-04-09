@@ -33,9 +33,9 @@ const Layout = (props) => {
 				</title>
 			</Head>
 			<Container>
-				<Header />
+				{!props.noHeader && <Header />}
 				{props.children}
-				<Footer />
+				{!props.noFooter && <Footer />}
 			</Container>
 		</Wrapper>
 	)
