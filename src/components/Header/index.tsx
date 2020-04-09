@@ -100,6 +100,9 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 					<MetaLink>
 						{loggedIn && <Link href="/account">Account</Link>}
 
+						{DEV && <Link href="/apply">Apply</Link>}
+						{DEV && <Link href="/projects">Open Campaigns</Link>}
+
 						{loggedIn && <Link href="/doc/help">Helpdesk</Link>}
 						{!loggedIn && showContactView && <Link href="/contact">Contact</Link>}
 
