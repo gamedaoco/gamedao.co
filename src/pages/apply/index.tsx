@@ -185,7 +185,7 @@ const Page = () => {
 					<Flex flexDirection="row" flexWrap="wrap">
 						<Box width={[1, 1, 3 / 4]} px={[4]} pt={4}>
 							<Text fontSize={[4, 5, 6]} fontWeight={800} pb={[2, 4]} color="#ff00cc">
-								GameDAO for professionals.
+								Apply for GameDAO.
 							</Text>
 							<Text fontSize={[3, 4, 5]} fontWeight={800} pt={4} pb={2} color="#ffcc00">
 								Let's kickstart your Game, together.
