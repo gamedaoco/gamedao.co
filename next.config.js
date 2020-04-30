@@ -32,7 +32,8 @@ module.exports = withImages({
 		APP_NAME: pkg.name,
 		APP_VERSION: pkg.version,
 	},
-	poweredByHeader: 'ecvan loves you',
+
+	poweredByHeader: 'zero.io loves you',
 
 	webpack: (config, options) => {
 		config.node = {

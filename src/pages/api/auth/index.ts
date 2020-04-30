@@ -7,12 +7,14 @@ import { services } from './services'
 
 const app = express()
 
-// Middlewares
 app.use(bodyParser.json())
-app.use(cors())
 
-// Mount REST on /api
-app.use('/api/auth', services)
+// app.use(cors({
+//   origin: process.env.CLIENT_URL || 'http://localhost:3000',
+//   optionsSuccessStatus: 200
+// }))
+
+app.use('/api', services)
 
 app.listen()
 //8000, () => console.log('Express app listening on localhost:8000'))
