@@ -1,0 +1,18 @@
+overwrite: true
+schema:
+  - http://localhost:28080/v1/graphql:
+    headers:
+      x-hasura-admin-secret: myadminsecretkey
+documents: "src/graphql"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+      - "typescript-graphql-files-modules"
+      - "typescript-document-nodes"
+      - "fragment-matcher"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
