@@ -5,12 +5,22 @@ export const base = {
 	radii: {
 		default: 0,
 	},
+	variants: {
+		grid: {
+			borderRadius: 1,
+			width: '100%',
+			height: 'auto',
+		},
+		smallSelector: {
+			fontSize: '6px',
+		},
+	},
 	forms: {
 		input: {
 			background: 'prime',
 			color: 'prime',
 			border: 'none',
-			radius: 0,
+			borderRadius: 0,
 			borderBottomStyle: 'dotted',
 			borderBottomWidth: '1px',
 			mb: '4',
@@ -19,7 +29,7 @@ export const base = {
 			background: 'prime',
 			color: 'prime',
 			// border: 'none',
-			radius: 0,
+			borderRadius: 0,
 			borderStyle: 'dotted',
 			borderWidth: '1px',
 			mb: '2',
@@ -33,6 +43,10 @@ export const base = {
 			label: {
 				pt: '1',
 			},
+		},
+		select: {
+			border: 0,
+			fontSize: '10px',
 		},
 	},
 	colors: {
@@ -54,7 +68,7 @@ export const base = {
 	},
 	lineHeights: {
 		default: 4.5,
-		heading: 0.1,
+		heading: 1,
 		text: 2.25,
 	},
 }
