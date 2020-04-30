@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Flex, Box, Card, Heading, Text } from 'rebass'
-import { Border, H1, H2, Link, Space, Image, Container, Newsletter, Button } from 'components'
+import { Flex, Box, Card, Heading, Text, Image } from 'rebass/styled-components'
+import { Label, Select } from '@rebass/forms/styled-components'
+import { Border, H1, H2, H3, Link, Space, Container, Newsletter, Button, ContentFilter } from 'components'
 
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
@@ -35,7 +36,7 @@ const GET_PROJECTS_ALL = gql`
 	}
 `
 
-const bgColor = () => '#' + Math.floor(Math.random() * 16777215).toString(16)
+const bgColor = '#' + Math.floor(Math.random() * 16777215).toString(16)
 
 const Tag = styled.button`
 	float: left;
@@ -50,7 +51,7 @@ const Tag = styled.button`
 	text-styling: uppercase;
 	letter-spacing: 1px;
 	color: black;
-	background-color: ${() => bgColor()};
+	background-color: ${bgColor};
 	border: none;
 	border-radius: 2px;
 	:hover {
@@ -91,7 +92,12 @@ interface IGridParams {
 const GridContentAll = (props) => {
 	const [pageOffset, setPageOffset] = useState(0)
 	const [pageSize, setPageSize] = useState(12)
-	const { loading, error, data } = useQuery<IGridContent, IGridParams>(GET_PROJECTS_ALL, { variables: { limit: pageSize, offset: pageOffset } })
+	const { loading, error, data } = useQuery<IGridContent, IGridParams>(GET_PROJECTS_ALL, {
+		variables: {
+			limit: pageSize,
+			offset: pageOffset,
+		},
+	})
 
 	if (loading) return <>Loading...</>
 	if (error) return <>Error: ${error.message}</>
@@ -101,8 +107,8 @@ const GridContentAll = (props) => {
 		return (
 			<>
 				{projects &&
-					projects.map((item) => (
-						<Box width={[1, 1 / 2, 1 / 4]} mb={4} px={1}>
+					projects.map((item, index) => (
+						<Box width={[1, 1 / 2, 1 / 4]} mb={4} px={1} key={index}>
 							<GridItem
 								key={item.project_id}
 								href={`/project/${item.project_name}`}
@@ -132,8 +138,8 @@ const GridContentTop = (props) => {
 		return (
 			<>
 				{projects &&
-					projects.map((item) => (
-						<Box width={[1, 1, 1 / 2]} mb={4} px={1}>
+					projects.map((item, index) => (
+						<Box width={[1, 1, 1 / 2]} mb={4} px={1} key={index}>
 							<GridItem
 								key={item.project_id}
 								href={`/project/${item.project_name}`}
@@ -143,6 +149,8 @@ const GridContentTop = (props) => {
 								image={item.project_image}
 								prospect={item.project_prospect_id}
 								intro={item.project_intro}
+								category={item.funding_category}
+								country={item.project_country}
 							/>
 						</Box>
 					))}
@@ -153,53 +161,59 @@ const GridContentTop = (props) => {
 }
 const GridItem = (props) => (
 	<>
-		<img src={props.image} width="100%" height="auto" />
-		<Heading>{props.name}</Heading>
-		<Text>{props.pitch}</Text>
-		{/* TODO: iterate tags*/}
-		<div>
-			<Tag>INDIE</Tag>
-			<Tag>NEWCOMER</Tag>
-			<Tag>LENDING</Tag>
-			<Tag>MMORPG</Tag>
-		</div>
+		<Link href="/projects/[pid]" as={`/projects/${props.id}`}>
+			<Image src={props.image} variant="grid" />
+			<Heading>{props.name}</Heading>
+			<Text>{props.pitch}</Text>
+			{/* TODO: iterate tags*/}
+			<div>
+				<Tag>INDIE</Tag>
+				<Tag>NEWCOMER</Tag>
+				<Tag>LENDING</Tag>
+				<Tag>MMORPG</Tag>
+			</div>
+		</Link>{' '}
 		<br />
-		<Link href={`/read/${props.id}`}>
+		<Link href="/projects/[pid]/read" as={`/projects/${props.id}/read`}>
 			<Button bType="sm">Read</Button>
 		</Link>{' '}
-		<Link href={`/play/${props.id}`}>
-			<Button bType="sm" href={`/project/${props.name}`}>
-				Play
-			</Button>
+		<Link href="/projects/[pid]/play" as={`/projects/${props.id}/play`}>
+			<Button bType="sm">Play</Button>
 		</Link>
 	</>
 )
 
-const ContentGrid = (props) => (
-	<>
-		<Flex flexDirection="row" flexWrap="wrap">
-			<Box width={1} px={2}>
-				<H1>Projects</H1>
-			</Box>
-		</Flex>
+const ContentGrid = (props) => {
+	const [searchQuery, setSearchQuery] = useState({})
 
-		<Box width={1} px={1}>
-			<Box width={1}>
-				<H2>Top Funded</H2>
-			</Box>
-			<Flex flexDirection="row" flexWrap="wrap">
-				<GridContentTop />
-			</Flex>
-		</Box>
+	const showAll = false
 
-		<Box width={1} px={1}>
-			<Box width={1}>
-				<H2>Open Campaigns</H2>
-			</Box>
+	return (
+		<>
+			<ContentFilter />
+
 			<Flex flexDirection="row" flexWrap="wrap">
-				<GridContentAll />
+				<Box width={1} px={1}>
+					<Box width={1}>
+						<H2>Top Funded</H2>
+					</Box>
+					<Flex flexDirection="row" flexWrap="wrap">
+						<GridContentTop />
+					</Flex>
+				</Box>
+
+				{showAll && (
+					<Box width={1} px={1}>
+						<Box width={1}>
+							<H2>Open Campaigns</H2>
+						</Box>
+						<Flex flexDirection="row" flexWrap="wrap">
+							<GridContentAll />
+						</Flex>
+					</Box>
+				)}
 			</Flex>
-		</Box>
-	</>
-)
+		</>
+	)
+}
 export default ContentGrid

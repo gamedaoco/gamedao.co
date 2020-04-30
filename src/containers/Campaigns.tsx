@@ -10,11 +10,13 @@ import logo from 'public/z-ctrl-45-wht.svg'
 import { IoIosArrowRoundDown } from 'react-icons/io'
 
 const Page = () => {
+	const [query, setQuery] = useState(``)
+
 	return (
 		<Container>
 			<Flex flexDirection="row" flexWrap="wrap" px={4}>
 				<Box width={1} px={2}>
-					<H1>Projects</H1>
+					<H1>Open Campaigns</H1>
 				</Box>
 			</Flex>
 			<Flex id="content" flexDirection="row" flexWrap="wrap" color="rgba(255,255,255,.65)">

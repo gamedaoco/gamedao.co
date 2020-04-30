@@ -2,14 +2,15 @@ import * as React from 'react'
 import NextLink from 'next/link'
 
 interface ILinkProps {
-	href?: string
-	target?: string
+	href?: string | undefined
+	as?: string | undefined
+	target?: string | undefined
 	children?: object | string
 }
 
-const Link: React.FC<ILinkProps> = ({ href, target, children }) => (
-	<NextLink href={href || '#'}>
-		<a target={target ? target : '_self'}>{children}</a>
+const Link: React.FC<ILinkProps> = ({ href, as, target, children }) => (
+	<NextLink href={href || '#'} as={as}>
+		<a target={target || '_self'}>{children}</a>
 	</NextLink>
 )
 

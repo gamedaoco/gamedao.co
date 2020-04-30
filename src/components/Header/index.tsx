@@ -101,7 +101,7 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 						{loggedIn && <Link href="/account">Account</Link>}
 
 						{DEV && <Link href="/apply">Apply</Link>}
-						{DEV && <Link href="/projects">Open Campaigns</Link>}
+						{DEV && <Link href="/campaigns">Campaigns</Link>}
 
 						{loggedIn && <Link href="/doc/help">Helpdesk</Link>}
 						{!loggedIn && showContactView && <Link href="/contact">Contact</Link>}

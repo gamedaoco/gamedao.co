@@ -1,0 +1,8 @@
+## Problem Statement
+For game developers and creatives, it’s a constant challenge to raise money and generate a steady income while creating games which are loved by gamers. Every time they start a new project, these people either starve their way through until they complete a sellable prototype or they have to sell upfront to a publisher willing to support the idea in order to get a solid funding to afford the development. This is especially true if you are a small studio, bigger studios might get support by their banks, which comes at a cost.
+
+The main problem they face is development and creative work requires freedom of creative expression for a pretty demanding audience, which is hard to maintain while you are running after money — which leads to bad games and business models. Today, their best option is to find a publisher, but of course, they are selling a decent amount of their intellectual property for a finance round giving them hardly enough air until some months after release. With increased cost and more competition in the market, the problem will only get worse over time.
+
+If only there was an easier/better/cheaper way to connect studios with gamers, without all the middle men, then game creators could focus on what they do best: creation of video games and sustainable business models, which would lead to happy times for developers and gamers, which can directly influence better video games — all of them in a mutually beneficial relationship.
+
+With millions of game creators and billions of gamers as potential investors in this market, there is a clear opportunity to meaningfully impact a huge number of people.

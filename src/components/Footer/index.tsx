@@ -230,7 +230,9 @@ const Footer: React.FC = ({}) => {
 				</Box>
 				<Box mx="auto" />
 				<Box px={4} py={1}>
-					<SmallText>{process.env.APP_VERSION}</SmallText>
+					<SmallText>
+						{process.env.APP_VERSION} — {process.env.BUILD_TIME}
+					</SmallText>
 				</Box>
 			</Flex>
 		</Container>
