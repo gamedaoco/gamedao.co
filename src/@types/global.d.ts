@@ -1,13 +1,19 @@
-declare module '@rebass/grid'
-declare module '@rebass/components'
-declare module 'aws-amplify-react'
+// declare module '@rebass/grid'
+// declare module '@rebass/components'
 declare module 'next-page-transitions'
+
+declare global {
+	interface Window {
+		fathom: Fathom
+	}
+}
 
 interface Window {
 	__REDUX_DEVTOOLS_EXTENSION__: any
 	__REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
 	__REACT_DEVTOOLS_GLOBAL_HOOK__: any
 }
+
 declare module '*.png' {
 	const resource: string
 	export = resource
@@ -33,14 +39,10 @@ declare namespace NodeJS {
 	interface Process {
 		browser: boolean
 	}
-	// interface Global {
-	// 	document: Document;
-	// 	window: Window;
-	// }
 }
-// declare var global: Global;
 
 type Status = 'sending' | 'error' | 'success'
+
 type FormData = {
 	[key: string]: string
 }

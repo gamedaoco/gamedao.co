@@ -4,7 +4,7 @@ import Router from 'next/router'
 
 import { Apollo } from 'src/lib/Apollo'
 import { AppProvider, AppContext } from 'src/hooks/AppContext'
-import * as Fathom from 'fathom-client'
+import * as Fathom from 'src/lib/Fathom'
 
 import { IconContext } from 'react-icons/lib'
 import { PageTransition } from 'next-page-transitions'
@@ -31,10 +31,21 @@ const Application = ({ Component, pageProps, config }) => {
 	const { state } = useContext(AppContext)
 	const { READY } = state.app
 
+	// useEffect(() => {
+	// 	if ( window ) {
+	// 		let tracker = window.document.createElement('script')
+	// 		let firstScript = window.document.getElementsByTagName('script')[0]
+	// 		tracker.defer = true
+	// 		tracker.setAttribute('site', 'XLUUAYWU')
+	// 		tracker.setAttribute('spa', 'auto')
+	// 		tracker.src = 'https://cdn.usefathom.com/script.js'
+	// 		if ( firstScript.parentNode ) firstScript.parentNode.insertBefore(tracker, firstScript)
+	// 	}
+	// }, []);
+
 	useEffect(() => {
 		if (process.env.NODE_ENV === 'production') {
 			Fathom.load()
-			Fathom.setSiteId('XLUUAYWU')
 			Fathom.trackPageview()
 		}
 	}, [])
