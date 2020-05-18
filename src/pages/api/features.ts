@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import data from '../../data/config.json'
+import data from '../../data/features.json'
 
 // test config local:
 // curl -X POST localhost:3030/api/config -H "Content-Type:application/json;charset=utf-8" -d '{"key":"hello","env":"local"}'

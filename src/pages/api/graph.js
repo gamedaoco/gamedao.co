@@ -1,10 +1,26 @@
 import { ApolloServer, gql } from 'apollo-server-micro'
+import GraphQLJSON from 'graphql-type-json'
+
+import configData from '../../data/config.json'
+import featuresData from '../../data/features.json'
 
 const typeDefs = gql`
+	scalar JSON
+
 	type Query {
 		users: [User!]!
 		fx: [Pair!]!
+		config: [Config!]!
 	}
+
+	type Config {
+		config: JSON
+	}
+
+	type Config {
+		features: JSON
+	}
+
 	type User {
 		nick: String
 		firstname: String
@@ -26,6 +42,28 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
+		config(parent, args, context) {
+			const { env } = args
+			const global = configData['global']
+			const local = configData[env]
+			const content = {
+				...global,
+				...local,
+			}
+			return { config: content }
+		},
+
+		features(parent, args, context) {
+			const { env } = args
+			const global = featuresData['global']
+			const local = featuresData[env]
+			const content = {
+				...global,
+				...local,
+			}
+			return { features: content }
+		},
+
 		users(parent, args, context) {
 			return [
 				{
@@ -39,6 +77,7 @@ const resolvers = {
 				},
 			]
 		},
+
 		fx(parent, args, context) {
 			return [
 				{
@@ -73,6 +112,8 @@ const resolvers = {
 const apolloServer = new ApolloServer({
 	typeDefs,
 	resolvers,
+	introspection: true,
+	playground: true,
 	context: () => {
 		return {}
 	},
