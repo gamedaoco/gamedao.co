@@ -1,7 +1,6 @@
-import * as React from 'react'
+import React, { useContext } from 'react'
 import { useRouter } from 'next/router'
-
-import { DEV } from 'src/config/env'
+import { AppContext } from 'src/hooks/AppContext'
 
 import styled from 'styled-components'
 import { Flex, Box } from 'rebass/styled-components'
@@ -63,6 +62,9 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 	const logoAlt = 'zero'
 	const logoHref = '/'
 
+	const { state } = useContext(AppContext)
+	const { SHOW_CAMPAIGNS, SHOW_APPLY } = state.features.data
+
 	const token = {
 		XP: 1337,
 		REP: 49152,
@@ -100,8 +102,8 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 					<MetaLink>
 						{loggedIn && <Link href="/account">Account</Link>}
 
-						{DEV && <Link href="/apply">Apply</Link>}
-						{DEV && <Link href="/campaigns">Campaigns</Link>}
+						{SHOW_APPLY && <Link href="/apply">Apply</Link>}
+						{SHOW_CAMPAIGNS && <Link href="/campaigns">Campaigns</Link>}
 
 						{loggedIn && <Link href="/doc/help">Helpdesk</Link>}
 						{!loggedIn && showContactView && <Link href="/contact">Contact</Link>}

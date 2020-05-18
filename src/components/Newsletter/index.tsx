@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Flex, Box, Card, Heading } from 'rebass'
 import { Button } from 'components'
 
-import { MAILCHIMP } from 'src/config/env'
+// import { globalState } from 'src/hooks/GlobalContext'
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -100,13 +100,22 @@ const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 	)
 }
 
-const Newsletter: React.FC = () => (
-	<Wrapper>
-		<MailchimpSubscribe
-			url={MAILCHIMP || ''}
-			render={({ subscribe, status, message }) => <CustomForm status={status} message={message} onValidated={(formData) => subscribe(formData)} />}
-		/>
-	</Wrapper>
-)
+const Newsletter: React.FC = () => {
+	// const { config } = globalState
 
+	// useEffect( () => {
+
+	// console.log( 'mailchimp config', config.MAILCHIMP || 'undefined' )
+
+	// }, [ config ] )
+
+	return (
+		<Wrapper>
+			<MailchimpSubscribe
+				url={''}
+				render={({ subscribe, status, message }) => <CustomForm status={status} message={message} onValidated={(formData) => subscribe(formData)} />}
+			/>
+		</Wrapper>
+	)
+}
 export default Newsletter

@@ -1,11 +1,10 @@
-import * as React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from 'src/hooks/AppContext'
 
 import styled from 'styled-components'
 import { Flex, Box, Text } from 'rebass/styled-components'
 import { FaGitlab, FaDiscord, FaTwitter } from 'react-icons/fa'
 import { H3, H4, SmallText, Link, Newsletter, Divider } from 'components'
-
-import { FEATURE_FOOTER_NAV } from 'src/config/env'
 
 import logo from 'public/z-h-col.svg'
 import img from 'public/stripes-s.png'
@@ -174,6 +173,9 @@ const FooterBox: React.FC = ({ children }) => (
 )
 
 const Footer: React.FC = ({}) => {
+	const { state } = useContext(AppContext)
+	const { SHOW_FOOTER_NAV } = state.features.data
+
 	return (
 		<Container id="info">
 			<Flex flexDirection="row" flexWrap="wrap">
@@ -191,7 +193,7 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} pt={4} width={[1, 1, 1 / 2, 3 / 5]}>
 					<Text>
-						zero.io is building GameDAO, a decentralised autonomous organisation, summoned to foster sustainability and improve financing in video
+						zero.io is building GameDAO, a decentralised autonomous cooperative, summoned to foster sustainability and improve financing in video
 						games, creative content, digital arts, e-sports and gaming as a profession.
 						<br />
 						<br />
@@ -201,7 +203,7 @@ const Footer: React.FC = ({}) => {
 				</Box>
 			</Flex>
 
-			{FEATURE_FOOTER_NAV && <FooterNav />}
+			{SHOW_FOOTER_NAV && <FooterNav />}
 
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box p={4} width={[1]} color="#ccff00">
