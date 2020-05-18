@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { Header, Footer } from 'components'
 
-import { DEV, SITE_DESCRIPTION, SITE_IMAGE, SITE_NAME, SITE_TITLE, TW_SITE_NAME, TW_SITE_CREATOR } from '../config/env'
+import { AppContext } from 'src/hooks/AppContext'
 
 const Wrapper = styled.div`
 	margin: 0;
@@ -23,6 +23,10 @@ const Container = styled.div`
 
 const Layout = (props) => {
 	const router = useRouter()
+	const { state } = useContext(AppContext)
+	const { SITE_NAME, SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE, TW_SITE_CREATOR, TW_SITE_NAME } = state.config.data
+	const { SHOW_HEADER, SHOW_FOOTER } = state.features.data
+
 	const path = router.pathname.substr(1, 1).toUpperCase() + router.pathname.substr(2)
 
 	return (
@@ -45,15 +49,16 @@ const Layout = (props) => {
 				<meta property="twitter:image" content={SITE_IMAGE} />
 
 				<meta name="format-detection" content="telephone=no, address=no, email=no" />
-				<link rel="shortcut icon" href="public/z-control-45-full.png" />
+				<link rel="shortcut icon" href="z-control-45-full.png" />
+
 				<title>
 					{path || 'GameDAO'} | {SITE_TITLE}
 				</title>
 			</Head>
 			<Container>
-				{!props.noHeader && <Header />}
+				{(!props.noHeader || SHOW_HEADER) && <Header />}
 				{props.children}
-				{!props.noFooter && <Footer />}
+				{(!props.noFooter || SHOW_FOOTER) && <Footer />}
 			</Container>
 		</Wrapper>
 	)
