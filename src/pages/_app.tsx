@@ -1,45 +1,46 @@
-import React from 'react'
-import NextApp from 'next/app'
-
-import Router, { useRouter } from 'next/router'
-import mixpanel from 'mixpanel-browser'
-import { Tracker } from 'src/lib/tracker'
-
-import fetch from 'isomorphic-unfetch'
+import { useEffect, useContext } from 'react'
+import App from 'next/app'
+import Router from 'next/router'
 
 import { Apollo } from 'src/lib/Apollo'
+import { AppProvider, AppContext } from 'src/hooks/AppContext'
+import * as Fathom from 'fathom-client'
 
-import { GQL_URI, GQL_DEVKEY, DEV } from 'src/config/env'
-
-import { ThemeProvider } from 'styled-components'
 import { IconContext } from 'react-icons/lib'
 import { PageTransition } from 'next-page-transitions'
 import { Loader } from 'components'
+
+import { ThemeProvider } from 'styled-components'
 import preset from '@rebass/preset'
 import { GlobalStyle, TIMEOUT } from 'src/themes/global'
 import base from 'src/themes/base'
 import dark from 'src/themes/dark'
 import light from 'src/themes/light'
 
-const defaultContext = {
-	light: true,
-	toggle: () => {},
-}
 const theme = {
 	...preset,
 	...base,
 	...light,
 }
 
-interface IApplication {
-	pageProps: any
-}
+Router.events.on('routeChangeComplete', () => {
+	Fathom.trackPageview()
+})
 
-class Application extends NextApp<IApplication> {
-	render() {
-		const { Component, pageProps } = this.props
+const Application = ({ Component, pageProps, config }) => {
+	const { state } = useContext(AppContext)
+	const { READY } = state.app
 
-		return (
+	useEffect(() => {
+		if (process.env.NODE_ENV === 'production') {
+			Fathom.load()
+			Fathom.setSiteId('XLUUAYWU')
+			Fathom.trackPageview()
+		}
+	}, [])
+
+	return (
+		<AppProvider>
 			<PageTransition
 				timeout={TIMEOUT}
 				classNames="page-transition"
@@ -60,8 +61,8 @@ class Application extends NextApp<IApplication> {
 					</IconContext.Provider>
 				</ThemeProvider>
 			</PageTransition>
-		)
-	}
+		</AppProvider>
+	)
 }
 
 export default Application
