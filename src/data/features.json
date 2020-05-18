@@ -2,12 +2,19 @@
 	"global": {
 		"SHOW_HEADER": true,
 		"SHOW_FOOTER": true,
+		"SHOW_FOOTER_NAV": false,
+		"SHOW_APPLY": false,
+		"SHOW_CAMPAIGNS": false
+	},
+	"dev": {
+		"SHOW_HEADER": true,
+		"SHOW_FOOTER": true,
 		"SHOW_FOOTER_NAV": true,
 		"SHOW_APPLY": true,
 		"SHOW_CAMPAIGNS": true
 	},
-	"dev": {},
 	"production": {
+		"SHOW_APPLY": true,
 		"SHOW_CAMPAIGNS": false,
 		"SHOW_FOOTER_NAV": false
 	}
