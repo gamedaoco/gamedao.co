@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from 'src/hooks/AppContext'
 import fetch from 'isomorphic-unfetch'
 
 import { ApolloProvider } from '@apollo/react-hooks'
@@ -10,11 +11,10 @@ import { setContext } from 'apollo-link-context'
 import { onError, ErrorResponse } from 'apollo-link-error';
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
-import { GQL_URI, GQL_DEVKEY, DEV } from 'src/config/env'
-
 const initialState = {}
 
-const uri = GQL_URI
+let uri
+let GQL_DEVKEY
 
 const cache = new InMemoryCache().restore( initialState || {} )
 
@@ -42,7 +42,7 @@ const authLink = setContext((_, { headers }) => {
 	return {
 		headers: {
 			...headers,
-			'x-hasura-admin-secret': DEV ? GQL_DEVKEY : '',
+			'x-hasura-admin-secret': GQL_DEVKEY,
 			// Authorization: token ? `Bearer ${token}` : '',
 		},
 	}
@@ -54,9 +54,16 @@ const client = new ApolloClient({
 	cache: cache,
 })
 
-export const Apollo = props =>
-	<ApolloProvider client={client}>
-		{props.children}
-	</ApolloProvider>
+export const Apollo = ({ children }) => {
+
+	const { state } = useContext( AppContext )
+	const { GQL_URI } = state.config.data
+
+	return (
+		<ApolloProvider client={client}>
+			{children}
+		</ApolloProvider>
+	)
+}
 
 export default Apollo

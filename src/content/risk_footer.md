@@ -1,0 +1,3 @@
+Investing in private placements, tokens and early stage businesses involves a high degree of risk, including, but not limited to, illiquidity, lack of dividends, loss of investment and dilution, and those investors who cannot afford to lose their entire investment should not invest. Purchases of Tokens are even higher risk including, but not limited to, complete loss of capital, regulatory & tax uncertainty, cyber-security attacks, Blockchain risks and no shareholder rights.
+
+By using GameDAO, you are indicating you have read, understood, and agree to the GameDAO Terms & Conditions, Risk Warnings, Disclaimers and Privacy Policy. GameDAO is a registered trademark owned by zero technologies.
