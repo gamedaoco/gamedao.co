@@ -1,5 +1,6 @@
 {
 	"global": {
+		"DEBUG": false,
 		"SHOW_HEADER": true,
 		"SHOW_FOOTER": true,
 		"SHOW_FOOTER_NAV": false,
@@ -7,6 +8,7 @@
 		"SHOW_CAMPAIGNS": false
 	},
 	"dev": {
+		"DEBUG": false,
 		"SHOW_HEADER": true,
 		"SHOW_FOOTER": true,
 		"SHOW_FOOTER_NAV": true,

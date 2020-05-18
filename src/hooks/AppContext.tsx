@@ -18,7 +18,9 @@ const loadData = async (resource, env) => {
 	try {
 		let data = await fetch(HOST + resource, {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
+			headers: {
+				'Content-Type': 'application/json',
+			},
 			body: JSON.stringify({ key: 'hello', env }),
 		})
 		data = await data.json()
@@ -90,18 +92,18 @@ const AppContext = createContext<{
 const reducer: React.Reducer<AppState, Action> = (state, action) => {
 	switch (action.type) {
 		case 'INIT':
-			console.log('init', action.payload)
+			if (state.features.data.DEBUG) console.log('init', action.payload)
 			return { ...state }
 
 		case 'CONFIG_LOAD':
-			console.log('config load')
+			if (state.features.data.DEBUG) console.log('config load')
 			return {
 				...state,
 				config: { ...state.config, loading: true },
 			}
 
 		case 'CONFIG_UPDATE':
-			console.log('config', action.payload)
+			if (state.features.data.DEBUG) console.log('config', action.payload)
 			return {
 				...state,
 				// the app is ready when we have a config
@@ -113,14 +115,14 @@ const reducer: React.Reducer<AppState, Action> = (state, action) => {
 			}
 
 		case 'FEATURES_LOAD':
-			console.log('features load')
+			if (state.features.data.DEBUG) console.log('features load')
 			return {
 				...state,
 				features: { ...state.features, loading: true },
 			}
 
 		case 'FEATURES_UPDATE':
-			console.log('features', action.payload)
+			if (state.features.data.DEBUG) console.log('features', action.payload)
 			return {
 				...state,
 				features: {
@@ -130,14 +132,14 @@ const reducer: React.Reducer<AppState, Action> = (state, action) => {
 			}
 
 		case 'CONTENT_LOAD':
-			console.log('content load')
+			if (state.features.data.DEBUG) console.log('content load')
 			return {
 				...state,
 				features: { ...state.features, loading: true },
 			}
 
 		case 'CONTENT_UPDATE':
-			console.log('content', action.payload)
+			if (state.features.data.DEBUG) console.log('content', action.payload)
 			return {
 				...state,
 				content: {
