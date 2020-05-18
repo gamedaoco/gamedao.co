@@ -43,6 +43,7 @@ module.exports = withImages({
 		config.resolve.alias = {
 			...config.resolve.alias,
 			public: path.join(__dirname, './public/'),
+			data: path.join(__dirname, './src/data/'),
 			config: path.join(__dirname, './src/config/'),
 			src: path.join(__dirname, './src/'),
 			lib: path.join(__dirname, './src/lib/'),

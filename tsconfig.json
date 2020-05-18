@@ -4,6 +4,7 @@
 		"paths": {
 			"src": ["./src/"],
 			"lib": ["./src/lib/"],
+			"data": ["./src/data/"],
 			"public": ["./public/"],
 			"config": ["./src/config/"],
 			"components": ["./src/components/"],
