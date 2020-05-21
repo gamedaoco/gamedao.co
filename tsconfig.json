@@ -2,15 +2,16 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
+			"public": ["./public/"],
 			"src": ["./src/"],
 			"lib": ["./src/lib/"],
-			"data": ["./src/data/"],
-			"public": ["./public/"],
-			"config": ["./src/config/"],
 			"components": ["./src/components/"],
 			"containers": ["./src/containers/"],
 			"layouts": ["./src/layouts/"],
-			"themes": ["./src/themes/"]
+			"themes": ["./src/themes/"],
+			"data": ["./src/data/"],
+			"config": ["./src/config/"],
+			"queries": ["./src/queries/"]
 		},
 		"target": "esnext",
 		"module": "esnext",

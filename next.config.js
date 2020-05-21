@@ -1,3 +1,4 @@
+const withMDX = require('@next/mdx')()
 const withImages = require('next-images')
 const path = require('path')
 const dotenv = require('dotenv').config()
@@ -27,41 +28,46 @@ sitemap({
 	},
 })
 
-module.exports = withImages({
-	env: {
-		BUILD_TIME: dateStr.toString(),
-		BUILD_TIMESTAMP: +date,
-		APP_NAME: pkg.name,
-		APP_VERSION: pkg.version,
-	},
+module.exports = withImages(
+	withMDX({
+		env: {
+			BUILD_TIME: dateStr.toString(),
+			BUILD_TIMESTAMP: +date,
+			APP_NAME: pkg.name,
+			APP_VERSION: pkg.version,
+		},
 
-	poweredByHeader: 'zero.io loves you',
+		poweredByHeader: 'zero.io loves you',
 
-	webpack: (config, options) => {
-		config.node = {
-			fs: 'empty',
-		}
+		// pageExtensions: ['jsx', 'tsx', 'mdx'],
 
-		config.resolve.alias = {
-			...config.resolve.alias,
-			public: path.join(__dirname, './public/'),
-			data: path.join(__dirname, './src/data/'),
-			config: path.join(__dirname, './src/config/'),
-			src: path.join(__dirname, './src/'),
-			lib: path.join(__dirname, './src/lib/'),
-			components: path.join(__dirname, './src/components/'),
-			containers: path.join(__dirname, './src/containers/'),
-			layouts: path.join(__dirname, './src/layouts/'),
-			themes: path.join(__dirname, './src/themes/'),
-		}
+		webpack: (config, options) => {
+			config.node = {
+				fs: 'empty',
+			}
 
-		// create object from .env
-		const env = Object.keys(process.env).reduce((acc, curr) => {
-			acc[`process.env.${curr}`] = JSON.stringify(process.env[curr])
-			return acc
-		}, {})
-		config.plugins.push(new webpack.DefinePlugin(env))
+			config.resolve.alias = {
+				...config.resolve.alias,
+				public: path.join(__dirname, './public/'),
+				src: path.join(__dirname, './src/'),
+				lib: path.join(__dirname, './src/lib/'),
+				components: path.join(__dirname, './src/components/'),
+				containers: path.join(__dirname, './src/containers/'),
+				layouts: path.join(__dirname, './src/layouts/'),
+				themes: path.join(__dirname, './src/themes/'),
+				config: path.join(__dirname, './src/config/'),
+				data: path.join(__dirname, './src/data/'),
+				queries: path.join(__dirname, './src/queries/'),
+			}
 
-		return config
-	},
-})
+			// create object from .env
+			const env = Object.keys(process.env).reduce((acc, curr) => {
+				acc[`process.env.${curr}`] = JSON.stringify(process.env[curr])
+				return acc
+			}, {})
+			config.plugins.push(new webpack.DefinePlugin(env))
+
+			return config
+		},
+	})
+)
