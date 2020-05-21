@@ -5,8 +5,8 @@
             /     /_  |        \ |    |   \/    |    \
            /_______ \/_______  / |____|_  /\_______  /
                    \/        \/         \/         \/
-		   Z  E  R  O  .  I  O     N  E  T  W  O  R  K
-		   © C O P Y R I O T   2 0 7 5   Z E R O . I O
+           Z  E  R  O          T E C H N O L O G I E S
+           © C O P Y R I O T   2 0 7 5   Z E R O . I O
 **/
 
 import { useContext } from 'react'
