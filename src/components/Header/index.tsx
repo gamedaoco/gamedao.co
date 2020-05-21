@@ -79,7 +79,7 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 	}
 
 	const router = useRouter()
-	const showContactView = router.pathname == '/contact' ? false : true
+	// const showContactView = router.pathname == '/contact' ? false : true
 
 	return (
 		<Container>
@@ -106,7 +106,8 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 						{SHOW_CAMPAIGNS && <Link href="/campaigns">Campaigns</Link>}
 
 						{loggedIn && <Link href="/doc/help">Helpdesk</Link>}
-						{!loggedIn && showContactView && <Link href="/contact">Contact</Link>}
+
+						{!loggedIn && <Link href="/contact">Contact</Link>}
 
 						{/*!loggedIn && <Link href="/account/signin">Sign In</Link>*/}
 						{/*!loggedIn && <Link href="/account/signup">Sign Up</Link>*/}

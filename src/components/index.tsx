@@ -21,6 +21,7 @@ export { default as ContentCTA } from './ContentCTA'
 export { default as Newsletter } from './Newsletter'
 export { default as ContentGrid } from './ContentGrid'
 export { default as ContentFilter } from './ContentFilter'
+export { default as ContentSearch } from './ContentSearch'
 
 //
 // organisms

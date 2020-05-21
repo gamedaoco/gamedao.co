@@ -40,8 +40,8 @@ export const GlobalStyle = createGlobalStyle`
 
 	div#__next, html, body {
 		margin: 0;
-		height: 100%;
-		width: 100%;
+		width: 100vw;
+		height: 100vh;
 		display: flex;
 		justify-content: center;
 		scroll-behavior: smooth;

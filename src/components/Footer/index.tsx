@@ -1,3 +1,14 @@
+/**
+           _______________________________ ________
+           \____    /\_   _____/\______   \\_____  \
+             /     /  |    __)_  |       _/ /   |   \
+            /     /_  |        \ |    |   \/    |    \
+           /_______ \/_______  / |____|_  /\_______  /
+                   \/        \/         \/         \/
+           Z  E  R  O  .  I  O     N  E  T  W  O  R  K
+           © C O P Y R I O T   2 0 7 5   Z E R O . I O
+**/
+
 import React, { useContext } from 'react'
 import { AppContext } from 'src/hooks/AppContext'
 
@@ -135,7 +146,9 @@ const FooterNav = () => {
 						<br />
 						<br />
 					</H3>
-					<Link href="https://medium.com/gamedao">The Story</Link>
+					<a href="https://medium.com/gamedao" target="_blank">
+						The Story
+					</a>
 					<br />
 					<Link href="/dao/neonpaper">Neonpaper</Link>
 					<br />
@@ -224,7 +237,10 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} py={1} width={[1, 1 / 2]}>
 					<SmallText>
-						©&nbsp;{new Date().getFullYear()}&nbsp;<Link href="https://zero.io">zero technologies</Link>
+						©&nbsp;{new Date().getFullYear()}&nbsp;
+						<a href="https://zero.io" target="_blank">
+							zero technologies
+						</a>
 						.&nbsp;&nbsp;&nbsp;made&nbsp;on&nbsp;earth.&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Imprint</Link>&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Privacy</Link>&nbsp;&nbsp;&nbsp;
