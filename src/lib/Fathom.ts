@@ -28,7 +28,7 @@ export const load = (url = '//cdn.usefathom.com/tracker.js'): void => {
 			}
 		let tracker = document.createElement('script')
 		let firstScript = document.getElementsByTagName('script')[0]
-		tracker.defer = true
+		tracker.async = true
 		tracker.setAttribute('site', 'XLUUAYWU')
 		tracker.setAttribute('spa', 'auto')
 		tracker.src = url
