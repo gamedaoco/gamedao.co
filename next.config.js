@@ -6,6 +6,8 @@ const sitemap = require('nextjs-sitemap-generator')
 const pkg = require('./package')
 
 const date = new Date()
+const dateStr = date.toISOString()
+
 const dev = process.env.NODE_ENV !== 'production'
 if (dev) {
 	require('dotenv').config()
@@ -27,7 +29,7 @@ sitemap({
 
 module.exports = withImages({
 	env: {
-		BUILD_TIME: date.toString(),
+		BUILD_TIME: dateStr.toString(),
 		BUILD_TIMESTAMP: +date,
 		APP_NAME: pkg.name,
 		APP_VERSION: pkg.version,

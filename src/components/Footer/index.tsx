@@ -224,7 +224,8 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} py={1} width={[1, 1 / 2]}>
 					<SmallText>
-						©&nbsp;2019&nbsp;gameDAO&nbsp;—&nbsp;zero.io.&nbsp;&nbsp;&nbsp;made&nbsp;on&nbsp;earth.&nbsp;&nbsp;&nbsp;
+						©&nbsp;{new Date().getFullYear()}&nbsp;<Link href="https://zero.io">zero technologies</Link>
+						.&nbsp;&nbsp;&nbsp;made&nbsp;on&nbsp;earth.&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Imprint</Link>&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Privacy</Link>&nbsp;&nbsp;&nbsp;
 						{/*<Link href="/imprint">Terms</Link>*/}
