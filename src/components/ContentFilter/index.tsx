@@ -2,25 +2,25 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { Flex, Box, Card, Heading, Text, Image } from 'rebass/styled-components'
-import { Label, Select } from '@rebass/forms/styled-components'
+import { Label, Select, Checkbox } from '@rebass/forms/styled-components'
 import { Border, H1, H2, H3, Link, Space, Container, Newsletter, Button } from 'components'
 
-import gql from 'graphql-tag'
-import { useQuery } from '@apollo/react-hooks'
+// import gql from 'graphql-tag'
+// import { useQuery } from '@apollo/react-hooks'
 
-const GET_PROJECTS_ALL = gql`
-	query getCurrentProjects($limit: Int!, $offset: Int!) {
-		projects(order_by: { project_raise_start: desc }, limit: $limit, offset: $offset) {
-			project_name
-			project_pitch
-			project_id
-			project_image
-			project_raise_start
-			project_pitch_key
-			funding_wallet
-		}
-	}
-`
+// const GET_PROJECTS_ALL = gql`
+// 	query getCurrentProjects($limit: Int!, $offset: Int!) {
+// 		projects(order_by: { project_raise_start: desc }, limit: $limit, offset: $offset) {
+// 			project_name
+// 			project_pitch
+// 			project_id
+// 			project_image
+// 			project_raise_start
+// 			project_pitch_key
+// 			funding_wallet
+// 		}
+// 	}
+// `
 
 const CheckBtnWrapper = styled.div`
 	background-color: white;
@@ -91,9 +91,9 @@ const Search = (props) => {
 	// funding category
 	const funding_utilities = [
 		{ name: 'Grant', key: 'grant' },
-		{ name: 'Lending', key: 'lending' },
-		{ name: 'Shares', key: 'shares' },
-		{ name: 'Prepaid', key: 'prepaid' },
+		{ name: 'Prepay', key: 'prepay' },
+		{ name: 'Lend', key: 'lend' },
+		{ name: 'Share', key: 'share' },
 	]
 
 	// funding round open
@@ -104,24 +104,21 @@ const Search = (props) => {
 
 	return (
 		<Flex flexDirection="row" flexWrap="wrap">
-			<Box width={1} px={2}>
+			<Box width={1}>
 				<H2>Filter</H2>
 			</Box>
 
-			<Box width={1} pr={2}>
+			{/*			<Box width={1} pr={2}>
 				<H3>Countries</H3>
-				<fieldset>
-					<CheckBtn>Hello</CheckBtn>
-
-					{Object.entries(countries).map(([key, country]) => (
-						<CheckBtn name="country" value={key}>
-							{country.name}
-						</CheckBtn>
-					))}
-				</fieldset>
+				{Object.entries(countries).map(([key, country]) => (
+					<Checkbox id={country.name} value={country.key} key={key}>
+						{country.name}
+					</Checkbox>
+				))}
 			</Box>
+*/}
 
-			<Box width={1 / 3} pr={2}>
+			{/*			<Box width={1 / 3} pr={2}>
 				<H3>Type</H3>
 				<Select id="funding_utilities" name="funding_utilities" defaultValue={['Grant']} multiple variant="smallSelector">
 					{Object.entries(funding_utilities).map(([key, util]) => (
@@ -129,6 +126,7 @@ const Search = (props) => {
 					))}
 				</Select>
 			</Box>
+*/}
 		</Flex>
 	)
 }

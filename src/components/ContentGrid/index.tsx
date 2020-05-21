@@ -1,40 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AppContext } from 'src/hooks/AppContext'
+
 import styled from 'styled-components'
 
 import { Flex, Box, Card, Heading, Text, Image } from 'rebass/styled-components'
 import { Label, Select } from '@rebass/forms/styled-components'
-import { Border, H1, H2, H3, Link, Space, Container, Newsletter, Button, ContentFilter } from 'components'
+import { Border, H1, H2, H3, Link, Space, Container, Newsletter, Button, ContentFilter, ContentSearch } from 'components'
 
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-
-const GET_PROJECTS_TOP = gql`
-	query getTopProjects {
-		projects(order_by: { project_raise_amount: desc }, limit: 2) {
-			project_name
-			project_pitch
-			project_id
-			project_image
-			project_raise_start
-			project_pitch_key
-			funding_wallet
-		}
-	}
-`
-
-const GET_PROJECTS_ALL = gql`
-	query getCurrentProjects($limit: Int!, $offset: Int!) {
-		projects(order_by: { project_raise_start: desc }, limit: $limit, offset: $offset) {
-			project_name
-			project_pitch
-			project_id
-			project_image
-			project_raise_start
-			project_pitch_key
-			funding_wallet
-		}
-	}
-`
+import { GET_PROJECTS_TOP, GET_PROJECTS_ALL } from 'queries'
 
 const bgColor = '#' + Math.floor(Math.random() * 16777215).toString(16)
 
@@ -80,6 +55,7 @@ interface IProject {
 	project_raise_start: Date
 	project_team: string
 }
+
 interface IGridContent {
 	projects?: IProject[]
 }
@@ -92,6 +68,7 @@ interface IGridParams {
 const GridContentAll = (props) => {
 	const [pageOffset, setPageOffset] = useState(0)
 	const [pageSize, setPageSize] = useState(12)
+
 	const { loading, error, data } = useQuery<IGridContent, IGridParams>(GET_PROJECTS_ALL, {
 		variables: {
 			limit: pageSize,
@@ -100,6 +77,7 @@ const GridContentAll = (props) => {
 	})
 
 	if (loading) return <>Loading...</>
+
 	if (error) return <>Error: ${error.message}</>
 
 	if (data) {
@@ -124,13 +102,15 @@ const GridContentAll = (props) => {
 			</>
 		)
 	}
-	return null
+
+	return <>No results.</>
 }
 
 const GridContentTop = (props) => {
 	const { loading, error, data } = useQuery<IGridContent, IGridParams>(GET_PROJECTS_TOP)
 
 	if (loading) return <>Loading...</>
+
 	if (error) return <>Error: ${error.message}</>
 
 	if (data) {
@@ -157,7 +137,8 @@ const GridContentTop = (props) => {
 			</>
 		)
 	}
-	return null
+
+	return <>No results.</>
 }
 const GridItem = (props) => (
 	<>
@@ -184,15 +165,29 @@ const GridItem = (props) => (
 )
 
 const ContentGrid = (props) => {
+	const { state } = useContext(AppContext)
+	const { READY } = state.app
 	const [searchQuery, setSearchQuery] = useState({})
 
-	const showAll = false
+	const showAll = true
+
+	if (!READY) return <>Connecting...</>
 
 	return (
-		<>
-			<ContentFilter />
+		<Flex flexDirection="row" flexWrap="wrap">
+			{/* if we want it sidebar,
+				change to 1/4 and 3/4
+				for the second mq
+			*/}
+			<Box width={[1]}>
+				<ContentSearch />
+			</Box>
 
-			<Flex flexDirection="row" flexWrap="wrap">
+			<Box width={[1]}>
+				<ContentFilter />
+			</Box>
+
+			<Box width={[1]}>
 				<Box width={1} px={1}>
 					<Box width={1}>
 						<H2>Top Funded</H2>
@@ -212,8 +207,8 @@ const ContentGrid = (props) => {
 						</Flex>
 					</Box>
 				)}
-			</Flex>
-		</>
+			</Box>
+		</Flex>
 	)
 }
 export default ContentGrid
