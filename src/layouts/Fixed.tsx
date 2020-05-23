@@ -9,22 +9,22 @@ import { AppContext } from 'src/hooks/AppContext'
 const Wrapper = styled.div`
 	margin: 0;
 	padding: 0;
-	width: 100vw;
-	// min-height: 100vh;
+	width: 100%;
+	min-height: 100vh;
 `
 
 const Container = styled.div`
 	margin: 0;
 	padding: 0;
-	min-width: 100vw;
-	max-width: 1200px;
-	// min-height: 100vh;
+	width: 100%;
+	max-width: 1280px;
+	min-height: 100vh;
 `
 const Content = styled.div`
 	margin: 0;
 	padding: 0;
-	min-width: 100vw;
-	// min-height: calc(100vh-100px);
+	min-width: 100%;
+	min-height: calc(100vh-100px);
 `
 const Layout = (props) => {
 	const router = useRouter()

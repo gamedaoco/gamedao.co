@@ -38,31 +38,17 @@ Router.events.on('routeChangeComplete', () => {
 	Fathom.trackPageview()
 })
 
-const Application = ({ Component, pageProps, config }) => {
-	const { state } = useContext(AppContext)
-	const { READY } = state.app
-
-	// useEffect(() => {
-	// 	if ( window ) {
-	// 		let tracker = window.document.createElement('script')
-	// 		let firstScript = window.document.getElementsByTagName('script')[0]
-	// 		tracker.defer = true
-	// 		tracker.setAttribute('site', 'XLUUAYWU')
-	// 		tracker.setAttribute('spa', 'auto')
-	// 		tracker.src = 'https://cdn.usefathom.com/script.js'
-	// 		if ( firstScript.parentNode ) firstScript.parentNode.insertBefore(tracker, firstScript)
-	// 	}
-	// }, []);
-
+const Application = ({ Component, pageProps }) => {
 	useEffect(() => {
-		// if (process.env.NODE_ENV === 'production') {
-		Fathom.load()
-		Fathom.trackPageview()
-		// }
+		if (process.env.NODE_ENV === 'production') {
+			Fathom.load()
+			Fathom.trackPageview()
+		}
 	}, [])
 
 	return (
-		<AppProvider>
+		<ThemeProvider theme={theme} key="key">
+			<GlobalStyle />
 			<PageTransition
 				timeout={TIMEOUT}
 				classNames="page-transition"
@@ -74,16 +60,15 @@ const Application = ({ Component, pageProps, config }) => {
 				}}
 				loadingClassNames="loading-indicator"
 			>
-				<ThemeProvider theme={theme} key="key">
-					<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
-						<GlobalStyle />
-						<Apollo>
+				<AppProvider key={1}>
+					<Apollo>
+						<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
 							<Component {...pageProps} />
-						</Apollo>
-					</IconContext.Provider>
-				</ThemeProvider>
+						</IconContext.Provider>
+					</Apollo>
+				</AppProvider>
 			</PageTransition>
-		</AppProvider>
+		</ThemeProvider>
 	)
 }
 
