@@ -15,12 +15,13 @@ import { Flex, Box } from 'rebass/styled-components'
 import Layout from 'layouts'
 
 const Wrapper = styled.div`
-	flex-grow: 1;
-	flex-shrink: 0;
-
-	min-width: 100% !important;
-	min-height: 100vh;
+	overflow: hidden;
+	min-width: 100vw;
 `
+// flex-grow: 1;
+// flex-shrink: 0;
+// height: 100vh;
+// overflow: hidden;
 
 const GuruMeditation = styled.div`
 	flex-grow: 1;
@@ -49,14 +50,12 @@ const GuruMeditation = styled.div`
 `
 
 const Page = ({ req, res }) => (
-	<Layout noHeader>
-		<Wrapper>
-			<GuruMeditation>
-				<p>Software failure.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press left mouse button to continue.</p>
-				<p>Guru Meditation #00000001.00001337</p>
-			</GuruMeditation>
-		</Wrapper>
-	</Layout>
+	<Wrapper>
+		<GuruMeditation>
+			<p>Software failure.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press left mouse button to continue.</p>
+			<p>Guru Meditation #00000001.00001337</p>
+		</GuruMeditation>
+	</Wrapper>
 )
 
 export default Page

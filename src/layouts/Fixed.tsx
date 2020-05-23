@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 	margin: 0;
 	padding: 0;
 	width: 100vw;
-	min-height: 100vh;
+	// min-height: 100vh;
 `
 
 const Container = styled.div`
@@ -18,13 +18,13 @@ const Container = styled.div`
 	padding: 0;
 	min-width: 100vw;
 	max-width: 1200px;
-	min-height: 100vh;
+	// min-height: 100vh;
 `
 const Content = styled.div`
 	margin: 0;
 	padding: 0;
 	min-width: 100vw;
-	min-height: calc(100vh-100px);
+	// min-height: calc(100vh-100px);
 `
 const Layout = (props) => {
 	const router = useRouter()

@@ -19,23 +19,21 @@
 		"AWS_USERPOOL_ID": "eu-central-1_S8Cabr4g4",
 		"AWS_USERPOOL_WEBCLIENT_ID": "5aqrro1fmt7atfmov5ch2uar95",
 		"GQL_URI": "http://localhost:28080/v1/graphql",
-		"GQL_KEY": "myadminsecretkey"
+		"GQL_KEY": "i-HFXk_txMvwZL4Ej7dphgCZ"
 	},
 	"dev": {
-		"MIXPANEL": "",
 		"ETH_URI": "http://localhost:8545",
 		"SUB_URI": "http://localhost:9944",
 		"IPFS_URI": "http://localhost:5001",
-		"GQL_URI": "http://localhost:28080/v1/graphql",
-		"GQL_KEY": "myadminsecretkey"
+		"GQL_URI": "https://graph.zero.io/v1/graphql",
+		"GQL_KEY": "i-HFXk_txMvwZL4Ej7dphgCZ"
 	},
 	"production": {
-		"MIXPANEL": "d7b5745581cf3b11e7d1709ba4d715cd",
 		"ETH_URI": "https://eth.zero.io:8545",
 		"SUB_URI": "https://sub.zero.io:9944",
 		"IPFS_URI": "https://ipfs.zero.io:5001",
 		"GQL_URI": "https://graph.zero.io/v1/graphql",
-		"GQL_KEY": "myadminsecretkey"
+		"GQL_KEY": "i-HFXk_txMvwZL4Ej7dphgCZ"
 	},
 	"identity": {
 		"provider": "fractal.id",
