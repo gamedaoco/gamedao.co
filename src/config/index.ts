@@ -1,4 +1,4 @@
 export const DEV = process.env.NODE_ENV !== 'production'
-export const HOST = DEV ? 'http://localhost:3030/api/' : 'https://gamedao.co/api/'
 export const ENV = DEV ? 'dev' : 'production'
+export const HOST = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api/` : 'http://localhost:3030/api/'
 export const KEY = 'hello'

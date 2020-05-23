@@ -68,9 +68,9 @@ export const GlobalStyle = createGlobalStyle`
 
 	body, .dot {
 		background:
-		linear-gradient( 90deg, ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
-		linear-gradient( ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
-		${grid.dotcol};
+			linear-gradient( 90deg, ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
+			linear-gradient( ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
+			${grid.dotcol};
 		background-size: ${grid.space}px ${grid.space}px;
 	}
 
