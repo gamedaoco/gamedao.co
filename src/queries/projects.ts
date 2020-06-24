@@ -10,6 +10,7 @@ export const GET_PROJECTS_TOP = gql`
 			project_raise_start
 			project_pitch_key
 			funding_wallet
+			funding_category
 		}
 	}
 `
@@ -24,6 +25,7 @@ export const GET_PROJECTS_ALL = gql`
 			project_raise_start
 			project_pitch_key
 			funding_wallet
+			funding_category
 		}
 	}
 `
@@ -38,6 +40,7 @@ export const GET_OPEN_CAMPAIGNS = gql`
 			project_raise_start
 			project_pitch_key
 			funding_wallet
+			funding_category
 		}
 	}
 `
