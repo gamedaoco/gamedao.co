@@ -102,17 +102,14 @@ const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 
 const Newsletter: React.FC = () => {
 	// const { config } = globalState
-
 	// useEffect( () => {
-
 	// console.log( 'mailchimp config', config.MAILCHIMP || 'undefined' )
-
 	// }, [ config ] )
 
 	return (
 		<Wrapper>
 			<MailchimpSubscribe
-				url={''}
+				url={process.env.MAILCHIMP}
 				render={({ subscribe, status, message }) => <CustomForm status={status} message={message} onValidated={(formData) => subscribe(formData)} />}
 			/>
 		</Wrapper>
