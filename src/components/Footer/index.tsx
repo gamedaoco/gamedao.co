@@ -250,7 +250,7 @@ const Footer: React.FC = ({}) => {
 				<Box mx="auto" />
 				<Box px={4} py={1}>
 					<SmallText>
-						{process.env.APP_VERSION} — {process.env.BUILD_TIME} — {process.env.VERCEL_GITLAB_COMMIT_REF || 'local'}
+						{process.env.APP_VERSION} — {process.env.BUILD_TIME} — {process.env.NODE_ENV}
 					</SmallText>
 				</Box>
 			</Flex>

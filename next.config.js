@@ -35,7 +35,6 @@ module.exports = withImages(
 			BUILD_TIMESTAMP: +date,
 			APP_NAME: pkg.name,
 			APP_VERSION: pkg.version,
-			VERCEL_GITLAB_COMMIT_REF: process.env.NODE_ENV,
 		},
 
 		poweredByHeader: 'zero.io loves you',
