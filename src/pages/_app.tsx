@@ -11,11 +11,11 @@
 
 import { useEffect, useContext } from 'react'
 import App from 'next/app'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 import { Apollo } from 'src/lib/Apollo'
 import { AppProvider, AppContext } from 'src/hooks/AppContext'
-import * as Fathom from 'src/lib/Fathom'
+import * as Fathom from 'fathom-client'
 
 import { IconContext } from 'react-icons/lib'
 import { PageTransition } from 'next-page-transitions'
@@ -34,15 +34,27 @@ const theme = {
 	...light,
 }
 
-Router.events.on('routeChangeComplete', () => {
-	Fathom.trackPageview()
-})
+// Router.events.on('routeChangeComplete', () => {
+// 	Fathom.trackPageview()
+// })
 
 const Application = ({ Component, pageProps }) => {
+	const router = useRouter()
+
 	useEffect(() => {
-		if (process.env.NODE_ENV === 'production') {
-			Fathom.load()
+		Fathom.load('XLUUAYWU', {
+			url: '//scorpion.gamedao.co',
+		})
+
+		function onRouteChangeComplete() {
 			Fathom.trackPageview()
+		}
+		// Record a pageview when route changes
+		router.events.on('routeChangeComplete', onRouteChangeComplete)
+
+		// Unassign event listener
+		return () => {
+			router.events.off('routeChangeComplete', onRouteChangeComplete)
 		}
 	}, [])
 

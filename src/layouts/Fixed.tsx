@@ -55,7 +55,7 @@ const Layout = (props) => {
 
 				<meta name="format-detection" content="telephone=no, address=no, email=no" />
 				<link rel="shortcut icon" href="z-control-45-full.png" />
-
+				<link rel="icon" type="image/png" href="z-control-45-full.png" />
 				<title>
 					{path || 'GameDAO'} | {SITE_TITLE}
 				</title>
