@@ -5,7 +5,7 @@ import base from 'src/themes/base'
 import dark from 'src/themes/dark'
 import light from 'src/themes/light'
 
-export const TIMEOUT = 1500
+export const TIMEOUT = 500
 
 const theme = {
 	...base,
@@ -41,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
 	div#__next, html, body {
 		margin: 0;
 		width: 100vw;
-		// height: 100vh;
+		height: 100vh;
 		display: flex;
 		justify-content: center;
 		scroll-behavior: smooth;
@@ -62,15 +62,15 @@ export const GlobalStyle = createGlobalStyle`
 		transition-duration:150ms;
 	}
 
-	html {
+	html, body {
 		background: black;
 	}
 
-	.dot {
+	body, .dot {
 		background:
-		linear-gradient( 90deg, ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
-		linear-gradient( ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
-		${grid.dotcol};
+			linear-gradient( 90deg, ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
+			linear-gradient( ${grid.bgcol} ${grid.space - grid.dotsize}px, transparent 1%) center,
+			${grid.dotcol};
 		background-size: ${grid.space}px ${grid.space}px;
 	}
 

@@ -19,6 +19,7 @@ const loadData = async (resource, env) => {
 		let data = await fetch(HOST + resource, {
 			method: 'POST',
 			headers: {
+				'Access-Control-Allow-Origin': '*',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({ key: 'hello', env }),
@@ -26,7 +27,7 @@ const loadData = async (resource, env) => {
 		data = await data.json()
 		return data
 	} catch (error) {
-		console.log(error)
+		console.error(error)
 	}
 }
 
@@ -91,14 +92,11 @@ const AppContext = createContext<{
 
 const reducer: React.Reducer<AppState, Action> = (state, action) => {
 	switch (action.type) {
-		case 'INIT':
-			if (state.features.data.DEBUG) console.log('init', action.payload)
-			return { ...state }
-
 		case 'CONFIG_LOAD':
 			if (state.features.data.DEBUG) console.log('config load')
 			return {
 				...state,
+				app: { ...state.app, READY: false },
 				config: { ...state.config, loading: true },
 			}
 
@@ -106,7 +104,6 @@ const reducer: React.Reducer<AppState, Action> = (state, action) => {
 			if (state.features.data.DEBUG) console.log('config', action.payload)
 			return {
 				...state,
-				// the app is ready when we have a config
 				app: { ...state.app, READY: true },
 				config: {
 					loading: false,
@@ -155,9 +152,9 @@ const reducer: React.Reducer<AppState, Action> = (state, action) => {
 
 const AppProvider: React.FC = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
+	const { READY } = state.app
 
 	// load config to enable core functionality
-
 	useEffect(() => {
 		dispatch({ type: ActionTypes.CONFIG_LOAD })
 		const loadConfig = async () => await loadData('config', ENV)
@@ -170,7 +167,6 @@ const AppProvider: React.FC = ({ children }) => {
 	}, [])
 
 	// load features
-
 	useEffect(() => {
 		dispatch({ type: ActionTypes.FEATURES_LOAD })
 		const loadFeatures = async () => await loadData('features', ENV)
@@ -181,6 +177,8 @@ const AppProvider: React.FC = ({ children }) => {
 			})
 		})
 	}, [])
+
+	if (!READY) return null
 
 	return <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>
 }
