@@ -12,9 +12,9 @@
 		"DEBUG": false,
 		"SHOW_HEADER": true,
 		"SHOW_FOOTER": true,
-		"SHOW_FOOTER_NAV": true,
+		"SHOW_FOOTER_NAV": false,
 		"SHOW_APPLY": true,
-		"SHOW_CAMPAIGNS": true
+		"SHOW_CAMPAIGNS": false
 	},
 	"production": {
 		"SHOW_APPLY": true,
