@@ -69,6 +69,7 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 		XP: 1337,
 		REP: 49152,
 		PLAY: 13.37,
+		ZERO: 1000,
 		// exchange rates
 		// stable rate should be 1 EUR == 1 PLAY
 		EUR_PLAY: 1,
