@@ -35,6 +35,7 @@ module.exports = withImages(
 			BUILD_TIMESTAMP: +date,
 			APP_NAME: pkg.name,
 			APP_VERSION: pkg.version,
+			VERCEL_GITHUB_COMMIT_REF: process.env.VERCEL_GITHUB_COMMIT_REF || 'unknown',
 		},
 
 		poweredByHeader: 'zero.io loves you',

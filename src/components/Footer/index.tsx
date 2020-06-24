@@ -20,6 +20,8 @@ import { H3, H4, SmallText, Link, Newsletter, Divider } from 'components'
 import logo from 'public/z-h-col.svg'
 import img from 'public/stripes-s.png'
 
+import { ENV } from 'config'
+
 const Container = styled.div`
 	margin: 0;
 	padding: 0;
@@ -250,7 +252,7 @@ const Footer: React.FC = ({}) => {
 				<Box mx="auto" />
 				<Box px={4} py={1}>
 					<SmallText>
-						{process.env.APP_VERSION} — {process.env.BUILD_TIME} — {process.env.NODE_ENV}
+						{process.env.APP_VERSION} — {process.env.BUILD_TIME} — {ENV}
 					</SmallText>
 				</Box>
 			</Flex>
