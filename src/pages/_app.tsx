@@ -15,7 +15,7 @@ import Router from 'next/router'
 
 import { Apollo } from 'src/lib/Apollo'
 import { AppProvider, AppContext } from 'src/hooks/AppContext'
-import * as Fathom from 'src/lib/Fathom'
+import * as Fathom from 'fathom-client'
 
 import { IconContext } from 'react-icons/lib'
 import { PageTransition } from 'next-page-transitions'
@@ -40,8 +40,9 @@ Router.events.on('routeChangeComplete', () => {
 
 const Application = ({ Component, pageProps }) => {
 	useEffect(() => {
-		if (process.env.NODE_ENV === 'production') {
-			Fathom.load()
+		if (process.env.NODE_ENV !== 'production') {
+			Fathom.load('//scorpion.gamedao.co')
+			Fathom.setSiteId('XLUUAYWU')
 			Fathom.trackPageview()
 		}
 	}, [])
