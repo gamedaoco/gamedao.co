@@ -34,25 +34,21 @@ const theme = {
 	...light,
 }
 
-// Router.events.on('routeChangeComplete', () => {
-// 	Fathom.trackPageview()
-// })
-
 const Application = ({ Component, pageProps }) => {
 	const router = useRouter()
 
 	useEffect(() => {
 		Fathom.load('XLUUAYWU', {
-			url: '//scorpion.gamedao.co',
+			url: '//scorpion.gamedao.co/script.js',
+			// includedDomains: ['gamedao.co']
 		})
 
 		function onRouteChangeComplete() {
 			Fathom.trackPageview()
 		}
-		// Record a pageview when route changes
+
 		router.events.on('routeChangeComplete', onRouteChangeComplete)
 
-		// Unassign event listener
 		return () => {
 			router.events.off('routeChangeComplete', onRouteChangeComplete)
 		}
