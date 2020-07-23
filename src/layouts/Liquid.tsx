@@ -55,6 +55,19 @@ const Layout = (props) => {
 				<title>
 					{path || 'GameDAO'} | {SITE_TITLE}
 				</title>
+				<script
+					src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3"
+					async
+					defer
+					dangerouslySetInnerHTML={{
+						__html: `
+							new Crate({
+								server: '273529551483699200', // ZΞRO
+								channel: '732569366431924248' // #🪐web
+							})
+						`,
+					}}
+				/>
 			</Head>
 			<Viewport>
 				{SHOW_HEADER && <Header />}

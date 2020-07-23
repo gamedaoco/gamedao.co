@@ -140,12 +140,27 @@ const GridContentTop = (props) => {
 
 	return <>No results.</>
 }
+
+const CatMap = {
+	lend: '#00ff00',
+	prepaid: '#ff00ff',
+	shares: '#00ffff',
+	grant: '#ffff00',
+}
+
+const Cat = (props) => {
+	return <Tag style={{ backgroundColor: CatMap[props.children] }}>{props.children}</Tag>
+}
+
 const GridItem = (props) => (
 	<>
 		<Link href="/projects/[pid]" as={`/projects/${props.id}`}>
 			<Image src={props.image} variant="grid" />
 			<Heading>{props.name}</Heading>
 			<Text>{props.pitch}</Text>
+
+			<Cat>{props.category}</Cat>
+
 			{/* TODO: iterate tags*/}
 			<div>
 				<Tag>INDIE</Tag>
