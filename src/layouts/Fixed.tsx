@@ -34,7 +34,6 @@ const Layout = (props) => {
 
 	const path = router.pathname.substr(1, 1).toUpperCase() + router.pathname.substr(2)
 	const showDiscord = path === ''
-	console.log('showDiscord', showDiscord)
 
 	return (
 		<Wrapper>
@@ -62,6 +61,7 @@ const Layout = (props) => {
 				<title>
 					{path || 'GameDAO'} | {SITE_TITLE}
 				</title>
+
 				{showDiscord && (
 					<script
 						src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3"
