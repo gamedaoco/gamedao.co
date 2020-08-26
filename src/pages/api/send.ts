@@ -24,7 +24,7 @@ export default async function (req, res) {
 	const content = {
 		to: 'play+contact@zero.io',
 		from: email,
-		subject: `ZERO.IO — Message from ${name || email}`,
+		subject: `GameDAO — Message from ${name || email}`,
 		text: `from:\nname: ${name}\n email: ${email}\nphone: ${phone}\n\n${message}`,
 		html: `<p>from:</p><p>name: ${name}</p><p>email: ${email}</p><p>phone: ${phone}</p><p>${message}</p>`,
 	}
