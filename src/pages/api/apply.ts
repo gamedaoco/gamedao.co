@@ -92,7 +92,7 @@ export default async function (req, res) {
 	}
 
 	try {
-		await discord(content.toString())
+		discord('```' + JSON.stringify(content) + '```')
 		await sgMail.send(content)
 		res.status(200).send('Thank you. The message was successfully sent.')
 	} catch (error) {
