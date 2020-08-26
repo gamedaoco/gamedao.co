@@ -33,6 +33,7 @@ const Layout = (props) => {
 	const { SHOW_HEADER, SHOW_FOOTER } = state.features.data
 
 	const path = router.pathname.substr(1, 1).toUpperCase() + router.pathname.substr(2)
+	const showDiscord = path === ''
 
 	return (
 		<Wrapper>
@@ -60,19 +61,22 @@ const Layout = (props) => {
 				<title>
 					{path || 'GameDAO'} | {SITE_TITLE}
 				</title>
-				<script
-					src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3"
-					async
-					defer
-					dangerouslySetInnerHTML={{
-						__html: `
-							new Crate({
-								server: '273529551483699200', // ZΞRO
-								channel: '732569366431924248' // #🪐web
-							})
-						`,
-					}}
-				/>
+
+				{showDiscord && (
+					<script
+						src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3"
+						async
+						defer
+						dangerouslySetInnerHTML={{
+							__html: `
+								new Crate({
+									server: '273529551483699200', // ZΞRO
+									channel: '732569366431924248' // #🪐web
+								})
+							`,
+						}}
+					/>
+				)}
 			</Head>
 			<Container>
 				{!props.noHeader && SHOW_HEADER && <Header />}

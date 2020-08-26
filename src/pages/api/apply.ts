@@ -10,6 +10,7 @@
 **/
 
 const sgMail = require('@sendgrid/mail')
+import discord from '../../lib/discord'
 
 export default async function (req, res) {
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY)
@@ -91,6 +92,7 @@ export default async function (req, res) {
 	}
 
 	try {
+		discord('```' + content.text + '```')
 		await sgMail.send(content)
 		res.status(200).send('Thank you. The message was successfully sent.')
 	} catch (error) {
