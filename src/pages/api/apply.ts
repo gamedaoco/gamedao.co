@@ -92,8 +92,8 @@ export default async function (req, res) {
 	}
 
 	try {
-		await sgMail.send(content)
 		await discord(content.toString())
+		await sgMail.send(content)
 		res.status(200).send('Thank you. The message was successfully sent.')
 	} catch (error) {
 		console.log('ERROR', error)
