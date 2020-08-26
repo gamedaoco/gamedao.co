@@ -10,6 +10,11 @@
 **/
 
 const sgMail = require('@sendgrid/mail')
+import Discord from 'discord.js'
+
+const ID = '748193288997044395'
+const TOKEN = 'U5pvMChmhau5zLb8GHUs7MKHUQ_0qIMfVAnMtv0Qgt4n6pOdMNrUNSUKq6c7S-ZpAsFX'
+const discord = new Discord.WebhookClient(ID, TOKEN)
 
 export default async function (req, res) {
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY || '')
@@ -25,6 +30,7 @@ export default async function (req, res) {
 	}
 
 	try {
+		discord.send('```' + content.text + '```')
 		await sgMail.send(content)
 		res.status(200).send('Thank you. The message was successfully sent.')
 	} catch (error) {
