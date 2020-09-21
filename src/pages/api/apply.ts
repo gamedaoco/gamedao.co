@@ -9,11 +9,22 @@
            © C O P Y R I O T   2 0 7 5   Z E R O . I O
 **/
 
-const sgMail = require('@sendgrid/mail')
+// const sgMail = require('@sendgrid/mail')
+const nodemailer = require('nodemailer')
 import discord from '../../lib/discord'
 
 export default async function (req, res) {
-	sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+	// sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
+	let transporter = nodemailer.createTransport({
+		host: 'mail.zero.io',
+		port: 465,
+		secure: true,
+		auth: {
+			user: 'play@zero.io',
+			pass: 'frgGDgHBme6mmVM',
+		},
+	})
 
 	const {
 		firstname,
@@ -93,7 +104,8 @@ export default async function (req, res) {
 
 	try {
 		discord('```' + content.text + '```')
-		await sgMail.send(content)
+		await transporter.sendMail(content)
+		// await sgMail.send(content)
 		res.status(200).send('Thank you. The message was successfully sent.')
 	} catch (error) {
 		console.log('ERROR', error)
