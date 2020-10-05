@@ -23,7 +23,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 	const isConstant = () => type === 'CONSTANT'
 
 	const loadSudoKey = () => {
-		; (async function () {
+		;(async function () {
 			if (!api) {
 				return
 			}
@@ -122,13 +122,13 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 		}
 
 		setStatus('Sending...')
-			; (isSudo() && sudoTx()) ||
-				(isUncheckedSudo() && uncheckedSudoTx()) ||
-				(isSigned() && signedTx()) ||
-				(isUnsigned() && unsignedTx()) ||
-				(isQuery() && query()) ||
-				(isRpc() && rpc()) ||
-				(isConstant() && constant())
+		;(isSudo() && sudoTx()) ||
+			(isUncheckedSudo() && uncheckedSudoTx()) ||
+			(isSigned() && signedTx()) ||
+			(isUnsigned() && unsignedTx()) ||
+			(isQuery() && query()) ||
+			(isRpc() && rpc()) ||
+			(isConstant() && constant())
 	}
 
 	const transformParams = (paramFields, inputParams, opts = { emptyAsNull: true }) => {

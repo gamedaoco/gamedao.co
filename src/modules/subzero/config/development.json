@@ -3,5 +3,5 @@
 		"Address": "AccountId",
 		"LookupSource": "AccountId"
 	},
-	"PROVIDER_SOCKET": "wss://lhn1.lactore.de"
+	"PROVIDER_SOCKET": "wss://alphaville-0.zero.io"
 }
