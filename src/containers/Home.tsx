@@ -46,7 +46,7 @@ const Items = (title) => (
 	<>
 		<Box sx={hoverStyle} width={[1, 1, 3 / 4]} pt={4}>
 			<Text fontSize={[4, 5]} pb={12}>
-				Funding is one of the hardest parts in creating games, creative content or becoming a professional gamer.
+				Fundraising is one of the hardest parts in creating games, creative content or becoming a professional gamer.
 			</Text>
 		</Box>
 		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
@@ -64,6 +64,12 @@ const Items = (title) => (
 				Our tools empower creators and communities to run projects they love in a cooperative way.
 			</Text>
 		</Box>
+		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
+			<Text fontSize={[4, 5]} pb={12}>
+				We offer fundraising protocols and governance tools to make your vision come true.
+			</Text>
+		</Box>
+
 		<Box sx={hover} width={[1, 1 / 2]} pt={4}>
 			<Text textAlign="left" fontSize={[2]} fontWeight={600} color="#ff00cc">
 				Get an invite before we launch.
@@ -86,8 +92,19 @@ const Home = () => {
 
 	const t =
 		// 'GameDAO creates crowdfinance tools for video game creators, publishers, investors and gamers.'
-		// 'GameDAO is the next generation democratic transparent crowdfunding platform for video game creators, publishers, investors and gamers.'
-		'GameDAO is democratic and transparent crowdfunding for video game creators, publishers, investors and gamers.'
+
+		// 'GameDAO is the next generation democratic and transparent
+		// crowdfunding platform for video game creators, publishers, gamers and investors.'
+
+		// `GameDAO is a legal DAO wrapped in a cooperative body,
+		// operating regulated finance protocols,
+		// to create democratised organisations and businessmodels
+		// through crowdfunding, tokenised ownership and governance
+		// for video game creators, publishers, investors and gamers.`
+
+		`GameDAO is a community owned decentralised cooperative
+		operating crowdfinance protocols for the videogame industry,
+		for creators, publishers, gamers and investors.`
 
 	useEffect(() => {
 		handleChangeTitle(t)
@@ -102,10 +119,16 @@ const Home = () => {
 		<Container>
 			<Intro>
 				<Flex flexDirection="row" flexWrap="wrap">
+					<Box width={[1]} px={[4, 6]}>
+						<Text textAlign="left" fontSize={[1]} fontWeight={300} p={3} backgroundColor={'darkred'}>
+							We are not conducting any kind of public Tokensale and there is no public sale for a ZERO Protocol or Network Token. The only
+							official communication will come through our discord, zero.io and gamedao.co.
+						</Text>
+					</Box>
 					<Box width={[1]} px={[4, 6]} pt={[2, 4]}>
 						<Wrapper>
 							<Box width={[1]} p={[4]}>
-								<Text textAlign="left" fontSize={[5, 6, 7]} fontWeight={800} pb={2}>
+								<Text textAlign="left" fontSize={[4, 5, 6]} fontWeight={800} pb={2}>
 									{result}
 								</Text>
 							</Box>

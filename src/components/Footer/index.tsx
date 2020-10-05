@@ -208,12 +208,12 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} pt={4} width={[1, 1, 1 / 2, 3 / 5]}>
 					<Text>
-						zero.io is building GameDAO, a decentralised autonomous cooperative, summoned to foster sustainability and improve financing in video
-						games, creative content, digital arts, e-sports and gaming as a profession.
+						zero.io is building GameDAO, a decentralised autonomous cooperative, summoned to foster sustainability and fundraising of video games,
+						creative content, digital arts, e-sports and gaming as a profession.
 						<br />
 						<br />
-						GameDAO provides matchmaking and crowd based funding instruments, connecting and empowering loyal gamers, creators, publishers and
-						investors.
+						GameDAO provides crowd based finance and governance protocols, connecting and empowering loyal gamers, creators, publishers and
+						investors to create next generation economics.
 					</Text>
 				</Box>
 			</Flex>
