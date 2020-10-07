@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Modal, Button, Card } from 'semantic-ui-react'
 
-import { useSubstrate } from './substrate-lib'
+import { useSubstrate } from '../../lib/substrate'
 
 function Main(props) {
 	const { api } = useSubstrate()

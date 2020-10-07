@@ -1,10 +1,10 @@
 /**
-           _______________________________ ________
-           \____    /\_   _____/\______   \\_____  \
-             /     /  |    __)_  |       _/ /   |   \
-            /     /_  |        \ |    |   \/    |    \
-           /_______ \/_______  / |____|_  /\_______  /
-                   \/        \/         \/         \/
+		   _______________________________ ________
+		   \____    /\_   _____/\______   \\_____  \
+			 /     /  |    __)_  |       _/ /   |   \
+			/     /_  |        \ |    |   \/    |    \
+		   /_______ \/_______  / |____|_  /\_______  /
+				   \/        \/         \/         \/
 		   Z  E  R  O  .  I  O     N  E  T  W  O  R  K
 		   © C O P Y R I O T   2 0 7 5   Z E R O . I O
 **/
@@ -22,11 +22,15 @@ import { PageTransition } from 'next-page-transitions'
 import { Loader } from 'components'
 
 import { ThemeProvider } from 'styled-components'
+
 import preset from '@rebass/preset'
+
 import { GlobalStyle, TIMEOUT } from 'src/themes/global'
 import base from 'src/themes/base'
 import dark from 'src/themes/dark'
 import light from 'src/themes/light'
+
+import 'semantic-ui-css/semantic.min.css'
 
 const theme = {
 	...preset,

@@ -3,10 +3,11 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import { Menu, Button, Dropdown, Container, Icon, Image, Label } from 'semantic-ui-react'
 
-import { useSubstrate } from './substrate-lib'
+import { useSubstrate } from '../../lib/substrate'
 
-function Main(props) {
-	const { keyring } = useSubstrate()
+const Main = (props) => {
+
+	const { api, keyring } = useSubstrate()
 	const { setAccountAddress } = props
 	const [accountSelected, setAccountSelected] = useState('')
 
@@ -22,8 +23,8 @@ function Main(props) {
 
 	// Set the initial address
 	useEffect(() => {
-		setAccountAddress(initialAddress)
 		setAccountSelected(initialAddress)
+		setAccountAddress(initialAddress)
 	}, [setAccountAddress, initialAddress])
 
 	const onChange = (address) => {
@@ -45,13 +46,17 @@ function Main(props) {
 		>
 			<Container>
 				<Menu.Menu>
-					<Image src={`${process.env.PUBLIC_URL}/assets/substrate-logo.png`} size="mini" />
+					<Image src="Substrate-Logo.png" size="mini" />
 				</Menu.Menu>
 				<Menu.Menu position="right" style={{ alignItems: 'center' }}>
 					{!accountSelected ? (
 						<span>
 							Add your account with the{' '}
-							<a target="_blank" rel="noopener noreferrer" href="https://github.com/polkadot-js/extension">
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://github.com/polkadot-js/extension"
+							>
 								Polkadot JS Extension
 							</a>
 						</span>
@@ -70,7 +75,9 @@ function Main(props) {
 						}}
 						value={accountSelected}
 					/>
-					<BalanceAnnotation accountSelected={accountSelected} />
+					{api.query.balances && api.query.balances.freeBalance ? (
+						<BalanceAnnotation accountSelected={accountSelected} />
+					) : null}
 				</Menu.Menu>
 			</Container>
 		</Menu>
@@ -98,11 +105,11 @@ function BalanceAnnotation(props) {
 				.catch(console.error)
 
 		return () => unsubscribe && unsubscribe()
-	}, [api, accountSelected])
+	}, [accountSelected, api])
 
 	return accountSelected ? (
 		<Label pointing="left">
-			<Icon name="money" color="green" />
+			<Icon name="money bill alternate" color={accountBalance > 0 ? 'green' : 'red'} />
 			{accountBalance}
 		</Label>
 	) : null

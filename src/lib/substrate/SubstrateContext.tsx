@@ -1,4 +1,5 @@
 import React, { useReducer, useContext } from 'react'
+
 import PropTypes from 'prop-types'
 import jsonrpc from '@polkadot/types/interfaces/jsonrpc'
 import queryString from 'query-string'
@@ -7,7 +8,7 @@ import { ApiPromise, WsProvider } from '@polkadot/api'
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp'
 import keyring from '@polkadot/ui-keyring'
 
-import config from '../config'
+import config from '../../config'
 
 const parsedQuery = queryString.parse(window.location.search)
 const connectedSocket = parsedQuery.rpc || config.PROVIDER_SOCKET
@@ -111,7 +112,7 @@ const loadAccounts = (state, dispatch) => {
 	asyncLoadAccounts()
 }
 
-const SubstrateContext = React.createContext()
+export const SubstrateContext = React.createContext()
 
 const SubstrateContextProvider = (props) => {
 	// filtering props and merge with default param value
@@ -128,11 +129,6 @@ const SubstrateContextProvider = (props) => {
 	return <SubstrateContext.Provider value={state}>{props.children}</SubstrateContext.Provider>
 }
 
-// prop typechecking
-SubstrateContextProvider.propTypes = {
-	socket: PropTypes.string,
-	types: PropTypes.object,
-}
 
 const useSubstrate = () => ({ ...useContext(SubstrateContext) })
 

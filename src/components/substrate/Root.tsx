@@ -1,10 +1,11 @@
 import React, { useState, createRef } from 'react'
-import { Dimmer, Loader, Sticky, Message } from 'semantic-ui-react'
+import { Dimmer, Loader, Sticky, Message, Grid } from 'semantic-ui-react'
 
 import { Container, Row, Col, Button } from '../../lib/atomiclit'
 
-import { SubstrateContextProvider, useSubstrate } from './substrate-lib'
-import { DeveloperConsole } from './substrate-lib/components'
+import { SubstrateContextProvider, useSubstrate } from '../../lib/substrate'
+import { DeveloperConsole } from '../../lib/substrate/components'
+import Divider from '../Divider'
 
 import AccountSelector from './AccountSelector'
 import Balances from './Balances'
@@ -13,9 +14,12 @@ import Events from './Events'
 import Interactor from './Interactor'
 import Metadata from './Metadata'
 import NodeInfo from './NodeInfo'
-import TemplateModule from './TemplateModule'
+// import TemplateModule from './TemplateModule'
 import Transfer from './Transfer'
 import Upgrade from './Upgrade'
+
+
+const Wrapper = props => <div>{props.children}</div>
 
 function Main() {
 	const [accountAddress, setAccountAddress] = useState(null)
@@ -29,54 +33,56 @@ function Main() {
 	)
 
 	const message = (err) => (
-		<Col>
+		<div>
 			<Message negative compact floating header="Error Connecting to Substrate" content={`${JSON.stringify(err)}`} />
-		</Col>
+		</div>
 	)
 
-	if (apiState === 'ERROR') return message(apiError)
+	if (apiState === 'ERROR') return message('Error')
 	else if (apiState !== 'READY') return loader('Connecting to Substrate')
 
 	if (keyringState !== 'READY') {
 		return loader("Loading accounts (please review any extension's authorization)")
 	}
 
-	const contextRef = createRef()
+	const contextRef = createRef<typeof Wrapper>()
 
 	return (
-		<div ref={contextRef}>
-			<Sticky context={contextRef}>
+		<Wrapper ref={contextRef}>
+			<Sticky context={contextRef.current}>
 				<AccountSelector setAccountAddress={setAccountAddress} />
 			</Sticky>
 			<Container>
-				<Row>
-					<Col w="12">
-						<Button>TEST</Button>
-					</Col>
-					<Col>
+				<Grid stackable columns="equal">
+
+					<Grid.Row stretched>
 						<NodeInfo />
 						<Metadata />
 						<BlockNumber />
 						<BlockNumber finalized />
-					</Col>
-					<Col>
+					</Grid.Row>
+
+					<Grid.Row stretched>
 						<Balances />
-					</Col>
-					<Col>
+					</Grid.Row>
+
+					<Grid.Row>
 						<Transfer accountPair={accountPair} />
 						<Upgrade accountPair={accountPair} />
-					</Col>
-					<Col>
+					</Grid.Row>
+
+					<Grid.Row>
 						<Interactor accountPair={accountPair} />
 						<Events />
-					</Col>
-					<Col>
+					</Grid.Row>
+
+					{/*	<Grid.Row>
 						<TemplateModule accountPair={accountPair} />
-					</Col>
-				</Row>
+				</Grid.Row> */}
+				</Grid>
 			</Container>
 			<DeveloperConsole />
-		</div>
+		</Wrapper>
 	)
 }
 

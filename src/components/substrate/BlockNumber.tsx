@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
+
 import { Statistic, Grid, Card, Icon } from 'semantic-ui-react'
 
-import { useSubstrate } from './substrate-lib'
+import { useSubstrate } from '../../lib/substrate'
 
 function Main(props) {
 	const { api } = useSubstrate()
@@ -39,7 +40,7 @@ function Main(props) {
 		<Grid.Column>
 			<Card>
 				<Card.Content textAlign="center">
-					<Statistic label={(finalized ? 'Finalized' : 'Current') + ' Block'} value={blockNumber} />
+					<Statistic label={(finalized ? 'Finalized' : 'Current') + ' Block Number'} value={blockNumber} />
 				</Card.Content>
 				<Card.Content extra>
 					<Icon name="time" /> {blockNumberTimer}
@@ -51,5 +52,7 @@ function Main(props) {
 
 export default function BlockNumber(props) {
 	const { api } = useSubstrate()
-	return api.derive && api.derive.chain && api.derive.chain.bestNumber && api.derive.chain.bestNumberFinalized ? <Main {...props} /> : null
+	return api.derive && api.derive.chain && api.derive.chain.bestNumber && api.derive.chain.bestNumberFinalized ? (
+		<Main {...props} />
+	) : null
 }

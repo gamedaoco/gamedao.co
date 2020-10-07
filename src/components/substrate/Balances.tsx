@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Table, Grid, Button } from 'semantic-ui-react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { useSubstrate } from './substrate-lib'
+import { useSubstrate } from '../../lib/substrate'
 
 export default function Main(props) {
+
 	const { api, keyring } = useSubstrate()
 	const accounts = keyring.getPairs()
 	const [balances, setBalances] = useState({})

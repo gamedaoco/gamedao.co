@@ -1,10 +1,25 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
 import { web3FromSource } from '@polkadot/extension-dapp'
 
 import { useSubstrate } from '../'
 import utils from '../utils'
+
+type Attrs = {
+	[key: string]: any
+}
+
+type ButtonProps = {
+	accountPair
+	label: string
+	setStatus: Function
+	style: null,
+	type: null,
+	attrs: Attrs
+	disabled: boolean
+}
+
+
 
 function TxButton({ accountPair = null, label, setStatus, color = 'blue', style = null, type = 'QUERY', attrs = null, disabled = false }) {
 	// Hooks
@@ -23,7 +38,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 	const isConstant = () => type === 'CONSTANT'
 
 	const loadSudoKey = () => {
-		;(async function () {
+		; (async function () {
 			if (!api) {
 				return
 			}
@@ -122,13 +137,13 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 		}
 
 		setStatus('Sending...')
-		;(isSudo() && sudoTx()) ||
-			(isUncheckedSudo() && uncheckedSudoTx()) ||
-			(isSigned() && signedTx()) ||
-			(isUnsigned() && unsignedTx()) ||
-			(isQuery() && query()) ||
-			(isRpc() && rpc()) ||
-			(isConstant() && constant())
+			; (isSudo() && sudoTx()) ||
+				(isUncheckedSudo() && uncheckedSudoTx()) ||
+				(isSigned() && signedTx()) ||
+				(isUnsigned() && unsignedTx()) ||
+				(isQuery() && query()) ||
+				(isRpc() && rpc()) ||
+				(isConstant() && constant())
 	}
 
 	const transformParams = (paramFields, inputParams, opts = { emptyAsNull: true }) => {
@@ -209,7 +224,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 	)
 }
 
-// prop type checking
+/* prop type checking
 TxButton.propTypes = {
 	accountPair: PropTypes.object,
 	setStatus: PropTypes.func.isRequired,
@@ -220,7 +235,7 @@ TxButton.propTypes = {
 		inputParams: PropTypes.array,
 		paramFields: PropTypes.array,
 	}).isRequired,
-}
+}*/
 
 function TxGroupButton(props) {
 	return (

@@ -1,10 +1,11 @@
-import App from '../components/substrate/DynamicEntry'
+import App from '../components/deck/DynamicEntry'
 import Layout from 'layouts'
+
 
 export default function Index() {
 	return (
-		<Layout>
+		<div>
 			<App />
-		</Layout>
+		</div >
 	)
 }
