@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer, useEffect } from 'react'
 import { DEV, ENV, HOST } from 'src/config'
 
 // default config and types
+import { SubstrateContextProvider } from 'src/lib/substrate'
 
 import configJSON from 'data/config.json'
 import featuresJSON from 'data/features.json'
@@ -180,7 +181,11 @@ const AppProvider: React.FC = ({ children }) => {
 
 	if (!READY) return null
 
-	return <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>
+	return (
+		<SubstrateContextProvider>
+			<AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>
+		</SubstrateContextProvider>
+	)
 }
 
 const useAppContext = () => useContext(AppContext)
