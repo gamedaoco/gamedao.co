@@ -95,7 +95,7 @@ const BalanceAnnotation = (props) => {
 
 const AccountSelector = (props) => {
 	const { api, keyring } = useSubstrate()
-	const { ready, setReady } = useState(false)
+	const [ready, setReady] = useState(false)
 
 	useEffect(() => {
 		if (keyring && keyring.getPairs && api.query) setReady(true)
