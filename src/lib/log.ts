@@ -26,7 +26,7 @@ prefix.apply(log, {
 		const time = _time.toString().replaceAll(':','')
 		const level = colors[_level.toUpperCase() as Levels](_level).padEnd( 5, ' ' )
 		const name = chalk.green(_name)
-		return `${date} ${time} ${level} ${name}:`
+		return `${level} ${name}:`
 	}
 })
 

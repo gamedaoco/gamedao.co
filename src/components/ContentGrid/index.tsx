@@ -181,12 +181,12 @@ const GridItem = (props) => (
 
 const ContentGrid = (props) => {
 	const { state } = useContext(AppContext)
-	const { READY } = state.app
+	const READY = state.app.state === 'READY'
 	const [searchQuery, setSearchQuery] = useState({})
 
 	const showAll = true
 
-	if (!READY) return <>Connecting...</>
+	if (!state !== 'READY') return <>Connecting...</>
 
 	return (
 		<Flex flexDirection="row" flexWrap="wrap">

@@ -58,17 +58,17 @@ import AccountSelector from 'src/components/substrate/AccountSelector'
 // 	)
 // }
 
-// const loader = (text) => (
-// 	<Dimmer active>
-// 		<Loader size="small">{text}</Loader>
-// 	</Dimmer>
-// )
+const loader = (text) => (
+	<Dimmer active>
+		<Loader size="small">{text}</Loader>
+	</Dimmer>
+)
 
-// const message = (err) => (
-// 	<div>
-// 		<Message negative compact floating header="Error connecting to Network" content={`${JSON.stringify(err)}`} />
-// 	</div>
-// )
+const message = (err) => (
+	<div>
+		<Message negative compact floating header="Error connecting to Network" content={`${JSON.stringify(err)}`} />
+	</div>
+)
 
 type HeaderProps = {
 	// email?: string
@@ -87,21 +87,13 @@ const Header: React.FC<HeaderProps> = ({ loggedIn }) => {
 	const { apiState, keyring, keyringState, apiError } = useSubstrate()
 	const accountPair = accountAddress && keyringState === 'READY' && keyring.getPair(accountAddress)
 
-	useEffect(() => {
-		// if SHOW_SIGNIN {
-		// 	if (apiState === 'ERROR') return message('Error')
-		// 	else if (apiState !== 'READY') return loader('Connecting to Network')
-		// 	if (keyringState !== 'READY') {
-		// 		return loader("Loading accounts (please review any extension's authorization)")
-		// 	}
-		// }
-		log.info(`🛸 debug: ${window}`)
-	}, [])
-
-	const height = '100px'
-	const logoHeight = '50px'
-	const logoAlt = 'zero'
-	const logoHref = '/'
+	// useEffect(() => {
+	// 		if (apiState === 'ERROR') return message('Error')
+	// 		else if (apiState !== 'READY') return loader('Connecting to Network')
+	// 		if (keyringState !== 'READY') {
+	// 			return loader("Loading accounts (please review any extension's authorization)")
+	// 		}
+	// }, [])
 
 	// const token = {
 	// 	XP: 1337,
@@ -130,7 +122,7 @@ const Header: React.FC<HeaderProps> = ({ loggedIn }) => {
 
 				<Box order={[1]} pt={4} px={4} py={3} width={[1, 1 / 4]}>
 					<Link href="/">
-						<img src={logo} height={logoHeight} alt={logoAlt} />
+						<img src={logo} height="50px" alt="GameDAO" />
 					</Link>
 				</Box>
 
@@ -153,7 +145,7 @@ const Header: React.FC<HeaderProps> = ({ loggedIn }) => {
 
 						{/*<Link onClick={setAccountSelector(true)}>Sign In</Link>*/}
 
-						{!showAccountSelector && <AccountSelector setAccountAddress={setAccountAddress} />}
+						{/*{showAccountSelector && <AccountSelector setAccountAddress={setAccountAddress} />}*/}
 					</MetaLink>
 				</Box>
 
