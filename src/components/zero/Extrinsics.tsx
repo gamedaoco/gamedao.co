@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Form, Dropdown, Input } from 'semantic-ui-react'
 
-import { useSubstrate } from '../../lib/substrate'
-import { TxButton } from '../../lib/substrate/components'
+import { useSubstrate } from 'src/lib/substrate'
+import { TxButton } from 'src/lib/substrate'
 
 function Main(props) {
 	const { api } = useSubstrate()
@@ -75,14 +75,7 @@ function Main(props) {
 					/>
 				</Form.Field>
 				<Form.Field>
-					<Input
-						onChange={onChange}
-						label="Input"
-						fluid
-						placeholder="May not be needed"
-						state="input"
-						type="text"
-					/>
+					<Input onChange={onChange} label="Input" fluid placeholder="May not be needed" state="input" type="text" />
 				</Form.Field>
 				<Form.Field>
 					<TxButton

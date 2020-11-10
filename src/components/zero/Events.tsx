@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Feed, Grid } from 'semantic-ui-react'
 
-import { useSubstrate } from '../../lib/substrate'
+import { useSubstrate } from 'src/lib/substrate'
 
 function Main(props) {
 	const { api } = useSubstrate()
@@ -9,10 +9,7 @@ function Main(props) {
 
 	useEffect(() => {
 		// Filter some event from feed
-		const filter = [
-			'system:ExtrinsicSuccess:: (phase={"ApplyExtrinsic":0})',
-			'system:ExtrinsicSuccess:: (phase={"ApplyExtrinsic":1})',
-		]
+		const filter = ['system:ExtrinsicSuccess:: (phase={"ApplyExtrinsic":0})', 'system:ExtrinsicSuccess:: (phase={"ApplyExtrinsic":1})']
 
 		api.query.system.events((events) => {
 			// loop through the Vec<EventRecord>

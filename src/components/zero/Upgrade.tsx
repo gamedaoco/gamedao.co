@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Input, Grid } from 'semantic-ui-react'
 
-import { useSubstrate } from '../../lib/substrate'
-import { TxButton } from '../../lib/substrate/components'
+import { useSubstrate } from 'src/lib/substrate'
+import { TxButton } from 'src/lib/substrate'
 
 function Main(props) {
 	const { api } = useSubstrate()
@@ -35,13 +35,7 @@ function Main(props) {
 			<h1>Upgrade Runtime</h1>
 			<Form>
 				<Form.Field>
-					<Input
-						type="file"
-						id="file"
-						label="Wasm File"
-						accept=".wasm"
-						onChange={(e) => handleFileChosen(e.target.files[0])}
-					/>
+					<Input type="file" id="file" label="Wasm File" accept=".wasm" onChange={(e) => handleFileChosen(e.target.files[0])} />
 				</Form.Field>
 				<Form.Field>
 					<TxButton

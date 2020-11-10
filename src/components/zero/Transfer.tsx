@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Input, Grid, Label, Icon } from 'semantic-ui-react'
 
-import { useSubstrate } from '../../lib/substrate'
-import { TxButton } from '../../lib/substrate/components'
+import { useSubstrate } from 'src/lib/substrate'
+import { TxButton } from 'src/lib/substrate'
 
 function Main(props) {
 	const [status, setStatus] = useState(null)

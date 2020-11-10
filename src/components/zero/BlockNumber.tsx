@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
+import { useSubstrate } from 'src/lib/substrate'
 import { Statistic, Grid, Card, Icon } from 'semantic-ui-react'
-
-import { useSubstrate } from '../../lib/substrate'
 
 function Main(props) {
 	const { api } = useSubstrate()
@@ -52,7 +50,5 @@ function Main(props) {
 
 export default function BlockNumber(props) {
 	const { api } = useSubstrate()
-	return api.derive && api.derive.chain && api.derive.chain.bestNumber && api.derive.chain.bestNumberFinalized ? (
-		<Main {...props} />
-	) : null
+	return api.derive && api.derive.chain && api.derive.chain.bestNumber && api.derive.chain.bestNumberFinalized ? <Main {...props} /> : null
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Icon, Grid } from 'semantic-ui-react'
 
-import { useSubstrate } from '../../lib/substrate'
+import { useSubstrate } from 'src/lib/substrate'
 
 function Main(props) {
 	const { api } = useSubstrate()
@@ -10,11 +10,7 @@ function Main(props) {
 	useEffect(() => {
 		const getInfo = async () => {
 			try {
-				const [chain, nodeName, nodeVersion] = await Promise.all([
-					api.rpc.system.chain(),
-					api.rpc.system.name(),
-					api.rpc.system.version(),
-				])
+				const [chain, nodeName, nodeVersion] = await Promise.all([api.rpc.system.chain(), api.rpc.system.name(), api.rpc.system.version()])
 				setNodeInfo({ chain, nodeName, nodeVersion })
 			} catch (e) {
 				console.error(e)
@@ -32,10 +28,7 @@ function Main(props) {
 						<span>{nodeInfo.chain}</span>
 					</Card.Meta>
 					<Card.Description>
-						Built using the{' '}
-						<a href="https://github.com/substrate-developer-hub/substrate-front-end-template">
-							Substrate Front End Template
-						</a>
+						Built using the <a href="https://github.com/substrate-developer-hub/substrate-front-end-template">Substrate Front End Template</a>
 					</Card.Description>
 				</Card.Content>
 				<Card.Content extra>
@@ -48,7 +41,5 @@ function Main(props) {
 
 export default function NodeInfo(props) {
 	const { api } = useSubstrate()
-	return api.rpc && api.rpc.system && api.rpc.system.chain && api.rpc.system.name && api.rpc.system.version ? (
-		<Main {...props} />
-	) : null
+	return api.rpc && api.rpc.system && api.rpc.system.chain && api.rpc.system.name && api.rpc.system.version ? <Main {...props} /> : null
 }

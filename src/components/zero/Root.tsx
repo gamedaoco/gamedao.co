@@ -1,25 +1,21 @@
 import React, { useState, createRef } from 'react'
+
+import { useSubstrate } from 'src/lib/substrate'
+import { SubstrateConsole } from 'src/lib/substrate'
+
 import { Dimmer, Loader, Sticky, Message, Grid } from 'semantic-ui-react'
+import { Container, Row, Col, Button } from 'src/components'
 
-import { Container, Row, Col, Button } from '../../lib/atomiclit'
-
-import { SubstrateContextProvider, useSubstrate } from '../../lib/substrate'
-import { DeveloperConsole } from '../../lib/substrate/components'
-import Divider from '../Divider'
-
-import AccountSelector from './AccountSelector'
 import Balances from './Balances'
 import BlockNumber from './BlockNumber'
 import Events from './Events'
 import Interactor from './Interactor'
 import Metadata from './Metadata'
 import NodeInfo from './NodeInfo'
-// import TemplateModule from './TemplateModule'
 import Transfer from './Transfer'
 import Upgrade from './Upgrade'
 
-
-const Wrapper = props => <div>{props.children}</div>
+const Wrapper = (props) => <div>{props.children}</div>
 
 function Main() {
 	const [accountAddress, setAccountAddress] = useState(null)
@@ -49,12 +45,8 @@ function Main() {
 
 	return (
 		<Wrapper ref={contextRef}>
-			<Sticky context={contextRef.current}>
-				<AccountSelector setAccountAddress={setAccountAddress} />
-			</Sticky>
 			<Container>
 				<Grid stackable columns="equal">
-
 					<Grid.Row stretched>
 						<NodeInfo />
 						<Metadata />
@@ -75,13 +67,9 @@ function Main() {
 						<Interactor accountPair={accountPair} />
 						<Events />
 					</Grid.Row>
-
-					{/*	<Grid.Row>
-						<TemplateModule accountPair={accountPair} />
-				</Grid.Row> */}
 				</Grid>
 			</Container>
-			<DeveloperConsole />
+			<SubstrateConsole />
 		</Wrapper>
 	)
 }
