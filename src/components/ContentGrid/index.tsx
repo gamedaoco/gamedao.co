@@ -186,7 +186,7 @@ const ContentGrid = (props) => {
 
 	const showAll = true
 
-	if (!state !== 'READY') return <>Connecting...</>
+	if (!READY) return <>Connecting...</>
 
 	return (
 		<Flex flexDirection="row" flexWrap="wrap">
