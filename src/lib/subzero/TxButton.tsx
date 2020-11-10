@@ -1,9 +1,8 @@
 import React from 'react'
+import { utils, useSubstrate } from './'
+
 import { Button } from 'semantic-ui-react'
 import { web3FromSource } from '@polkadot/extension-dapp'
-
-import { useSubstrate } from '../'
-import utils from '../utils'
 
 type Attrs = {
 	[key: string]: any
@@ -13,15 +12,24 @@ type ButtonProps = {
 	accountPair
 	label: string
 	setStatus: Function
-	style: null,
-	type: null,
-	attrs: Attrs
+	style: string|null
+	type: string|null
+	attrs: Attrs|null
 	disabled: boolean
+	color: string
 }
 
+const TxButton = ({
+	accountPair = null,
+	label,
+	setStatus,
+	color = 'blue',
+	style = null,
+	type = 'QUERY',
+	attrs = null,
+	disabled = false
+}: ButtonProps) {
 
-
-function TxButton({ accountPair = null, label, setStatus, color = 'blue', style = null, type = 'QUERY', attrs = null, disabled = false }) {
 	// Hooks
 	const { api } = useSubstrate()
 	const [unsub, setUnsub] = React.useState(null)
