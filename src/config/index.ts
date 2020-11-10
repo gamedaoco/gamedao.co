@@ -10,10 +10,8 @@ const envVars = envVarNames.reduce((mem, n) => {
 	return mem
 }, {})
 
-
 const config = { ...configCommon, ...configEnv, ...envVars }
 export default config
-
 
 export const DEV = process.env.VERCEL_GITLAB_COMMIT_REF !== 'production'
 export const ENV = DEV ? 'dev' : 'production'
@@ -22,6 +20,4 @@ export const HOST =
 	typeof window !== 'undefined'
 		? window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/api/'
 		: '/api/'
-
-
-
+export const SUBZERO = 'wss://alphaville-0.zero.io'
