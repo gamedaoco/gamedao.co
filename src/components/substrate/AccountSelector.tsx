@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useSubzero } from 'src/hooks/SubzeroContext'
+import { useSubstrate } from 'src/hooks/SubstrateContext'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Menu, Button, Dropdown, Container, Icon, Image, Label } from 'semantic-ui-react'
 
 const Component = (props) => {
-	const { api, keyring } = useSubzero()
+	const { api, keyring } = useSubstrate()
 	const { setAccountAddress } = props
 	const [accountSelected, setAccountSelected] = useState('')
 
@@ -95,7 +95,13 @@ const BalanceAnnotation = (props) => {
 
 const AccountSelector = (props) => {
 	const { api, keyring } = useSubstrate()
-	return keyring.getPairs && api.query ? <Component {...props} /> : null
+	const { ready, setReady } = useState(false)
+
+	useEffect(() => {
+		if (keyring && keyring.getPairs && api.query) setReady(true)
+	}, [])
+
+	return ready ? <Component {...props} /> : null
 }
 
 export default AccountSelector
