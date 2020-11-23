@@ -1,6 +1,6 @@
 {
-	"name": "play-zero",
-	"description": "a dao for videogames — landingpage",
+	"name": "gamedao",
+	"description": "a crowdfinance dao for videogames, content and esports",
 	"version": "0.1.2",
 	"license": "UNLICENSED",
 	"scripts": {
