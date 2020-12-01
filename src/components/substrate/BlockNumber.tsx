@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSubstrate } from 'src/hooks/SubstrateContext'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import { Statistic, Grid, Card, Icon } from 'semantic-ui-react'
 
 function Main(props) {

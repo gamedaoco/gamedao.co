@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSubstrate } from 'src/hooks/SubstrateContext'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Menu, Button, Dropdown, Container, Icon, Image, Label } from 'semantic-ui-react'
 

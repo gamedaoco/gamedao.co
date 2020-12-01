@@ -1,6 +1,6 @@
 import React, { useState, createRef } from 'react'
 
-import { useSubstrate } from 'src/hooks/SubstrateContext'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import { SubstrateConsole } from 'src/lib/substrate'
 
 import { Dimmer, Loader, Sticky, Message, Grid } from 'semantic-ui-react'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSubstrate } from 'src/hooks/SubstrateContext'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import { TxButton } from 'src/lib/substrate'
 import { Grid, Form, Dropdown, Input } from 'semantic-ui-react'
 

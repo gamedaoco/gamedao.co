@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Input, Grid, Label, Icon } from 'semantic-ui-react'
 
-import { useSubstrate } from 'src/hooks/SubstrateContext'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import { TxButton } from 'src/lib/substrate'
 
 function Main(props) {
