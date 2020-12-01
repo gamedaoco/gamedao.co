@@ -10,10 +10,12 @@ const log = Logger('$ZERO')
 
 import { ApiPromise, WsProvider } from '@polkadot/api'
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp'
-import jsonrpc from '@polkadot/types/interfaces/jsonrpc'
 import { DefinitionRpcExt, RegistryTypes } from '@polkadot/types/types'
 import keyring, { Keyring } from '@polkadot/ui-keyring'
 import { formatBalance } from '@polkadot/util'
+
+// TODO: replace with generated interfaces...
+import jsonrpc from '@polkadot/types/interfaces/jsonrpc'
 
 // type registry
 
@@ -39,7 +41,7 @@ type KeyringState = 'READY' | 'ERROR'
 type JSONRPC = Record<string, Record<string, DefinitionRpcExt>>
 
 export type State = {
-	endpoint?: string | string[]
+	endpoint: string | string[]
 	types?: RegistryTypes
 	rpc: JSONRPC
 	api?: ApiPromise
@@ -54,8 +56,7 @@ export type State = {
 // TODO: pull from config
 
 const INITIAL_STATE: State = {
-	// endpoint: SUBZERO,
-	// types: ZeroTypes,
+	endpoint: '',
 	rpc: { ...jsonrpc },
 }
 
@@ -150,6 +151,7 @@ const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
 	}
 
 	const [state, dispatch] = useReducer(reducer, initState)
+
 	const [ss58Format, setSs58Format] = useState<number>(DEFAULT_SS58.toNumber())
 	const { rpc, types, apiState, api, endpoint } = state
 
