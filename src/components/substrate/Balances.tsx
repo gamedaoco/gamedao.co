@@ -10,7 +10,7 @@ export default function Main(props) {
 
 	useEffect(() => {
 		const addresses = keyring.getPairs().map((account) => account.address)
-		let unsubscribeAll = null
+		let unsubscribeAll = () => {}
 
 		api.query.system.account
 			.multi(addresses, (balances) => {

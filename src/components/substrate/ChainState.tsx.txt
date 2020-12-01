@@ -5,16 +5,16 @@ import { Grid, Form, Dropdown, Input } from 'semantic-ui-react'
 
 function Main(props) {
 	const { api } = useSubstrate()
-	const [modulesList, setModulesList] = useState([])
-	const [status, setStatus] = useState(null)
-	const [storageItemsList, setStorageItemsList] = useState([])
+	const [ modulesList, setModulesList ] = useState([])
+	const [ status, setStatus ] = useState(null)
+	const [ storageItemsList, setStorageItemsList ] = useState([])
 
 	const initialState = {
 		module: '',
 		storageItem: '',
 		input: '',
 	}
-	const [formState, setFormState] = useState(initialState)
+	const [ formState, setFormState ] = useState(initialState)
 	const { module, storageItem, input } = formState
 
 	useEffect(() => {

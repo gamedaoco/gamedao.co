@@ -4,16 +4,17 @@ import { useSubstrate } from 'src/hooks/SubstrateContext'
 import { SubstrateConsole } from 'src/lib/substrate'
 
 import { Dimmer, Loader, Sticky, Message, Grid } from 'semantic-ui-react'
-import { Container, Row, Col, Button } from 'src/components'
+import { Container, Button } from 'src/components'
 
 import Balances from './Balances'
 import BlockNumber from './BlockNumber'
-import Events from './Events'
-import Interactor from './Interactor'
-import Metadata from './Metadata'
-import NodeInfo from './NodeInfo'
-import Transfer from './Transfer'
-import Upgrade from './Upgrade'
+
+// import Events from './Events'
+// import Interactor from './Interactor'
+// import Metadata from './Metadata'
+// import NodeInfo from './NodeInfo'
+// import Transfer from './Transfer'
+// import Upgrade from './Upgrade'
 
 const Wrapper = (props) => <div>{props.children}</div>
 
@@ -48,8 +49,10 @@ function Main() {
 			<Container>
 				<Grid stackable columns="equal">
 					<Grid.Row stretched>
+						{/*
 						<NodeInfo />
 						<Metadata />
+*/}
 						<BlockNumber />
 						<BlockNumber finalized />
 					</Grid.Row>
@@ -58,6 +61,7 @@ function Main() {
 						<Balances />
 					</Grid.Row>
 
+					{/*
 					<Grid.Row>
 						<Transfer accountPair={accountPair} />
 						<Upgrade accountPair={accountPair} />
@@ -67,19 +71,18 @@ function Main() {
 						<Interactor accountPair={accountPair} />
 						<Events />
 					</Grid.Row>
+*/}
 				</Grid>
 			</Container>
 			<SubstrateConsole />
 		</Wrapper>
 	)
 }
+// <SubstrateContextProvider>
+// </SubstrateContextProvider>
 
 export const Root = function Root() {
-	return (
-		<SubstrateContextProvider>
-			<Main />
-		</SubstrateContextProvider>
-	)
+	return <Main />
 }
 
 export default Root

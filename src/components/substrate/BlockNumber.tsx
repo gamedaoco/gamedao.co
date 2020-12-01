@@ -11,7 +11,7 @@ function Main(props) {
 	const bestNumber = finalized ? api.derive.chain.bestNumberFinalized : api.derive.chain.bestNumber
 
 	useEffect(() => {
-		let unsubscribeAll = null
+		let unsubscribeAll = () => {}
 
 		bestNumber((number) => {
 			setBlockNumber(number.toNumber())
