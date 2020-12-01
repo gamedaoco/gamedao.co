@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 import { Logger } from 'src/lib/log'
 const log = Logger('$HEADER')
 
-import { AppContext } from 'src/hooks/AppContext'
+import { AppContext } from 'src/context/AppContext'
 
 import { useQuery } from '@apollo/react-hooks'
 import { GET_FX } from 'src/queries'
@@ -30,7 +30,7 @@ import { RatesWrapper, Container, MetaLink, User, Task, Right } from './styles'
 import logo from 'public/z-ctrl-45-col.svg'
 import img from 'public/stripes-s.png'
 
-import { useSubstrate } from 'src/hooks/SubstrateContext'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import AccountSelector from 'src/components/substrate/AccountSelector'
 
 // const Rates = () => {
