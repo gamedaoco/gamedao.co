@@ -5,7 +5,7 @@
 	"license": "UNLICENSED",
 	"scripts": {
 		"dev": "next -p 3030",
-		"build": "next build",
+		"build": "yarn patch && next build",
 		"start": "next start",
 		"export": "next export",
 		"format": "prettier --loglevel error --write 'src/**/*.{js,json,jsx,ts,tsx}'",

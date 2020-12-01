@@ -1,5 +1,5 @@
 #!/bin/bash
 # kudos to dappforce / subsocial
 
-echo "Patch Polkadot JS files with 'window'"
+echo "Patching PolkadotJS files..."
 cp -rf ./patch/polkadot-ext.js ./node_modules/@polkadot/extension-dapp/index.js
