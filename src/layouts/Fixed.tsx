@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { Header, Footer } from 'components'
 
-import { AppContext } from 'src/hooks/AppContext'
+import { AppContext } from 'src/context/AppContext'
 
 const Wrapper = styled.div`
 	margin: 0;

@@ -14,8 +14,8 @@ import App from 'next/app'
 import { useRouter } from 'next/router'
 
 import { Apollo } from 'src/lib/Apollo'
-import { AppProvider } from 'src/hooks/AppContext'
-import { SubstrateProvider } from 'src/hooks/SubstrateContext'
+import { AppProvider } from 'src/context/AppContext'
+import { SubstrateProvider } from 'src/context/SubstrateContext'
 
 import * as Fathom from 'fathom-client'
 

@@ -17,7 +17,7 @@ import styled from 'styled-components'
 import { Flex, Box } from 'rebass'
 import { Header, Footer, Content, H1 } from 'components'
 
-import { AppContext } from 'src/hooks/AppContext'
+import { AppContext } from 'src/context/AppContext'
 
 const Wrapper = styled.div`
 	margin: 0;

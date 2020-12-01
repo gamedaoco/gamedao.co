@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useReducer, useEffect, useCallback } from 'react'
+import { createContext, useContext, useState, useReducer, useEffect, useCallback, Dispatch } from 'react'
 import { DEV, ENV, SUBZERO } from 'src/config'
 
 // logging
@@ -54,7 +54,7 @@ export type State = {
 // TODO: pull from config
 
 const INITIAL_STATE: State = {
-	endpoint: SUBZERO,
+	// endpoint: SUBZERO,
 	// types: ZeroTypes,
 	rpc: { ...jsonrpc },
 }
@@ -71,7 +71,8 @@ const SubstrateContext = createContext<{
 
 // reducer
 
-const reducer: React.Reducer<State, Action> = (state, action) => {
+const reducer = (state: State, action: Action) => {
+	// const reducer: React.Reducer<State, Action> = (state, action) => {
 	switch (action.type) {
 		case 'RESET_SOCKET':
 			log.info(`🧹 reset network`)
@@ -139,7 +140,9 @@ type SubstrateProviderProps = React.PropsWithChildren<{
 	types?: RegistryTypes
 }>
 
-const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
+const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
+	// const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
+
 	const initState: State = {
 		...INITIAL_STATE,
 		endpoint: props.endpoint || INITIAL_STATE.endpoint,
@@ -254,8 +257,9 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 	}, [apiState])
 
 	// provider
+	const value = [state, dispatch]
 
-	return <SubstrateContext.Provider value={[state, dispatch]}>{props.children}</SubstrateContext.Provider>
+	return <SubstrateContext.Provider value={value}>{props.children}</SubstrateContext.Provider>
 }
 
 const useSubstrate = () => useContext(SubstrateContext)[0]
