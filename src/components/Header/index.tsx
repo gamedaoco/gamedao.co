@@ -17,10 +17,14 @@ import { useRouter } from 'next/router'
 import { Logger } from 'src/lib/log'
 const log = Logger('$HEADER')
 
-import { AppContext } from 'src/context/AppContext'
+// context
 
+import { AppContext } from 'src/context/AppContext'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_FX } from 'src/queries'
+
+// ui
 
 import styled from 'styled-components'
 import { Dimmer, Loader, Sticky, Message, Grid } from 'semantic-ui-react'
@@ -30,8 +34,7 @@ import { RatesWrapper, Container, MetaLink, User, Task, Right } from './styles'
 import logo from 'public/z-ctrl-45-col.svg'
 import img from 'public/stripes-s.png'
 
-import { useSubstrate } from 'src/context/SubstrateContext'
-import AccountSelector from 'src/components/substrate/AccountSelector'
+// import AccountSelector from 'src/components/substrate/AccountSelector'
 
 // const Rates = () => {
 // 	const { loading, error, data } = useQuery(GET_FX)
@@ -58,17 +61,17 @@ import AccountSelector from 'src/components/substrate/AccountSelector'
 // 	)
 // }
 
-const loader = (text) => (
-	<Dimmer active>
-		<Loader size="small">{text}</Loader>
-	</Dimmer>
-)
+// const loader = (text) => (
+// 	<Dimmer active>
+// 		<Loader size="small">{text}</Loader>
+// 	</Dimmer>
+// )
 
-const message = (err) => (
-	<div>
-		<Message negative compact floating header="Error connecting to Network" content={`${JSON.stringify(err)}`} />
-	</div>
-)
+// const message = (err) => (
+// 	<div>
+// 		<Message negative compact floating header="Error connecting to Network" content={`${JSON.stringify(err)}`} />
+// 	</div>
+// )
 
 type HeaderProps = {
 	// email?: string
@@ -81,11 +84,11 @@ const Header: React.FC<HeaderProps> = ({ loggedIn }) => {
 	const { state } = useContext(AppContext)
 	const { SHOW_CAMPAIGNS, SHOW_APPLY, SHOW_FX, SHOW_SIGNIN } = state.features.data
 
-	const [showAccountSelector, setAccountSelector] = useState(false)
-	const [accountAddress, setAccountAddress] = useState(null)
+	// const [showAccountSelector, setAccountSelector] = useState(false)
+	// const [accountAddress, setAccountAddress] = useState(null)
 
-	const { apiState, keyring, keyringState, apiError } = useSubstrate()
-	const accountPair = accountAddress && keyringState === 'READY' && keyring.getPair(accountAddress)
+	// const { apiState, keyring, keyringState, apiError } = useSubstrate()
+	// const accountPair = accountAddress && keyringState === 'READY' && keyring.getPair(accountAddress)
 
 	// useEffect(() => {
 	// 		if (apiState === 'ERROR') return message('Error')
@@ -140,11 +143,10 @@ const Header: React.FC<HeaderProps> = ({ loggedIn }) => {
 						{loggedIn && <Link href="/doc/help">Helpdesk</Link>}
 						{!loggedIn && <Link href="/contact">Contact</Link>}
 
-						{/*!loggedIn && <Link href="/account/signup">Sign Up</Link>*/}
+						{!loggedIn && <Link href="/account/signup">Sign Up</Link>}
 						{loggedIn && <Link href="/account/signout">Sign&nbsp;Out</Link>}
 
 						{/*<Link onClick={setAccountSelector(true)}>Sign In</Link>*/}
-
 						{/*{showAccountSelector && <AccountSelector setAccountAddress={setAccountAddress} />}*/}
 					</MetaLink>
 				</Box>

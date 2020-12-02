@@ -13,7 +13,7 @@ import { useEffect, useContext } from 'react'
 import App from 'next/app'
 import { useRouter } from 'next/router'
 
-import { Apollo } from 'src/lib/Apollo'
+import { Apollo } from 'src/context/Apollo'
 import { AppProvider } from 'src/context/AppContext'
 import { SubstrateProvider } from 'src/context/SubstrateContext'
 
