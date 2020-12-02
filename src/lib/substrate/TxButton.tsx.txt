@@ -1,18 +1,42 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { useSubstrate } from 'src/context/SubstrateContext'
+import { utils } from './'
+
 import { Button } from 'semantic-ui-react'
 import { web3FromSource } from '@polkadot/extension-dapp'
 
-import { useSubstrate } from '../'
-import utils from '../utils'
+type Attrs = {
+	[key: string]: any
+}
 
-function TxButton({ accountPair = null, label, setStatus, color = 'blue', style = null, type = 'QUERY', attrs = null, disabled = false }) {
+type ButtonProps = {
+	accountPair
+	label: string
+	setStatus: Function
+	style: string|null
+	type: string|null
+	attrs: Attrs|null
+	disabled: boolean
+	color: string
+}
+
+const TxButton = ({
+	accountPair = null,
+	label,
+	setStatus,
+	color = 'blue',
+	style = null,
+	type = 'QUERY',
+	attrs = null,
+	disabled = false
+}: ButtonProps) => {
+
 	// Hooks
 	const { api } = useSubstrate()
 	const [unsub, setUnsub] = React.useState(null)
 	const [sudoKey, setSudoKey] = React.useState(null)
 
-	const { palletRpc, callable, inputParams, paramFields } = attrs
+	const { rpc, callable, inputParams, paramFields } = attrs
 
 	const isQuery = () => type === 'QUERY'
 	const isSudo = () => type === 'SUDO-TX'
@@ -23,7 +47,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 	const isConstant = () => type === 'CONSTANT'
 
 	const loadSudoKey = () => {
-		;(async function () {
+		; (async function () {
 			if (!api) {
 				return
 			}
@@ -62,7 +86,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 		const fromAcct = await getFromAcct()
 		const transformed = transformParams(paramFields, inputParams)
 		// transformed can be empty parameters
-		const txExecute = transformed ? api.tx.sudo.sudo(api.tx[palletRpc][callable](...transformed)) : api.tx.sudo.sudo(api.tx[palletRpc][callable]())
+		const txExecute = transformed ? api.tx.sudo.sudo(api.tx[rpc][callable](...transformed)) : api.tx.sudo.sudo(api.tx[rpc][callable]())
 
 		const unsub = txExecute.signAndSend(fromAcct, txResHandler).catch(txErrHandler)
 		setUnsub(() => unsub)
@@ -70,7 +94,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 
 	const uncheckedSudoTx = async () => {
 		const fromAcct = await getFromAcct()
-		const txExecute = api.tx.sudo.sudoUncheckedWeight(api.tx[palletRpc][callable](...inputParams), 0)
+		const txExecute = api.tx.sudo.sudoUncheckedWeight(api.tx[rpc][callable](...inputParams), 0)
 
 		const unsub = txExecute.signAndSend(fromAcct, txResHandler).catch(txErrHandler)
 		setUnsub(() => unsub)
@@ -81,7 +105,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 		const transformed = transformParams(paramFields, inputParams)
 		// transformed can be empty parameters
 
-		const txExecute = transformed ? api.tx[palletRpc][callable](...transformed) : api.tx[palletRpc][callable]()
+		const txExecute = transformed ? api.tx[rpc][callable](...transformed) : api.tx[rpc][callable]()
 
 		const unsub = await txExecute.signAndSend(fromAcct, txResHandler).catch(txErrHandler)
 		setUnsub(() => unsub)
@@ -90,7 +114,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 	const unsignedTx = async () => {
 		const transformed = transformParams(paramFields, inputParams)
 		// transformed can be empty parameters
-		const txExecute = transformed ? api.tx[palletRpc][callable](...transformed) : api.tx[palletRpc][callable]()
+		const txExecute = transformed ? api.tx[rpc][callable](...transformed) : api.tx[rpc][callable]()
 
 		const unsub = await txExecute.send(txResHandler).catch(txErrHandler)
 		setUnsub(() => unsub)
@@ -100,18 +124,18 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 
 	const query = async () => {
 		const transformed = transformParams(paramFields, inputParams)
-		const unsub = await api.query[palletRpc][callable](...transformed, queryResHandler)
+		const unsub = await api.query[rpc][callable](...transformed, queryResHandler)
 		setUnsub(() => unsub)
 	}
 
 	const rpc = async () => {
 		const transformed = transformParams(paramFields, inputParams, { emptyAsNull: false })
-		const unsub = await api.rpc[palletRpc][callable](...transformed, queryResHandler)
+		const unsub = await api.rpc[rpc][callable](...transformed, queryResHandler)
 		setUnsub(() => unsub)
 	}
 
 	const constant = () => {
-		const result = api.consts[palletRpc][callable]
+		const result = api.consts[rpc][callable]
 		result.isNone ? setStatus('None') : setStatus(result.toString())
 	}
 
@@ -122,13 +146,13 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 		}
 
 		setStatus('Sending...')
-		;(isSudo() && sudoTx()) ||
-			(isUncheckedSudo() && uncheckedSudoTx()) ||
-			(isSigned() && signedTx()) ||
-			(isUnsigned() && unsignedTx()) ||
-			(isQuery() && query()) ||
-			(isRpc() && rpc()) ||
-			(isConstant() && constant())
+			; (isSudo() && sudoTx()) ||
+				(isUncheckedSudo() && uncheckedSudoTx()) ||
+				(isSigned() && signedTx()) ||
+				(isUnsigned() && unsignedTx()) ||
+				(isQuery() && query()) ||
+				(isRpc() && rpc()) ||
+				(isConstant() && constant())
 	}
 
 	const transformParams = (paramFields, inputParams, opts = { emptyAsNull: true }) => {
@@ -202,7 +226,7 @@ function TxButton({ accountPair = null, label, setStatus, color = 'blue', style 
 			style={style}
 			type="submit"
 			onClick={transaction}
-			disabled={disabled || !palletRpc || !callable || !allParamsFilled() || ((isSudo() || isUncheckedSudo()) && !isSudoer(accountPair))}
+			disabled={disabled || !rpc || !callable || !allParamsFilled() || ((isSudo() || isUncheckedSudo()) && !isSudoer(accountPair))}
 		>
 			{label}
 		</Button>
@@ -215,7 +239,7 @@ TxButton.propTypes = {
 	setStatus: PropTypes.func.isRequired,
 	type: PropTypes.oneOf(['QUERY', 'RPC', 'SIGNED-TX', 'UNSIGNED-TX', 'SUDO-TX', 'UNCHECKED-SUDO-TX', 'CONSTANT']).isRequired,
 	attrs: PropTypes.shape({
-		palletRpc: PropTypes.string,
+		rpc: PropTypes.string,
 		callable: PropTypes.string,
 		inputParams: PropTypes.array,
 		paramFields: PropTypes.array,

@@ -1,10 +1,10 @@
 /**
-           _______________________________ ________
-           \____    /\_   _____/\______   \\_____  \
-             /     /  |    __)_  |       _/ /   |   \
-            /     /_  |        \ |    |   \/    |    \
-           /_______ \/_______  / |____|_  /\_______  /
-                   \/        \/         \/         \/
+		   _______________________________ ________
+		   \____    /\_   _____/\______   \\_____  \
+			 /     /  |    __)_  |       _/ /   |   \
+			/     /_  |        \ |    |   \/    |    \
+		   /_______ \/_______  / |____|_  /\_______  /
+				   \/        \/         \/         \/
 		   Z  E  R  O  .  I  O     N  E  T  W  O  R  K
 		   © C O P Y R I O T   2 0 7 5   Z E R O . I O
 **/
@@ -13,8 +13,10 @@ import { useEffect, useContext } from 'react'
 import App from 'next/app'
 import { useRouter } from 'next/router'
 
-import { Apollo } from 'src/lib/Apollo'
-import { AppProvider, AppContext } from 'src/hooks/AppContext'
+import { Apollo } from 'src/context/Apollo'
+import { AppProvider } from 'src/context/AppContext'
+import { SubstrateProvider } from 'src/context/SubstrateContext'
+
 import * as Fathom from 'fathom-client'
 
 import { IconContext } from 'react-icons/lib'
@@ -28,6 +30,9 @@ import base from 'src/themes/base'
 import dark from 'src/themes/dark'
 import light from 'src/themes/light'
 
+// TODO: currently this breaks the app css:
+// import 'semantic-ui-css/semantic.min.css'
+
 const theme = {
 	...preset,
 	...base,
@@ -40,7 +45,6 @@ const Application = ({ Component, pageProps }) => {
 	useEffect(() => {
 		Fathom.load('XLUUAYWU', {
 			url: '//scorpion.gamedao.co/script.js',
-			// includedDomains: ['gamedao.co']
 		})
 
 		function onRouteChangeComplete() {
@@ -69,11 +73,13 @@ const Application = ({ Component, pageProps }) => {
 				loadingClassNames="loading-indicator"
 			>
 				<AppProvider key={1}>
-					<Apollo>
-						<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
-							<Component {...pageProps} />
-						</IconContext.Provider>
-					</Apollo>
+					<SubstrateProvider>
+						<Apollo>
+							<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
+								<Component {...pageProps} />
+							</IconContext.Provider>
+						</Apollo>
+					</SubstrateProvider>
 				</AppProvider>
 			</PageTransition>
 		</ThemeProvider>

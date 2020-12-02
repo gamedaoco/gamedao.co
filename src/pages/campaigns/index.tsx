@@ -10,7 +10,7 @@
 **/
 
 import { useContext } from 'react'
-import { AppContext } from 'src/hooks/AppContext'
+import { AppContext } from 'src/context/AppContext'
 
 import Layout from 'layouts'
 import { Campaigns } from 'containers'
