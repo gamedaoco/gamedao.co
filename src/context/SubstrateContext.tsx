@@ -53,10 +53,10 @@ export type State = {
 }
 
 // initial state
-// TODO: pull from config
+// TODO: pull from config provided by appcontext
 
 const INITIAL_STATE: State = {
-	endpoint: '',
+	endpoint: 'wss://alphaville-0.zero.io',
 	rpc: { ...jsonrpc },
 }
 
@@ -141,9 +141,8 @@ type SubstrateProviderProps = React.PropsWithChildren<{
 	types?: RegistryTypes
 }>
 
-const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
-	// const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
-
+// const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
+const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 	const initState: State = {
 		...INITIAL_STATE,
 		endpoint: props.endpoint || INITIAL_STATE.endpoint,
@@ -258,10 +257,7 @@ const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
 		setupTokensProps()
 	}, [apiState])
 
-	// provider
-	const value = [state, dispatch]
-
-	return <SubstrateContext.Provider value={value}>{props.children}</SubstrateContext.Provider>
+	return <SubstrateContext.Provider value={[state, dispatch]}>{props.children}</SubstrateContext.Provider>
 }
 
 const useSubstrate = () => useContext(SubstrateContext)[0]
