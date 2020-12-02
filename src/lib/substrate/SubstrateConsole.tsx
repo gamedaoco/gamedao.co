@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useSubstrate } from './useSubstrate'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import { ApiPromise } from '@polkadot/api'
 import { Keyring } from '@polkadot/ui-keyring'
 

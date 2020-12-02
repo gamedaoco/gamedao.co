@@ -2,14 +2,23 @@ import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'src/context/AppContext'
 import fetch from 'isomorphic-unfetch'
 
-import { ApolloProvider } from '@apollo/react-hooks'
-import { ApolloClient } from 'apollo-client'
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  NormalizedCacheObject,
+  HttpLink,
+  // onError,
+  // ErrorResponse,
+  split
+} from '@apollo/client'
 
-import { ApolloLink, from } from 'apollo-link'
-import { HttpLink } from 'apollo-link-http'
-import { setContext } from 'apollo-link-context'
-import { onError, ErrorResponse } from 'apollo-link-error';
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { setContext } from '@apollo/link-context'
+import { getMainDefinition } from '@apollo/client/utilities'
+import { WebSocketLink } from '@apollo/link-ws'
+
+// import { ApolloLink, from } from 'apollo-link'
+// import { onError, ErrorResponse } from 'apollo-link-error';
 
 const initialState = {}
 
@@ -18,51 +27,57 @@ export const Apollo = ({ children }) => {
 	const { state } = useContext( AppContext )
 	const { GQL_URI, GQL_KEY } = state.config.data
 
+	const cache = new InMemoryCache().restore( initialState || {} )
 
-	// useEffect(()=>{
-
-	// 	console.log('changed')
-
-	// },[ GQL_URI, GQL_KEY ])
-
-		const cache = new InMemoryCache().restore( initialState || {} )
-
-		const apiLink = new HttpLink({
-			uri: GQL_URI,
-			fetch,
-			credentials: 'same-origin', // include, *same-origin, omit
-		})
-
-		const logoutLink = onError(( { networkError }: ErrorResponse ) => {
-			if (
-				networkError &&
-				'statusCode' in networkError &&
-				networkError.statusCode === 401
-			) {
-				//logout();
-				console.error('authorization error')
+	const authLink = setContext((_, { headers }) => {
+		const token = localStorage.getItem('zero-token');
+		return {
+			headers: {
+				...headers,
+				authorization: token ? `bearer ${token}` : null
 			}
-		})
+		}
+	})
 
-		const authLink = setContext((_, { headers }) => {
-			const token = localStorage.getItem('token')
+	const httpLink = new HttpLink({
+		uri: GQL_URI,
+		fetch,
+		credentials: 'same-origin', // include, *same-origin, omit
+	})
 
-			// console.warn('key', GQL_KEY)
+	const wsLink = new WebSocketLink({
+		uri: GQL_URI,
+		options: { reconnect: true },
+	})
 
-			return {
-				headers: {
-					...headers,
-					'x-hasura-admin-secret': GQL_KEY,
-					// Authorization: token ? `Bearer ${token}` : '',
-				},
-			}
-		})
+	// const logoutLink = onError(( { networkError }: ErrorResponse ) => {
+	// 	if (
+	// 		networkError &&
+	// 		'statusCode' in networkError &&
+	// 		networkError.statusCode === 401
+	// 	) {
+	// 		//logout();
+	// 		console.error('authorization error')
+	// 	}
+	// })
 
-		let client = new ApolloClient({
-			ssrMode: true,
-			link: from([ authLink, logoutLink, apiLink ]),
-			cache: cache,
-		})
+	const splitLink = split(
+		({ query }) => {
+			const definition = getMainDefinition(query);
+			return (
+				definition.kind === 'OperationDefinition' &&
+				definition.operation === 'subscription'
+			)
+		},
+		wsLink,
+		authLink.concat(httpLink)
+	)
+
+	let client = new ApolloClient({
+		ssrMode: true,
+		link: splitLink,
+		cache: cache,
+	})
 
 	return (
 		<ApolloProvider client={ client }>

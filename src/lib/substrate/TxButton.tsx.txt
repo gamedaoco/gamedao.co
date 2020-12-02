@@ -1,5 +1,6 @@
 import React from 'react'
-import { utils, useSubstrate } from './'
+import { useSubstrate } from 'src/context/SubstrateContext'
+import { utils } from './'
 
 import { Button } from 'semantic-ui-react'
 import { web3FromSource } from '@polkadot/extension-dapp'
@@ -28,14 +29,14 @@ const TxButton = ({
 	type = 'QUERY',
 	attrs = null,
 	disabled = false
-}: ButtonProps) {
+}: ButtonProps) => {
 
 	// Hooks
 	const { api } = useSubstrate()
 	const [unsub, setUnsub] = React.useState(null)
 	const [sudoKey, setSudoKey] = React.useState(null)
 
-	const { palletRpc, callable, inputParams, paramFields } = attrs
+	const { rpc, callable, inputParams, paramFields } = attrs
 
 	const isQuery = () => type === 'QUERY'
 	const isSudo = () => type === 'SUDO-TX'
@@ -85,7 +86,7 @@ const TxButton = ({
 		const fromAcct = await getFromAcct()
 		const transformed = transformParams(paramFields, inputParams)
 		// transformed can be empty parameters
-		const txExecute = transformed ? api.tx.sudo.sudo(api.tx[palletRpc][callable](...transformed)) : api.tx.sudo.sudo(api.tx[palletRpc][callable]())
+		const txExecute = transformed ? api.tx.sudo.sudo(api.tx[rpc][callable](...transformed)) : api.tx.sudo.sudo(api.tx[rpc][callable]())
 
 		const unsub = txExecute.signAndSend(fromAcct, txResHandler).catch(txErrHandler)
 		setUnsub(() => unsub)
@@ -93,7 +94,7 @@ const TxButton = ({
 
 	const uncheckedSudoTx = async () => {
 		const fromAcct = await getFromAcct()
-		const txExecute = api.tx.sudo.sudoUncheckedWeight(api.tx[palletRpc][callable](...inputParams), 0)
+		const txExecute = api.tx.sudo.sudoUncheckedWeight(api.tx[rpc][callable](...inputParams), 0)
 
 		const unsub = txExecute.signAndSend(fromAcct, txResHandler).catch(txErrHandler)
 		setUnsub(() => unsub)
@@ -104,7 +105,7 @@ const TxButton = ({
 		const transformed = transformParams(paramFields, inputParams)
 		// transformed can be empty parameters
 
-		const txExecute = transformed ? api.tx[palletRpc][callable](...transformed) : api.tx[palletRpc][callable]()
+		const txExecute = transformed ? api.tx[rpc][callable](...transformed) : api.tx[rpc][callable]()
 
 		const unsub = await txExecute.signAndSend(fromAcct, txResHandler).catch(txErrHandler)
 		setUnsub(() => unsub)
@@ -113,7 +114,7 @@ const TxButton = ({
 	const unsignedTx = async () => {
 		const transformed = transformParams(paramFields, inputParams)
 		// transformed can be empty parameters
-		const txExecute = transformed ? api.tx[palletRpc][callable](...transformed) : api.tx[palletRpc][callable]()
+		const txExecute = transformed ? api.tx[rpc][callable](...transformed) : api.tx[rpc][callable]()
 
 		const unsub = await txExecute.send(txResHandler).catch(txErrHandler)
 		setUnsub(() => unsub)
@@ -123,18 +124,18 @@ const TxButton = ({
 
 	const query = async () => {
 		const transformed = transformParams(paramFields, inputParams)
-		const unsub = await api.query[palletRpc][callable](...transformed, queryResHandler)
+		const unsub = await api.query[rpc][callable](...transformed, queryResHandler)
 		setUnsub(() => unsub)
 	}
 
 	const rpc = async () => {
 		const transformed = transformParams(paramFields, inputParams, { emptyAsNull: false })
-		const unsub = await api.rpc[palletRpc][callable](...transformed, queryResHandler)
+		const unsub = await api.rpc[rpc][callable](...transformed, queryResHandler)
 		setUnsub(() => unsub)
 	}
 
 	const constant = () => {
-		const result = api.consts[palletRpc][callable]
+		const result = api.consts[rpc][callable]
 		result.isNone ? setStatus('None') : setStatus(result.toString())
 	}
 
@@ -225,25 +226,25 @@ const TxButton = ({
 			style={style}
 			type="submit"
 			onClick={transaction}
-			disabled={disabled || !palletRpc || !callable || !allParamsFilled() || ((isSudo() || isUncheckedSudo()) && !isSudoer(accountPair))}
+			disabled={disabled || !rpc || !callable || !allParamsFilled() || ((isSudo() || isUncheckedSudo()) && !isSudoer(accountPair))}
 		>
 			{label}
 		</Button>
 	)
 }
 
-/* prop type checking
+// prop type checking
 TxButton.propTypes = {
 	accountPair: PropTypes.object,
 	setStatus: PropTypes.func.isRequired,
 	type: PropTypes.oneOf(['QUERY', 'RPC', 'SIGNED-TX', 'UNSIGNED-TX', 'SUDO-TX', 'UNCHECKED-SUDO-TX', 'CONSTANT']).isRequired,
 	attrs: PropTypes.shape({
-		palletRpc: PropTypes.string,
+		rpc: PropTypes.string,
 		callable: PropTypes.string,
 		inputParams: PropTypes.array,
 		paramFields: PropTypes.array,
 	}).isRequired,
-}*/
+}
 
 function TxGroupButton(props) {
 	return (

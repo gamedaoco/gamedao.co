@@ -1,3 +1,3 @@
 export * from './SubstrateConsole'
 export * from './utils'
-export * from './TxButton'
+// export * from './TxButton'

@@ -31,21 +31,21 @@ type ActionType = 'RESET_SOCKET' | 'CONNECT' | 'CONNECT_SUCCESS' | 'CONNECT_ERRO
 
 type Action = {
 	type: ActionType
-	payload?: object
+	payload?: any
 }
 
-type ApiState = 'CONNECTING' | 'READY' | 'ERROR'
+type ApiState = 'CONNECT' | 'READY' | 'ERROR'
 
 type KeyringState = 'READY' | 'ERROR'
 
 type JSONRPC = Record<string, Record<string, DefinitionRpcExt>>
 
 export type State = {
-	endpoint: string | string[]
+	endpoint: string
 	types?: RegistryTypes
-	rpc: JSONRPC
+	rpc?: JSONRPC
 	api?: ApiPromise
-	apiError?: any
+	apiError?: Error
 	apiState?: ApiState
 	keyring?: Keyring
 	keyringState?: KeyringState
@@ -57,7 +57,13 @@ export type State = {
 
 const INITIAL_STATE: State = {
 	endpoint: 'wss://alphaville-0.zero.io',
-	rpc: { ...jsonrpc },
+	// types: undefined,
+	// rpc: { ...jsonrpc },
+	// apiError: null,
+	// apiState: null,
+	// keyring: null,
+	// keyringState: null,
+	// keyringError: null,
 }
 
 // assemble context
@@ -72,8 +78,9 @@ const SubstrateContext = createContext<{
 
 // reducer
 
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Action): State => {
 	// const reducer: React.Reducer<State, Action> = (state, action) => {
+
 	switch (action.type) {
 		case 'RESET_SOCKET':
 			log.info(`🧹 reset network`)
@@ -94,7 +101,7 @@ const reducer = (state: State, action: Action) => {
 		case 'CONNECT_SUCCESS': {
 			log.info(`❤️ connected to subzero ${state.endpoint?.toString()}`)
 
-			if (state.apiState !== 'CONNECTING') {
+			if (state.apiState !== 'CONNECT') {
 				// const { payload } = action
 				// let tookTimeLog: string | undefined
 				// if (isNum(payload)) {
@@ -239,25 +246,25 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 	useEffect(() => {
 		if (apiState !== 'READY' || !api) return
 
-		const setupTokensProps = async () => {
-			const properties = await api.rpc.system.properties()
-			registry.setChainProperties(properties)
+		// const setupTokenProps = async () => {
 
-			const tokenSymbol = properties.tokenSymbol.unwrapOr('PLAY').toString()
-			const tokenDecimals = properties.tokenDecimals.unwrapOr('18').toNumber()
-			formatBalance.setDefaults({
-				decimals: tokenDecimals,
-				unit: tokenSymbol,
-			})
+		// 	const properties = await api.rpc.system.properties()
+		// 	registry.setChainProperties(properties)
 
-			const ss58Format = properties.ss58Format.unwrapOr(undefined)
-			ss58Format && setSs58Format(ss58Format.toNumber())
-		}
+		// 	const tokenSymbol = properties.tokenSymbol.unwrapOr('PLAY').toString()
+		// 	const tokenDecimals = properties.tokenDecimals.unwrapOr('18').toNumber()
+		// 	formatBalance.setDefaults({
+		// 		decimals: tokenDecimals,
+		// 		unit: tokenSymbol,
+		// 	})
 
-		setupTokensProps()
+		// 	const ss58Format = properties.ss58Format.unwrapOr(undefined)
+		// 	ss58Format && setSs58Format(ss58Format.toNumber())
+		// }
+		// setupTokenProps()
 	}, [apiState])
 
-	return <SubstrateContext.Provider value={[state, dispatch]}>{props.children}</SubstrateContext.Provider>
+	return <SubstrateContext.Provider value={{ state, dispatch }}>{props.children}</SubstrateContext.Provider>
 }
 
 const useSubstrate = () => useContext(SubstrateContext)[0]
