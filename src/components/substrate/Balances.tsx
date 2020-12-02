@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Grid, Button } from 'semantic-ui-react'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { useSubstrate } from './substrate-lib'
+import { Table, Grid, Button } from 'semantic-ui-react'
 
 export default function Main(props) {
 	const { api, keyring } = useSubstrate()
@@ -10,7 +10,7 @@ export default function Main(props) {
 
 	useEffect(() => {
 		const addresses = keyring.getPairs().map((account) => account.address)
-		let unsubscribeAll = null
+		let unsubscribeAll = () => {}
 
 		api.query.system.account
 			.multi(addresses, (balances) => {

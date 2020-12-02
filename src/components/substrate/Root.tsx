@@ -1,21 +1,22 @@
 import React, { useState, createRef } from 'react'
-import { Dimmer, Loader, Sticky, Message } from 'semantic-ui-react'
 
-import { Container, Row, Col, Button } from '../../lib/atomiclit'
+import { useSubstrate } from 'src/context/SubstrateContext'
+import { SubstrateConsole } from 'src/lib/substrate'
 
-import { SubstrateContextProvider, useSubstrate } from './substrate-lib'
-import { DeveloperConsole } from './substrate-lib/components'
+import { Dimmer, Loader, Sticky, Message, Grid } from 'semantic-ui-react'
+import { Container, Button } from 'src/components'
 
-import AccountSelector from './AccountSelector'
 import Balances from './Balances'
 import BlockNumber from './BlockNumber'
-import Events from './Events'
-import Interactor from './Interactor'
-import Metadata from './Metadata'
-import NodeInfo from './NodeInfo'
-import TemplateModule from './TemplateModule'
-import Transfer from './Transfer'
-import Upgrade from './Upgrade'
+
+// import Events from './Events'
+// import Interactor from './Interactor'
+// import Metadata from './Metadata'
+// import NodeInfo from './NodeInfo'
+// import Transfer from './Transfer'
+// import Upgrade from './Upgrade'
+
+const Wrapper = (props) => <div>{props.children}</div>
 
 function Main() {
 	const [accountAddress, setAccountAddress] = useState(null)
@@ -29,63 +30,59 @@ function Main() {
 	)
 
 	const message = (err) => (
-		<Col>
+		<div>
 			<Message negative compact floating header="Error Connecting to Substrate" content={`${JSON.stringify(err)}`} />
-		</Col>
+		</div>
 	)
 
-	if (apiState === 'ERROR') return message(apiError)
+	if (apiState === 'ERROR') return message('Error')
 	else if (apiState !== 'READY') return loader('Connecting to Substrate')
 
 	if (keyringState !== 'READY') {
 		return loader("Loading accounts (please review any extension's authorization)")
 	}
 
-	const contextRef = createRef()
+	const contextRef = createRef<typeof Wrapper>()
 
 	return (
-		<div ref={contextRef}>
-			<Sticky context={contextRef}>
-				<AccountSelector setAccountAddress={setAccountAddress} />
-			</Sticky>
+		<Wrapper ref={contextRef}>
 			<Container>
-				<Row>
-					<Col w="12">
-						<Button>TEST</Button>
-					</Col>
-					<Col>
+				<Grid stackable columns="equal">
+					<Grid.Row stretched>
+						{/*
 						<NodeInfo />
 						<Metadata />
+*/}
 						<BlockNumber />
 						<BlockNumber finalized />
-					</Col>
-					<Col>
+					</Grid.Row>
+
+					<Grid.Row stretched>
 						<Balances />
-					</Col>
-					<Col>
+					</Grid.Row>
+
+					{/*
+					<Grid.Row>
 						<Transfer accountPair={accountPair} />
 						<Upgrade accountPair={accountPair} />
-					</Col>
-					<Col>
+					</Grid.Row>
+
+					<Grid.Row>
 						<Interactor accountPair={accountPair} />
 						<Events />
-					</Col>
-					<Col>
-						<TemplateModule accountPair={accountPair} />
-					</Col>
-				</Row>
+					</Grid.Row>
+*/}
+				</Grid>
 			</Container>
-			<DeveloperConsole />
-		</div>
+			<SubstrateConsole />
+		</Wrapper>
 	)
 }
+// <SubstrateContextProvider>
+// </SubstrateContextProvider>
 
 export const Root = function Root() {
-	return (
-		<SubstrateContextProvider>
-			<Main />
-		</SubstrateContextProvider>
-	)
+	return <Main />
 }
 
 export default Root

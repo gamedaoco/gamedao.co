@@ -57,7 +57,7 @@ type TStatus = {
 	}
 }
 
-export default () => {
+const Page = () => {
 	const [status, setStatus] = useState<TStatus>({
 		submitted: false,
 		submitting: false,
@@ -185,3 +185,5 @@ export default () => {
 		</Layout>
 	)
 }
+
+export default Page

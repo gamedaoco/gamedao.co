@@ -34,6 +34,10 @@ declare module '*.json' {
 	const resource: any
 	export = resource
 }
+declare module '*.md' {
+	const content: string
+	export default content
+}
 
 declare namespace NodeJS {
 	interface Process {

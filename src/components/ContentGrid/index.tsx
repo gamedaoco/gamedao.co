@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { AppContext } from 'src/hooks/AppContext'
+import { AppContext } from 'src/context/AppContext'
 
 import styled from 'styled-components'
 
@@ -181,7 +181,7 @@ const GridItem = (props) => (
 
 const ContentGrid = (props) => {
 	const { state } = useContext(AppContext)
-	const { READY } = state.app
+	const READY = state.app.state === 'READY'
 	const [searchQuery, setSearchQuery] = useState({})
 
 	const showAll = true

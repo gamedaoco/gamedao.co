@@ -1,7 +1,12 @@
 import { createContext, useContext, useReducer, useEffect } from 'react'
 import { DEV, ENV, HOST } from 'src/config'
 
-// default config and types
+// logging
+
+import { Logger } from 'src/lib/log'
+const log = Logger('$APP')
+
+// hacky type introspection
 
 import configJSON from 'data/config.json'
 import featuresJSON from 'data/features.json'
@@ -12,7 +17,7 @@ type ConfigTypes = typeof configJSON
 const defaultFeatures = featuresJSON.global
 type FeatureTypes = typeof defaultFeatures
 
-// rest loader, will be replaced with apollo
+// data loader
 
 const loadData = async (resource, env) => {
 	try {
@@ -31,116 +36,124 @@ const loadData = async (resource, env) => {
 	}
 }
 
-//
+// type / state definitions
 
-enum ActionTypes {
-	INIT = 'INIT',
-	CONFIG_LOAD = 'CONFIG_LOAD',
-	CONFIG_UPDATE = 'CONFIG_UPDATE',
-	FEATURES_LOAD = 'FEATURES_LOAD',
-	FEATURES_UPDATE = 'FEATURES_UPDATE',
-	CONTENT_LOAD = 'CONTENT_LOAD',
-	CONTENT_UPDATE = 'CONTENT_UPDATE',
-}
+export type ActionTypes =
+	| 'INIT'
+	| 'CONFIG_LOAD'
+	| 'CONFIG_UPDATE'
+	| 'FEATURES_LOAD'
+	| 'FEATURES_UPDATE'
+	| 'CONTENT_LOAD'
+	| 'CONTENT_UPDATE'
+	| 'NET_CONNECT'
+	| 'NET_READY'
+	| 'NET_ERROR'
+	| 'NET_RESET'
+	| 'KEYRING_UPDATE'
+	| 'KEYRING_ERROR'
 
 export type Action = {
 	type: ActionTypes
 	payload?: object | null
 }
 
-//
+type AppState = 'INIT' | 'SETUP' | 'READY'
 
-export type AppState = {
+type ConfigState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
+
+type FeatureState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
+
+type NetworkState = 'WAIT' | 'CONNECT' | 'READY' | 'ERROR'
+
+type KeyringState = 'WAIT' | 'READY' | 'ERROR'
+
+export type State = {
 	app: {
-		loading: boolean
-		READY: boolean
+		state: AppState
 		DEV: boolean
 		ENV: string
-		HOST: string
 	}
 	config: {
-		loading: boolean
+		state: ConfigState
 		data: ConfigTypes
 	}
 	features: {
-		loading: boolean
+		state: FeatureState
 		data: FeatureTypes
 	}
 }
 
-const INITIAL_STATE: AppState = {
-	app: {
-		loading: false,
-		READY: false,
-		DEV,
-		ENV,
-		HOST,
-	},
-	config: { loading: false, data: defaultConfig },
-	features: { loading: false, data: defaultFeatures },
+const INITIAL_STATE: State = {
+	app: { state: 'INIT', DEV, ENV },
+	config: { state: 'WAIT', data: defaultConfig },
+	features: { state: 'WAIT', data: defaultFeatures },
 }
 
 // assemble context
 
 const AppContext = createContext<{
-	state: AppState
+	state: State
 	dispatch: React.Dispatch<any>
 }>({
 	state: INITIAL_STATE,
 	dispatch: () => null,
 })
 
-const reducer: React.Reducer<AppState, Action> = (state, action) => {
+// reducer
+
+const reducer: React.Reducer<State, Action> = (state, action) => {
 	switch (action.type) {
 		case 'CONFIG_LOAD':
-			if (state.features.data.DEBUG) console.log('config load')
+			log.info(`⏳ load config...`)
 			return {
 				...state,
-				app: { ...state.app, READY: false },
-				config: { ...state.config, loading: true },
+				app: { ...state.app, state: 'INIT' },
+				config: { ...state.config, state: 'LOAD' },
 			}
 
 		case 'CONFIG_UPDATE':
-			if (state.features.data.DEBUG) console.log('config', action.payload)
+			log.info(`⚙️ update config`)
 			return {
 				...state,
-				app: { ...state.app, READY: true },
+				app: { ...state.app, state: 'SETUP' },
 				config: {
-					loading: false,
+					state: 'READY',
 					data: action.payload,
 				},
 			}
 
 		case 'FEATURES_LOAD':
-			if (state.features.data.DEBUG) console.log('features load')
+			log.info(`⏳ load features...`)
 			return {
 				...state,
-				features: { ...state.features, loading: true },
+				features: { ...state.features, state: 'LOAD' },
 			}
 
 		case 'FEATURES_UPDATE':
-			if (state.features.data.DEBUG) console.log('features', action.payload)
+			log.info(`⚙️ update features`)
 			return {
 				...state,
+				app: { ...state.app, state: 'READY' },
 				features: {
-					loading: false,
+					state: 'READY',
 					data: action.payload,
 				},
 			}
 
 		case 'CONTENT_LOAD':
-			if (state.features.data.DEBUG) console.log('content load')
+			log.info(`⏳ loading content...`)
 			return {
 				...state,
-				features: { ...state.features, loading: true },
+				features: { ...state.features, state: 'LOAD' },
 			}
 
 		case 'CONTENT_UPDATE':
-			if (state.features.data.DEBUG) console.log('content', action.payload)
+			log.info(`❤️ content loaded`)
 			return {
 				...state,
 				content: {
-					loading: false,
+					state: 'READY',
 					data: action.payload,
 				},
 			}
@@ -152,35 +165,30 @@ const reducer: React.Reducer<AppState, Action> = (state, action) => {
 
 const AppProvider: React.FC = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
-	const { READY } = state.app
+	const READY = state.app.state == 'READY' ? true : false
 
 	// load config to enable core functionality
+
 	useEffect(() => {
-		dispatch({ type: ActionTypes.CONFIG_LOAD })
+		dispatch({ type: 'CONFIG_LOAD' })
 		const loadConfig = async () => await loadData('config', ENV)
 		loadConfig().then((data) => {
-			dispatch({
-				type: ActionTypes.CONFIG_UPDATE,
-				payload: data,
-			})
+			dispatch({ type: 'CONFIG_UPDATE', payload: data })
 		})
 	}, [])
 
 	// load features
+
 	useEffect(() => {
-		dispatch({ type: ActionTypes.FEATURES_LOAD })
+		if (state.config.state === 'READY') return
+		dispatch({ type: 'FEATURES_LOAD' })
 		const loadFeatures = async () => await loadData('features', ENV)
 		loadFeatures().then((data) => {
-			dispatch({
-				type: ActionTypes.FEATURES_UPDATE,
-				payload: data,
-			})
+			dispatch({ type: 'FEATURES_UPDATE', payload: data })
 		})
 	}, [])
 
-	if (!READY) return null
-
-	return <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>
+	return READY ? <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider> : null
 }
 
 const useAppContext = () => useContext(AppContext)
