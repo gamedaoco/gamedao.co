@@ -155,9 +155,7 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 		endpoint: props.endpoint || INITIAL_STATE.endpoint,
 		types: props.types || INITIAL_STATE.types,
 	}
-
 	const [state, dispatch] = useReducer(reducer, initState)
-
 	const [ss58Format, setSs58Format] = useState<number>(DEFAULT_SS58.toNumber())
 	const { rpc, types, apiState, api, endpoint } = state
 
@@ -168,20 +166,23 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 		const connectTime = window.performance.now()
 		const provider = new WsProvider(endpoint)
 
-		// const metadata = await getCachedSubstrateMetadata()
-		// let isMetadataCached = isDef(metadata)
-		// console.log(`>>> METADATA key: ${Object.keys(metadata || {})}`)
+		// manage / rehydrate the cache in case
+		// metadata was retrieved already
 
-		const metadata = undefined
+		const metadata = await getCachedSubstrateMetadata()
+		let isMetadataCached = isDef(metadata)
+		console.log(`>>> METADATA key: ${Object.keys(metadata || {})}`)
+
+		// const metadata = undefined
 
 		const _api = new ApiPromise({ provider, types, rpc, metadata })
 
 		const onConnectSuccess = async () => {
 			dispatch({ type: 'CONNECT_SUCCESS', payload: connectTime })
-			// 	if (!isMetadataCached) {
-			// 		isMetadataCached = true
-			// 		await cacheSubstrateMetadata(_api)
-			// 	}
+			// if (!isMetadataCached) {
+			// 	isMetadataCached = true
+			// 	await cacheSubstrateMetadata(_api)
+			// }
 		}
 
 		const onReady = () => {
@@ -192,7 +193,7 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 		const onConnect = () => {
 			dispatch({ type: 'CONNECT', payload: _api })
 			// `ready` event is not emitted upon reconnection. So we check explicitly here.
-			_api.isReady.then((_api) => onConnectSuccess())
+			// _api.isReady.then((_api) => onConnectSuccess())
 		}
 
 		_api.on('connected', onConnect)
@@ -209,7 +210,6 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 
 	const loadAccounts = useCallback(
 		async (api: ApiPromise) => {
-			// Ensure the method only run once.
 			if (keyringState || !api) return
 
 			try {
@@ -218,7 +218,7 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 				allAccounts = allAccounts.map(({ address, meta }) => ({ address, meta: { ...meta, name: `${meta.name} (${meta.source})` } }))
 
 				keyring.loadAll({ isDevelopment: DEV, ss58Format }, allAccounts)
-				dispatch({ type: 'KEYRING_SET', payload: keyring })
+				dispatch({ type: 'KEYRING_SET', DEV, payload: keyring })
 			} catch (err) {
 				log.error(`Keyring failed to load accounts. ${err}`)
 				dispatch({ type: 'KEYRING_ERROR', payload: err })
@@ -246,22 +246,21 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 	useEffect(() => {
 		if (apiState !== 'READY' || !api) return
 
-		// const setupTokenProps = async () => {
+		const setupTokenProps = async () => {
+			const properties = await api.rpc.system.properties()
+			registry.setChainProperties(properties)
 
-		// 	const properties = await api.rpc.system.properties()
-		// 	registry.setChainProperties(properties)
+			const tokenSymbol = properties.tokenSymbol.unwrapOr('PLAY').toString()
+			const tokenDecimals = properties.tokenDecimals.unwrapOr('18').toNumber()
+			formatBalance.setDefaults({
+				decimals: tokenDecimals,
+				unit: tokenSymbol,
+			})
 
-		// 	const tokenSymbol = properties.tokenSymbol.unwrapOr('PLAY').toString()
-		// 	const tokenDecimals = properties.tokenDecimals.unwrapOr('18').toNumber()
-		// 	formatBalance.setDefaults({
-		// 		decimals: tokenDecimals,
-		// 		unit: tokenSymbol,
-		// 	})
-
-		// 	const ss58Format = properties.ss58Format.unwrapOr(undefined)
-		// 	ss58Format && setSs58Format(ss58Format.toNumber())
-		// }
-		// setupTokenProps()
+			const ss58Format = properties.ss58Format.unwrapOr(undefined)
+			ss58Format && setSs58Format(ss58Format.toNumber())
+		}
+		setupTokenProps()
 	}, [apiState])
 
 	return <SubstrateContext.Provider value={{ state, dispatch }}>{props.children}</SubstrateContext.Provider>

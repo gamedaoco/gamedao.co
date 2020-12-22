@@ -60,6 +60,8 @@ export type Action = {
 
 type AppState = 'INIT' | 'SETUP' | 'READY'
 
+type Web3State = 'INIT' | 'CONNECTING' | 'CONNECT'
+
 type ConfigState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
 
 type FeatureState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
@@ -74,6 +76,10 @@ export type State = {
 		DEV: boolean
 		ENV: string
 	}
+	web3: {
+		state: Web3State
+		URL: string
+	}
 	config: {
 		state: ConfigState
 		data: ConfigTypes
@@ -86,6 +92,7 @@ export type State = {
 
 const INITIAL_STATE: State = {
 	app: { state: 'INIT', DEV, ENV },
+	web3: { state: 'INIT', URL: '' },
 	config: { state: 'WAIT', data: defaultConfig },
 	features: { state: 'WAIT', data: defaultFeatures },
 }
@@ -117,16 +124,14 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
 			return {
 				...state,
 				app: { ...state.app, state: 'SETUP' },
-				config: {
-					state: 'READY',
-					data: action.payload,
-				},
+				config: { data: action.payload },
 			}
 
 		case 'FEATURES_LOAD':
 			log.info(`⏳ load features...`)
 			return {
 				...state,
+				config: { ...state.config, state: 'READY' },
 				features: { ...state.features, state: 'LOAD' },
 			}
 
@@ -180,7 +185,7 @@ const AppProvider: React.FC = ({ children }) => {
 	// load features
 
 	useEffect(() => {
-		if (state.config.state === 'READY') return
+		// if (state.config.state !== 'READY') return
 		dispatch({ type: 'FEATURES_LOAD' })
 		const loadFeatures = async () => await loadData('features', ENV)
 		loadFeatures().then((data) => {
