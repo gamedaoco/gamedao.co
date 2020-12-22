@@ -23,7 +23,7 @@
 	},
 	"dev": {
 		"SUB_APPNAME": "",
-		"SUB_URI": "https://alphaville-0.zero.io",
+		"ZERO_URI": "https://alphaville-0.zero.io",
 		"ETH_URI": "http://localhost:8545",
 		"IPFS_URI": "http://localhost:5001",
 		"GQL_URI": "https://graph.zero.io/v1/graphql",
@@ -31,7 +31,7 @@
 	},
 	"production": {
 		"ETH_URI": "https://eth.zero.io:8545",
-		"SUB_URI": "https://sub.zero.io:9944",
+		"ZERO_URI": "https://sub.zero.io:9944",
 		"IPFS_URI": "https://ipfs.zero.io:5001",
 		"GQL_URI": "https://graph.zero.io/v1/graphql",
 		"GQL_KEY": "i-HFXk_txMvwZL4Ej7dphgCZ"
