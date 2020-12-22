@@ -51,17 +51,7 @@ const Items = (title) => (
 		</Box>
 		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
 			<Text fontSize={[4, 5]} pb={12}>
-				Gamers and creators deserve better than fast paced invest and release cycles.
-			</Text>
-		</Box>
-		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
-			<Text fontSize={[4, 5]} pb={12}>
-				Long gone seem the times where gamers were not degraded to swipe monkeys or a meaningless daily active user metric.
-			</Text>
-		</Box>
-		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
-			<Text fontSize={[4, 5]} pb={12}>
-				Our tools empower creators and communities to run projects they love in a cooperative way.
+				Our tools empower creators and communities to fund and run projects they love in a cooperative way.
 			</Text>
 		</Box>
 		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
@@ -69,6 +59,18 @@ const Items = (title) => (
 				We offer fundraising protocols and governance tools to make your vision come true.
 			</Text>
 		</Box>
+
+		{/*		<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
+					<Text fontSize={[4, 5]} pb={12}>
+						Gamers and creators deserve better than fast paced invest and release cycles.
+					</Text>
+				</Box>
+				<Box sx={hoverStyle} width={[1, 1, 3 / 4]}>
+					<Text fontSize={[4, 5]} pb={12}>
+						Long gone seem the times where gamers were not degraded to swipe monkeys or a meaningless daily active user metric.
+					</Text>
+				</Box>
+		*/}
 
 		<Box sx={hover} width={[1, 1 / 2]} pt={4}>
 			<Text textAlign="left" fontSize={[2]} fontWeight={600} color="#ff00cc">
@@ -120,9 +122,8 @@ const Home = () => {
 			<Intro>
 				<Flex flexDirection="row" flexWrap="wrap">
 					<Box width={[1]} px={[4, 6]}>
-						<Text textAlign="left" fontSize={[1]} fontWeight={300} p={3} backgroundColor={'darkred'}>
-							We are not conducting any kind of public Tokensale and there is no public sale for a ZERO Protocol or Network Token. The only
-							official communication will come through our discord, zero.io and gamedao.co.
+						<Text textAlign="left" fontSize={[1]} fontWeight={300} p={3} backgroundColor={'darkgreen'}>
+							Beware of imitations:
 						</Text>
 					</Box>
 					<Box width={[1]} px={[4, 6]} pt={[2, 4]}>

@@ -83,6 +83,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ loggedIn }) => {
 	const { state } = useContext(AppContext)
 	const { SHOW_CAMPAIGNS, SHOW_APPLY, SHOW_FX, SHOW_SIGNIN } = state.features.data
+	const { CONNECTED } = state.web3
 
 	// const [showAccountSelector, setAccountSelector] = useState(false)
 	// const [accountAddress, setAccountAddress] = useState(null)
