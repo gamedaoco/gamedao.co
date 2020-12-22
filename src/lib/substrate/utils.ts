@@ -13,19 +13,12 @@ type OptionTypes = {
 }
 
 export const utils = {
-
 	paramConversion: {
-		num: [
-			'Compact<Balance>',
-			'BalanceOf',
-			'u8', 'u16', 'u32', 'u64', 'u128',
-			'i8', 'i16', 'i32', 'i64', 'i128'
-		],
+		num: ['Compact<Balance>', 'BalanceOf', 'u8', 'u16', 'u32', 'u64', 'u128', 'i8', 'i16', 'i32', 'i64', 'i128'],
 	},
 
-	prettyBalance: ( amt, opts: OptionTypes = {} ) => {
-
-		if ( typeof amt !== 'number' && typeof amt !== 'string' ) {
+	prettyBalance: (amt, opts: OptionTypes = {}) => {
+		if (typeof amt !== 'number' && typeof amt !== 'string') {
 			throw new Error(`${amt} is not a number`)
 		}
 
@@ -34,16 +27,14 @@ export const utils = {
 			power: 8,
 			decimal: 2,
 			unit: 'Units',
-			...opts
+			...opts,
 		}
 
 		const bn = Big(amt)
 		const divisor = Big(10).pow(opts.power)
 		const displayed = bn.div(divisor).toFormat(opts.decimal)
 		return `${displayed.toString()} ${opts.unit}`
-
 	},
-
 }
 
 export default utils

@@ -14,12 +14,12 @@ const getWindowSubstrate = (): WindowSubstrate => {
 	let substrate = (window as any)?.substrate
 	if (!substrate) {
 		substrate = {} as WindowSubstrate
-		(window as any).substrate = substrate
+		;(window as any).substrate = substrate
 	}
 	return substrate
 }
 
-export function SubstrateConsole () {
+export function SubstrateConsole() {
 	const { endpoint, api, apiState, keyring, keyringState } = useSubstrate()
 
 	const addApi = () => {
@@ -43,22 +43,22 @@ export function SubstrateConsole () {
 			substrate.util = require('@polkadot/util')
 			console.info('[✓] window.substrate.util')
 
-			substrate.crypto = require('@polkadot/util-crypto');
+			substrate.crypto = require('@polkadot/util-crypto')
 			console.info('[✓] window.substrate.crypto')
 		}
 	}
 
 	useEffect(() => {
 		addApi()
-	}, [ endpoint?.toString(), apiState ])
+	}, [endpoint?.toString(), apiState])
 
 	useEffect(() => {
 		addKeyring()
-	}, [ keyringState ])
+	}, [keyringState])
 
 	useEffect(() => {
 		addUtilAndCrypto()
-	}, [ true ])
+	}, [true])
 
 	return null
 }

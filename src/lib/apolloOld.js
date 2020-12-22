@@ -30,8 +30,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
 
 	// Set the correct displayName in development
 	if (process.env.NODE_ENV !== 'production') {
-		const displayName =
-			PageComponent.displayName || PageComponent.name || 'Component'
+		const displayName = PageComponent.displayName || PageComponent.name || 'Component'
 
 		if (displayName === 'App') {
 			console.warn('This withApollo HOC only works with PageComponents.')
@@ -41,7 +40,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
 	}
 
 	if (ssr || PageComponent.getInitialProps) {
-		WithApollo.getInitialProps = async ctx => {
+		WithApollo.getInitialProps = async (ctx) => {
 			const { AppTree } = ctx
 
 			// Initialize ApolloClient, add it to the ctx object so
