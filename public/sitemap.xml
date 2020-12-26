@@ -4,44 +4,49 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
       xmlns:xhtml="http://www.w3.org/1999/xhtml">
-      <url><loc>https://gamedao.co/apply</loc>
+      <url><loc>https://gamedao.co/account/signup</loc>
                 
                 
                 
-                <lastmod>2020-12-23</lastmod>
+                <lastmod>2020-12-26</lastmod>
+                </url><url><loc>https://gamedao.co/apply</loc>
+                
+                
+                
+                <lastmod>2020-12-26</lastmod>
                 </url><url><loc>https://gamedao.co/campaigns</loc>
                 
                 
                 
-                <lastmod>2020-12-23</lastmod>
+                <lastmod>2020-12-26</lastmod>
                 </url><url><loc>https://gamedao.co/contact</loc>
                 
                 
                 
-                <lastmod>2020-12-23</lastmod>
+                <lastmod>2020-12-26</lastmod>
                 </url><url><loc>https://gamedao.co/dashboard</loc>
                 
                 
                 
-                <lastmod>2020-12-23</lastmod>
+                <lastmod>2020-12-26</lastmod>
                 </url><url><loc>https://gamedao.co/imprint</loc>
                 
                 
                 
-                <lastmod>2020-12-23</lastmod>
+                <lastmod>2020-12-26</lastmod>
                 </url><url><loc>https://gamedao.co</loc>
                 
                 
                 
-                <lastmod>2020-12-23</lastmod>
+                <lastmod>2020-12-26</lastmod>
                 </url><url><loc>https://gamedao.co/projects/[pid]</loc>
                 
                 
                 
-                <lastmod>2020-12-23</lastmod>
+                <lastmod>2020-12-26</lastmod>
                 </url><url><loc>https://gamedao.co/projects</loc>
                 
                 
                 
-                <lastmod>2020-12-23</lastmod>
+                <lastmod>2020-12-26</lastmod>
                 </url></urlset>
