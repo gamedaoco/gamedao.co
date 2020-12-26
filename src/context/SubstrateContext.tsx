@@ -10,6 +10,7 @@ const log = Logger('$ZERO')
 
 import { ApiPromise, WsProvider } from '@polkadot/api'
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp'
+
 import { DefinitionRpcExt, RegistryTypes } from '@polkadot/types/types'
 import keyring, { Keyring } from '@polkadot/ui-keyring'
 import { formatBalance } from '@polkadot/util'
@@ -150,6 +151,13 @@ type SubstrateProviderProps = React.PropsWithChildren<{
 
 // const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
 const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
+	useEffect(() => {
+		const loadExtension = async () => {
+			const ed = await import('@polkadot/extension-dapp')
+		}
+		loadExtension()
+	}, [])
+
 	const initState: State = {
 		...INITIAL_STATE,
 		endpoint: props.endpoint || INITIAL_STATE.endpoint,
@@ -169,11 +177,11 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 		// manage / rehydrate the cache in case
 		// metadata was retrieved already
 
-		const metadata = await getCachedSubstrateMetadata()
-		let isMetadataCached = isDef(metadata)
-		console.log(`>>> METADATA key: ${Object.keys(metadata || {})}`)
+		// const metadata = await getCachedSubstrateMetadata()
+		// let isMetadataCached = isDef(metadata)
+		// console.log(`>>> METADATA key: ${Object.keys(metadata || {})}`)
 
-		// const metadata = undefined
+		const metadata = undefined
 
 		const _api = new ApiPromise({ provider, types, rpc, metadata })
 
@@ -187,13 +195,13 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 
 		const onReady = () => {
 			dispatch({ type: 'CONNECT', payload: _api })
-			// onConnectSuccess()
+			onConnectSuccess()
 		}
 
 		const onConnect = () => {
 			dispatch({ type: 'CONNECT', payload: _api })
 			// `ready` event is not emitted upon reconnection. So we check explicitly here.
-			// _api.isReady.then((_api) => onConnectSuccess())
+			_api.isReady.then((_api) => onConnectSuccess())
 		}
 
 		_api.on('connected', onConnect)
@@ -220,7 +228,7 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 				keyring.loadAll({ isDevelopment: DEV, ss58Format }, allAccounts)
 				dispatch({ type: 'KEYRING_SET', DEV, payload: keyring })
 			} catch (err) {
-				log.error(`Keyring failed to load accounts. ${err}`)
+				log.error(`❌❌ Keyring failed to load accounts. ${err}`)
 				dispatch({ type: 'KEYRING_ERROR', payload: err })
 			}
 		},
@@ -237,7 +245,6 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 
 	useEffect(() => {
 		if (!api) return
-
 		api.isReady.then((api) => loadAccounts(api))
 	}, [loadAccounts, api])
 

@@ -14,8 +14,10 @@
 		"SHOW_HEADER": true,
 		"SHOW_FOOTER": true,
 		"SHOW_FOOTER_NAV": true,
-		"SHOW_APPLY": true,
-		"SHOW_CAMPAIGNS": true
+		"SHOW_CONTACT": false,
+		"SHOW_APPLY": false,
+		"SHOW_CAMPAIGNS": false,
+		"SHOW_CONNECT": true
 	},
 	"production": {
 		"SHOW_APPLY": true,

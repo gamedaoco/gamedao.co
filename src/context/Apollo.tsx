@@ -50,26 +50,31 @@ export const Apollo = ({ children }) => {
 	// 	}
 	// })
 
+	const ssrMode = !process.browser
+	console.log('ssrMode', ssrMode)
+
+	const wsLink = !ssrMode
+		? new WebSocketLink({
+				uri: GQL_URI.replace('https://', 'wss://'),
+				options: {
+					reconnect: true,
+					connectionParams: {
+						headers: {
+							// Authorization: `Bearer ${GQL_KEY}`,
+							'x-hasura-admin-secret': GQL_KEY,
+						},
+					},
+				},
+				// eslint not seeing WebSocket definition in typescript package. need to fix eslint rules
+				// eslint-disable-next-line no-undef
+				webSocketImpl: WebSocket,
+		  })
+		: null
+
 	const httpLink = new HttpLink({
 		uri: GQL_URI,
 		fetch,
 		credentials: 'same-origin', // include, *same-origin, omit
-	})
-
-	const wsLink = new WebSocketLink({
-		uri: GQL_URI.replace('https://', 'wss://'),
-		options: {
-			reconnect: true,
-			connectionParams: {
-				headers: {
-					// Authorization: `Bearer ${GQL_KEY}`,
-					'x-hasura-admin-secret': GQL_KEY,
-				},
-			},
-		},
-		// eslint not seeing WebSocket definition in typescript package. need to fix eslint rules
-		// eslint-disable-next-line no-undef
-		webSocketImpl: WebSocket,
 	})
 
 	const customHeader = new ApolloLink((operation, forward) => {
@@ -90,9 +95,6 @@ export const Apollo = ({ children }) => {
 		wsLink,
 		httpLink
 	)
-
-	const ssrMode = !process.browser
-	console.log('ssrMode', ssrMode)
 
 	let client = new ApolloClient({
 		ssrMode,

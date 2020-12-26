@@ -24,8 +24,8 @@ import { PageTransition } from 'next-page-transitions'
 import { Loader } from 'components'
 
 import { ThemeProvider } from 'styled-components'
-import preset from '@rebass/preset'
 import { GlobalStyle, TIMEOUT } from 'src/themes/global'
+import preset from '@rebass/preset'
 import base from 'src/themes/base'
 import dark from 'src/themes/dark'
 import light from 'src/themes/light'
@@ -59,30 +59,32 @@ const Application = ({ Component, pageProps }) => {
 	}, [])
 
 	return (
-		<ThemeProvider theme={theme} key="key">
+		<>
 			<GlobalStyle />
-			<PageTransition
-				timeout={TIMEOUT}
-				classNames="page-transition"
-				loadingComponent={<Loader />}
-				loadingDelay={5000}
-				loadingTimeout={{
-					enter: TIMEOUT,
-					exit: 0,
-				}}
-				loadingClassNames="loading-indicator"
-			>
-				<AppProvider key={1}>
-					<SubstrateProvider>
-						<Apollo>
+			<ThemeProvider theme={theme} key="key">
+				<PageTransition
+					timeout={TIMEOUT}
+					classNames="page-transition"
+					loadingComponent={<Loader />}
+					loadingDelay={5000}
+					loadingTimeout={{
+						enter: TIMEOUT,
+						exit: 0,
+					}}
+					loadingClassNames="loading-indicator"
+				>
+					<AppProvider key={1}>
+						<SubstrateProvider>
+							{/*<Apollo>*/}
 							<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
 								<Component {...pageProps} />
 							</IconContext.Provider>
-						</Apollo>
-					</SubstrateProvider>
-				</AppProvider>
-			</PageTransition>
-		</ThemeProvider>
+							{/*</Apollo>*/}
+						</SubstrateProvider>
+					</AppProvider>
+				</PageTransition>
+			</ThemeProvider>
+		</>
 	)
 }
 
