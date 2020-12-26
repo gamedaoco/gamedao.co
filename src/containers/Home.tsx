@@ -121,11 +121,6 @@ const Home = () => {
 		<Container>
 			<Intro>
 				<Flex flexDirection="row" flexWrap="wrap">
-					<Box width={[1]} px={[4, 6]}>
-						<Text textAlign="left" fontSize={[1]} fontWeight={300} p={3} backgroundColor={'darkgreen'}>
-							Beware of imitations:
-						</Text>
-					</Box>
 					<Box width={[1]} px={[4, 6]} pt={[2, 4]}>
 						<Wrapper>
 							<Box width={[1]} p={[4]}>

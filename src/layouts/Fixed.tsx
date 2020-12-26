@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { Header, Footer } from 'components'
+import { Header, Footer, Notification } from 'components'
 
 import { AppContext } from 'src/context/AppContext'
 
@@ -31,6 +31,8 @@ const Layout = (props) => {
 	const { state } = useContext(AppContext)
 	const { SITE_NAME, SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE, TW_SITE_CREATOR, TW_SITE_NAME } = state.config.data
 	const { SHOW_HEADER, SHOW_FOOTER } = state.features.data
+	const { notifications } = state.app
+	const SHOW_NOTE = (notifications!=undefined)
 
 	const path = router.pathname.substr(1, 1).toUpperCase() + router.pathname.substr(2)
 
@@ -63,6 +65,7 @@ const Layout = (props) => {
 			</Head>
 			<Container>
 				{SHOW_HEADER && <Header />}
+				{SHOW_NOTE && <Notification/>}
 				<Content>{props.children}</Content>
 				{!props.noFooter && SHOW_FOOTER && <Footer />}
 			</Container>

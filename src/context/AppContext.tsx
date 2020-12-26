@@ -58,27 +58,44 @@ export type Action = {
 	payload?: object | null
 }
 
-type AppState = 'INIT' | 'SETUP' | 'READY'
+export type AppState = 'INIT' | 'SETUP' | 'READY'
+export type NotificationType = {
+	type?: number
+	code?: number
+	time?: number
+	message: string
+}
 
-type Web3State = 'INIT' | 'CONNECTING' | 'CONNECT'
+export type Web3State = 'INIT' | 'CONNECTING' | 'CONNECT'
+export type ConfigState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
+export type FeatureState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
+export type NetworkState = 'WAIT' | 'CONNECT' | 'READY' | 'ERROR'
+export type KeyringState = 'WAIT' | 'READY' | 'ERROR'
 
-type ConfigState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
-
-type FeatureState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
-
-type NetworkState = 'WAIT' | 'CONNECT' | 'READY' | 'ERROR'
-
-type KeyringState = 'WAIT' | 'READY' | 'ERROR'
+export type UserState = 'NOUSER' | 'SIGNEDIN'
+export type UserAuthMethod = 'EMPA' | 'SS58' | 'ETH'
+export type UserTypes = {
+	id: number // uuid
+	nick: string // public nick
+	pic: string // url to img
+	method: UserAuthMethod
+	key: string // key used to signin, oneof type UserAuthMethod
+	ttl: number // lifetime
+	language: string // should be iso string
+	alive: boolean
+}
 
 export type State = {
 	app: {
 		state: AppState
+		notifications: NotificationType[] | undefined
 		DEV: boolean
 		ENV: string
 	}
-	web3: {
+	net: {
 		state: Web3State
 		URL: string
+		CONNECTED: boolean
 	}
 	config: {
 		state: ConfigState
@@ -87,14 +104,19 @@ export type State = {
 	features: {
 		state: FeatureState
 		data: FeatureTypes
+	},
+	user: {
+		state: UserState
+		data: UserTypes | undefined
 	}
 }
 
 const INITIAL_STATE: State = {
-	app: { state: 'INIT', DEV, ENV },
-	web3: { state: 'INIT', URL: '' },
+	app: { state: 'INIT', notifications: [], DEV, ENV },
+	net: { state: 'INIT', URL: '', CONNECTED: false },
 	config: { state: 'WAIT', data: defaultConfig },
 	features: { state: 'WAIT', data: defaultFeatures },
+	user: { state: 'NOUSER', data: undefined }
 }
 
 // assemble context
@@ -176,21 +198,25 @@ const AppProvider: React.FC = ({ children }) => {
 
 	useEffect(() => {
 		dispatch({ type: 'CONFIG_LOAD' })
+		let isMounted = true
 		const loadConfig = async () => await loadData('config', ENV)
 		loadConfig().then((data) => {
-			dispatch({ type: 'CONFIG_UPDATE', payload: data })
+			if (isMounted) dispatch({ type: 'CONFIG_UPDATE', payload: data })
 		})
+		return () => { isMounted = false }
 	}, [])
 
 	// load features
 
 	useEffect(() => {
+		let isMounted = true
 		// if (state.config.state !== 'READY') return
 		dispatch({ type: 'FEATURES_LOAD' })
 		const loadFeatures = async () => await loadData('features', ENV)
 		loadFeatures().then((data) => {
-			dispatch({ type: 'FEATURES_UPDATE', payload: data })
+			if (isMounted) dispatch({ type: 'FEATURES_UPDATE', payload: data })
 		})
+		return () => { isMounted = false }
 	}, [])
 
 	return READY ? <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider> : null
