@@ -104,10 +104,10 @@ export type State = {
 	features: {
 		state: FeatureState
 		data: FeatureTypes
-	},
+	}
 	user: {
 		state: UserState
-		data: UserTypes | undefined
+		data: UserTypes | undefined
 	}
 }
 
@@ -116,7 +116,7 @@ const INITIAL_STATE: State = {
 	net: { state: 'INIT', URL: '', CONNECTED: false },
 	config: { state: 'WAIT', data: defaultConfig },
 	features: { state: 'WAIT', data: defaultFeatures },
-	user: { state: 'NOUSER', data: undefined }
+	user: { state: 'NOUSER', data: undefined },
 }
 
 // assemble context
@@ -203,7 +203,9 @@ const AppProvider: React.FC = ({ children }) => {
 		loadConfig().then((data) => {
 			if (isMounted) dispatch({ type: 'CONFIG_UPDATE', payload: data })
 		})
-		return () => { isMounted = false }
+		return () => {
+			isMounted = false
+		}
 	}, [])
 
 	// load features
@@ -216,7 +218,9 @@ const AppProvider: React.FC = ({ children }) => {
 		loadFeatures().then((data) => {
 			if (isMounted) dispatch({ type: 'FEATURES_UPDATE', payload: data })
 		})
-		return () => { isMounted = false }
+		return () => {
+			isMounted = false
+		}
 	}, [])
 
 	return READY ? <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider> : null

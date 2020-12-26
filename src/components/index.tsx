@@ -23,6 +23,8 @@ export { default as ContentGrid } from './ContentGrid'
 export { default as ContentFilter } from './ContentFilter'
 export { default as ContentSearch } from './ContentSearch'
 
+export { default as Notification } from './Notification'
+
 //
 // organisms
 //
