@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react'
+import React, { useEffect, useState, createRef, forwardRef } from 'react'
 
 import { useSubstrate } from 'src/context/SubstrateContext'
 import { SubstrateConsole } from 'src/lib/substrate'
@@ -9,19 +9,35 @@ import { Container, Button } from 'src/components'
 import Balances from './Balances'
 import BlockNumber from './BlockNumber'
 
-// import Events from './Events'
+import Events from './Events'
 // import Interactor from './Interactor'
-// import Metadata from './Metadata'
-// import NodeInfo from './NodeInfo'
+import Metadata from './Metadata'
+import NodeInfo from './NodeInfo'
 // import Transfer from './Transfer'
 // import Upgrade from './Upgrade'
 
 const Wrapper = (props) => <div>{props.children}</div>
 
-function Main() {
-	const [accountAddress, setAccountAddress] = useState(null)
+export const Dashboard = props => {
+
+	const [ accountPair, setAccountPair ] = useState()
+	const [ accountAddress, setAccountAddress ] = useState()
 	const { apiState, keyring, keyringState, apiError } = useSubstrate()
-	const accountPair = accountAddress && keyringState === 'READY' && keyring.getPair(accountAddress)
+
+	// const accountPair =
+	// 	accountAddress !== undefined &&
+	// 	keyringState === 'READY' &&
+	// 	keyring &&
+	// 	keyring.getPair(accountAddress);
+
+	// useEffect(() => {
+	// 	console.log('accountPair')
+	// 	if ( accountAddress && keyringState === 'READY' && keyring ) {
+	// 		setAccountPair( keyring.getPair(accountAddress) )
+	// 		console.log('!app accountAddress', accountAddress)
+	// 		console.log('!app accountPair', accountPair)
+	// 	}
+	// },[ accountAddress ])
 
 	const loader = (text) => (
 		<Dimmer active>
@@ -42,17 +58,16 @@ function Main() {
 		return loader("Loading accounts (please review any extension's authorization)")
 	}
 
-	const contextRef = createRef<typeof Wrapper>()
+	// const contextRef = createRef<typeof Wrapper>()
+	// const contextRef = forwardRef<typeof Wrapper>()
+	// 	<Wrapper ref={contextRef}>
 
 	return (
-		<Wrapper ref={contextRef}>
 			<Container>
 				<Grid stackable columns="equal">
 					<Grid.Row stretched>
-						{/*
 						<NodeInfo />
 						<Metadata />
-*/}
 						<BlockNumber />
 						<BlockNumber finalized />
 					</Grid.Row>
@@ -61,28 +76,21 @@ function Main() {
 						<Balances />
 					</Grid.Row>
 
-					{/*
+{/*
 					<Grid.Row>
 						<Transfer accountPair={accountPair} />
 						<Upgrade accountPair={accountPair} />
 					</Grid.Row>
-
+*/}
 					<Grid.Row>
-						<Interactor accountPair={accountPair} />
+						{/*<Interactor accountPair={accountPair} />*/}
 						<Events />
 					</Grid.Row>
-*/}
 				</Grid>
 			</Container>
-			<SubstrateConsole />
-		</Wrapper>
 	)
-}
-// <SubstrateContextProvider>
-// </SubstrateContextProvider>
-
-export const Root = function Root() {
-	return <Main />
+			// {/*<SubstrateConsole />*/}
+		// </Wrapper>
 }
 
-export default Root
+export default Dashboard
