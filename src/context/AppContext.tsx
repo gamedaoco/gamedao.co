@@ -72,7 +72,7 @@ export type FeatureState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
 export type NetworkState = 'WAIT' | 'CONNECT' | 'READY' | 'ERROR'
 export type KeyringState = 'WAIT' | 'READY' | 'ERROR'
 
-export type UserState = 'NOUSER' | 'SIGNEDIN'
+export type UserState = 'NO_USER' | 'SIGNEDIN'
 export type UserAuthMethod = 'EMPA' | 'SS58' | 'ETH'
 export type UserTypes = {
 	id: number // uuid
@@ -91,6 +91,7 @@ export type State = {
 		notifications: NotificationType[] | undefined
 		DEV: boolean
 		ENV: string
+		READY: boolean
 	}
 	net: {
 		state: Web3State
@@ -107,16 +108,16 @@ export type State = {
 	}
 	user: {
 		state: UserState
-		data: UserTypes | undefined
+		data?: UserTypes
 	}
 }
 
 const INITIAL_STATE: State = {
-	app: { state: 'INIT', notifications: [], DEV, ENV },
-	net: { state: 'INIT', URL: '', CONNECTED: false },
+	app: { state: 'INIT', notifications: [], DEV, ENV, READY: false },
+	net: { state: 'INIT', URL: 'ws://localhost:9944', CONNECTED: false },
 	config: { state: 'WAIT', data: defaultConfig },
 	features: { state: 'WAIT', data: defaultFeatures },
-	user: { state: 'NOUSER', data: undefined },
+	user: { state: 'NO_USER' },
 }
 
 // assemble context
@@ -146,14 +147,17 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
 			return {
 				...state,
 				app: { ...state.app, state: 'SETUP' },
-				config: { data: action.payload },
+				config: {
+					data: action.payload,
+					state: 'READY'
+				},
 			}
 
 		case 'FEATURES_LOAD':
 			log.info(`⏳ load features...`)
 			return {
 				...state,
-				config: { ...state.config, state: 'READY' },
+				// config: { ...state.config, state: 'READY' },
 				features: { ...state.features, state: 'LOAD' },
 			}
 
@@ -161,10 +165,10 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
 			log.info(`⚙️ update features`)
 			return {
 				...state,
-				app: { ...state.app, state: 'READY' },
+				app: { ...state.app, state: 'READY', READY: true },
 				features: {
-					state: 'READY',
 					data: action.payload,
+					state: 'READY'
 				},
 			}
 
@@ -192,9 +196,9 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
 
 const AppProvider: React.FC = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
-	const READY = state.app.state == 'READY' ? true : false
+	const READY = state.app.READY
 
-	// load config to enable core functionality
+	// load config
 
 	useEffect(() => {
 		dispatch({ type: 'CONFIG_LOAD' })
@@ -212,7 +216,6 @@ const AppProvider: React.FC = ({ children }) => {
 
 	useEffect(() => {
 		let isMounted = true
-		// if (state.config.state !== 'READY') return
 		dispatch({ type: 'FEATURES_LOAD' })
 		const loadFeatures = async () => await loadData('features', ENV)
 		loadFeatures().then((data) => {
@@ -223,7 +226,7 @@ const AppProvider: React.FC = ({ children }) => {
 		}
 	}, [])
 
-	return READY ? <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider> : null
+	return READY ? <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider> : <></>
 }
 
 const useAppContext = () => useContext(AppContext)
