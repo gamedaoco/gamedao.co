@@ -24,8 +24,9 @@ export const Container = styled.div`
 export const MetaLink = styled.div`
 	text-align: right;
 	color: white;
+	width: auto;
 	a {
-		font-size: 10px;
+
 		color: rgba(255, 255, 255, 0.5);
 		margin-left: 25px;
 	}

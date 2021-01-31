@@ -57,8 +57,8 @@ const FooterNav = () => {
 			<Box px={4} pt={4} width={[1 / 2, 1 / 2, 1 / 3, 1 / 5]} color="#00ffcc">
 				<Text>
 					<H3>
-						Investor +<br />
-						Gamer
+						Gamer +<br />
+						Investor
 					</H3>
 					<Link href="/invest">Invest now</Link>
 					<br />
@@ -81,8 +81,18 @@ const FooterNav = () => {
 					<Link href="/pro/requirements">Requirements</Link>
 					<br />
 					<Link href="/doc/fees">Fees</Link>
+					<br /><br />
+					<Link href="/products#grant">Grants</Link>
 					<br />
-					<Link href="/doc/how-to-get-funding">How to Get funding</Link>
+					<Link href="/products#perk">Raise</Link>
+					<br />
+					<Link href="/products#lend">Lending</Link>
+					<br />
+					<Link href="/products#share">Shares</Link>
+					<br /><br />
+					<Link href="/products#dao">DAO Factory</Link>
+					<br />
+
 				</Text>
 			</Box>
 
@@ -91,17 +101,22 @@ const FooterNav = () => {
 			<Box px={4} pt={4} width={[1 / 2, 1 / 2, 1 / 3, 1 / 5]} color="#ff00cc">
 				<Text>
 					<H3>
-						Products +<br />
-						Services
+						Marketplace<br />
+						&nbsp;
 					</H3>
-					<Link href="/products#crowdshare">Crowd Shares</Link>
+					<Link href="/use">Games</Link>
 					<br />
-					<Link href="/products#crowdlend">Crowd Lending</Link>
+					<Link href="/use">Creative Work</Link>
 					<br />
-					<Link href="/products#funding-tribes">Funding Tribes</Link>
+					<Link href="/use">Content + DLC</Link>
 					<br />
-					<Link href="/products#staking">Staking + Validation</Link>
+					<Link href="/use">Music + Art</Link>
 					<br />
+					<Link href="/use">eSports Teams</Link>
+					<br />
+					<Link href="/use">Collectables / NFT</Link>
+					<br />
+					<Link href="/use">Licenses</Link>
 					<br />
 				</Text>
 			</Box>
@@ -144,7 +159,7 @@ const FooterNav = () => {
 			<Box px={4} pt={4} width={[1 / 2, 1 / 2, 1 / 3, 1 / 5]} color="#ccff00">
 				<Text>
 					<H3>
-						Join the DAO
+						GameDAO
 						<br />
 						<br />
 					</H3>
@@ -156,7 +171,8 @@ const FooterNav = () => {
 					<br />
 					<Link href="/dao/tokensale">Tokensale</Link>
 					<br />
-					{/*
+					<Link href="/dao/join">Join</Link>
+					<br />					{/*
 					<Link href="/dao/culture">How we work</Link>
 					<br />
 					<Link href="/doc/how-to-dao">How to DAO</Link>
@@ -175,6 +191,17 @@ const FooterNav = () => {
 					<Link href="/team#community">Community</Link>
 					<br />
 */}
+					<H3>
+						ZERO Network
+						<br />
+						<br />
+					</H3>
+					<Link href="/products#play">PLAY Coin</Link>
+					<br />
+					<Link href="/products#staking">Staking + Validation</Link>
+					<br />
+					<br />
+
 				</Text>
 			</Box>
 		</Flex>

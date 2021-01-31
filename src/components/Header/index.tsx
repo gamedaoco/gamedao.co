@@ -20,33 +20,33 @@ const log = Logger('$HEADER')
 // context
 
 import { useAppContext } from 'src/context/AppContext'
-import { useSubstrate } from 'src/context/SubstrateContext'
+// import { useSubstrate } from 'src/context/SubstrateContext'
 
 // ui
 
 import styled from 'styled-components'
 import { Dimmer, Loader, Sticky, Message, Grid } from 'semantic-ui-react'
 import { Flex, Box } from 'rebass/styled-components'
-import { Navigation, Link, Divider } from 'components'
+import { Navigation, Link, Divider, Modal } from 'components'
 import { RatesWrapper, Container, MetaLink, User, Task, Right } from './styles'
 import logo from 'public/z-ctrl-45-col.svg'
 import img from 'public/stripes-s.png'
 
 //
 
-import AccountSelector from 'src/components/substrate/AccountSelector'
+// import AccountSelector from 'src/components/substrate/AccountSelector'
 
-const loader = (text) => (
-	<Dimmer active>
-		<Loader size="small">{text}</Loader>
-	</Dimmer>
-)
+// const loader = (text) => (
+// 	<Dimmer active>
+// 		<Loader size="small">{text}</Loader>
+// 	</Dimmer>
+// )
 
-const message = (err) => (
-	<div>
-		<Message negative compact floating header="Error connecting to Network" content={`${JSON.stringify(err)}`} />
-	</div>
-)
+// const message = (err) => (
+// 	<div>
+// 		<Message negative compact floating header="Error connecting to Network" content={`${JSON.stringify(err)}`} />
+// 	</div>
+// )
 
 const ConnectBtn = styled.div`
 	padding: 10px;
@@ -63,10 +63,10 @@ const Header = () => {
 
 	// connectivity & user
 
-	const { CONNECTED } = state.net
+	// const { CONNECTED } = state.net
 	const hasUser = user.state === 'SIGNEDIN' ? true : false
-	if (hasUser) log.info(user)
-	else log.info('no user')
+	// if (hasUser) log.info(user)
+	// else log.info('no user')
 
 	// const [ showAccountSelector, toggleAccountSelector ] = useState( false )
 	// const [ accountAddress, setAccountAddress ] = useState( null )
@@ -102,22 +102,24 @@ const Header = () => {
 				</Box>
 
 				<Box order={[2, 3]} pt={4} px={4} width={[1, 3 / 4]}>
-					<MetaLink>
-						{hasUser && <Link href="/account">Account</Link>}
+				<Link href="/network">Network</Link>
+{/*
 
-						{SHOW_APPLY && <Link href="/apply">Apply</Link>}
-						{SHOW_CAMPAIGNS && <Link href="/campaigns">Campaigns</Link>}
+				// 		{SHOW_APPLY && <Link href="/apply">Apply</Link>}
+				// 		{SHOW_CAMPAIGNS && <Link href="/campaigns">Campaigns</Link>}
 
-						{hasUser && <Link href="/doc/help">Helpdesk</Link>}
-						{!hasUser && SHOW_CONTACT && <Link href="/contact">Contact</Link>}
+				// 		{hasUser && <Link href="/doc/help">Helpdesk</Link>}
+				// 		{!hasUser && SHOW_CONTACT && <Link href="/contact">Contact</Link>}
 
-						{!hasUser && <ConnectBtn>Sign In</ConnectBtn>}
-						{!hasUser && <Link href="/account/signup">Sign Up</Link>}
-						{hasUser && <Link href="/account/signout">Sign&nbsp;Out</Link>}
+				// 		{!hasUser && <Link href="/account/signup">Sign In / Connect</Link>}
 
-						{/*<Link onClick={setAccountSelector(true)}>Sign In</Link>*/}
-						{/*{showAccountSelector && <AccountSelector setAccountAddress={setAccountAddress} />}*/}
-					</MetaLink>
+				// 		{hasUser && <Link href="/account/signout">Sign&nbsp;Out</Link>}
+
+				// 		{<Link onClick={setAccountSelector(true)}>Sign In</Link>}
+				// 		{showAccountSelector && <AccountSelector setAccountAddress={setAccountAddress} />}
+				// 	<MetaLink>
+				// 	</MetaLink>
+			*/}
 				</Box>
 
 				{/* MESSAGE */}
