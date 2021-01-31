@@ -23,7 +23,7 @@
 	},
 	"dev": {
 		"SUB_APPNAME": "",
-		"ZERO_URI": "https://alphaville-0.zero.io",
+		"ZERO_URI": "ws://localhost:9944",
 		"ETH_URI": "http://localhost:8545",
 		"IPFS_URI": "http://localhost:5001",
 		"GQL_URI": "https://graph.zero.io/v1/graphql",

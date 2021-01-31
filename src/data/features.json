@@ -16,7 +16,7 @@
 		"SHOW_FOOTER_NAV": true,
 		"SHOW_CONTACT": false,
 		"SHOW_APPLY": false,
-		"SHOW_CAMPAIGNS": false,
+		"SHOW_CAMPAIGNS": true,
 		"SHOW_CONNECT": true
 	},
 	"production": {
