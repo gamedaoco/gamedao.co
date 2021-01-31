@@ -1,10 +1,23 @@
 import React, { useContext } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import styled from 'styled-components'
-import { Header, Footer, Notification } from 'components'
+import dynamic from 'next/dynamic'
 
 import { AppContext } from 'src/context/AppContext'
+// import { SubstrateProvider } from 'src/context/SubstrateContext'
+
+import styled from 'styled-components'
+import { Dimmer, Loader } from 'semantic-ui-react'
+import { Header, Footer, Notification } from 'components'
+
+// const SubstrateProvider = dynamic(
+// 	() => import('src/context/SubstrateContext'),
+// 	{ ssr: false }
+// )
+const SubstrateProvider = dynamic(
+	()=>import("../context/SubstrateContext") as any,
+	{ ssr: false }
+)
 
 const Wrapper = styled.div`
 	margin: 0;
@@ -26,14 +39,21 @@ const Content = styled.div`
 	min-width: 100%;
 	min-height: calc(100vh-100px);
 `
+
+const loader = (text) => (
+	<Dimmer active>
+		<Loader size="small">{text}</Loader>
+	</Dimmer>
+)
+
 const Layout = (props) => {
-	const router = useRouter()
 	const { state } = useContext(AppContext)
+	const { notifications, READY } = state.app
 	const { SITE_NAME, SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE, TW_SITE_CREATOR, TW_SITE_NAME } = state.config.data
 	const { SHOW_HEADER, SHOW_FOOTER } = state.features.data
-	const { notifications } = state.app
 	const SHOW_NOTE = notifications != undefined
-
+	const url = state.net.URL
+	const router = useRouter()
 	const path = router.pathname.substr(1, 1).toUpperCase() + router.pathname.substr(2)
 
 	return (
@@ -64,10 +84,14 @@ const Layout = (props) => {
 				</title>
 			</Head>
 			<Container>
-				{SHOW_HEADER && <Header />}
-				{SHOW_NOTE && <Notification />}
-				<Content>{props.children}</Content>
-				{!props.noFooter && SHOW_FOOTER && <Footer />}
+				<SubstrateProvider>
+					{/*<GraphProvider>*/}
+						{SHOW_HEADER && <Header />}
+						{SHOW_NOTE && <Notification />}
+						<Content>{props.children}</Content>
+						{!props.noFooter && SHOW_FOOTER && <Footer />}
+					{/*</GraphProvider>*/}
+				</SubstrateProvider>
 			</Container>
 		</Wrapper>
 	)
