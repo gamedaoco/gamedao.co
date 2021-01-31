@@ -1,27 +1,32 @@
-import { createContext, useContext, useState, useReducer, useEffect, useCallback, Dispatch } from 'react'
+import React, { createContext, useContext, useState, useReducer, useEffect, useCallback
+	// , Dispatch
+} from 'react'
 import { DEV, ENV, SUBZERO } from 'src/config'
 
 // logging
 
 import { Logger } from 'src/lib/log'
-const log = Logger('$ZERO')
+const log = Logger('$NET')
 
 // substrate
 
 import { ApiPromise, WsProvider } from '@polkadot/api'
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp'
-
 import { DefinitionRpcExt, RegistryTypes } from '@polkadot/types/types'
 import keyring, { Keyring } from '@polkadot/ui-keyring'
 import { formatBalance } from '@polkadot/util'
 
-// TODO: replace with generated interfaces...
-import jsonrpc from '@polkadot/types/interfaces/jsonrpc'
+import { getMetadata, cacheMetadata } from 'src/storage/substrate'
 
 // type registry
+// TODO: automate typegen / introspection
+// -> typegen package
 
+import jsonrpc from '@polkadot/types/interfaces/jsonrpc'
+import { registryTypes } from 'src/interfaces'
 import { TypeRegistry } from '@polkadot/types'
 export const registry = new TypeRegistry()
+
 const DEFAULT_DECIMALS = registry.createType('u32', 18)
 const DEFAULT_SS58 = registry.createType('u32', 24)
 const DEFAULT_TOKEN = registry.createType('Text', 'PLAY')
@@ -29,22 +34,18 @@ const DEFAULT_TOKEN = registry.createType('Text', 'PLAY')
 // type / state definitions
 
 type ActionType = 'RESET_SOCKET' | 'CONNECT' | 'CONNECT_SUCCESS' | 'CONNECT_ERROR' | 'KEYRING_SET' | 'KEYRING_ERROR'
-
 type Action = {
 	type: ActionType
 	payload?: any
 }
-
 type ApiState = 'CONNECT' | 'READY' | 'ERROR'
-
 type KeyringState = 'READY' | 'ERROR'
-
 type JSONRPC = Record<string, Record<string, DefinitionRpcExt>>
 
 export type State = {
 	endpoint: string
-	types?: RegistryTypes
-	rpc?: JSONRPC
+	types: RegistryTypes
+	rpc: JSONRPC
 	api?: ApiPromise
 	apiError?: Error
 	apiState?: ApiState
@@ -57,25 +58,27 @@ export type State = {
 // TODO: pull from config provided by appcontext
 
 const INITIAL_STATE: State = {
-	endpoint: 'wss://alphaville-0.zero.io',
-	// types: undefined,
-	// rpc: { ...jsonrpc },
-	// apiError: null,
-	// apiState: null,
-	// keyring: null,
-	// keyringState: null,
-	// keyringError: null,
+	endpoint: 'ws://localhost:9944',
+	types: registryTypes,
+	rpc: { ...jsonrpc }
 }
 
 // assemble context
 
-const SubstrateContext = createContext<{
-	state: State
-	dispatch: React.Dispatch<any>
-}>({
-	state: INITIAL_STATE,
-	dispatch: () => null,
-})
+export type Dispatch = (action: Action) => void
+
+const SubstrateContext = createContext<[
+	State,
+	Dispatch
+]>([
+	INITIAL_STATE,
+	() => null,
+])
+
+// subsocial style
+// export type Dispatch = (action: Action) => void
+// type ContextValue = [ State, Dispatch ]
+// const SubstrateContext = createContext<ContextValue>(undefined as unknown as ContextValue)
 
 // reducer
 
@@ -149,14 +152,27 @@ type SubstrateProviderProps = React.PropsWithChildren<{
 	types?: RegistryTypes
 }>
 
+let _api: ApiPromise
+export { _api as api }
+
 // const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
-const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
-	useEffect(() => {
-		const loadExtension = async () => {
-			const ed = await import('@polkadot/extension-dapp')
-		}
-		loadExtension()
-	}, [])
+const SubstrateProvider = (props:SubstrateProviderProps) => {
+
+	// const url = props.endpoint
+
+	// useEffect(() => {
+	// 	console.log('url',url)
+	// 	if(url===undefined) return <>{props.children}</>
+
+	// }, [url])
+
+	// supposed to mount extension dapp when window
+	// useEffect(() => {
+	// 	const loadExtension = async () => {
+	// 		const ed = await import('@polkadot/extension-dapp')
+	// 	}
+	// 	loadExtension()
+	// }, [])
 
 	const initState: State = {
 		...INITIAL_STATE,
@@ -165,32 +181,33 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 	}
 	const [state, dispatch] = useReducer(reducer, initState)
 	const [ss58Format, setSs58Format] = useState<number>(DEFAULT_SS58.toNumber())
+
 	const { rpc, types, apiState, api, endpoint } = state
 
 	const connect = useCallback(async () => {
+
+		// if ( apiState==='READY' ) return
 		if (api) return
 
-		log.info(`Connecting to Subzero node ${endpoint} ...`)
+		log.info(`Connecting to node ${endpoint} ...`)
 		const connectTime = window.performance.now()
 		const provider = new WsProvider(endpoint)
 
 		// manage / rehydrate the cache in case
 		// metadata was retrieved already
-
-		// const metadata = await getCachedSubstrateMetadata()
-		// let isMetadataCached = isDef(metadata)
+		const metadata = await getMetadata()
+		let isMetadataCached = ( metadata !== undefined )
 		// console.log(`>>> METADATA key: ${Object.keys(metadata || {})}`)
-
-		const metadata = undefined
+		// const metadata = undefined
 
 		const _api = new ApiPromise({ provider, types, rpc, metadata })
 
 		const onConnectSuccess = async () => {
 			dispatch({ type: 'CONNECT_SUCCESS', payload: connectTime })
-			// if (!isMetadataCached) {
-			// 	isMetadataCached = true
-			// 	await cacheSubstrateMetadata(_api)
-			// }
+			if (!isMetadataCached) {
+				isMetadataCached = true
+				await cacheMetadata(_api)
+			}
 		}
 
 		const onReady = () => {
@@ -226,7 +243,7 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 				allAccounts = allAccounts.map(({ address, meta }) => ({ address, meta: { ...meta, name: `${meta.name} (${meta.source})` } }))
 
 				keyring.loadAll({ isDevelopment: DEV, ss58Format }, allAccounts)
-				dispatch({ type: 'KEYRING_SET', DEV, payload: keyring })
+				dispatch({ type: 'KEYRING_SET', payload: keyring })
 			} catch (err) {
 				log.error(`❌❌ Keyring failed to load accounts. ${err}`)
 				dispatch({ type: 'KEYRING_ERROR', payload: err })
@@ -250,29 +267,37 @@ const SubstrateProvider: React.FC<SubstrateProviderProps> = (props) => {
 
 	// metadata
 
-	useEffect(() => {
-		if (apiState !== 'READY' || !api) return
+	// useEffect(() => {
+	// 	// if ( apiState !== 'READY' ) return
+	// 	if (!api) return
 
-		const setupTokenProps = async () => {
-			const properties = await api.rpc.system.properties()
-			registry.setChainProperties(properties)
+	// 	const setupTokenProps = async () => {
+	// 		const properties = await api.rpc.system.properties()
+	// 		registry.setChainProperties(properties)
 
-			const tokenSymbol = properties.tokenSymbol.unwrapOr('PLAY').toString()
-			const tokenDecimals = properties.tokenDecimals.unwrapOr('18').toNumber()
-			formatBalance.setDefaults({
-				decimals: tokenDecimals,
-				unit: tokenSymbol,
-			})
+	// 		const tokenSymbol = properties.tokenSymbol.unwrapOr('PLAY').toString()
+	// 		const tokenDecimals = properties.tokenDecimals.unwrapOr(18) as number
+	// 		console.log('tokenSymbol',tokenSymbol,'tokenDecimals',tokenDecimals)
+	// 		formatBalance.setDefaults({
+	// 			unit: tokenSymbol,
+	// 			decimals: tokenDecimals
+	// 		})
 
-			const ss58Format = properties.ss58Format.unwrapOr(undefined)
-			ss58Format && setSs58Format(ss58Format.toNumber())
-		}
-		setupTokenProps()
-	}, [apiState])
+	// 		const ss58Format = properties.ss58Format.unwrapOr(undefined)
+	// 		ss58Format && setSs58Format(ss58Format.toNumber())
+	// 	}
+	// 	setupTokenProps()
+	// }, [apiState])
 
-	return <SubstrateContext.Provider value={{ state, dispatch }}>{props.children}</SubstrateContext.Provider>
+	return <SubstrateContext.Provider value={[ state, dispatch ]}>{props.children}</SubstrateContext.Provider>
 }
 
-const useSubstrate = () => useContext(SubstrateContext)[0]
+// const useSubstrate = () => useContext(SubstrateContext)[0]
+// const useSubstrate = () => ({ ...useContext(SubstrateContext) })
+const useSubstrate = (): State & { dispatch: Dispatch } => {
+	const [ state, dispatch ] = React.useContext(SubstrateContext)
+	return { ...state, dispatch }
+}
 
 export { SubstrateContext, SubstrateProvider, useSubstrate }
+export default SubstrateProvider
