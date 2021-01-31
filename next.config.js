@@ -43,6 +43,14 @@ module.exports = withImages(
 		// pageExtensions: ['jsx', 'tsx', 'mdx'],
 
 		webpack: (config, options) => {
+
+			// fix mjs import
+			config.module.rules.push({
+				type: 'javascript/auto',
+				test: /\.mjs$/,
+				use: [],
+			})
+
 			config.node = {
 				fs: 'empty',
 			}
