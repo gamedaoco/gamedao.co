@@ -13,9 +13,7 @@ import { useEffect, useContext } from 'react'
 import App from 'next/app'
 import { useRouter } from 'next/router'
 
-import { Apollo } from 'src/context/Apollo'
 import { AppProvider } from 'src/context/AppContext'
-import { SubstrateProvider } from 'src/context/SubstrateContext'
 
 import * as Fathom from 'fathom-client'
 
@@ -40,19 +38,17 @@ const theme = {
 }
 
 const Application = ({ Component, pageProps }) => {
+
 	const router = useRouter()
 
 	useEffect(() => {
 		Fathom.load('XLUUAYWU', {
 			url: '//scorpion.gamedao.co/script.js',
 		})
-
 		function onRouteChangeComplete() {
 			Fathom.trackPageview()
 		}
-
 		router.events.on('routeChangeComplete', onRouteChangeComplete)
-
 		return () => {
 			router.events.off('routeChangeComplete', onRouteChangeComplete)
 		}
@@ -61,7 +57,7 @@ const Application = ({ Component, pageProps }) => {
 	return (
 		<>
 			<GlobalStyle />
-			<ThemeProvider theme={theme} key="key">
+			<ThemeProvider theme={theme} key="theme">
 				<PageTransition
 					timeout={TIMEOUT}
 					classNames="page-transition"
@@ -74,13 +70,9 @@ const Application = ({ Component, pageProps }) => {
 					loadingClassNames="loading-indicator"
 				>
 					<AppProvider key={1}>
-						<SubstrateProvider>
-							{/*<Apollo>*/}
-							<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
-								<Component {...pageProps} />
-							</IconContext.Provider>
-							{/*</Apollo>*/}
-						</SubstrateProvider>
+						<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
+							<Component {...pageProps} />
+						</IconContext.Provider>
 					</AppProvider>
 				</PageTransition>
 			</ThemeProvider>

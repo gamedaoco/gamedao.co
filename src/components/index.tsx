@@ -24,6 +24,7 @@ export { default as ContentFilter } from './ContentFilter'
 export { default as ContentSearch } from './ContentSearch'
 
 export { default as Notification } from './Notification'
+export { default as Modal } from './Modal'
 
 //
 // organisms
