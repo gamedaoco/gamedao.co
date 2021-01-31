@@ -1,4 +1,4 @@
-{
+-{
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
@@ -11,7 +11,10 @@
 			"themes": ["./src/themes/"],
 			"data": ["./src/data/"],
 			"config": ["./src/config/"],
-			"queries": ["./src/queries/"]
+			"queries": ["./src/queries/"],
+			"sample-polkadotjs-typegen/*": ["src/*"],
+			"@polkadot/api/augment": ["src/interfaces/augment-api.ts"],
+			"@polkadot/types/augment": ["src/interfaces/augment-types.ts"]
 		},
 		"target": "esnext",
 		"module": "esnext",
@@ -38,3 +41,5 @@
 	"exclude": ["node_modules"],
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
+
+
