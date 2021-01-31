@@ -20,7 +20,7 @@ import { setContext } from '@apollo/link-context'
 
 const initialState = {}
 
-export const Apollo = ({ children }) => {
+export const Graph = ({ children }) => {
 	const { state } = useContext(AppContext)
 	const { GQL_URI, GQL_KEY } = state.config.data
 
@@ -97,13 +97,13 @@ export const Apollo = ({ children }) => {
 	)
 
 	let client = new ApolloClient({
+		link: from([customHeader, link]),
 		ssrMode,
 		connectToDevTools: !ssrMode,
-		link: from([customHeader, link]),
 		cache,
 	})
 
 	return <ApolloProvider client={client}>{children}</ApolloProvider>
 }
 
-export default Apollo
+export default Graph
