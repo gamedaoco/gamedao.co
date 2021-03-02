@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useReducer, useEffect, useCallback
+import React, {
+	createContext,
+	useContext,
+	useState,
+	useReducer,
+	useEffect,
+	useCallback,
 	// , Dispatch
 } from 'react'
 import { DEV, ENV, SUBZERO } from 'src/config'
@@ -28,7 +34,7 @@ import { TypeRegistry } from '@polkadot/types'
 export const registry = new TypeRegistry()
 
 const DEFAULT_DECIMALS = registry.createType('u32', 18)
-const DEFAULT_SS58 = registry.createType('u32', 24)
+const DEFAULT_SS58 = registry.createType('u32', 25)
 const DEFAULT_TOKEN = registry.createType('Text', 'PLAY')
 
 // type / state definitions
@@ -60,20 +66,14 @@ export type State = {
 const INITIAL_STATE: State = {
 	endpoint: 'ws://localhost:9944',
 	types: registryTypes,
-	rpc: { ...jsonrpc }
+	rpc: { ...jsonrpc },
 }
 
 // assemble context
 
 export type Dispatch = (action: Action) => void
 
-const SubstrateContext = createContext<[
-	State,
-	Dispatch
-]>([
-	INITIAL_STATE,
-	() => null,
-])
+const SubstrateContext = createContext<[State, Dispatch]>([INITIAL_STATE, () => null])
 
 // subsocial style
 // export type Dispatch = (action: Action) => void
@@ -156,7 +156,8 @@ let _api: ApiPromise
 export { _api as api }
 
 // const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
-const SubstrateProvider = (props:SubstrateProviderProps) => {
+const SubstrateProvider = (props: SubstrateProviderProps) => {
+	if (api) return
 
 	// const url = props.endpoint
 
@@ -185,7 +186,6 @@ const SubstrateProvider = (props:SubstrateProviderProps) => {
 	const { rpc, types, apiState, api, endpoint } = state
 
 	const connect = useCallback(async () => {
-
 		// if ( apiState==='READY' ) return
 		if (api) return
 
@@ -196,7 +196,7 @@ const SubstrateProvider = (props:SubstrateProviderProps) => {
 		// manage / rehydrate the cache in case
 		// metadata was retrieved already
 		const metadata = await getMetadata()
-		let isMetadataCached = ( metadata !== undefined )
+		let isMetadataCached = metadata !== undefined
 		// console.log(`>>> METADATA key: ${Object.keys(metadata || {})}`)
 		// const metadata = undefined
 
@@ -289,13 +289,13 @@ const SubstrateProvider = (props:SubstrateProviderProps) => {
 	// 	setupTokenProps()
 	// }, [apiState])
 
-	return <SubstrateContext.Provider value={[ state, dispatch ]}>{props.children}</SubstrateContext.Provider>
+	return <SubstrateContext.Provider value={[state, dispatch]}>{props.children}</SubstrateContext.Provider>
 }
 
 // const useSubstrate = () => useContext(SubstrateContext)[0]
 // const useSubstrate = () => ({ ...useContext(SubstrateContext) })
 const useSubstrate = (): State & { dispatch: Dispatch } => {
-	const [ state, dispatch ] = React.useContext(SubstrateContext)
+	const [state, dispatch] = React.useContext(SubstrateContext)
 	return { ...state, dispatch }
 }
 

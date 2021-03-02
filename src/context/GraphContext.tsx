@@ -53,23 +53,27 @@ export const Graph = ({ children }) => {
 	const ssrMode = !process.browser
 	console.log('ssrMode', ssrMode)
 
-	const wsLink = !ssrMode
-		? new WebSocketLink({
-				uri: GQL_URI.replace('https://', 'wss://'),
-				options: {
-					reconnect: true,
-					connectionParams: {
-						headers: {
-							// Authorization: `Bearer ${GQL_KEY}`,
-							'x-hasura-admin-secret': GQL_KEY,
-						},
+	let wsLink
+
+	useEffect(() => {
+		if (ssrMode) return
+
+		wsLink = new WebSocketLink({
+			uri: GQL_URI.replace('https://', 'wss://'),
+			options: {
+				reconnect: true,
+				connectionParams: {
+					headers: {
+						// Authorization: `Bearer ${GQL_KEY}`,
+						'x-hasura-admin-secret': GQL_KEY,
 					},
 				},
-				// eslint not seeing WebSocket definition in typescript package. need to fix eslint rules
-				// eslint-disable-next-line no-undef
-				webSocketImpl: WebSocket,
-		  })
-		: null
+			},
+			// eslint not seeing WebSocket definition in typescript package. need to fix eslint rules
+			// eslint-disable-next-line no-undef
+			webSocketImpl: WebSocket,
+		})
+	}, [ssrMode])
 
 	const httpLink = new HttpLink({
 		uri: GQL_URI,

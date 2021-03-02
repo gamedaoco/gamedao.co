@@ -149,7 +149,7 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
 				app: { ...state.app, state: 'SETUP' },
 				config: {
 					data: action.payload,
-					state: 'READY'
+					state: 'READY',
 				},
 			}
 
@@ -168,7 +168,7 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
 				app: { ...state.app, state: 'READY', READY: true },
 				features: {
 					data: action.payload,
-					state: 'READY'
+					state: 'READY',
 				},
 			}
 
