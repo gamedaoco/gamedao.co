@@ -4,7 +4,9 @@
 import * as definitions from './definitions'
 
 export const allDefinitions = {
-  ...definitions
+	...definitions,
 }
 
-export const registryTypes = Object.values(allDefinitions).map(({ types }) => types).reduce((all, types) => Object.assign(all, types), {});
+export const registryTypes = Object.values(allDefinitions)
+	.map(({ types }) => types)
+	.reduce((all, types) => Object.assign(all, types), {})

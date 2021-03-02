@@ -11,9 +11,9 @@ export default {
 			name: 'Vec<u8>',
 			protocoL: 'u8',
 			status: 'u8',
-			nonce: 'u64'
+			nonce: 'u64',
 		},
 		EventMessage: 'Vec<u8>',
-		Nonce: 'u64'
-	}
+		Nonce: 'u64',
+	},
 }
