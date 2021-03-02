@@ -9,14 +9,14 @@ const Component = (props) => {
 	const [accountSelected, setAccountSelected] = useState('')
 
 	// Get the list of accounts we possess the private key for
-	const keyringOptions = keyring.getPairs().map((account) => ({
+	const keyringOptions = keyring && keyring.getPairs().map((account) => ({
 		key: account.address,
 		value: account.address,
-		text: account.meta.name.toUpperCase(),
+		// text: account.meta.name.toUpperCase(),
 		icon: 'user',
 	}))
 
-	const initialAddress = keyringOptions.length > 0 ? keyringOptions[0].value : ''
+	const initialAddress = keyringOptions && keyringOptions.length > 0 ? keyringOptions[0].value : ''
 
 	// Set the initial address
 	useEffect(() => {
@@ -57,7 +57,7 @@ const Component = (props) => {
 				}}
 				value={accountSelected}
 			/>
-			{api.query.balances && api.query.balances.freeBalance ? <BalanceAnnotation accountSelected={accountSelected} /> : null}
+			{api && api.query.balances && api.query.balances.freeBalance ? <BalanceAnnotation accountSelected={accountSelected} /> : null}
 		</Container>
 	)
 }
