@@ -115,3 +115,5 @@ aws-exports.js
 awsconfiguration.json
 
 public/sitemap.xml
+
+vendors

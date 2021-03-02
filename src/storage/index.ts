@@ -5,5 +5,4 @@
 
 import localForage from 'localforage'
 
-export const createStore = ( storeName: string ) =>
-	localForage.createInstance({ name: 'gamedao', storeName })
+export const createStore = (storeName: string) => localForage.createInstance({ name: 'gamedao', storeName })

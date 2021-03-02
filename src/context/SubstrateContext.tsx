@@ -64,7 +64,9 @@ export type State = {
 // TODO: pull from config provided by appcontext
 
 const INITIAL_STATE: State = {
-	endpoint: 'ws://localhost:9944',
+	endpoint:
+		//'ws://localhost:9944',
+		'wss://alphaville-0.zero.io:9944',
 	types: registryTypes,
 	rpc: { ...jsonrpc },
 }

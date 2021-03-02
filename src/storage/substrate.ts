@@ -17,7 +17,7 @@ type MetadataRecord = Record<string, string>
 
 //
 
-export async function cacheMetadata (api?: ApiPromise): Promise<void> {
+export async function cacheMetadata(api?: ApiPromise): Promise<void> {
 	if (!api) {
 		log.error('Network API is undefined')
 		return
@@ -40,7 +40,7 @@ export async function cacheMetadata (api?: ApiPromise): Promise<void> {
  * Metadata `value` is a hex representation of metadata.
  */
 
-async function setMetadata (metadata: Metadata): Promise<void> {
+async function setMetadata(metadata: Metadata): Promise<void> {
 	try {
 		await store.setItem(keyMetadata, metadata)
 	} catch (err) {
@@ -48,16 +48,16 @@ async function setMetadata (metadata: Metadata): Promise<void> {
 	}
 }
 
-export async function getMetadataRecord (): Promise<MetadataRecord | undefined> {
+export async function getMetadataRecord(): Promise<MetadataRecord | undefined> {
 	const cachedMetadata = await getMetadata()
 	if (!cachedMetadata) return undefined
 
 	return { [cachedMetadata.key]: cachedMetadata.value }
 }
 
-export async function getMetadata (): Promise<Metadata | undefined> {
+export async function getMetadata(): Promise<Metadata | undefined> {
 	try {
-		const metadata = await store.getItem(keyMetadata) as Metadata
+		const metadata = (await store.getItem(keyMetadata)) as Metadata
 
 		if (!metadata) throw new Error('Metadata is empty')
 		if (metadata.key.length === 0) throw new Error('Metadata key is empty')

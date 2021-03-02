@@ -1,3 +1,27 @@
 {
-	"PROVIDER_SOCKET": "wss://alphaville-0.zero.io"
+	"CUSTOM_TYPES": {
+		"Address": "IndicesLookupSource",
+		"LookupSource": "IndicesLookupSource",
+		"Crowdfunding": {
+			"Campaign": {
+				"id": "Hash",
+				"manager": "AccountId",
+				"deposit": "Balance",
+				"expiry": "BlockNumber",
+				"cap": "Balance",
+				"name": "Vec<u8>",
+				"protocol": "u8",
+				"status": "u8"
+			},
+			"Treasury": {
+				"id": "Hash",
+				"campaign_id": "Hash",
+				"purpose": "Vec<u8>",
+				"amount": "Balance",
+				"expiry": "BlockNumber",
+				"status": "u8"
+			}
+		}
+	},
+	"PROVIDER_SOCKET": "wss://alphaville-0.zero.io:9944"
 }

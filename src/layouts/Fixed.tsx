@@ -1,7 +1,13 @@
 import React, { useContext } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
+
+// import dynamic from 'next/dynamic'
+/*const SubstrateProvider = dynamic(
+	()=>import("../context/SubstrateContext") as any,
+	{ ssr: false }
+)
+*/
 
 import { AppContext } from 'src/context/AppContext'
 // import { SubstrateProvider } from 'src/context/SubstrateContext'
@@ -9,15 +15,6 @@ import { AppContext } from 'src/context/AppContext'
 import styled from 'styled-components'
 import { Dimmer, Loader } from 'semantic-ui-react'
 import { Header, Footer, Notification } from 'components'
-
-// const SubstrateProvider = dynamic(
-// 	() => import('src/context/SubstrateContext'),
-// 	{ ssr: false }
-// )
-const SubstrateProvider = dynamic(
-	()=>import("../context/SubstrateContext") as any,
-	{ ssr: false }
-)
 
 const Wrapper = styled.div`
 	margin: 0;
@@ -84,14 +81,14 @@ const Layout = (props) => {
 				</title>
 			</Head>
 			<Container>
-				<SubstrateProvider>
-					{/*<GraphProvider>*/}
-						{SHOW_HEADER && <Header />}
-						{SHOW_NOTE && <Notification />}
-						<Content>{props.children}</Content>
-						{!props.noFooter && SHOW_FOOTER && <Footer />}
-					{/*</GraphProvider>*/}
-				</SubstrateProvider>
+				{/*<SubstrateProvider>*/}
+				{/*<GraphProvider>*/}
+				{SHOW_HEADER && <Header />}
+				{SHOW_NOTE && <Notification />}
+				<Content>{props.children}</Content>
+				{!props.noFooter && SHOW_FOOTER && <Footer />}
+				{/*</GraphProvider>*/}
+				{/*</SubstrateProvider>*/}
 			</Container>
 		</Wrapper>
 	)
