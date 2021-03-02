@@ -81,7 +81,8 @@ const FooterNav = () => {
 					<Link href="/pro/requirements">Requirements</Link>
 					<br />
 					<Link href="/doc/fees">Fees</Link>
-					<br /><br />
+					<br />
+					<br />
 					<Link href="/products#grant">Grants</Link>
 					<br />
 					<Link href="/products#perk">Raise</Link>
@@ -89,10 +90,10 @@ const FooterNav = () => {
 					<Link href="/products#lend">Lending</Link>
 					<br />
 					<Link href="/products#share">Shares</Link>
-					<br /><br />
+					<br />
+					<br />
 					<Link href="/products#dao">DAO Factory</Link>
 					<br />
-
 				</Text>
 			</Box>
 
@@ -101,7 +102,8 @@ const FooterNav = () => {
 			<Box px={4} pt={4} width={[1 / 2, 1 / 2, 1 / 3, 1 / 5]} color="#ff00cc">
 				<Text>
 					<H3>
-						Marketplace<br />
+						Marketplace
+						<br />
 						&nbsp;
 					</H3>
 					<Link href="/use">Games</Link>
@@ -172,7 +174,8 @@ const FooterNav = () => {
 					<Link href="/dao/tokensale">Tokensale</Link>
 					<br />
 					<Link href="/dao/join">Join</Link>
-					<br />					{/*
+					<br />{' '}
+					{/*
 					<Link href="/dao/culture">How we work</Link>
 					<br />
 					<Link href="/doc/how-to-dao">How to DAO</Link>
@@ -201,7 +204,6 @@ const FooterNav = () => {
 					<Link href="/products#staking">Staking + Validation</Link>
 					<br />
 					<br />
-
 				</Text>
 			</Box>
 		</Flex>

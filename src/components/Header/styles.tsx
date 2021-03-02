@@ -26,7 +26,6 @@ export const MetaLink = styled.div`
 	color: white;
 	width: auto;
 	a {
-
 		color: rgba(255, 255, 255, 0.5);
 		margin-left: 25px;
 	}

@@ -18,10 +18,9 @@ import NodeInfo from './NodeInfo'
 
 const Wrapper = (props) => <div>{props.children}</div>
 
-export const Dashboard = props => {
-
-	const [ accountPair, setAccountPair ] = useState()
-	const [ accountAddress, setAccountAddress ] = useState()
+export const Dashboard = (props) => {
+	const [accountPair, setAccountPair] = useState()
+	const [accountAddress, setAccountAddress] = useState()
 	const { apiState, keyring, keyringState, apiError } = useSubstrate()
 
 	// const accountPair =
@@ -63,34 +62,34 @@ export const Dashboard = props => {
 	// 	<Wrapper ref={contextRef}>
 
 	return (
-			<Container>
-				<Grid stackable columns="equal">
-					<Grid.Row stretched>
-						<NodeInfo />
-						<Metadata />
-						<BlockNumber />
-						<BlockNumber finalized />
-					</Grid.Row>
+		<Container>
+			<Grid stackable columns="equal">
+				<Grid.Row stretched>
+					<NodeInfo />
+					<Metadata />
+					<BlockNumber />
+					<BlockNumber finalized />
+				</Grid.Row>
 
-					<Grid.Row stretched>
-						<Balances />
-					</Grid.Row>
+				<Grid.Row stretched>
+					<Balances />
+				</Grid.Row>
 
-{/*
+				{/*
 					<Grid.Row>
 						<Transfer accountPair={accountPair} />
 						<Upgrade accountPair={accountPair} />
 					</Grid.Row>
 */}
-					<Grid.Row>
-						{/*<Interactor accountPair={accountPair} />*/}
-						<Events />
-					</Grid.Row>
-				</Grid>
-			</Container>
+				<Grid.Row>
+					{/*<Interactor accountPair={accountPair} />*/}
+					<Events />
+				</Grid.Row>
+			</Grid>
+		</Container>
 	)
-			// {/*<SubstrateConsole />*/}
-		// </Wrapper>
+	// {/*<SubstrateConsole />*/}
+	// </Wrapper>
 }
 
 export default Dashboard

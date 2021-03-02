@@ -102,8 +102,8 @@ const Header = () => {
 				</Box>
 
 				<Box order={[2, 3]} pt={4} px={4} width={[1, 3 / 4]}>
-				<Link href="/network">Network</Link>
-{/*
+					<Link href="/network">Network</Link>
+					{/*
 
 				// 		{SHOW_APPLY && <Link href="/apply">Apply</Link>}
 				// 		{SHOW_CAMPAIGNS && <Link href="/campaigns">Campaigns</Link>}

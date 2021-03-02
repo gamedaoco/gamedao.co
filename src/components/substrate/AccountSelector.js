@@ -9,12 +9,14 @@ const Component = (props) => {
 	const [accountSelected, setAccountSelected] = useState('')
 
 	// Get the list of accounts we possess the private key for
-	const keyringOptions = keyring && keyring.getPairs().map((account) => ({
-		key: account.address,
-		value: account.address,
-		// text: account.meta.name.toUpperCase(),
-		icon: 'user',
-	}))
+	const keyringOptions =
+		keyring &&
+		keyring.getPairs().map((account) => ({
+			key: account.address,
+			value: account.address,
+			// text: account.meta.name.toUpperCase(),
+			icon: 'user',
+		}))
 
 	const initialAddress = keyringOptions && keyringOptions.length > 0 ? keyringOptions[0].value : ''
 
