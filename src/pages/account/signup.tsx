@@ -24,8 +24,7 @@ const Page = () => {
 	return (
 		<Container>
 			<Flex id="content" flexDirection="row" flexWrap="wrap" color="rgba(255,255,255,.65)">
-				<Box width={[1]} px={[4, 6]} py={[2, 4]}>
-				</Box>
+				<Box width={[1]} px={[4, 6]} py={[2, 4]}></Box>
 			</Flex>
 		</Container>
 	)

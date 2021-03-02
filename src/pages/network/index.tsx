@@ -19,12 +19,12 @@ import App from 'src/components/substrate/Root'
 const Page = () => {
 	const { state } = useContext(AppContext)
 
-	return(
+	return (
 		<Layout>
 			<Flex flexDirection="row" flexWrap="wrap" px={4}>
 				<Box width={[1]} p={[2, 4]}>
 					<h1>Network</h1>
-					<App/>
+					<App />
 				</Box>
 			</Flex>
 		</Layout>
@@ -32,4 +32,3 @@ const Page = () => {
 }
 
 export default Page
-

@@ -13,6 +13,9 @@ import { useEffect, useContext } from 'react'
 import App from 'next/app'
 import { useRouter } from 'next/router'
 
+import dynamic from 'next/dynamic'
+const SubstrateProvider = dynamic(() => import('../context/SubstrateContext') as any, { ssr: false })
+
 import { AppProvider } from 'src/context/AppContext'
 
 import * as Fathom from 'fathom-client'
@@ -38,7 +41,6 @@ const theme = {
 }
 
 const Application = ({ Component, pageProps }) => {
-
 	const router = useRouter()
 
 	useEffect(() => {
@@ -70,9 +72,11 @@ const Application = ({ Component, pageProps }) => {
 					loadingClassNames="loading-indicator"
 				>
 					<AppProvider key={1}>
-						<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
-							<Component {...pageProps} />
-						</IconContext.Provider>
+						<SubstrateProvider>
+							<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
+								<Component {...pageProps} />
+							</IconContext.Provider>
+						</SubstrateProvider>
 					</AppProvider>
 				</PageTransition>
 			</ThemeProvider>
