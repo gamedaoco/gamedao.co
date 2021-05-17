@@ -1,4 +1,5 @@
 import configCommon from './common.json'
+// import types from './types.json'
 // Using `require` as `import` does not support dynamic loading (yet).
 const configEnv = require(`./${process.env.NODE_ENV}.json`)
 
@@ -10,14 +11,21 @@ const envVars = envVarNames.reduce((mem, n) => {
 	return mem
 }, {})
 
-const config = { ...configCommon, ...configEnv, ...envVars }
+const config = {
+	...configCommon,
+	...configEnv,
+	...envVars,
+	// ...types
+}
 export default config
 
 export const DEV = process.env.VERCEL_GITLAB_COMMIT_REF !== 'production'
 export const ENV = DEV ? 'dev' : 'production'
-export const KEY = 'hello'
+export const KEY = 'gamedao'
 export const HOST =
 	typeof window !== 'undefined'
 		? window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/api/'
 		: '/api/'
-export const SUBZERO = 'wss://alphaville-0.zero.io'
+
+// export const NETWORK_URL = ( ENV === 'dev' ) ? 'ws://localhost:9944' : 'wss://alphaville.zero.io'
+export const NETWORK_URL = 'wss://alphaville.zero.io'
