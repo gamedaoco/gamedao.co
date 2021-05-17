@@ -117,3 +117,5 @@ awsconfiguration.json
 public/sitemap.xml
 
 vendors
+*.local*
+.zero

@@ -104,10 +104,11 @@ const Home = () => {
 		// through crowdfunding, tokenised ownership and governance
 		// for video game creators, publishers, investors and gamers.`
 
-		`GameDAO is a community owned cooperative providing
+		`GameDAO: is a community owned cooperative providing
 		fundraising, coordination and ownership protocols
-		for the videogames economy,
-			improving videogame economics for
+		for the videogames economy.
+
+		improving videogame economics for
 		the player, creator and funder by
 		increasing engagement and participation.`
 
