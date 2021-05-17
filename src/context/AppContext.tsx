@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from 'react'
 import { DEV, ENV, HOST } from 'src/config'
+import { useSubstrate } from 'src/context/SubstrateContext'
 
 // logging
 
@@ -52,10 +53,13 @@ export type ActionTypes =
 	| 'NET_RESET'
 	| 'KEYRING_UPDATE'
 	| 'KEYRING_ERROR'
+	| 'CONNECT'
+	| 'DISCONNECT'
+	| 'SET_ACCOUNT'
 
 export type Action = {
 	type: ActionTypes
-	payload?: object | null
+	payload?: object | string | null
 }
 
 export type AppState = 'INIT' | 'SETUP' | 'READY'
@@ -97,6 +101,8 @@ export type State = {
 		state: Web3State
 		URL: string
 		CONNECTED: boolean
+		allowConnect: boolean
+		account: any
 	}
 	config: {
 		state: ConfigState
@@ -114,7 +120,7 @@ export type State = {
 
 const INITIAL_STATE: State = {
 	app: { state: 'INIT', notifications: [], DEV, ENV, READY: false },
-	net: { state: 'INIT', URL: 'ws://localhost:9944', CONNECTED: false },
+	net: { state: 'INIT', URL: 'ws://localhost:9944', CONNECTED: false, allowConnect: false, account: '' },
 	config: { state: 'WAIT', data: defaultConfig },
 	features: { state: 'WAIT', data: defaultFeatures },
 	user: { state: 'NO_USER' },
@@ -189,12 +195,35 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
 				},
 			}
 
+		// connect to network only with user consent
+		case 'CONNECT':
+			log.info(`❤️ user connect subzero`)
+			return {
+				...state,
+				net: { ...state.net, allowConnect: true },
+			}
+
+		// disconnect from network
+		case 'DISCONNECT':
+			log.info(`💔 user disconnect subzero`)
+			return {
+				...state,
+				net: { ...state.net, allowConnect: false },
+			}
+
+		// disconnect from network
+		case 'SET_ACCOUNT':
+			log.info(`set account ${action.payload}`)
+			return {
+				...state,
+				net: { ...state.net, account: action.payload },
+			}
 		default:
 			throw new Error(`Unknown type: ${action.type}`)
 	}
 }
 
-const AppProvider: React.FC = ({ children }) => {
+const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 	const READY = state.app.READY
 

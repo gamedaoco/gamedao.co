@@ -7,12 +7,15 @@ import React, {
 	useCallback,
 	// , Dispatch
 } from 'react'
-import { DEV, ENV, SUBZERO } from 'src/config'
+import { DEV, ENV, NETWORK_URL } from 'src/config'
 
 // logging
 
 import { Logger } from 'src/lib/log'
 const log = Logger('$NET')
+
+// app
+import { useAppContext } from 'src/context/AppContext'
 
 // substrate
 
@@ -29,15 +32,21 @@ import { getMetadata, cacheMetadata } from 'src/storage/substrate'
 // -> typegen package
 
 import jsonrpc from '@polkadot/types/interfaces/jsonrpc'
-import { registryTypes } from 'src/interfaces'
+import definitions from 'src/interfaces/common/definitions'
 import { TypeRegistry } from '@polkadot/types'
-export const registry = new TypeRegistry()
+
+const registry = new TypeRegistry()
+const types = Object.values({ definitions })
+	.map(({ types }) => types)
+	.reduce((all, types) => Object.assign(all, types), {})
+
+//
 
 const DEFAULT_DECIMALS = registry.createType('u32', 18)
 const DEFAULT_SS58 = registry.createType('u32', 25)
-const DEFAULT_TOKEN = registry.createType('Text', 'PLAY')
+const DEFAULT_TOKEN = registry.createType('Text', 'ZERO')
 
-// type / state definitions
+// local type / state definitions
 
 type ActionType = 'RESET_SOCKET' | 'CONNECT' | 'CONNECT_SUCCESS' | 'CONNECT_ERROR' | 'KEYRING_SET' | 'KEYRING_ERROR'
 type Action = {
@@ -64,10 +73,8 @@ export type State = {
 // TODO: pull from config provided by appcontext
 
 const INITIAL_STATE: State = {
-	endpoint:
-		//'ws://localhost:9944',
-		'wss://alphaville-0.zero.io:9944',
-	types: registryTypes,
+	endpoint: NETWORK_URL,
+	types: types,
 	rpc: { ...jsonrpc },
 }
 
@@ -76,6 +83,14 @@ const INITIAL_STATE: State = {
 export type Dispatch = (action: Action) => void
 
 const SubstrateContext = createContext<[State, Dispatch]>([INITIAL_STATE, () => null])
+
+// const SubstrateContext = createContext<{
+// 	state: State
+// 	dispatch: React.Dispatch<any>
+// }>({
+// 	state: INITIAL_STATE,
+// 	dispatch: () => null,
+// })
 
 // subsocial style
 // export type Dispatch = (action: Action) => void
@@ -108,13 +123,6 @@ const reducer = (state: State, action: Action): State => {
 			log.info(`❤️ connected to subzero ${state.endpoint?.toString()}`)
 
 			if (state.apiState !== 'CONNECT') {
-				// const { payload } = action
-				// let tookTimeLog: string | undefined
-				// if (isNum(payload)) {
-				// 	const startTime = payload
-				// 	const tookTime = window.performance.now() - startTime
-				// 	tookTimeLog = `Took ${tookTime / 1000} seconds`
-				// }
 				log.info(`🕹 subzero api is ready`)
 			}
 			return { ...state, apiState: 'READY' }
@@ -159,46 +167,33 @@ export { _api as api }
 
 // const SubstrateProvider: React.FC = (props: SubstrateProviderProps) => {
 const SubstrateProvider = (props: SubstrateProviderProps) => {
-	if (api) return
-
-	// const url = props.endpoint
-
-	// useEffect(() => {
-	// 	console.log('url',url)
-	// 	if(url===undefined) return <>{props.children}</>
-
-	// }, [url])
-
-	// supposed to mount extension dapp when window
-	// useEffect(() => {
-	// 	const loadExtension = async () => {
-	// 		const ed = await import('@polkadot/extension-dapp')
-	// 	}
-	// 	loadExtension()
-	// }, [])
+	const {
+		state: {
+			net: { allowConnect },
+		},
+	} = useAppContext()
 
 	const initState: State = {
 		...INITIAL_STATE,
 		endpoint: props.endpoint || INITIAL_STATE.endpoint,
 		types: props.types || INITIAL_STATE.types,
 	}
+
 	const [state, dispatch] = useReducer(reducer, initState)
+	const { rpc, types, apiState, api, endpoint } = state
 	const [ss58Format, setSs58Format] = useState<number>(DEFAULT_SS58.toNumber())
 
-	const { rpc, types, apiState, api, endpoint } = state
-
 	const connect = useCallback(async () => {
-		// if ( apiState==='READY' ) return
 		if (api) return
 
 		log.info(`Connecting to node ${endpoint} ...`)
+
 		const connectTime = window.performance.now()
 		const provider = new WsProvider(endpoint)
 
-		// manage / rehydrate the cache in case
-		// metadata was retrieved already
 		const metadata = await getMetadata()
 		let isMetadataCached = metadata !== undefined
+
 		// console.log(`>>> METADATA key: ${Object.keys(metadata || {})}`)
 		// const metadata = undefined
 
@@ -219,7 +214,6 @@ const SubstrateProvider = (props: SubstrateProviderProps) => {
 
 		const onConnect = () => {
 			dispatch({ type: 'CONNECT', payload: _api })
-			// `ready` event is not emitted upon reconnection. So we check explicitly here.
 			_api.isReady.then((_api) => onConnectSuccess())
 		}
 
@@ -247,7 +241,7 @@ const SubstrateProvider = (props: SubstrateProviderProps) => {
 				keyring.loadAll({ isDevelopment: DEV, ss58Format }, allAccounts)
 				dispatch({ type: 'KEYRING_SET', payload: keyring })
 			} catch (err) {
-				log.error(`❌❌ Keyring failed to load accounts. ${err}`)
+				log.error(`Keyring failed to load accounts. ${err}`)
 				dispatch({ type: 'KEYRING_ERROR', payload: err })
 			}
 		},
@@ -263,39 +257,41 @@ const SubstrateProvider = (props: SubstrateProviderProps) => {
 	// accounts
 
 	useEffect(() => {
-		if (!api) return
+		if (!allowConnect || !api) return
 		api.isReady.then((api) => loadAccounts(api))
-	}, [loadAccounts, api])
+	}, [allowConnect, api, keyring, loadAccounts])
 
 	// metadata
 
-	// useEffect(() => {
-	// 	// if ( apiState !== 'READY' ) return
-	// 	if (!api) return
+	useEffect(() => {
+		if (apiState !== 'READY' || !api) return
 
-	// 	const setupTokenProps = async () => {
-	// 		const properties = await api.rpc.system.properties()
-	// 		registry.setChainProperties(properties)
+		const setupTokenProps = async () => {
+			const properties = await api.rpc.system.properties()
 
-	// 		const tokenSymbol = properties.tokenSymbol.unwrapOr('PLAY').toString()
-	// 		const tokenDecimals = properties.tokenDecimals.unwrapOr(18) as number
-	// 		console.log('tokenSymbol',tokenSymbol,'tokenDecimals',tokenDecimals)
-	// 		formatBalance.setDefaults({
-	// 			unit: tokenSymbol,
-	// 			decimals: tokenDecimals
-	// 		})
+			registry.setChainProperties(properties)
 
-	// 		const ss58Format = properties.ss58Format.unwrapOr(undefined)
-	// 		ss58Format && setSs58Format(ss58Format.toNumber())
-	// 	}
-	// 	setupTokenProps()
-	// }, [apiState])
+			const tokenSymbol = properties.tokenSymbol.unwrapOr('ZERO').toString()
+			const tokenDecimals = properties.tokenDecimals.unwrapOr(18) as number
+			log.info(`tokenSymbol: ${tokenSymbol}, tokenDecimals: ${tokenDecimals}`)
+
+			formatBalance.setDefaults({
+				unit: tokenSymbol,
+				decimals: tokenDecimals,
+			})
+
+			const ss58Format = properties.ss58Format.unwrapOr(undefined)
+			ss58Format && setSs58Format(ss58Format.toNumber())
+		}
+
+		setupTokenProps()
+	}, [api])
 
 	return <SubstrateContext.Provider value={[state, dispatch]}>{props.children}</SubstrateContext.Provider>
 }
 
 // const useSubstrate = () => useContext(SubstrateContext)[0]
-// const useSubstrate = () => ({ ...useContext(SubstrateContext) })
+
 const useSubstrate = (): State & { dispatch: Dispatch } => {
 	const [state, dispatch] = React.useContext(SubstrateContext)
 	return { ...state, dispatch }
