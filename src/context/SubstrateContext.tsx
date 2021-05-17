@@ -238,7 +238,13 @@ const SubstrateProvider = (props: SubstrateProviderProps) => {
 				let allAccounts = await web3Accounts()
 				allAccounts = allAccounts.map(({ address, meta }) => ({ address, meta: { ...meta, name: `${meta.name} (${meta.source})` } }))
 
-				keyring.loadAll({ isDevelopment: DEV, ss58Format }, allAccounts)
+				keyring.loadAll(
+					{
+						isDevelopment: DEV,
+						ss58Format,
+					},
+					allAccounts
+				)
 				dispatch({ type: 'KEYRING_SET', payload: keyring })
 			} catch (err) {
 				log.error(`Keyring failed to load accounts. ${err}`)

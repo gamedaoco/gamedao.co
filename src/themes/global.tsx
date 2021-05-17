@@ -27,8 +27,6 @@ const grid = {
 
 export const GlobalStyle = createGlobalStyle`
 
-	@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
 	/*
 		reset base styles
 	 */

@@ -77,7 +77,7 @@ const Accounts = () => {
 	//	ui
 
 	const [accountSelected, setAccountSelected] = useState('')
-	const [balances, setBalances] = useState({ play: '0', game: '0', zero: '0' })
+	const [balances, setBalances] = useState({ zero: '0', play: '0', game: '0', zeur: '0' })
 
 	//
 
@@ -101,31 +101,65 @@ const Accounts = () => {
 
 	useEffect(() => {
 		if (!allowConnect) return
-		if (apiState !== 'READY') return
+		if (apiState !== 'READY' || !api) return
 		let unsubscribeAll
 
-		api &&
-			api.query.system
-				.account(account, ({ nonce, data: balance }) => {
-					setBalances({ ...balances, zero: balance.free.toString() })
-
-					console.log(`free balance is ${balance.free}`, `with ${balance.reserved} reserved`, `and a nonce of ${nonce}`)
-				})
-				.then((unsub) => {
-					unsubscribeAll = unsub
-				})
-				.catch(console.error)
+		api.query.system
+			.account(account, ({ nonce, data: balance }) => {
+				setBalances({ ...balances, zero: balance.free.toString() })
+				console.log(`free balance is ${balance.free}`, `with ${balance.reserved} reserved`, `and a nonce of ${nonce}`)
+			})
+			.then((unsub) => {
+				unsubscribeAll = unsub
+			})
+			.catch(console.error)
 
 		return () => unsubscribeAll && unsubscribeAll()
 	}, [apiState, accountSelected])
 
+	useEffect(() => {
+		if (!allowConnect) return
+		if (apiState !== 'READY' || !account || !api) return
+
+		const query = async () => {
+			let unsubscribe
+			const context = api.query.assets.account
+			api.queryMulti(
+				[
+					[context, [Number(0), account.toString()]],
+					[context, [Number(1), account.toString()]],
+					[context, [Number(2), account.toString()]],
+				],
+				([_play, _game, _zeur]) => {
+					setBalances({
+						...balances,
+						play: JSON.parse(_play.toString()).balance.toString(),
+						game: JSON.parse(_game.toString()).balance.toString(),
+						zeur: JSON.parse(_zeur.toString()).balance.toString(),
+					})
+				}
+			)
+				.then((unsub) => {
+					unsubscribe = unsub
+				})
+				.catch(console.error)
+
+			return () => unsubscribe && unsubscribe()
+		}
+		query()
+	}, [account, apiState, api])
+
 	if (!api) return null
 	if (!allowConnect) return null
 
+	const handleAccountClick = () => {
+		console.log('account', account, balances)
+	}
+
 	return (
 		<Link>
-			<SmallType>{`${balances.zero} ZERO`}</SmallType>
-			<SmallType>{`${balances.game} GAME`}</SmallType>
+			<SmallType onClick={handleAccountClick}>{`${balances.zero} ZERO`}</SmallType>
+			<SmallType onClick={handleAccountClick}>{`${balances.game} GAME`}</SmallType>
 		</Link>
 	)
 }

@@ -19,7 +19,7 @@ import { useSubstrate } from 'src/context/SubstrateContext'
 
 import * as Fathom from 'fathom-client'
 import { IconContext } from 'react-icons/lib'
-// import { PageTransition } from 'next-page-transitions'
+import { PageTransition } from 'next-page-transitions'
 import { Loader, Message } from 'components'
 
 // TODO: replace with material-ui
@@ -45,10 +45,7 @@ const Wrapper = ({ children }) => {
 
 	useEffect(() => {
 		if (apiState === 'ERROR') return <Message content={apiError} />
-		else if (apiState !== 'READY') return <Loader content="Connecting to ZERO.IO" />
-	}, [apiState])
-
-	useEffect(() => {
+		if (apiState !== 'READY') return <Loader content="Connecting to ZERO.IO" />
 		if (!allowConnect) return
 		if (keyringState === 'ERROR') return <Message content={keyringError} />
 		if (keyringState !== 'READY') return <Loader content={`Loading accounts — please review any extension's authorization`} />
@@ -60,22 +57,6 @@ const Wrapper = ({ children }) => {
 
 const Application = ({ Component, pageProps }) => {
 	const router = useRouter()
-
-	const [accountPair, setAccountPair] = useState(null)
-	const [accountAddress, setAccountAddress] = useState(null)
-	const [connected, setConnected] = useState(false)
-	const [accountContext, setAccountContext] = useState({})
-
-	useEffect(() => {
-		setAccountContext({
-			accountPair,
-			setAccountPair,
-			accountAddress,
-			setAccountAddress,
-			connected,
-			setConnected,
-		})
-	}, [])
 
 	useEffect(() => {
 		Fathom.load('XLUUAYWU', {
@@ -91,27 +72,14 @@ const Application = ({ Component, pageProps }) => {
 	}, [])
 
 	return (
-		<AppProvider key={1} accountContext={accountContext}>
+		<AppProvider key={1}>
 			<GlobalStyle />
 			<ThemeProvider theme={theme} key="theme">
-				{/*				<PageTransition
-					timeout={TIMEOUT}
-					classNames="page-transition"
-					loadingComponent={<Loader />}
-					loadingDelay={5000}
-					loadingTimeout={{
-						enter: TIMEOUT,
-						exit: 0,
-					}}
-					loadingClassNames="loading-indicator"
-				>*/}
 				<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
 					<Wrapper>
 						<Component {...pageProps} />
 					</Wrapper>
 				</IconContext.Provider>
-				{/*				</PageTransition>
-				 */}{' '}
 			</ThemeProvider>
 		</AppProvider>
 	)

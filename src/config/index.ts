@@ -19,7 +19,8 @@ const config = {
 }
 export default config
 
-export const DEV = process.env.VERCEL_GITLAB_COMMIT_REF !== 'production'
+// export const DEV = process.env.VERCEL_GITLAB_COMMIT_REF !== 'production'
+export const DEV = false
 export const ENV = DEV ? 'dev' : 'production'
 export const KEY = 'gamedao'
 export const HOST =
