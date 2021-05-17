@@ -1,19 +1,17 @@
 export default {
 	types: {
-		Address: 'AccountId',
-		LookupSource: 'AccountId',
 		Campaign: {
 			id: 'Hash',
-			manager: 'AccountId',
+			owner: 'AccountId',
+			admin: 'AccountId',
 			deposit: 'Balance',
 			expiry: 'BlockNumber',
 			cap: 'Balance',
 			name: 'Vec<u8>',
-			protocoL: 'u8',
-			status: 'u8',
-			nonce: 'u64',
-		},
-		EventMessage: 'Vec<u8>',
-		Nonce: 'u64',
-	},
-}
+			protocol: 'u8',
+			governance: 'u8',
+			cid: 'Vec<u8>',
+			created: 'Timestamp'
+		}
+	}
+};

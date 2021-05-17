@@ -28,8 +28,12 @@ sitemap({
 	},
 })
 
-module.exports = withImages(
-	withMDX({
+module.exports = withImages( withMDX({
+
+		// future: {
+		// 	webpack5: true,
+		// },
+
 		env: {
 			BUILD_TIME: dateStr.toString(),
 			BUILD_TIMESTAMP: +date,
@@ -78,5 +82,5 @@ module.exports = withImages(
 
 			return config
 		},
-	})
-)
+
+}))
