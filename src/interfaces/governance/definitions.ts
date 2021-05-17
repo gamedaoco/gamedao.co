@@ -7,7 +7,7 @@ export default {
 			cid: 'Vec<u8>',
 			amount: 'Balance',
 			expiry: 'BlockNumber',
-			status: 'u8'
-		}
-	}
-};
+			status: 'u8',
+		},
+	},
+}

@@ -4,15 +4,15 @@ export default {
 		ItemId: 'Hash',
 		ItemInfo: {
 			dob: 'u64',
-			dna: 'Hash'
+			dna: 'Hash',
 		},
 		Item: {
 			ItemId: 'ItemId',
-			ItemInfo: 'ItemInfo'
+			ItemInfo: 'ItemInfo',
 		},
 		HypaspaceInfo: 'Hash',
 		HypaspaceMetadata: {
-			name: 'Vec<u8>'
-		}
-	}
-};
+			name: 'Vec<u8>',
+		},
+	},
+}

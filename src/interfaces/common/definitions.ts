@@ -7,7 +7,7 @@ export default {
 			nonce: 'Index',
 			consumers: 'RefCount',
 			providers: 'RefCount',
-			data: 'AccountData'
+			data: 'AccountData',
 		},
 		EventMessage: 'Vec<u8>',
 		Nonce: 'u64',
@@ -23,7 +23,7 @@ export default {
 			protocol: 'u8',
 			governance: 'u8',
 			cid: 'Vec<u8>',
-			created: 'Timestamp'
+			created: 'Timestamp',
 		},
 		Timestamp: 'Moment',
 		Governance: {
@@ -33,32 +33,32 @@ export default {
 			cid: 'Vec<u8>',
 			amount: 'Balance',
 			expiry: 'BlockNumber',
-			status: 'u8'
+			status: 'u8',
 		},
 		SpaceId: 'Hash',
 		ItemId: 'Hash',
 		ItemInfo: {
 			dob: 'u64',
-			dna: 'Hash'
+			dna: 'Hash',
 		},
 		Item: {
 			ItemId: 'ItemId',
-			ItemInfo: 'ItemInfo'
+			ItemInfo: 'ItemInfo',
 		},
 		HypaspaceInfo: 'Hash',
 		HypaspaceMetadata: {
-			name: 'Vec<u8>'
+			name: 'Vec<u8>',
 		},
 		Entity: {
 			account: 'AccountId',
 			index: 'u128',
 			cid: 'Vec<u8>',
 			created: 'BlockNumber',
-			mutated: 'BlockNumber'
+			mutated: 'BlockNumber',
 		},
 		EntityProperty: {
 			value: 'u64',
-			mutated: 'BlockNumber'
-		}
-	}
-};
+			mutated: 'BlockNumber',
+		},
+	},
+}

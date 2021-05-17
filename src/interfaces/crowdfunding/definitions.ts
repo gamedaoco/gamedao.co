@@ -11,7 +11,7 @@ export default {
 			protocol: 'u8',
 			governance: 'u8',
 			cid: 'Vec<u8>',
-			created: 'Timestamp'
-		}
-	}
-};
+			created: 'Timestamp',
+		},
+	},
+}
