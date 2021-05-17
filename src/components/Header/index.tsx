@@ -77,7 +77,7 @@ const Accounts = () => {
 	//	ui
 
 	const [accountSelected, setAccountSelected] = useState('')
-	const [balances, setBalances] = useState({ zero: '0', play: '0', game: '0', zeur: '0' })
+	const [balances, setBalances] = useState({ zero: '', play: '0', game: '0', zeur: '0' })
 
 	//
 
@@ -106,7 +106,7 @@ const Accounts = () => {
 
 		api.query.system
 			.account(account, ({ nonce, data: balance }) => {
-				setBalances({ ...balances, zero: balance.free.toString() })
+				setBalances({ ...balances, zero: `${balance.free}` })
 				console.log(`free balance is ${balance.free}`, `with ${balance.reserved} reserved`, `and a nonce of ${nonce}`)
 			})
 			.then((unsub) => {

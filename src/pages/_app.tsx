@@ -43,16 +43,22 @@ const Wrapper = ({ children }) => {
 	const { allowConnect } = state.net
 	const { apiState, apiError, keyring, keyringState, keyringError } = useSubstrate()
 
-	useEffect(() => {
+	let loaded = false
+
+	useEffect((): void | any => {
 		if (apiState === 'ERROR') return <Message content={apiError} />
 		if (apiState !== 'READY') return <Loader content="Connecting to ZERO.IO" />
 		if (!allowConnect) return
 		if (keyringState === 'ERROR') return <Message content={keyringError} />
 		if (keyringState !== 'READY') return <Loader content={`Loading accounts — please review any extension's authorization`} />
-	}, [allowConnect])
 
-	if (!isServer()) return <SubzeroProvider>{children}</SubzeroProvider>
-	return <>{children}</>
+		loaded = true
+	}, [allowConnect, loaded])
+
+	return <SubzeroProvider>{children}</SubzeroProvider>
+	{
+		/*return <>{children}</>*/
+	}
 }
 
 const Application = ({ Component, pageProps }) => {
