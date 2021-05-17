@@ -1,21 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 
+export const SmallType = styled.div`
+	font-size: 10px;
+	color: #00ff99;
+`
+
 export const RatesWrapper = styled.span`
 	font-size: 10px;
 `
 
 export const Container = styled.div`
-	// * { border: 1px dotted red; }
-
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: auto;
 	background: #000;
-
 	* {
-		// font-size: 10px;
 		transition-duration: 100ms;
 		transition-timing-function: ease-in-out;
 	}

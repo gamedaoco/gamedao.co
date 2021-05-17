@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { withRouter, NextRouter } from 'next/router'
+import { AccountSelector, Button } from 'components'
 import styled from 'styled-components'
 
 const Nav = styled.div`

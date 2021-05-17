@@ -12,6 +12,7 @@ export { default as Divider } from './Divider'
 export { default as Link } from './Link'
 export { default as Intro } from './Intro'
 export { default as Loader } from './Loader'
+export { default as Message } from './Message'
 
 //
 // molecules
@@ -33,6 +34,8 @@ export { default as Modal } from './Modal'
 export { default as Header } from './Header'
 export { default as Footer } from './Footer'
 export { default as Navigation } from './Navigation'
+
+export { default as AccountSelector } from './AccountSelector'
 
 //
 // templates, wrappers, themes
