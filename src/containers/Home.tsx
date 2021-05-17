@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import { Flex, Box, Heading, Text } from 'rebass'
+import { Flex, Box, Heading, Text } from 'rebass/styled-components'
 import { Link, Intro, Container, Newsletter } from 'components'
 
 import img from 'public/img/1.png'
@@ -104,9 +104,12 @@ const Home = () => {
 		// through crowdfunding, tokenised ownership and governance
 		// for video game creators, publishers, investors and gamers.`
 
-		`GameDAO is a community owned decentralised cooperative
-		operating crowdfinance protocols for the videogame industry,
-		for creators, publishers, gamers and investors.`
+		`GameDAO is a community owned cooperative providing
+		fundraising, coordination and ownership protocols
+		for the videogames economy,
+			improving videogame economics for
+		the player, creator and funder by
+		increasing engagement and participation.`
 
 	useEffect(() => {
 		handleChangeTitle(t)
@@ -129,6 +132,8 @@ const Home = () => {
 								</Text>
 							</Box>
 						</Wrapper>
+						{/*
+						 */}
 						<Box width={1}>
 							<Heading textAlign="center" fontSize={[3]} py={5}>
 								<Link href="/#content">
