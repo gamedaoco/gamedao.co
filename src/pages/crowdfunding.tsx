@@ -14,7 +14,7 @@ import { AppContext } from 'src/context/AppContext'
 
 import { Flex, Box } from 'rebass/styled-components'
 import Layout from 'layouts'
-import App from 'src/containers/Crowdfunding'
+// import App from 'containers/Crowdfunding'
 
 const Page = () => {
 	const { state } = useContext(AppContext)
@@ -24,7 +24,7 @@ const Page = () => {
 			<Flex flexDirection="row" flexWrap="wrap" px={4}>
 				<Box width={[1]} p={[2, 4]}>
 					<h1>Crowdfunding</h1>
-					<App />
+					{/*<App />*/}
 				</Box>
 			</Flex>
 		</Layout>

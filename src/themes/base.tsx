@@ -3,7 +3,7 @@ import preset from '@rebass/preset'
 
 export const base = {
 	radii: {
-		default: 2,
+		default: 10,
 	},
 	variants: {
 		grid: {

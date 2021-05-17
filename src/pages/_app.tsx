@@ -9,39 +9,73 @@
 		   © C O P Y R I O T   2 0 7 5   Z E R O . I O
 **/
 
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import App from 'next/app'
 import { useRouter } from 'next/router'
-
 import dynamic from 'next/dynamic'
-const SubstrateProvider = dynamic(() => import('../context/SubstrateContext') as any, { ssr: false })
 
-import { AppProvider } from 'src/context/AppContext'
+import { AppProvider, useAppContext } from 'src/context/AppContext'
+import { useSubstrate } from 'src/context/SubstrateContext'
 
 import * as Fathom from 'fathom-client'
-
 import { IconContext } from 'react-icons/lib'
-import { PageTransition } from 'next-page-transitions'
-import { Loader } from 'components'
+// import { PageTransition } from 'next-page-transitions'
+import { Loader, Message } from 'components'
 
+// TODO: replace with material-ui
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle, TIMEOUT } from 'src/themes/global'
 import preset from '@rebass/preset'
 import base from 'src/themes/base'
 import dark from 'src/themes/dark'
 import light from 'src/themes/light'
+const theme = { ...preset, ...base, ...light }
 
-// TODO: currently this breaks the app css:
-// import 'semantic-ui-css/semantic.min.css'
+// SSR
+const isServer = () => typeof window === 'undefined'
 
-const theme = {
-	...preset,
-	...base,
-	...light,
+const SubzeroProvider = dynamic(() => import('../context/SubstrateContext') as any, { ssr: false })
+
+const Wrapper = ({ children }) => {
+	if (isServer()) return <>{children}</>
+
+	const { state } = useAppContext()
+	const { allowConnect } = state.net
+	const { apiState, apiError, keyring, keyringState, keyringError } = useSubstrate()
+
+	useEffect(() => {
+		if (apiState === 'ERROR') return <Message content={apiError} />
+		else if (apiState !== 'READY') return <Loader content="Connecting to ZERO.IO" />
+	}, [apiState])
+
+	useEffect(() => {
+		if (!allowConnect) return
+		if (keyringState === 'ERROR') return <Message content={keyringError} />
+		if (keyringState !== 'READY') return <Loader content={`Loading accounts — please review any extension's authorization`} />
+	}, [allowConnect])
+
+	if (!isServer()) return <SubzeroProvider>{children}</SubzeroProvider>
+	return <>{children}</>
 }
 
 const Application = ({ Component, pageProps }) => {
 	const router = useRouter()
+
+	const [accountPair, setAccountPair] = useState(null)
+	const [accountAddress, setAccountAddress] = useState(null)
+	const [connected, setConnected] = useState(false)
+	const [accountContext, setAccountContext] = useState({})
+
+	useEffect(() => {
+		setAccountContext({
+			accountPair,
+			setAccountPair,
+			accountAddress,
+			setAccountAddress,
+			connected,
+			setConnected,
+		})
+	}, [])
 
 	useEffect(() => {
 		Fathom.load('XLUUAYWU', {
@@ -57,10 +91,10 @@ const Application = ({ Component, pageProps }) => {
 	}, [])
 
 	return (
-		<>
+		<AppProvider key={1} accountContext={accountContext}>
 			<GlobalStyle />
 			<ThemeProvider theme={theme} key="theme">
-				<PageTransition
+				{/*				<PageTransition
 					timeout={TIMEOUT}
 					classNames="page-transition"
 					loadingComponent={<Loader />}
@@ -70,17 +104,16 @@ const Application = ({ Component, pageProps }) => {
 						exit: 0,
 					}}
 					loadingClassNames="loading-indicator"
-				>
-					<AppProvider key={1}>
-						<SubstrateProvider>
-							<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
-								<Component {...pageProps} />
-							</IconContext.Provider>
-						</SubstrateProvider>
-					</AppProvider>
-				</PageTransition>
+				>*/}
+				<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
+					<Wrapper>
+						<Component {...pageProps} />
+					</Wrapper>
+				</IconContext.Provider>
+				{/*				</PageTransition>
+				 */}{' '}
 			</ThemeProvider>
-		</>
+		</AppProvider>
 	)
 }
 

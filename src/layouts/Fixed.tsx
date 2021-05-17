@@ -1,19 +1,10 @@
 import React, { useContext } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-
-// import dynamic from 'next/dynamic'
-/*const SubstrateProvider = dynamic(
-	()=>import("../context/SubstrateContext") as any,
-	{ ssr: false }
-)
-*/
-
+import { PageTransition } from 'next-page-transitions'
 import { AppContext } from 'src/context/AppContext'
-// import { SubstrateProvider } from 'src/context/SubstrateContext'
-
 import styled from 'styled-components'
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Loader } from 'components'
 import { Header, Footer, Notification } from 'components'
 
 const Wrapper = styled.div`
@@ -27,21 +18,15 @@ const Container = styled.div`
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	max-width: 1280px;
 	min-height: 100vh;
 `
 const Content = styled.div`
 	margin: 0;
 	padding: 0;
-	min-width: 100%;
+	// min-width: 100%;
+	max-width: 1280px;
 	min-height: calc(100vh-100px);
 `
-
-const loader = (text) => (
-	<Dimmer active>
-		<Loader size="small">{text}</Loader>
-	</Dimmer>
-)
 
 const Layout = (props) => {
 	const { state } = useContext(AppContext)
@@ -81,14 +66,10 @@ const Layout = (props) => {
 				</title>
 			</Head>
 			<Container>
-				{/*<SubstrateProvider>*/}
-				{/*<GraphProvider>*/}
 				{SHOW_HEADER && <Header />}
 				{SHOW_NOTE && <Notification />}
 				<Content>{props.children}</Content>
 				{!props.noFooter && SHOW_FOOTER && <Footer />}
-				{/*</GraphProvider>*/}
-				{/*</SubstrateProvider>*/}
 			</Container>
 		</Wrapper>
 	)
