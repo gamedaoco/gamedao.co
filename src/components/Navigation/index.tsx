@@ -20,7 +20,7 @@ const Nav = styled.div`
 	padding: 0;
 
 	width: auto;
-	height: 50px;
+	height: 40px;
 
 	ul {
 		list-style-type: none;
@@ -68,7 +68,7 @@ const Nav = styled.div`
 	li ul li a {
 		width: auto;
 		min-width: 100px;
-		padding: 0 20px;
+		// padding: 0 20px;
 	}
 
 	/* display dropdowns on hover */
@@ -82,14 +82,15 @@ const Nav = styled.div`
 
 	.show-menu {
 		display: none;
+		width: 100%;
 		text-decoration: none;
 		text-align: center;
-		line-height: 50px;
+		line-height: 40px;
 		color: #fff;
 		background: #000;
 		// background: linear-gradient(to right, #036 0, #063 100%);
 		border-bottom: 1px dotted white;
-		height: 50px;
+		height: 40px;
 		color: #fff;
 	}
 
@@ -107,7 +108,7 @@ const Nav = styled.div`
 
 	/* responsive styles */
 
-	@media screen and (max-width: 767px) {
+	@media screen and (max-width: 768px) {
 		/*Make dropdown links appear inline*/
 
 		z-index: 100;
@@ -145,9 +146,9 @@ const NavItem = styled.li`
 	a {
 		display: block;
 		min-width: 140px;
-		height: 50px;
+		height: 40px;
 		text-align: center;
-		line-height: 50px;
+		line-height: 40px;
 
 		color: #fff;
 		background: #000;
@@ -186,12 +187,12 @@ const NavBar: React.FC = () => (
 		<input type="checkbox" id="show-menu" role="button" />
 
 		<ul id="menu">
-			{/*
-			<NavItem>
-				<Link href="/">
-					<a>Overview</a>
+			{/*			<NavItem>
+				<Link href="/dashboard">
+					<a>Dashboard</a>
 				</Link>
-			</NavItem>
+			</NavItem>*/}
+			{/*
 {' '}
 			<NavItem>
 				<Link href="/open">
@@ -215,12 +216,16 @@ const NavBar: React.FC = () => (
 				</Link>
 			</NavItem>{' '}
 */}
-			<NavItem>
+			{/*			<NavItem>
 				<NavLink activeClassName="active" href="/dao">
 					<a>DAO</a>
 				</NavLink>
+			</NavItem>*/}
+			<NavItem>
+				<NavLink href="https://blog.gamedao.co">
+					<a>Blog</a>
+				</NavLink>
 			</NavItem>
-
 			{/*}
 			<NavItem>
 				<NavLink activeClassName="active" href="/account/signin">

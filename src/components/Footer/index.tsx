@@ -14,11 +14,12 @@ import { AppContext } from 'src/context/AppContext'
 
 import styled from 'styled-components'
 import { Flex, Box, Text } from 'rebass/styled-components'
-import { FaGitlab, FaDiscord, FaTwitter } from 'react-icons/fa'
+import { FaGithub, FaDiscord, FaTwitter } from 'react-icons/fa'
 import { H3, H4, SmallText, Link, Newsletter, Divider } from 'components'
 
+import gamedao from 'public/gamedao_tangram.svg'
 import logo from 'public/z-h-col.svg'
-import img from 'public/stripes-s.png'
+// import img from 'public/stripes-s.png'
 
 import { ENV } from 'config'
 
@@ -223,26 +224,23 @@ const Footer: React.FC = ({}) => {
 	return (
 		<Container id="info">
 			<Flex flexDirection="row" flexWrap="wrap">
-				<Box px={4} py={4} width={[1, 1, 1 / 3, 2 / 5]}>
+				<Box p={4} width={[1, 1, 1 / 3, 2 / 5]}>
 					<Text>
-						<Link href="/">
-							<img src={logo} height="20px" alt="zero" />
+						<Link href="#">
+							<img src={gamedao} height="40px" alt="zero" />
 						</Link>
 					</Text>
 				</Box>
 			</Flex>
 
-			<Divider sm />
-
 			<Flex flexDirection="row" flexWrap="wrap">
-				<Box px={4} pt={4} width={[1, 1, 1 / 2, 3 / 5]}>
+				<Box p={4} width={[1, 1, 1 / 2, 3 / 5]}>
 					<Text>
-						zero.io is building GameDAO, a decentralised autonomous cooperative, summoned to foster sustainability and fundraising of video games,
-						creative content, digital arts, e-sports and gaming as a profession.
+						GameDAO is a community owned cooperative provides cutting edge DeFi and DAO protocols for fundraising, coordination and ownership.
 						<br />
 						<br />
-						GameDAO provides crowd based finance and governance protocols, connecting and empowering loyal gamers, creators, publishers and
-						investors to create next generation economics.
+						Gamers, creators, publishers and investors create and participate in next generation economies, enabling videogames, content creators,
+						e-sports and gaming as a profession.
 					</Text>
 				</Box>
 			</Flex>
@@ -259,7 +257,7 @@ const Footer: React.FC = ({}) => {
 						<FaTwitter size={25} />
 					</a>
 					<a className="icon" href="https://github.com/playzero" target="_blank">
-						<FaGitlab size={25} />
+						<FaGithub size={25} />
 					</a>
 					&nbsp;
 				</Box>
@@ -268,11 +266,12 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} py={1} width={[1, 1 / 2]}>
 					<SmallText>
-						©&nbsp;{new Date().getFullYear()}&nbsp;
-						<a href="https://zero.io" target="_blank">
-							zero technologies
+						©&nbsp;{new Date().getFullYear()}&nbsp;gamedao.co. running on
+						<a href="https://zero.io">
+							{' '}
+							<img src={logo} height="8px" alt="zero" />{' '}
 						</a>
-						.&nbsp;&nbsp;&nbsp;made&nbsp;on&nbsp;earth.&nbsp;&nbsp;&nbsp;
+						.&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Imprint</Link>&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Privacy</Link>&nbsp;&nbsp;&nbsp;
 						{/*<Link href="/imprint">Terms</Link>*/}

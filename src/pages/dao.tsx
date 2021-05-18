@@ -23,8 +23,7 @@ const Page = () => {
 		<Layout>
 			<Flex flexDirection="row" flexWrap="wrap" px={4}>
 				<Box width={[1]} p={[2, 4]}>
-					<h1>Crowdfunding</h1>
-					{/*<App />*/}
+					<h1>DAO</h1>
 				</Box>
 			</Flex>
 		</Layout>

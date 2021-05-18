@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const SmallType = styled.div`
 	font-size: 10px;
-	color: #00ff99;
+	color: #009966;
 `
 
 export const RatesWrapper = styled.span`
@@ -16,10 +16,6 @@ export const Container = styled.div`
 	width: 100%;
 	height: auto;
 	background: #000;
-	* {
-		transition-duration: 100ms;
-		transition-timing-function: ease-in-out;
-	}
 `
 
 export const MetaLink = styled.div`

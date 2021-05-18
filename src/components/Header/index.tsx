@@ -279,6 +279,7 @@ const Header = (props) => {
 	const { state, dispatch } = useAppContext()
 	const {
 		user,
+		net: { allowConnect, account },
 		features: {
 			data: { SHOW_CONTACT, SHOW_CAMPAIGNS, SHOW_APPLY, SHOW_FX, SHOW_SIGNIN },
 		},
@@ -289,71 +290,73 @@ const Header = (props) => {
 
 	return (
 		<Container>
-			<Flex flexDirection="row" flexWrap="wrap">
-				<Box order={[1]} px={4} py={4} width={[1, 1 / 6]}>
-					<Link href="/">
-						<img src={logo} height="40px" alt="GameDAO" />
-					</Link>
-				</Box>
-
-				<Box order={[2]} pt={4} width={[1, 2 / 6]}>
-					<Box pt={2} pr={4}>
-						{SHOW_APPLY && <Link href="/apply">Apply</Link>}
+			<Box p={4} width={1}>
+				<Flex flexDirection="row" flexWrap="wrap">
+					<Box order={[1]} width={[1 / 4, 1 / 16]}>
+						<Link href="/">
+							<img src={logo} height="40px" alt="GameDAO" />
+						</Link>
 					</Box>
-					<Box pt={2} pr={4}>
-						{SHOW_CAMPAIGNS && <Link href="/campaigns">Campaigns</Link>}
+
+					<Box pl={[0, 4]} order={[4, 2]} width={[1, 7 / 16]}>
+						<Flex flexDirection="row" flexWrap="wrap" justifyContent={['left']}>
+							<Navigation />
+						</Flex>
 					</Box>
-					<Box pt={2} pr={4}>
-						{SHOW_CONTACT && <Link href="/contact">Contact</Link>}
+
+					<Box order={[3, 2]} width={[1, 6 / 16]} pt={[2, 0]}>
+						<Flex flexDirection="row" flexWrap="wrap" justifyContent={['left', 'right']}>
+							<Box pt={2} pr={4}>
+								<Network />
+							</Box>
+							{allowConnect && (
+								<>
+									<Box pt={2} pr={4}>
+										<Sense />
+									</Box>
+									<Box pt={2} pr={4}>
+										<Accounts />
+									</Box>
+								</>
+							)}
+						</Flex>
 					</Box>
-				</Box>
 
-				<Box order={[2]} py={4} px={4} width={[1, 3 / 6]}>
-					<Flex flexDirection="row" flexWrap="wrap" justifyContent="right">
-						<Box pt={2} pr={4}>
-							<Network />
-						</Box>
-						<Box pt={2} pr={4}>
-							<Sense />
-						</Box>
-						<Box pt={2} pr={4}>
-							<Accounts />
-						</Box>
-						<Box pr={4}>
-							<Connect />
-						</Box>
-						{/*
-						 */}
-					</Flex>
-				</Box>
+					<Box order={[2, 3]} width={[3 / 4, 2 / 16]}>
+						<Flex flexDirection="row" flexWrap="wrap" justifyContent={['right', 'left']}>
+							<Box>
+								<Connect />
+							</Box>
+						</Flex>
+					</Box>
 
-				{/*
-				{hasUser && <Link href="/doc/help">Helpdesk</Link>}
-				{!hasUser && <Link href="/account/signup">Sign In / Connect</Link>}
-				{hasUser && <Link href="/account/signout">Sign&nbsp;Out</Link>}
+					{/*
+					{hasUser && <Link href="/doc/help">Helpdesk</Link>}
+					{!hasUser && <Link href="/account/signup">Sign In / Connect</Link>}
+					{hasUser && <Link href="/account/signout">Sign&nbsp;Out</Link>}
 
-				<Box order={[2]} pt={4} px={4} width={[1, 3 / 4]}>
-					<AccountSelector setAccountAddress={setAccountAddress} />
-				<Box>
-				<Box order={[4, 3]} px={4} width={[1, 1 / 2]}>
-					{!hasUser && (
-						<User>
-							Welcome, <Link href="/account">User</Link>.
-						</User>
-					)}
-				</Box>
-				<Box order={[3, 4]} px={4} width={[1, 1 / 2]}>
-					{hasUser && (
-						<Task>
-							<Right>{'Phase 1 / 3'}</Right>
-						</Task>
-					)}
-				</Box>
-				<Box>
-					<Navigation />
-				</Box>
-				*/}
-			</Flex>
+					<Box order={[2]} pt={4} px={4} width={[1, 3 / 4]}>
+						<AccountSelector setAccountAddress={setAccountAddress} />
+					<Box>
+
+					<Box order={[4, 3]} px={4} width={[1, 1 / 2]}>
+						{!hasUser && (
+							<User>
+								Welcome, <Link href="/account">User</Link>.
+							</User>
+						)}
+					</Box>
+					<Box order={[3, 4]} px={4} width={[1, 1 / 2]}>
+						{hasUser && (
+							<Task>
+								<Right>{'Phase 1 / 3'}</Right>
+							</Task>
+						)}
+					</Box>
+					*/}
+				</Flex>
+				<Box pt={2}></Box>
+			</Box>
 		</Container>
 	)
 }

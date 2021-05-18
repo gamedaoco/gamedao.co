@@ -55,6 +55,8 @@ export type ActionTypes =
 	| 'KEYRING_ERROR'
 	| 'CONNECT'
 	| 'DISCONNECT'
+	| 'CONNECTED'
+	| 'DISCONNECTED'
 	| 'SET_ACCOUNT'
 
 export type Action = {
@@ -211,7 +213,20 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
 				net: { ...state.net, allowConnect: false },
 			}
 
-		// disconnect from network
+		case 'CONNECTED':
+			log.info(`connected to subzero.`)
+			return {
+				...state,
+				net: { ...state.net, CONNECTED: true },
+			}
+
+		case 'DISCONNECTED':
+			log.info(`disconnected from subzero.`)
+			return {
+				...state,
+				net: { ...state.net, CONNECTED: false },
+			}
+
 		case 'SET_ACCOUNT':
 			log.info(`set account ${action.payload}`)
 			return {

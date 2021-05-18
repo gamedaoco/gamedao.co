@@ -200,7 +200,7 @@ const SubstrateProvider = (props: SubstrateProviderProps) => {
 		const _api = new ApiPromise({ provider, types, rpc, metadata })
 
 		const onConnectSuccess = async () => {
-			dispatch({ type: 'CONNECT_SUCCESS', payload: connectTime })
+			dispatch({ type: 'CONNECT_SUCCESS' })
 			if (!isMetadataCached) {
 				isMetadataCached = true
 				await cacheMetadata(_api)

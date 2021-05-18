@@ -19,7 +19,7 @@ import { useSubstrate } from 'src/context/SubstrateContext'
 
 import * as Fathom from 'fathom-client'
 import { IconContext } from 'react-icons/lib'
-import { PageTransition } from 'next-page-transitions'
+// import { PageTransition } from 'next-page-transitions'
 import { Loader, Message } from 'components'
 
 // TODO: replace with material-ui
@@ -27,7 +27,7 @@ import { ThemeProvider } from 'styled-components'
 import { GlobalStyle, TIMEOUT } from 'src/themes/global'
 import preset from '@rebass/preset'
 import base from 'src/themes/base'
-import dark from 'src/themes/dark'
+// import dark from 'src/themes/dark'
 import light from 'src/themes/light'
 const theme = { ...preset, ...base, ...light }
 
