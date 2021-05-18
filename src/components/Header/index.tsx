@@ -77,7 +77,8 @@ const Accounts = () => {
 	//	ui
 
 	const [accountSelected, setAccountSelected] = useState('')
-	const [balances, setBalances] = useState({ zero: '', play: '0', game: '0', zeur: '0' })
+	const [balance, setBalance] = useState('')
+	const [assets, setAssets] = useState({ play: '0', game: '0', zeur: '0' })
 
 	//
 
@@ -106,8 +107,10 @@ const Accounts = () => {
 
 		api.query.system
 			.account(account, ({ nonce, data: balance }) => {
-				setBalances({ ...balances, zero: `${balance.free}` })
-				console.log(`free balance is ${balance.free}`, `with ${balance.reserved} reserved`, `and a nonce of ${nonce}`)
+				const num = balance.free.toString()
+				const form = `${num.slice(0, 3)}.${num.slice(4, 6)}`
+				setBalance(form)
+				// console.log(`free balance is ${balance.free}`, `with ${balance.reserved} reserved`, `and a nonce of ${nonce}`)
 			})
 			.then((unsub) => {
 				unsubscribeAll = unsub
@@ -131,8 +134,8 @@ const Accounts = () => {
 					[context, [Number(2), account.toString()]],
 				],
 				([_play, _game, _zeur]) => {
-					setBalances({
-						...balances,
+					setAssets({
+						...assets,
 						play: JSON.parse(_play.toString()).balance.toString(),
 						game: JSON.parse(_game.toString()).balance.toString(),
 						zeur: JSON.parse(_zeur.toString()).balance.toString(),
@@ -153,13 +156,13 @@ const Accounts = () => {
 	if (!allowConnect) return null
 
 	const handleAccountClick = () => {
-		console.log('account', account, balances)
+		console.log('account', account, balance, assets)
 	}
 
 	return (
 		<Link>
-			<SmallType onClick={handleAccountClick}>{`${balances.zero} ZERO`}</SmallType>
-			<SmallType onClick={handleAccountClick}>{`${balances.game} GAME`}</SmallType>
+			<SmallType onClick={handleAccountClick}>{`${balance} ZERO`}</SmallType>
+			<SmallType onClick={handleAccountClick}>{`${assets.game} GAME`}</SmallType>
 		</Link>
 	)
 }
