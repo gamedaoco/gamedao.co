@@ -28,26 +28,25 @@ const NavLink = withRouter(ActiveLink)
 const NavBar: React.FC = () => (
 	<Nav>
 		<label htmlFor="show-menu" className="show-menu">
-			<FaGripLines/>
+			<FaGripLines />
 		</label>
 		<input type="checkbox" id="show-menu" role="button" />
 
-			<NavItem>
-				<NavLink href="/apply">
-					<a>Apply</a>
-				</NavLink>
-			</NavItem>
-			<NavItem>
-				<NavLink href="/contact">
-					<a>Contact</a>
-				</NavLink>
-			</NavItem>
-			<NavItem>
-				<NavLink href="https://blog.gamedao.co">
-					<a>Blog</a>
-				</NavLink>
-			</NavItem>
-
+		<NavItem>
+			<NavLink href="/apply">
+				<a>Apply</a>
+			</NavLink>
+		</NavItem>
+		<NavItem>
+			<NavLink href="/contact">
+				<a>Contact</a>
+			</NavLink>
+		</NavItem>
+		<NavItem>
+			<NavLink href="https://blog.gamedao.co">
+				<a>Blog</a>
+			</NavLink>
+		</NavItem>
 	</Nav>
 )
 

@@ -200,17 +200,16 @@ const Page = () => {
 								Why GameDAO?
 							</Text>
 							<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={400} pb={2}>
-								Start building sustainable business in a growing ecosystem powered by the GameDAO community.
-								Utilize state of the art fundraising and coordination protocols for your team, project or company.
+								Start building sustainable business in a growing ecosystem powered by the GameDAO community. Utilize state of the art
+								fundraising and coordination protocols for your team, project or company.
 							</Text>
 							<Text fontSize={[2, 3, 4]} fontWeight={400} pb={2} color="#ffcc00">
-								Stake currencies to power the DAO Treasury. Get rewarded in governance token GAME.
-								GAME token holders are automatically DAO members and empowered to
-								participate in voting, utilize protocols and join exclusive investment rounds.
+								Stake currencies to power the DAO Treasury. Get rewarded in governance token GAME. GAME token holders are automatically DAO
+								members and empowered to participate in voting, utilize protocols and join exclusive investment rounds.
 							</Text>
 							<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={400} pb={2}>
-								Join industry leaders and enthusiasts in democratised ownership and decisionmaking
-								with innovative coordination protocols, like quadratic voting.
+								Join industry leaders and enthusiasts in democratised ownership and decisionmaking with innovative coordination protocols, like
+								quadratic voting.
 							</Text>
 						</Box>
 					</Flex>
@@ -225,9 +224,8 @@ const Page = () => {
 							</Text>
 
 							<Text textAlign="left" fontSize={[1, 2, 3]} fontWeight={400} pb={2}>
-								Your pitch is important to keep up
-								the quality of the platform and to
-								create a good experience for all GameDAO members. Take part!
+								Your pitch is important to keep up the quality of the platform and to create a good experience for all GameDAO members. Take
+								part!
 							</Text>
 						</Box>
 					</Flex>

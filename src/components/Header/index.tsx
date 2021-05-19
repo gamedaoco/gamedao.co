@@ -324,9 +324,7 @@ const Header = (props) => {
 
 					<Box order={[2, 3]} width={[3 / 4, 2 / 16]}>
 						<Flex flexDirection="row" flexWrap="wrap" justifyContent={['right', 'left']}>
-							<Box>
-								{ SHOW_SIGNIN && <Connect /> }
-							</Box>
+							<Box>{SHOW_SIGNIN && <Connect />}</Box>
 						</Flex>
 					</Box>
 
