@@ -108,7 +108,7 @@ const Accounts = () => {
 		api.query.system
 			.account(account, ({ nonce, data: balance }) => {
 				const num = balance.free.toString()
-				const form = `${num.slice(0, 3)}.${num.slice(4, 6)}`
+				const form = `${num.slice(0, 3)}.${num.slice(4, 6).padEnd(2, '0')}`
 				setBalance(form)
 				// console.log(`free balance is ${balance.free}`, `with ${balance.reserved} reserved`, `and a nonce of ${nonce}`)
 			})
@@ -325,7 +325,7 @@ const Header = (props) => {
 					<Box order={[2, 3]} width={[3 / 4, 2 / 16]}>
 						<Flex flexDirection="row" flexWrap="wrap" justifyContent={['right', 'left']}>
 							<Box>
-								<Connect />
+								{ SHOW_SIGNIN && <Connect /> }
 							</Box>
 						</Flex>
 					</Box>

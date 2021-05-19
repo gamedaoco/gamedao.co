@@ -91,7 +91,6 @@ const Items = (title) => (
 const Home = () => {
 	const { result, decrypt } = useDecrypt()
 	const [title, setTitle] = useState('')
-
 	const t =
 		// 'GameDAO creates crowdfinance tools for video game creators, publishers, investors and gamers.'
 
@@ -107,10 +106,10 @@ const Home = () => {
 		`GameDAO is a community owned cooperative providing
 		fundraising, coordination and ownership protocols
 		for the videogames economy.
-
-		improving videogame economics for
-		the player, creator and funder by
-		increasing engagement and participation.`
+		`
+		// improving videogame economics for
+		// the player, creator and funder by
+		// increasing engagement and participation.`
 
 	useEffect(() => {
 		handleChangeTitle(t)
@@ -128,7 +127,7 @@ const Home = () => {
 					<Box width={[1]} px={[4, 6]} pt={[2, 4]}>
 						<Wrapper>
 							<Box width={[1]} p={[4]}>
-								<Text textAlign="left" fontSize={[4, 5, 6]} fontWeight={800} pb={2}>
+								<Text textAlign="left" fontSize={[5,6,7]} fontWeight={800} pb={2}>
 									{result}
 								</Text>
 							</Box>

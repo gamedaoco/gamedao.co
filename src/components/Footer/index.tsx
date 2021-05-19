@@ -234,13 +234,16 @@ const Footer: React.FC = ({}) => {
 			</Flex>
 
 			<Flex flexDirection="row" flexWrap="wrap">
-				<Box p={4} width={[1, 1, 1 / 2, 3 / 5]}>
+				<Box p={4} width={[ 1, 1 / 2, 1 / 3, 1 / 4, 1 / 5 ]}>
 					<Text>
-						GameDAO is a community owned cooperative provides cutting edge DeFi and DAO protocols for fundraising, coordination and ownership.
+						GameDAO is a community owned cooperative.
+						It provides cutting edge DeFi and DAO protocols
+						for fundraising, coordination and ownership.
 						<br />
 						<br />
-						Gamers, creators, publishers and investors create and participate in next generation economies, enabling videogames, content creators,
-						e-sports and gaming as a profession.
+						Gamers, creators, publishers and investors
+						create and participate in next generation economies,
+						enabling videogames, content creators, e-sports and gaming as a profession.
 					</Text>
 				</Box>
 			</Flex>

@@ -185,7 +185,7 @@ const Page = () => {
 					<Flex flexDirection="row" flexWrap="wrap">
 						<Box width={[1, 1, 3 / 4]} px={[4]} pt={4}>
 							<Text fontSize={[4, 5, 6]} fontWeight={800} pb={[2, 4]} color="#ff00cc">
-								Apply for GameDAO.
+								Join GameDAO.
 							</Text>
 							<Text fontSize={[3, 4, 5]} fontWeight={800} pt={4} pb={2} color="#ffcc00">
 								Let's kickstart your Game, together.
@@ -199,19 +199,18 @@ const Page = () => {
 							<Text fontSize={[3, 4, 5]} fontWeight={400} pt={4} pb={2} color="#ff9900">
 								Why GameDAO?
 							</Text>
-
-							<Text fontSize={[2, 3, 4]} fontWeight={400} pb={2} color="#ffcc00">
-								Pitch your production and build sustainable business.
-							</Text>
 							<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={400} pb={2}>
 								Start building sustainable business in a growing ecosystem powered by the GameDAO community.
+								Utilize state of the art fundraising and coordination protocols for your team, project or company.
 							</Text>
-
 							<Text fontSize={[2, 3, 4]} fontWeight={400} pb={2} color="#ffcc00">
-								Participate in voting and exclusive investment rounds.
+								Stake currencies to power the DAO Treasury. Get rewarded in governance token GAME.
+								GAME token holders are automatically DAO members and empowered to
+								participate in voting, utilize protocols and join exclusive investment rounds.
 							</Text>
 							<Text textAlign="left" fontSize={[2, 3, 4]} fontWeight={400} pb={2}>
-								Join industry leaders and enthusiasts in democratised decisions.
+								Join industry leaders and enthusiasts in democratised ownership and decisionmaking
+								with innovative coordination protocols, like quadratic voting.
 							</Text>
 						</Box>
 					</Flex>
@@ -222,12 +221,13 @@ const Page = () => {
 							 *							APPLICATION
 							 **/}
 							<Text fontSize={[3, 4, 5]} fontWeight={800} pt={4} pb={2} color="#ffcc00">
-								Apply now for a Professional Account
+								Apply now with your pitch!
 							</Text>
 
 							<Text textAlign="left" fontSize={[1, 2, 3]} fontWeight={400} pb={2}>
-								All applications will be manually checked, therefore your information is important to keep up the quality of the platform and to
-								create a good experience for you.
+								Your pitch is important to keep up
+								the quality of the platform and to
+								create a good experience for all GameDAO members. Take part!
 							</Text>
 						</Box>
 					</Flex>
@@ -266,6 +266,7 @@ const Page = () => {
 								<Label htmlFor="phone">Phone</Label>
 								<Input id="phone" type="phone" onChange={handleOnChange} value={inputs.phone} />
 
+								{/*
 								<Box width={[1, 1 / 2]}>
 									<Label>
 										<Checkbox id="usa_tax" name="usa_tax" value={inputs.usa_tax} onChange={handleOnChange} />I am tax liable in the USA
@@ -277,7 +278,6 @@ const Page = () => {
 										public or politically exposed person
 									</Label>
 								</Box>
-								{/*
 	CATEGORIES
 */}
 								<Text fontSize={[3, 4, 5]} fontWeight={400} py={4} color="#ffcc00">
@@ -320,7 +320,6 @@ const Page = () => {
 								</Box>
 								{/*
 	COMPANY DATA
-*/}
 								<Text fontSize={[3, 4, 5]} fontWeight={400} py={4} color="#ffcc00">
 									Company Data ( if applicable )
 								</Text>
@@ -340,6 +339,7 @@ const Page = () => {
 								<Input id="company_country" type="text" onChange={handleOnChange} value={inputs.company_country} />
 								<Label htmlFor="company_team_description">Short Team Description</Label>
 								<Textarea id="company_team_description" height={250} onChange={handleOnChange} value={inputs.company_team_description} />
+*/}
 								{/*
 	PROJECT DATA
 */}
