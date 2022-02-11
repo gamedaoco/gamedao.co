@@ -28,7 +28,8 @@ sitemap({
 	},
 })
 
-module.exports = withImages(
+module.exports =
+// withImages(
 	withMDX({
 		env: {
 			BUILD_TIME: dateStr.toString(),
@@ -43,9 +44,9 @@ module.exports = withImages(
 		// pageExtensions: ['jsx', 'tsx', 'mdx'],
 
 		webpack: (config, options) => {
-			config.node = {
-				fs: 'empty',
-			}
+			// config.node = {
+			// 	fs: 'empty',
+			// }
 
 			config.resolve.alias = {
 				...config.resolve.alias,
@@ -71,4 +72,4 @@ module.exports = withImages(
 			return config
 		},
 	})
-)
+// )

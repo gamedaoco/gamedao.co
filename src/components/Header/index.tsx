@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useRouter } from 'next/router'
 import { AppContext } from 'src/hooks/AppContext'
+import Image from 'next/image'
 
 import styled from 'styled-components'
 import { Flex, Box } from 'rebass/styled-components'
@@ -58,7 +59,7 @@ interface IHeader {
 
 const Header: React.FC<IHeader> = ({ loggedIn }) => {
 	const height = '100px'
-	const logoHeight = '50px'
+	const logoHeight = '200'
 	const logoAlt = 'zero'
 	const logoHref = '/'
 
@@ -90,7 +91,7 @@ const Header: React.FC<IHeader> = ({ loggedIn }) => {
 
 				<Box order={[1, 1]} pt={4} px={4} py={3} width={[1 / 3, 1 / 8]}>
 					<Link href="/">
-						<img src={logo} height={logoHeight} alt={logoAlt} />
+						<Image src={logo} fill alt={logoAlt} />
 					</Link>
 				</Box>
 
