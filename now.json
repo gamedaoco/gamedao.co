@@ -1,6 +1,0 @@
-{
-	"env": {
-		"SENDGRID_API_KEY": "@zero-sendgrid",
-		"MAILCHIMP": "@zero-mailchimp"
-	}
-}
