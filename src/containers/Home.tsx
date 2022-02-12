@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSubstrate } from 'src/context/SubstrateContext'
 import styled from 'styled-components'
 
 import { Flex, Box, Heading, Text } from 'rebass/styled-components'
@@ -89,8 +90,10 @@ const Items = (title) => (
 )
 
 const Home = () => {
+	const { apiState } = useSubstrate()
 	const { result, decrypt } = useDecrypt()
-	const [title, setTitle] = useState('')
+	const [ title, setTitle ] = useState('')
+
 	const t =
 		// 'GameDAO creates crowdfinance tools for video game creators, publishers, investors and gamers.'
 
@@ -112,8 +115,9 @@ const Home = () => {
 	// increasing engagement and participation.`
 
 	useEffect(() => {
+		if(apiState!=='READY') return
 		handleChangeTitle(t)
-	}, [])
+	}, [apiState])
 
 	const handleChangeTitle = (title) => {
 		decrypt(t)

@@ -2,24 +2,53 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "public": ["./public/"],
-      "src": ["./src/"],
-      "lib": ["./src/lib/"],
-      "components": ["./src/components/"],
-      "containers": ["./src/containers/"],
-      "layouts": ["./src/layouts/"],
-      "themes": ["./src/themes/"],
-      "data": ["./src/data/"],
-      "config": ["./src/config/"],
-      "queries": ["./src/queries/"],
-      "sample-polkadotjs-typegen/*": ["src/*"],
-      "@polkadot/api/augment": ["src/interfaces/augment-api.ts"],
-      "@polkadot/types/augment": ["src/interfaces/augment-types.ts"]
+      "public": [
+        "./public/"
+      ],
+      "src": [
+        "./src/"
+      ],
+      "lib": [
+        "./src/lib/"
+      ],
+      "components": [
+        "./src/components/"
+      ],
+      "containers": [
+        "./src/containers/"
+      ],
+      "layouts": [
+        "./src/layouts/"
+      ],
+      "themes": [
+        "./src/themes/"
+      ],
+      "data": [
+        "./src/data/"
+      ],
+      "config": [
+        "./src/config/"
+      ],
+      "queries": [
+        "./src/queries/"
+      ],
+      "sample-polkadotjs-typegen/*": [
+        "src/*"
+      ],
+      "@polkadot/api/augment": [
+        "src/interfaces/augment-api.ts"
+      ],
+      "@polkadot/types/augment": [
+        "src/interfaces/augment-types.ts"
+      ]
     },
     "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "moduleResolution": "node",
     "allowJs": true,
     "noEmit": true,
@@ -39,10 +68,15 @@
     "isolatedModules": true,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "incremental": true
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
-
-
