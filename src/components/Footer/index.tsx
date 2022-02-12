@@ -266,7 +266,7 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} py={1} width={[1, 1 / 2]}>
 					<SmallText>
-						©&nbsp;{new Date().getFullYear()}&nbsp;gamedao.co. running on
+						©&nbsp;{new Date().getFullYear()}&nbsp;GameDAO AG, Vaduz, Liechtenstein. Running on
 						<a href="https://zero.io">
 							{' '}
 							<img src={logo} height="8px" alt="zero" />{' '}

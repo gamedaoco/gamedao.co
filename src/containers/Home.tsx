@@ -18,7 +18,10 @@ const Wrapper = styled.div`
 	// blue
 	// 0 0 70px rgba(0,96,192,1);
 
-	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 70px rgba(32, 255, 192, 1);
+	text-shadow:
+		0 0 20px rgba(255, 128, 0, .4),
+		0 0 40px rgba(255, 0, 255, .4),
+		0 0 10px rgba(192, 0, 96, .8);
 	// > * {
 	// 	transition-duration: 0ms;
 	// }
@@ -34,9 +37,9 @@ const hover = {
 
 const hoverStyle = {
 	...hover,
-	transitionDuration: '250ms',
+	transitionDuration: '150ms',
 	opacity: '.75',
-	textShadow: '0 0 10px rgba(255, 255, 255, .5), 0 0 50px rgba(32, 255, 192, .5)',
+	textShadow: '0 0 10px rgba(255, 255, 255, .5), 0 0 50px rgba(255, 64, 192, .5)',
 	':hover': {
 		opacity: 1,
 		textShadow: '0 0 10px rgba(255, 255, 255, 1), 0 0 50px rgba(32, 255, 192, 1)',
@@ -130,8 +133,8 @@ const Home = () => {
 				<Flex flexDirection="row" flexWrap="wrap">
 					<Box width={[1]} px={[4, 6]} pt={[2, 4]}>
 						<Wrapper>
-							<Box width={[1]} p={[4]}>
-								<Text textAlign="left" fontSize={[5, 6, 7]} fontWeight={800} pb={2}>
+							<Box sx={hoverStyle} width={[1]} p={[4]}>
+								<Text textAlign="left" fontSize={[4,5,6]} fontWeight={800} pb={2}>
 									{result}
 								</Text>
 							</Box>
