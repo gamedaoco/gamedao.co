@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write --check pkg/**/*.{ts,tsx}",
-    "format:verify": "prettier --check pkg/**/*.{ts,tsx}",
+    "format": "prettier --write --check src/**/*.{ts,tsx}",
+    "format:verify": "prettier --check src/**/*.{ts,tsx}",
     "test": "missing"
   },
   "dependencies": {
@@ -34,6 +34,7 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.28.1",
     "react-icons": "^4.3.1",
+    "react-material-ui-carousel": "^3.3.3",
     "react-toastify": "^8.2.0",
     "yup": "^0.32.11"
   },
