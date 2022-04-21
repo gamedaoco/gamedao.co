@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { styled, useTheme } from '@mui/material/styles'
-import { Badge, ListItemButton, ListItemIcon, Stack, Typography, useMediaQuery, Drawer } from '@mui/material'
+import { Badge, ListItemButton, ListItemIcon, Stack, Typography, useMediaQuery, Drawer, MenuItem } from '@mui/material'
 import { ThemeSwitch } from 'src/components/ThemeSwitcher/themeSwitch'
 import { FontIcons } from 'src/components/Icons/icons'
-import { NavLink } from 'src/components/NavLink/navLink'
+
 
 // TODO:
 // Fix error on page load!!
@@ -36,14 +36,14 @@ const SidebarNavItem = ({ href, name, children }) => {
 	const isMobile = useMediaQuery('(max-width:640px)')
 	const override = { fontSize: isMobile ? '2rem' : '3rem' }
 	return (
-		<NavLink href={href}>
+		<MenuItem href={href}>
 			<SidebarButton active={(pathname === href).toString()}>
 				<Stack direction="row" alignItems="center" px={2}>
 					<ListItemIcon>{<FontIcons sx={{ ...override }} name={name} />}</ListItemIcon>
 					<Typography>{children}</Typography>
 				</Stack>
 			</SidebarButton>
-		</NavLink>
+		</MenuItem>
 	)
 }
 
