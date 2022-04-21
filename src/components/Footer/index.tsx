@@ -10,15 +10,16 @@
 **/
 
 import React, { useContext } from 'react'
-import { AppContext } from 'src/hooks/AppContext'
+import { AppContext } from 'src/context/AppContext'
 
 import styled from 'styled-components'
 import { Flex, Box, Text } from 'rebass/styled-components'
-import { FaGitlab, FaDiscord, FaTwitter } from 'react-icons/fa'
+import { FaGithub, FaDiscord, FaTwitter } from 'react-icons/fa'
 import { H3, H4, SmallText, Link, Newsletter, Divider } from 'components'
 
+import gamedao from 'public/gamedao_tangram.svg'
 import logo from 'public/z-h-col.svg'
-import img from 'public/stripes-s.png'
+// import img from 'public/stripes-s.png'
 
 import { ENV } from 'config'
 
@@ -57,8 +58,8 @@ const FooterNav = () => {
 			<Box px={4} pt={4} width={[1 / 2, 1 / 2, 1 / 3, 1 / 5]} color="#00ffcc">
 				<Text>
 					<H3>
-						Investor +<br />
-						Gamer
+						Gamer +<br />
+						Investor
 					</H3>
 					<Link href="/invest">Invest now</Link>
 					<br />
@@ -82,7 +83,18 @@ const FooterNav = () => {
 					<br />
 					<Link href="/doc/fees">Fees</Link>
 					<br />
-					<Link href="/doc/how-to-get-funding">How to Get funding</Link>
+					<br />
+					<Link href="/products#grant">Grants</Link>
+					<br />
+					<Link href="/products#perk">Raise</Link>
+					<br />
+					<Link href="/products#lend">Lending</Link>
+					<br />
+					<Link href="/products#share">Shares</Link>
+					<br />
+					<br />
+					<Link href="/products#dao">DAO Factory</Link>
+					<br />
 				</Text>
 			</Box>
 
@@ -91,17 +103,23 @@ const FooterNav = () => {
 			<Box px={4} pt={4} width={[1 / 2, 1 / 2, 1 / 3, 1 / 5]} color="#ff00cc">
 				<Text>
 					<H3>
-						Products +<br />
-						Services
+						Marketplace
+						<br />
+						&nbsp;
 					</H3>
-					<Link href="/products#crowdshare">Crowd Shares</Link>
+					<Link href="/use">Games</Link>
 					<br />
-					<Link href="/products#crowdlend">Crowd Lending</Link>
+					<Link href="/use">Creative Work</Link>
 					<br />
-					<Link href="/products#funding-tribes">Funding Tribes</Link>
+					<Link href="/use">Content + DLC</Link>
 					<br />
-					<Link href="/products#staking">Staking + Validation</Link>
+					<Link href="/use">Music + Art</Link>
 					<br />
+					<Link href="/use">eSports Teams</Link>
+					<br />
+					<Link href="/use">Collectables / NFT</Link>
+					<br />
+					<Link href="/use">Licenses</Link>
 					<br />
 				</Text>
 			</Box>
@@ -144,7 +162,7 @@ const FooterNav = () => {
 			<Box px={4} pt={4} width={[1 / 2, 1 / 2, 1 / 3, 1 / 5]} color="#ccff00">
 				<Text>
 					<H3>
-						Join the DAO
+						GameDAO
 						<br />
 						<br />
 					</H3>
@@ -156,6 +174,8 @@ const FooterNav = () => {
 					<br />
 					<Link href="/dao/tokensale">Tokensale</Link>
 					<br />
+					<Link href="/dao/join">Join</Link>
+					<br />{' '}
 					{/*
 					<Link href="/dao/culture">How we work</Link>
 					<br />
@@ -175,6 +195,16 @@ const FooterNav = () => {
 					<Link href="/team#community">Community</Link>
 					<br />
 */}
+					<H3>
+						ZERO Network
+						<br />
+						<br />
+					</H3>
+					<Link href="/products#play">PLAY Coin</Link>
+					<br />
+					<Link href="/products#staking">Staking + Validation</Link>
+					<br />
+					<br />
 				</Text>
 			</Box>
 		</Flex>
@@ -194,26 +224,24 @@ const Footer: React.FC = ({}) => {
 	return (
 		<Container id="info">
 			<Flex flexDirection="row" flexWrap="wrap">
-				<Box px={4} py={4} width={[1, 1, 1 / 3, 2 / 5]}>
+				<Box p={4} width={[1, 1, 1 / 3, 2 / 5]}>
 					<Text>
-						<Link href="/">
-							<img src={logo} height="20px" alt="zero" />
+						<Link href="#">
+							<img src={gamedao} height="40px" alt="zero" />
 						</Link>
 					</Text>
 				</Box>
 			</Flex>
 
-			<Divider sm />
-
 			<Flex flexDirection="row" flexWrap="wrap">
-				<Box px={4} pt={4} width={[1, 1, 1 / 2, 3 / 5]}>
+				<Box p={4} width={[1, 1 / 2, 1 / 3, 1 / 4, 1 / 5]}>
 					<Text>
-						zero.io is building GameDAO, a decentralised autonomous cooperative, summoned to foster sustainability and improve financing in video
-						games, creative content, digital arts, e-sports and gaming as a profession.
-						<br />
-						<br />
-						GameDAO provides matchmaking and crowd based funding instruments, connecting and empowering loyal gamers, creators, publishers and
-						investors.
+						GameDAO is the community powered operating system for
+						video games, metaverses and esports.<br/><br/>
+						Join us in creating the best financial and organisational primitives,
+						utilising DAO, DeFi and NFT protocols for transparent governance,
+						true community ownership and interoperable economies,
+						transforming the entire game industry into web3 and beyond.
 					</Text>
 				</Box>
 			</Flex>
@@ -230,7 +258,7 @@ const Footer: React.FC = ({}) => {
 						<FaTwitter size={25} />
 					</a>
 					<a className="icon" href="https://github.com/playzero" target="_blank">
-						<FaGitlab size={25} />
+						<FaGithub size={25} />
 					</a>
 					&nbsp;
 				</Box>
@@ -239,11 +267,12 @@ const Footer: React.FC = ({}) => {
 			<Flex flexDirection="row" flexWrap="wrap">
 				<Box px={4} py={1} width={[1, 1 / 2]}>
 					<SmallText>
-						©&nbsp;{new Date().getFullYear()}&nbsp;
-						<a href="https://zero.io" target="_blank">
-							zero technologies
+						©&nbsp;{new Date().getFullYear()}&nbsp;GameDAO AG, Vaduz, Liechtenstein. Running on
+						<a href="https://zero.io">
+							{' '}
+							<img src={logo} height="8px" alt="zero" />{' '}
 						</a>
-						.&nbsp;&nbsp;&nbsp;made&nbsp;on&nbsp;earth.&nbsp;&nbsp;&nbsp;
+						.&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Imprint</Link>&nbsp;&nbsp;&nbsp;
 						<Link href="/imprint">Privacy</Link>&nbsp;&nbsp;&nbsp;
 						{/*<Link href="/imprint">Terms</Link>*/}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import { Flex, Box, Heading, Text } from 'rebass'
+import { Flex, Box, Heading, Text } from 'rebass/styled-components'
 import { H1, Link, Intro, Container, ContentGrid } from 'components'
 
 import img from 'public/img/1.png'

@@ -28,8 +28,12 @@ sitemap({
 	},
 })
 
-module.exports = withImages(
-	withMDX({
+module.exports = withImages( withMDX({
+
+		// future: {
+		// 	webpack5: true,
+		// },
+
 		env: {
 			BUILD_TIME: dateStr.toString(),
 			BUILD_TIMESTAMP: +date,
@@ -43,6 +47,14 @@ module.exports = withImages(
 		// pageExtensions: ['jsx', 'tsx', 'mdx'],
 
 		webpack: (config, options) => {
+
+			// fix mjs import
+			config.module.rules.push({
+				type: 'javascript/auto',
+				test: /\.mjs$/,
+				use: [],
+			})
+
 			config.node = {
 				fs: 'empty',
 			}
@@ -70,5 +82,5 @@ module.exports = withImages(
 
 			return config
 		},
-	})
-)
+
+}))

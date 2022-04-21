@@ -1,0 +1,278 @@
+import { createContext, useContext, useReducer, useEffect } from 'react'
+import { DEV, ENV, HOST } from 'src/config'
+import { useSubstrate } from 'src/context/SubstrateContext'
+
+// logging
+
+import { Logger } from 'src/lib/log'
+const log = Logger('$APP')
+
+// hacky type introspection
+
+import configJSON from 'data/config.json'
+import featuresJSON from 'data/features.json'
+
+const defaultConfig = configJSON.global
+type ConfigTypes = typeof configJSON
+
+const defaultFeatures = featuresJSON.global
+type FeatureTypes = typeof defaultFeatures
+
+// data loader
+
+const loadData = async (resource, env) => {
+	try {
+		let data = await fetch(HOST + resource, {
+			method: 'POST',
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ key: 'hello', env }),
+		})
+		data = await data.json()
+		return data
+	} catch (error) {
+		console.error(error)
+	}
+}
+
+// type / state definitions
+
+export type ActionTypes =
+	| 'INIT'
+	| 'CONFIG_LOAD'
+	| 'CONFIG_UPDATE'
+	| 'FEATURES_LOAD'
+	| 'FEATURES_UPDATE'
+	| 'CONTENT_LOAD'
+	| 'CONTENT_UPDATE'
+	| 'NET_CONNECT'
+	| 'NET_READY'
+	| 'NET_ERROR'
+	| 'NET_RESET'
+	| 'KEYRING_UPDATE'
+	| 'KEYRING_ERROR'
+	| 'CONNECT'
+	| 'DISCONNECT'
+	| 'CONNECTED'
+	| 'DISCONNECTED'
+	| 'SET_ACCOUNT'
+
+export type Action = {
+	type: ActionTypes
+	payload?: object | string | null
+}
+
+export type AppState = 'INIT' | 'SETUP' | 'READY'
+export type NotificationType = {
+	type?: number
+	code?: number
+	time?: number
+	message: string
+}
+
+export type Web3State = 'INIT' | 'CONNECTING' | 'CONNECT'
+export type ConfigState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
+export type FeatureState = 'WAIT' | 'LOAD' | 'READY' | 'ERROR'
+export type NetworkState = 'WAIT' | 'CONNECT' | 'READY' | 'ERROR'
+export type KeyringState = 'WAIT' | 'READY' | 'ERROR'
+
+export type UserState = 'NO_USER' | 'SIGNEDIN'
+export type UserAuthMethod = 'EMPA' | 'SS58' | 'ETH'
+export type UserTypes = {
+	id: number // uuid
+	nick: string // public nick
+	pic: string // url to img
+	method: UserAuthMethod
+	key: string // key used to signin, oneof type UserAuthMethod
+	ttl: number // lifetime
+	language: string // should be iso string
+	alive: boolean
+}
+
+export type State = {
+	app: {
+		state: AppState
+		notifications: NotificationType[] | undefined
+		DEV: boolean
+		ENV: string
+		READY: boolean
+	}
+	net: {
+		state: Web3State
+		URL: string
+		CONNECTED: boolean
+		allowConnect: boolean
+		account: any
+	}
+	config: {
+		state: ConfigState
+		data: ConfigTypes
+	}
+	features: {
+		state: FeatureState
+		data: FeatureTypes
+	}
+	user: {
+		state: UserState
+		data?: UserTypes
+	}
+}
+
+const INITIAL_STATE: State = {
+	app: { state: 'INIT', notifications: [], DEV, ENV, READY: false },
+	net: { state: 'INIT', URL: 'ws://localhost:9944', CONNECTED: false, allowConnect: false, account: '' },
+	config: { state: 'WAIT', data: defaultConfig },
+	features: { state: 'WAIT', data: defaultFeatures },
+	user: { state: 'NO_USER' },
+}
+
+// assemble context
+
+const AppContext = createContext<{
+	state: State
+	dispatch: React.Dispatch<any>
+}>({
+	state: INITIAL_STATE,
+	dispatch: () => null,
+})
+
+// reducer
+
+const reducer: React.Reducer<State, Action> = (state, action) => {
+	switch (action.type) {
+		case 'CONFIG_LOAD':
+			log.info(`⏳ load config...`)
+			return {
+				...state,
+				app: { ...state.app, state: 'INIT' },
+				config: { ...state.config, state: 'LOAD' },
+			}
+
+		case 'CONFIG_UPDATE':
+			log.info(`⚙️ update config`)
+			return {
+				...state,
+				app: { ...state.app, state: 'SETUP' },
+				config: {
+					data: action.payload,
+					state: 'READY',
+				},
+			}
+
+		case 'FEATURES_LOAD':
+			log.info(`⏳ load features...`)
+			return {
+				...state,
+				// config: { ...state.config, state: 'READY' },
+				features: { ...state.features, state: 'LOAD' },
+			}
+
+		case 'FEATURES_UPDATE':
+			log.info(`⚙️ update features`)
+			return {
+				...state,
+				app: { ...state.app, state: 'READY', READY: true },
+				features: {
+					data: action.payload,
+					state: 'READY',
+				},
+			}
+
+		case 'CONTENT_LOAD':
+			log.info(`⏳ loading content...`)
+			return {
+				...state,
+				features: { ...state.features, state: 'LOAD' },
+			}
+
+		case 'CONTENT_UPDATE':
+			log.info(`❤️ content loaded`)
+			return {
+				...state,
+				content: {
+					state: 'READY',
+					data: action.payload,
+				},
+			}
+
+		// connect to network only with user consent
+		case 'CONNECT':
+			log.info(`❤️ user connect subzero`)
+			return {
+				...state,
+				net: { ...state.net, allowConnect: true },
+			}
+
+		// disconnect from network
+		case 'DISCONNECT':
+			log.info(`💔 user disconnect subzero`)
+			return {
+				...state,
+				net: { ...state.net, allowConnect: false },
+			}
+
+		case 'CONNECTED':
+			log.info(`connected to subzero.`)
+			return {
+				...state,
+				net: { ...state.net, CONNECTED: true },
+			}
+
+		case 'DISCONNECTED':
+			log.info(`disconnected from subzero.`)
+			return {
+				...state,
+				net: { ...state.net, CONNECTED: false },
+			}
+
+		case 'SET_ACCOUNT':
+			log.info(`set account ${action.payload}`)
+			return {
+				...state,
+				net: { ...state.net, account: action.payload },
+			}
+		default:
+			throw new Error(`Unknown type: ${action.type}`)
+	}
+}
+
+const AppProvider = ({ children }) => {
+	const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
+	const READY = state.app.READY
+
+	// load config
+
+	useEffect(() => {
+		dispatch({ type: 'CONFIG_LOAD' })
+		let isMounted = true
+		const loadConfig = async () => await loadData('config', ENV)
+		loadConfig().then((data) => {
+			if (isMounted) dispatch({ type: 'CONFIG_UPDATE', payload: data })
+		})
+		return () => {
+			isMounted = false
+		}
+	}, [])
+
+	// load features
+
+	useEffect(() => {
+		let isMounted = true
+		dispatch({ type: 'FEATURES_LOAD' })
+		const loadFeatures = async () => await loadData('features', ENV)
+		loadFeatures().then((data) => {
+			if (isMounted) dispatch({ type: 'FEATURES_UPDATE', payload: data })
+		})
+		return () => {
+			isMounted = false
+		}
+	}, [])
+
+	return READY ? <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider> : <></>
+}
+
+const useAppContext = () => useContext(AppContext)
+
+export { AppContext, AppProvider, useAppContext }

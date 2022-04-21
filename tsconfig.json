@@ -1,40 +1,82 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"public": ["./public/"],
-			"src": ["./src/"],
-			"lib": ["./src/lib/"],
-			"components": ["./src/components/"],
-			"containers": ["./src/containers/"],
-			"layouts": ["./src/layouts/"],
-			"themes": ["./src/themes/"],
-			"data": ["./src/data/"],
-			"config": ["./src/config/"],
-			"queries": ["./src/queries/"]
-		},
-		"target": "esnext",
-		"module": "esnext",
-		"jsx": "preserve",
-		"lib": ["dom", "es2017"],
-		"moduleResolution": "node",
-		"allowJs": true,
-		"noEmit": true,
-		"noImplicitAny": false,
-		"strict": true,
-		"allowSyntheticDefaultImports": true,
-		"skipLibCheck": true,
-		"noUnusedLocals": false,
-		"suppressImplicitAnyIndexErrors": true,
-		"noUnusedParameters": false,
-		"removeComments": false,
-		"preserveConstEnums": true,
-		"sourceMap": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
-		"isolatedModules": true
-	},
-	"exclude": ["node_modules"],
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "public": [
+        "./public/"
+      ],
+      "src": [
+        "./src/"
+      ],
+      "lib": [
+        "./src/lib/"
+      ],
+      "components": [
+        "./src/components/"
+      ],
+      "containers": [
+        "./src/containers/"
+      ],
+      "layouts": [
+        "./src/layouts/"
+      ],
+      "themes": [
+        "./src/themes/"
+      ],
+      "data": [
+        "./src/data/"
+      ],
+      "config": [
+        "./src/config/"
+      ],
+      "queries": [
+        "./src/queries/"
+      ],
+      "sample-polkadotjs-typegen/*": [
+        "src/*"
+      ],
+      "@polkadot/api/augment": [
+        "src/interfaces/augment-api.ts"
+      ],
+      "@polkadot/types/augment": [
+        "src/interfaces/augment-types.ts"
+      ]
+    },
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedParameters": false,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "incremental": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

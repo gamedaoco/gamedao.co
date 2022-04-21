@@ -1,31 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
 
+export const SmallType = styled.div`
+	font-size: 10px;
+	color: #009966;
+`
+
 export const RatesWrapper = styled.span`
 	font-size: 10px;
 `
 
 export const Container = styled.div`
-	// * { border: 1px dotted red; }
-
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: auto;
 	background: #000;
-
-	* {
-		// font-size: 10px;
-		transition-duration: 100ms;
-		transition-timing-function: ease-in-out;
-	}
 `
 
 export const MetaLink = styled.div`
 	text-align: right;
 	color: white;
+	width: auto;
 	a {
-		font-size: 10px;
 		color: rgba(255, 255, 255, 0.5);
 		margin-left: 25px;
 	}

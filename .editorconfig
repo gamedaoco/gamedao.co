@@ -21,9 +21,9 @@ insert_final_newline = false
 indent_style = tab
 
 [*.{json}]
-indent_style = tab
+indent_style = space
 indent_size = 2
 
-[*.{yml,yaml}]
+[*.{yml,yaml,toml}]
 indent_style = space
 indent_size = 2

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { AppContext } from 'src/hooks/AppContext'
+import { AppContext } from 'src/context/AppContext'
 
 import styled from 'styled-components'
 
@@ -7,7 +7,7 @@ import { Flex, Box, Card, Heading, Text, Image } from 'rebass/styled-components'
 import { Label, Select } from '@rebass/forms/styled-components'
 import { Border, H1, H2, H3, Link, Space, Container, Newsletter, Button, ContentFilter, ContentSearch } from 'components'
 
-import gql from 'graphql-tag'
+import gql from '@apollo/client'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_PROJECTS_TOP, GET_PROJECTS_ALL } from 'queries'
 
@@ -140,12 +140,27 @@ const GridContentTop = (props) => {
 
 	return <>No results.</>
 }
+
+const CatMap = {
+	lend: '#00ff00',
+	prepaid: '#ff00ff',
+	shares: '#00ffff',
+	grant: '#ffff00',
+}
+
+const Cat = (props) => {
+	return <Tag style={{ backgroundColor: CatMap[props.children] }}>{props.children}</Tag>
+}
+
 const GridItem = (props) => (
 	<>
 		<Link href="/projects/[pid]" as={`/projects/${props.id}`}>
 			<Image src={props.image} variant="grid" />
 			<Heading>{props.name}</Heading>
 			<Text>{props.pitch}</Text>
+
+			<Cat>{props.category}</Cat>
+
 			{/* TODO: iterate tags*/}
 			<div>
 				<Tag>INDIE</Tag>
@@ -166,7 +181,7 @@ const GridItem = (props) => (
 
 const ContentGrid = (props) => {
 	const { state } = useContext(AppContext)
-	const { READY } = state.app
+	const READY = state.app.state === 'READY'
 	const [searchQuery, setSearchQuery] = useState({})
 
 	const showAll = true
