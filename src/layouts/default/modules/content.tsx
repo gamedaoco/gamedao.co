@@ -11,7 +11,9 @@ export const Content = ({ children }: ComponentProps) => {
 
 	return (
 		<Container>
-			<Box py={{ xs: '4rem', sm: '6rem', md: '8rem' }}>{children || null}</Box>
+			<Box py={{ xs: '1rem', md: '2rem' }}>
+				{ children || null }
+			</Box>
 		</Container>
 	)
 }

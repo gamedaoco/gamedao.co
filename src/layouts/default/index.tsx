@@ -31,7 +31,7 @@ export function Layout({ showHeader, showFooter, showSidebar, children, noContai
 					background: theme.palette.background.ocean,
 				}}
 			>
-				<Container sx={{ minHeight: '100vh' }}>
+				<Container sx={{ minHeight: '100vh', p: 0 }}>
 					<Box
 						sx={{
 							overflowX: 'hidden',
@@ -40,11 +40,10 @@ export function Layout({ showHeader, showFooter, showSidebar, children, noContai
 							flexDirection: 'column',
 						}}
 					>
-						{showHeader && <Header />}
-						{/*				<Box height={{ xs: '2rem', sm: '4rem', md: '6rem' }} />*/}
-						{noContainer ? { children } : <Content>{children}</Content>}
+						{ showHeader && <Header /> }
+						{ noContainer ? { children } : <Content>{children}</Content> }
 					</Box>
-					{showFooter && <Footer />}
+					{ showFooter && <Footer /> }
 				</Container>
 			</Box>
 		</>

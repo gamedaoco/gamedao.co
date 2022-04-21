@@ -1,7 +1,10 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+
 import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
+
 import {
 	AppBar,
 	Box,
@@ -15,6 +18,9 @@ import {
 	Tooltip,
 	MenuItem,
 } from '@mui/material'
+
+import { Drawer } from '@mui/material'
+
 import { NavLink } from 'src/components'
 
 const pages = ['Vision', 'Mission', 'Community', 'Team', 'Cases', 'Early Access']
@@ -53,40 +59,60 @@ export const Header = () => {
 					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+
 						<IconButton
 							size="large"
 							aria-label="account of current user"
 							aria-controls="menu-appbar"
 							aria-haspopup="true"
-							onClick={handleOpenNavMenu}
+							onClick={ handleOpenNavMenu }
 							color="inherit"
 						>
 							<MenuIcon />
 						</IconButton>
-						<Menu
-							id="menu-appbar"
-							anchorEl={anchorElNav}
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'left',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'left',
-							}}
-							open={Boolean(anchorElNav)}
-							onClose={handleCloseNavMenu}
-							sx={{
-								display: { xs: 'block', md: 'none' },
-							}}
+
+						<Drawer
+							variant="temporary"
+							transitionDuration={0}
+							elevation={0}
+							anchor="top"
+							open={ Boolean(anchorElNav) }
+							onClose={ handleCloseNavMenu }
 						>
-							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">{page}</Typography>
+							<Box sx={{
+								px: ['2rem','3rem'],
+								py: ['0.25rem','0.5rem'],
+								height: '100vh',
+								backgroundColor: 'black'
+							}}>
+
+
+								<Box sx={{
+									flexGrow: 1,
+								}}>
+									<IconButton
+										size="large"
+										onClick={handleCloseNavMenu}
+										color="inherit"
+										aria-controls="close"
+									>
+										<CloseIcon />
+									</IconButton>
+								</Box>
+
+								<MenuItem key={'GameDAO'} onClick={handleCloseNavMenu}>
+									<Typography textAlign="center">GameDAO</Typography>
 								</MenuItem>
-							))}
-						</Menu>
+
+								{pages.map((page) => (
+									<MenuItem key={page} onClick={handleCloseNavMenu}>
+										<Typography textAlign="center">{page}</Typography>
+									</MenuItem>
+								))}
+
+							</Box>
+						</Drawer>
+
 					</Box>
 
 					<Typography
