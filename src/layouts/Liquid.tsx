@@ -63,7 +63,7 @@ const Layout = (props) => {
 				<meta property="twitter:image" content={SITE_IMAGE} />
 
 				<meta name="format-detection" content="telephone=no, address=no, email=no" />
-				<link rel="shortcut icon" href="z-control-45-full.png" />
+				<link rel="icon" type="image/png" href="gamedao_tangram_color_2048.png" />
 
 				<title>
 					{path || 'GameDAO'} | {SITE_TITLE}
