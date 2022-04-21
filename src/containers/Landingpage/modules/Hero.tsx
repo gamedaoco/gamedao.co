@@ -10,7 +10,12 @@ import Next from '@mui/icons-material/NavigateNext'
 import { hero as items } from '../content'
 
 const Content = props =>
-	<Carousel sx={{ mx: -6, height: ['300px','400px','600px'] }} NextIcon={<Next/>} PrevIcon={<Prev/>}>
+	<Carousel
+		sx={{ mx: -6, height: ['300px','400px','600px'] }}
+		duration={0}
+		interval={5000}
+		NextIcon={<Next/>} PrevIcon={<Prev/>}
+		>
 		{items.map( (item, i) => <Item key={i} item={item} /> ) }
 	</Carousel>
 
@@ -24,11 +29,22 @@ const Item = props => {
 			<Box sx={{
 				zIndex: 100,
 				width: '100%',
-				// height: '100%',
 				height: ['300px','400px','600px'],
 			}}>
 				<Backdrop src={props.item.image||null} />
 			</Box>
+
+{/*			<Box sx={{
+				zIndex: 150,
+				position: 'absolute',
+				left: 0,
+				top: 0,
+				width: '100%',
+				height: ['300px','400px','600px'],
+				background: 'repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.4) 3px, rgba(0,0,0,0.4) 3px)'
+			}}>
+				<></>
+			</Box>*/}
 
 			<Box sx={{
 				position: 'absolute',

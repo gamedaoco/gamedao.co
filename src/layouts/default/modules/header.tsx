@@ -80,7 +80,7 @@ export const Header = () => {
 							onClose={ handleCloseNavMenu }
 						>
 							<Box sx={{
-								px: ['2rem','3rem'],
+								px: ['1rem','3rem'],
 								py: ['0.25rem','0.5rem'],
 								height: '100vh',
 								backgroundColor: 'black'

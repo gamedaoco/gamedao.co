@@ -53,14 +53,14 @@ export const supporters = [
 
 export const hero = [
 	{
-		title: 'Create Better Games',
+		title: `Build Decentralized Video Game Economies`,
 		description: 'Probably the most random thing you have ever seen!',
 		image: '/s01/1__128c.png',
 		link_text: 'Moaer',
 		link_url: '#'
 	},
 	{
-		title: `Build Decentralized Video Game Economies`,
+		title: 'Create Better Games',
 		description: 'Just another stinky text',
 		image: ``,
 		link_url: '#'
