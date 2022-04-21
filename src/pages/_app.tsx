@@ -1,94 +1,65 @@
-/**
-		   _______________________________ ________
-		   \____    /\_   _____/\______   \\_____  \
-			 /     /  |    __)_  |       _/ /   |   \
-			/     /_  |        \ |    |   \/    |    \
-		   /_______ \/_______  / |____|_  /\_______  /
-				   \/        \/         \/         \/
-		   Z  E  R  O  .  I  O     N  E  T  W  O  R  K
-		   © C O P Y R I O T   2 0 7 5   Z E R O . I O
-**/
+import Head from 'next/head'
+import { AppProps, NextWebVitalsMetric } from 'next/app'
+import { Providers } from 'src/providers'
 
-import { useEffect, useContext, useState } from 'react'
-import App from 'next/app'
-import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
+import { CacheProvider, EmotionCache } from '@emotion/react'
+import createEmotionCache from 'src/theme/createEmotionCache'
+import { ThemePrimaryColor } from 'src/components/ThemePrimaryColor/themePrimaryColor'
 
-import { AppProvider, useAppContext } from 'src/context/AppContext'
-import { useSubstrate } from 'src/context/SubstrateContext'
+const clientSideEmotionCache = createEmotionCache()
 
-import * as Fathom from 'fathom-client'
-import { IconContext } from 'react-icons/lib'
-// import { PageTransition } from 'next-page-transitions'
-import { Loader, Message } from 'components'
-
-// TODO: replace with material-ui
-import { ThemeProvider } from 'styled-components'
-import { GlobalStyle, TIMEOUT } from 'src/themes/global'
-import preset from '@rebass/preset'
-import base from 'src/themes/base'
-// import dark from 'src/themes/dark'
-import light from 'src/themes/light'
-const theme = { ...preset, ...base, ...light }
-
-// SSR
-const isServer = () => typeof window === 'undefined'
-
-const SubzeroProvider = dynamic(() => import('../context/SubstrateContext') as any, { ssr: false })
-
-const Wrapper = ({ children }) => {
-	if (isServer()) return <>{children}</>
-
-	const { state } = useAppContext()
-	const { allowConnect } = state.net
-	const { apiState, apiError, keyring, keyringState, keyringError } = useSubstrate()
-
-	let loaded = false
-
-	useEffect((): void | any => {
-		if (apiState === 'ERROR') return <Message content={apiError} />
-		if (apiState !== 'READY') return <Loader content="Connecting to ZERO.IO" />
-		if (!allowConnect) return
-		if (keyringState === 'ERROR') return <Message content={keyringError} />
-		if (keyringState !== 'READY') return <Loader content={`Loading accounts — please review any extension's authorization`} />
-
-		loaded = true
-	}, [allowConnect, loaded])
-
-	return <SubzeroProvider>{children}</SubzeroProvider>
-	{
-		/*return <>{children}</>*/
-	}
+interface MyAppProps extends AppProps {
+	Component: any
+	emotionCache: EmotionCache
+	pageProps: object
 }
 
-const Application = ({ Component, pageProps }) => {
-	const router = useRouter()
+// should be provided by graph
+const SITE_NAME = 'GameDAO'
+const SITE_TITLE = 'Fundraising, coordination, ownership for video games, esports and the creative industry.'
+const SITE_DESCRIPTION =
+	'The DAO for video games, esports and creatives. We connect gamers, creators, publishers and investors for better video games with the power of web3, dao, defi and nft.'
+const SITE_IMAGE = 'https://gamedao.co/assets/gamedao-logo.png'
+const TW_SITE_NAME = '@gamedaoco'
+const TW_SITE_CREATOR = '@zerodotio'
+const CONTACT = 'hey@gamedao.co'
 
-	useEffect(() => {
-		Fathom.load('XLUUAYWU', {
-			url: '//scorpion.gamedao.co/script.js',
-		})
-		function onRouteChangeComplete() {
-			Fathom.trackPageview()
-		}
-		router.events.on('routeChangeComplete', onRouteChangeComplete)
-		return () => {
-			router.events.off('routeChangeComplete', onRouteChangeComplete)
-		}
-	}, [])
-
+export function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) {
 	return (
-		<AppProvider key={1}>
-			<GlobalStyle />
-			<ThemeProvider theme={theme} key="theme">
-				<IconContext.Provider value={{ style: { marginTop: '-3px', verticalAlign: 'middle' } }}>
-					<Wrapper>
-						<Component {...pageProps} />
-					</Wrapper>
-				</IconContext.Provider>
-			</ThemeProvider>
-		</AppProvider>
+		<>
+			<Head>
+				<meta
+					name="viewport"
+					content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,shrink-to-fit=no"
+				/>
+				<meta name="format-detection" content="telephone=no, address=no, email=no" />
+				<link rel="shortcut icon" href="/gamedao_wht_space.png" />
+				<link rel="icon" type="image/png" href="/gamedao_wht_space.png" />
+
+				<meta property="og:type" content="website" />
+				<meta property="og:site_name" content={SITE_NAME} />
+				<meta property="og:title" content={SITE_TITLE} />
+				<meta property="og:description" content={SITE_DESCRIPTION} />
+				<meta property="og:image" content={SITE_IMAGE} />
+
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:creator" content={TW_SITE_CREATOR} />
+				<meta name="twitter:site" content={TW_SITE_NAME} />
+				<meta name="twitter:title" content={SITE_TITLE} />
+				<meta name="twitter:description" content={SITE_DESCRIPTION} />
+				<meta property="twitter:image" content={SITE_IMAGE} />
+			</Head>
+			<CacheProvider value={emotionCache}>
+				<Providers>
+					<Component {...pageProps} />
+				</Providers>
+			</CacheProvider>
+		</>
 	)
 }
 
-export default Application
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+	// console.log(metric)
+}
+
+export default MyApp
