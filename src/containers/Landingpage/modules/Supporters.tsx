@@ -2,11 +2,11 @@ import React, { useCallback } from 'react'
 import { Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material'
 
 import { GRADIENT } from '../styles'
-import { partners } from '../content'
+import { supporters } from '../content'
 
 import { Item } from './Item'
 
-export const Partners = (openUrl) => (
+export const Supporters = (openUrl) => (
 	<Stack component={Paper} elevation={0} spacing={4} padding={4} marginY={4} sx={{ backgroundColor: 'transparent' }}>
 		<Typography
 			variant="h3"
@@ -22,7 +22,7 @@ export const Partners = (openUrl) => (
 		</Typography>
 
 		<Grid container>
-			{partners.map((person, index) => (
+			{supporters.map((person, index) => (
 				<Grid item xs={6} sm={4} md={3} lg={2} pt={2}>
 					<Box
 						sx={{

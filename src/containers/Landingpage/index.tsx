@@ -4,7 +4,10 @@ import { styled } from '@mui/system'
 import { Layout } from 'src/layouts/default'
 import { NavLink } from 'src/components'
 
-import { Item, Hero, Team, Partners, Headline, GRADIENT } from './modules'
+import { Item, Headline } from './modules'
+import { Hero, Team, Partners, Supporters } from './modules'
+
+import { GRADIENT } from './styles'
 
 const Section1 = () => (
 	<Paper sx={{ backgroundColor: 'transparent', height: '100%' }} elevation={0}>
@@ -75,6 +78,7 @@ const Section6 = (openUrl) => (
 )
 
 export function Landingpage() {
+
 	const openUrl = useCallback((url: string) => {
 		window.open(url, '_blank', 'noopener').focus()
 	}, [])
@@ -82,16 +86,17 @@ export function Landingpage() {
 	return (
 		<>
 			<Hero />
-			{/*
-		<Section1/>
+			<Section1/>
+{/*
 		<Section2/>
 		<Section3/>
 		<Section4/>
 		<Section5/>
 		<Section6 openUrl={openUrl}/>
-		<Team openUrl={openUrl}/>
-		<Partners/>
 */}
+			<Team openUrl={openUrl}/>
+			<Partners/>
+			<Supporters/>
 		</>
 	)
 }

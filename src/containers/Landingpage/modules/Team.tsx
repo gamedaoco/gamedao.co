@@ -3,7 +3,9 @@ import { Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material
 import { styled } from '@mui/system'
 import { NavLink } from 'src/components'
 
-import { TEAM, GRADIENT } from './content'
+import { GRADIENT } from '../styles'
+import { team } from '../content'
+
 import { Item, Title, Headline } from './'
 
 export const Team = (openUrl) => (
@@ -23,7 +25,7 @@ export const Team = (openUrl) => (
 		</Typography>
 
 		<Grid container>
-			{TEAM.map((person, index) => (
+			{team.map((person, index) => (
 				<Grid item xs={6} sm={4} md={3} lg={2} pt={2}>
 					<Box
 						sx={{

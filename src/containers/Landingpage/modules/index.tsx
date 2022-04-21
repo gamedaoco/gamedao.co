@@ -1,9 +1,8 @@
-export * from './content.ts'
+export * from './Item'
+export * from './Title'
+export * from './Headline'
 
-export * from './Item.tsx'
-export * from './Title.tsx'
-export * from './Headline.tsx'
-
-export * from './Hero.tsx'
-export * from './Team.tsx'
-export * from './Partners.tsx'
+export * from './Hero'
+export * from './Team'
+export * from './Partners'
+export * from './Supporters'
