@@ -7,17 +7,17 @@ import { NavLink } from 'src/components'
 import Prev from '@mui/icons-material/NavigateBefore'
 import Next from '@mui/icons-material/NavigateNext'
 
-import { section1 as items } from '../content'
+import { hero as items } from '../content'
 
 const Content = props =>
-	<Carousel sx={{ mx: -6 }} NextIcon={<Next/>} PrevIcon={<Prev/>} >
+	<Carousel sx={{ mx: -6, height: ['300px','400px','600px'] }} NextIcon={<Next/>} PrevIcon={<Prev/>}>
 		{items.map( (item, i) => <Item key={i} item={item} /> ) }
 	</Carousel>
 
 const Item = props => {
     return (
 		<Paper sx={{
-			// backgroundColor: 'black',
+			backgroundColor: 'transparent',
 			// position: 'relative',
 		}} elevation={0}>
 

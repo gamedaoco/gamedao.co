@@ -26,14 +26,14 @@ export const Team = (openUrl) => (
 
 		<Grid container>
 			{team.map((person, index) => (
-				<Grid item xs={6} sm={4} md={3} lg={2} pt={2}>
+				<Grid item xs={6} sm={4} md={3} lg={2} pt={2} key={index}>
 					<Box
 						sx={{
 							display: 'grid',
 							gridTemplateColumns: { xl: '1fr 1fr' },
 						}}
 					>
-						<Item key={index}>
+						<Item >
 							{' '}
 							{person[0]} <br /> {person[1]}{' '}
 						</Item>

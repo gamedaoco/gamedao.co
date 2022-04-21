@@ -18,19 +18,19 @@ export const Partners = (openUrl) => (
 				lineHeight: '100%',
 			}}
 		>
-			We are working with great innovators in Gaming and Blockchain.
+			Supported by bleeding edge innovators in gaming, esports and the decentralized web.
 		</Typography>
 
 		<Grid container>
 			{partners.map((person, index) => (
-				<Grid item xs={6} sm={4} md={3} lg={2} pt={2}>
+				<Grid item xs={6} sm={4} md={3} lg={2} pt={2} key={index}>
 					<Box
 						sx={{
 							display: 'grid',
 							gridTemplateColumns: { xl: '1fr 1fr' },
 						}}
 					>
-						<Item key={index}>
+						<Item>
 							{' '}
 							{person[0]} <br /> {person[1]}{' '}
 						</Item>

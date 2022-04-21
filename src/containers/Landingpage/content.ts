@@ -26,6 +26,9 @@ export const partners = [
 	[ 'Kilt', 	'Identity', '/img/kilt.png', 'https://kilt.io' ],
 	[ 'Fractal','Identity', '/img/fractal.png',	'https://fractal.id' ],
 
+	[ 'XP Fantasy','Esports Oracles', '/img/xpfantasy.png',	'https://' ],
+	[ 'Wave Esports','Esports', '/img/wave.png',	'https://' ],
+
 ]
 
 export const supporters = [
@@ -48,7 +51,7 @@ export const supporters = [
 //
 //
 
-export const section1 = [
+export const hero = [
 	{
 		title: 'Create Better Games',
 		description: 'Probably the most random thing you have ever seen!',
@@ -56,25 +59,25 @@ export const section1 = [
 		link_text: 'Moaer',
 		link_url: '#'
 	},
-	// {
-	// 	title: `Build Decentralized Video Game Economies`,
-	// 	description: 'Just another stinky text',
-	// 	image: ``,
-	// 	link_url: '#'
-	// }
+	{
+		title: `Build Decentralized Video Game Economies`,
+		description: 'Just another stinky text',
+		image: ``,
+		link_url: '#'
+	}
 ]
 
 
-export const section2 = {
-	header1: `Join GameDAO`,
+export const section1 = {
+	header1: `GameDAO: For video games and beyond`,
 	text1: `With more than 2.7 billion gamers worldwide,
 		community driven ownership and game creation should be
 		the standard for the video game industry.
 		From forging the initial idea over collaboration
 		to fundraising and finally creating game economies,
 		it is vital to provide gamers with a safe environment to collaborate.`,
-	header2: `A THRIVING COMMUNITY OF GAMERS & CREATORS`,
-	text2: `And with GameDao we are doing just that:
+	header2: `A thriving community of Gamers & Creators`,
+	text2: `And with GameDAO we are doing just that:
 		Providing an open protocol dedicated to bridge
 		the world of video games with the world of DAO, DeFi and NFTs
 		to shift the empowerment back into the hands of the community.`

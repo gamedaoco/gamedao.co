@@ -2,7 +2,7 @@ import { styled } from '@mui/system'
 import { Paper } from '@mui/material'
 
 export const Item = styled(Paper)(({ theme }) => ({
-	...theme.typography.body2,
+	// ...theme.typography.body2,
 	textAlign: 'center',
 	verticalAlign: 'middle',
 	fontWeight: 800,
