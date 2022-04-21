@@ -14,7 +14,7 @@ export type SettingsContextProps = {
 		main: string
 		dark: string
 		darker: string
-		contrastText: string
+		contrastText?: string
 	}
 	colorOption: {
 		name: string

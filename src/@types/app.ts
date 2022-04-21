@@ -1,7 +1,7 @@
-import type { Config, Features } from '@gamedao-haiku/graphql/dist'
+// import type { Config, Features } from '@gamedao-haiku/graphql/dist'
 
 export interface AppState {
 	ready: boolean
-	config: Config
-	features: Features
+	// config: Config
+	// features: Features
 }
