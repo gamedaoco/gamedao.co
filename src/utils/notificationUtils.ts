@@ -20,7 +20,7 @@ export async function createPromiseNotification(
 	promise: Promise<any>,
 	pendingMessage: string,
 	successMessage: string,
-	errorMessage: string,
+	errorMessage: string
 ) {
 	return toast.promise(promise, {
 		pending: pendingMessage,

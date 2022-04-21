@@ -136,7 +136,7 @@ const GRADIENTS = {
 	success: createGradient(SUCCESS.light, SUCCESS.main),
 	warning: createGradient(WARNING.light, WARNING.main),
 	error: createGradient(ERROR.light, ERROR.main),
-	ocean: createGradient( '#002233', '#000033'),
+	ocean: createGradient('#002233', '#000011'),
 }
 
 const CHART_COLORS = {
@@ -180,7 +180,12 @@ const palette = {
 	dark: {
 		...COMMON,
 		text: { primary: '#fcfcfc', secondary: GREY[500], disabled: GREY[600] },
-		background: { paper: GREY[800], default: GREY[900], neutral: GREY[500_16], ocean: GRADIENTS.ocean },
+		background: {
+			paper: GREY[800],
+			default: GREY[900],
+			neutral: GREY[500_16],
+			ocean: GRADIENTS.ocean,
+		},
 		action: { active: GREY[500], ...COMMON.action },
 	},
 }

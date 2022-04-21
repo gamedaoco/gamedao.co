@@ -16,7 +16,8 @@ interface MyAppProps extends AppProps {
 
 // should be provided by graph
 const SITE_NAME = 'GameDAO'
-const SITE_TITLE = 'Fundraising, coordination, ownership for video games, esports and the creative industry.'
+const SITE_TITLE =
+	'Fundraising, coordination, ownership for video games, esports and the creative industry.'
 const SITE_DESCRIPTION =
 	'The DAO for video games, esports and creatives. We connect gamers, creators, publishers and investors for better video games with the power of web3, dao, defi and nft.'
 const SITE_IMAGE = 'https://gamedao.co/assets/gamedao-logo.png'

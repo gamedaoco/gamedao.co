@@ -3,7 +3,10 @@ export function parseIpfsHash(ipfsHash: string, gateway: string = 'https://gatew
 	return gateway + 'ipfs/' + hashPart[hashPart.length - 1]
 }
 
-export async function fetchIpfsJson(ipfsHash: string, gateway: string = 'https://gateway.ipfs.io/') {
+export async function fetchIpfsJson(
+	ipfsHash: string,
+	gateway: string = 'https://gateway.ipfs.io/'
+) {
 	try {
 		const response = await fetch(parseIpfsHash(ipfsHash, gateway), { method: 'GET' })
 		return await response.json()
@@ -14,7 +17,10 @@ export async function fetchIpfsJson(ipfsHash: string, gateway: string = 'https:/
 	return null
 }
 
-export async function fetchIpfsBlob(ipfsHash: string, gateway: string = 'https://gateway.ipfs.io/') {
+export async function fetchIpfsBlob(
+	ipfsHash: string,
+	gateway: string = 'https://gateway.ipfs.io/'
+) {
 	try {
 		const response = await fetch(parseIpfsHash(ipfsHash, gateway), { method: 'GET' })
 		return await response.blob()
