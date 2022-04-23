@@ -12,7 +12,7 @@ import { hero as items } from '../content'
 const Content = props =>
 	<Carousel
 		sx={{ mx: -6, height: ['300px','400px','600px'] }}
-		duration={0}
+		duration={250}
 		interval={5000}
 		NextIcon={<Next/>} PrevIcon={<Prev/>}
 		>
@@ -22,9 +22,8 @@ const Content = props =>
 const Item = props => {
     return (
 		<Paper sx={{
-			backgroundColor: 'transparent',
-			// position: 'relative',
-		}} elevation={0}>
+			backgroundColor: 'black',
+		}} elevation={10}>
 
 			<Box sx={{
 				zIndex: 100,
@@ -34,35 +33,39 @@ const Item = props => {
 				<Backdrop src={props.item.image||null} />
 			</Box>
 
-{/*			<Box sx={{
+			<Box sx={{
 				zIndex: 150,
-				position: 'absolute',
-				left: 0,
-				top: 0,
-				width: '100%',
-				height: ['300px','400px','600px'],
-				background: 'repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.4) 3px, rgba(0,0,0,0.4) 3px)'
-			}}>
-				<></>
-			</Box>*/}
+				position: 'absolute', left: 0, top: 0,
+				width: '100%', height: ['300px','400px','600px'],
+				// background: 'repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.4) 3px, rgba(0,0,0,0.4) 3px)'
+				background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 50%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 100%)'
+			}} />
 
 			<Box sx={{
 				position: 'absolute',
 				left: 0,
 				top: 0,
 				width: '100%',
-				height: ['300px','400px','600px'],
-				padding: '2rem',
+				// height: ['300px','400px','600px'],
 				zIndex: 200,
-				justifyContent: 'bottom',
 			}}>
-				<Typography variant={'h1'} pt={2} sx={{ lineHeight: '85%' }}>
-					{props.item.title}
-				</Typography>
-				<Typography variant={'h2'} pt={2} sx={{ lineHeight: '85%' }}>
-					{props.item.description}
-				</Typography>
-				{ props.item.link_url && <Button>{`${props.item.link_text||'More'}`}</Button> }
+				<Box sx={{
+					display: 'flex',
+					width: '100%',
+					height: ['300px','400px','600px'],
+					flexDirection: 'column',
+					justifyContent: 'end',
+					padding: '5rem',
+				}}>
+
+					<Typography variant={'hero1'} pt={2} sx={{ lineHeight: '85%' }}>
+						{props.item.title}
+					</Typography>
+					<Typography variant={'hero2'} pt={2} sx={{ lineHeight: '85%' }}>
+						{props.item.description}
+					</Typography>
+					{ props.item.link_url && <Button>{`${props.item.link_text||'More'}`}</Button> }
+				</Box>
 			</Box>
 
 		</Paper>
@@ -75,9 +78,9 @@ const Backdrop = ({ src }) => {
 			sx={{
 				height: '100%',
 				backgroundImage: `url(/s01/1__128c.png)`,
-				backgroundSize: 'cover',
+				// backgroundSize: 'cover',
 				backgroundPosition: 'center center',
-				// backgroundSize: '100% auto',
+				backgroundSize: '150% auto',
 				backgroundRepeat: 'no-repeat',
 			}}
 		>

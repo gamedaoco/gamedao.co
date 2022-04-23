@@ -53,22 +53,22 @@ export const supporters = [
 
 export const hero = [
 	{
-		title: `Build Decentralized Video Game Economies`,
-		description: 'Probably the most random thing you have ever seen!',
+		title: `Community Curated Fundraising`,
+		description: 'Get visible traction through community support',
 		image: '/s01/1__128c.png',
-		link_text: 'Moaer',
-		link_url: '#'
+		link_text: '',
+		link_url: ''
 	},
 	{
-		title: 'Create Better Games',
-		description: 'Just another stinky text',
+		title: 'Democratize Governance',
+		description: 'Coordinate with your team and align with your community',
 		image: ``,
-		link_url: '#'
+		link_url: ''
 	}
 ]
 
 
-export const section1 = {
+export const intro = {
 	header1: `GameDAO: For video games and beyond`,
 	text1: `With more than 2.7 billion gamers worldwide,
 		community driven ownership and game creation should be

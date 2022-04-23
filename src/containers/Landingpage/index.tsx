@@ -1,90 +1,23 @@
 import React, { useCallback } from 'react'
-import { Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material'
+
 import { styled } from '@mui/system'
+import { GRADIENT } from './styles'
+
 import { Layout } from 'src/layouts/default'
 import { NavLink } from 'src/components'
 
-import { Item, Headline } from './modules'
-import { Hero, Team, Partners, Supporters } from './modules'
+import { Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material'
+import { Hero, Intro, Teaser, Wallet, Team, Partners, Supporters } from './modules'
 
-import { GRADIENT } from './styles'
-import { section1 } from './content'
-
-const Section1 = () => (
-	<Paper sx={{ mx: '2rem', backgroundColor: 'transparent', height: '100%' }} elevation={0}>
-		<Grid container spacing={2} >
-			<Grid container item xs={12} md={6} direction="column" >
-				<Typography variant={'h3'} py={2}> {section1.header1} </Typography>
-				<Typography variant={'body1'} pb={2}> {section1.text1} </Typography>
-			</Grid>
-			<Grid container item xs={12} md={6} direction="column" >
-				<Typography variant={'h3'} py={2}> {section1.header2} </Typography>
-				<Typography variant={'body1'} pb={2}> {section1.text2} </Typography>
-			</Grid>
-		</Grid>
-	</Paper>
-)
-
-const Section2 = () => (
-	<Paper sx={{ backgroundColor: 'transparent', height: '100%' }} elevation={0}>
-		<Typography variant={'h3'} pt={2} sx={{ textTransform: 'uppercase', textAlign: 'center' }}>
-			Let's bring Community powered ownership to the masses
-		</Typography>
-	</Paper>
-)
-
-const Section3 = () => (
-	<Paper sx={{ backgroundColor: 'transparent', height: '100%' }} elevation={0}>
-		<Typography variant={'h2'} pt={2}>
-			Join GameDAO
-		</Typography>
-	</Paper>
-)
-
-const Section4 = () => (
-	<Paper sx={{ backgroundColor: 'transparent', height: '100%' }} elevation={0}>
-		<Typography variant={'h2'} pt={2}>
-			Join GameDAO
-		</Typography>
-	</Paper>
-)
-
-const Section5 = () => null
-
-const Section6 = (openUrl) => (
-	<Stack
-		component={Paper}
-		elevation={10}
-		spacing={4}
-		padding={4}
-		marginY={4}
-		sx={{ backgroundColor: 'rgba(128,24,64,.5)' }}
-	>
-		<Typography
-			variant="h3"
-			sx={{
-				background: GRADIENT.pink,
-				WebkitBackgroundClip: 'text',
-				WebkitTextFillColor: 'transparent',
-				fontWeight: 800,
-				lineHeight: '100%',
-			}}
-		>
-			To use GameDAO DApp, the Polkadot or Talisman Extension is required. Please connect your wallet or install
-			the Extension.
-		</Typography>
-		<Stack direction="row" justifyContent="end" spacing={4}>
-			<Button size="small" onClick={() => openUrl('https://docs.gamedao.co/')}>
-				Learn More
-			</Button>
-			<Button size="small" variant="outlined" onClick={() => openUrl('https://polkadot.js.org/extension/')}>
-				Download Polkadot Extension
-			</Button>
-			<Button size="small" variant="outlined" onClick={() => openUrl('https://polkadot.js.org/extension/')}>
-				Download Talisman Extension
-			</Button>
-		</Stack>
-	</Stack>
+const Wrapper = styled(Box)(
+	({ theme }) => ({
+		// '& *': {
+		// 	opacity: .9,
+		// 	':hover': {
+		// 		opacity: 1,
+		// 	}
+		// }
+	})
 )
 
 export function Landingpage() {
@@ -94,20 +27,19 @@ export function Landingpage() {
 	}, [])
 
 	return (
-		<>
+		<Wrapper>
 			<Hero />
-			<Section1/>
-{/*
-		<Section2/>
-		<Section3/>
-		<Section4/>
-		<Section5/>
-*/}
-			<Section6 openUrl={openUrl}/>
+			<Intro/>
+			<Teaser variant="h2" padding={'2rem'}>
+				Let's bring Community powered ownership to the masses
+			</Teaser>
+			<Wallet />
 			<Team openUrl={openUrl}/>
 			<Partners/>
 			<Supporters/>
-		</>
+{/*
+*/}
+		</Wrapper>
 	)
 }
 
