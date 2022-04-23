@@ -27,6 +27,8 @@ const pages = ['Vision', 'Mission', 'Community', 'Team', 'Cases', 'Early Access'
 const settings = ['Profile', 'Account', 'Dashboard', 'Disconnect']
 const features = { mainMenu: true, accountMenu: false }
 
+const Logo = () => <img src="/g-wht-wide.png" height='16px' />
+
 export const Header = () => {
 	const router = useRouter()
 
@@ -55,7 +57,7 @@ export const Header = () => {
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					<Typography variant="h6" noWrap component="div" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-						<Image src="/gamedao_wht_space.svg" width={'32'} height={'32'} />
+						<Logo/>
 					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -121,7 +123,7 @@ export const Header = () => {
 						component="div"
 						sx={{ flexGrow: 1, p: 1, display: { xs: 'flex', md: 'none' } }}
 					>
-						<Image src="/gamedao_wht.svg" width={'32'} height={'32'} />
+						<Logo />
 					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

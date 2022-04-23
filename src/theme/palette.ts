@@ -13,6 +13,10 @@ interface GradientsPaletteOptions {
 	warning: string
 	error: string
 	ocean: string
+	rainbowH: string
+	rainbowV: string
+	pink: string
+	blue: string
 }
 
 interface ChartPaletteOptions {
@@ -27,6 +31,10 @@ declare module '@mui/material/styles/createPalette' {
 	interface TypeBackground {
 		neutral: string
 		ocean: string
+		rainbowH: string
+		rainbowV: string
+		pink: string
+		blue: string
 	}
 
 	interface SimplePaletteColorOptions {
@@ -136,7 +144,17 @@ const GRADIENTS = {
 	success: createGradient(SUCCESS.light, SUCCESS.main),
 	warning: createGradient(WARNING.light, WARNING.main),
 	error: createGradient(ERROR.light, ERROR.main),
-	ocean: createGradient('#002233', '#000011'),
+	ocean: createGradient('#000000', '#002233'),
+	rainbowH: `linear-gradient( to right, 0deg,
+		#00f2c4 0%, #66f16d 13%, #b5e653 25%,
+		#f6e900 38%, #ffcc00 50%, #ffb316 63%,
+		#ff747d 75%, #ff4ea7 88%, #ff00df 100% )`,
+	rainbowV: `linear-gradient( to bottom, 90deg,
+		#00f2c4 0%, #66f16d 13%, #b5e653 25%,
+		#f6e900 38%, #ffcc00 50%, #ffb316 63%,
+		#ff747d 75%, #ff4ea7 88%, #ff00df 100% )`,
+	pink: '-webkit-linear-gradient(45deg, #ff00cc 30%, #ff9900 90%)',
+	blue: '-webkit-linear-gradient(45deg, #00ffff 30%, #00ff66 90%)',
 }
 
 const CHART_COLORS = {

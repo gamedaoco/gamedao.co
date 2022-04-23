@@ -122,6 +122,26 @@ const typography = {
 		fontSize: pxToRem(14),
 		textTransform: 'capitalize',
 	},
+	hero1: {
+		fontWeight: 900,
+		lineHeight: 80 / 64,
+		fontSize: pxToRem(40),
+		...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
+		float: 'left',
+		textShadow: 'rgba(0,0,0,1) 0 5px 20px',
+		'-webkit-text-stroke-width': '1px',
+		'-webkit-text-stroke-color': 'rgba(0,0,0,0.2)',
+	},
+	hero2: {
+		fontWeight: 700,
+		lineHeight: 64 / 48,
+		fontSize: pxToRem(32),
+		...responsiveFontSizes({ sm: 40, md: 44, lg: 48 }),
+		float: 'left',
+		textShadow: 'rgba(0,0,0,1) 0 5px 20px',
+		'-webkit-text-stroke-width': '1px',
+		'-webkit-text-stroke-color': 'rgba(0,0,0,0.2)',
+	},
 } as const
 
 export default typography

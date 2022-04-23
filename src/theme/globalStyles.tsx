@@ -14,12 +14,24 @@ export default function GlobalStyles() {
 					margin: 0,
 					padding: 0,
 					boxSizing: 'border-box',
+					transitionDuration:'150ms',
 				},
 				html: {
 					width: '100%',
 					height: '100%',
 					WebkitOverflowScrolling: 'touch',
 					scrollBehavior: 'smooth',
+					overflow: 'scroll',
+					overflowX: 'hidden',
+					scrollbarWidth: 'thin',
+					scrollbarColor: 'rgba( 255, 0, 255, 1 )'
+				},
+				'::-webkit-scrollbar': {
+					width: '2px',
+					background: 'black'
+				},
+				'::-webkit-scrollbar-thumb': {
+					background: 'rgba( 255, 0, 255, 1 )'
 				},
 				body: {
 					width: '100%',
