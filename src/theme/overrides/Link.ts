@@ -10,7 +10,8 @@ export default function Link(theme: Theme) {
 			},
 
 			styleOverrides: {
-				root: {},
+				root: {
+				},
 			},
 		},
 	}

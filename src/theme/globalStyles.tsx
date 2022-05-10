@@ -19,12 +19,12 @@ export default function GlobalStyles() {
 				html: {
 					width: '100%',
 					height: '100%',
-					WebkitOverflowScrolling: 'touch',
-					scrollBehavior: 'smooth',
 					overflow: 'scroll',
 					overflowX: 'hidden',
+					scrollBehavior: 'smooth',
+					WebkitOverflowScrolling: 'touch',
 					scrollbarWidth: 'thin',
-					scrollbarColor: 'rgba( 255, 0, 255, 1 )'
+					scrollbarColor: 'rgba( 255, 0, 255, 1 )',
 				},
 				'::-webkit-scrollbar': {
 					width: '2px',
@@ -36,6 +36,7 @@ export default function GlobalStyles() {
 				body: {
 					width: '100%',
 					height: '100%',
+					background: 'green',
 				},
 				'#__next': {
 					width: '100%',
@@ -69,9 +70,11 @@ export default function GlobalStyles() {
 						color: theme.palette.text.disabled,
 					},
 				},
-
+				'a, :hover, :visited' : {
+					textDecoration: 'none',
+					color: theme.palette.text.primary,
+				},
 				img: { display: 'block', maxWidth: '100%' },
-
 				// Lazy Load Img
 				'.blur-up': {
 					WebkitFilter: 'blur(5px)',

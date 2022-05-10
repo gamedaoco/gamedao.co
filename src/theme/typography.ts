@@ -1,3 +1,23 @@
+declare module "@mui/material/styles" {
+	interface TypographyVariants {
+		hero1: React.CSSProperties;
+		hero2: React.CSSProperties;
+	}
+	// allow configuration using `createTheme`
+	interface TypographyVariantsOptions {
+		hero1?: React.CSSProperties;
+		hero2?: React.CSSProperties;
+	}
+}
+
+// Update the Typography's variant prop options
+declare module "@mui/material/Typography" {
+	interface TypographyPropsVariantOverrides {
+		hero1: true;
+		hero2: true;
+	}
+}
+
 // ----------------------------------------------------------------------
 
 function pxToRem(value: number) {

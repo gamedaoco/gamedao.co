@@ -1,7 +1,9 @@
-import * as React from 'react'
+import React, { useCallback } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import Link from 'next/link'
 
+import { features } from '../../../features'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 
@@ -20,20 +22,28 @@ import {
 } from '@mui/material'
 
 import { Drawer } from '@mui/material'
-
 import { NavLink } from 'src/components'
 
-const pages = ['Vision', 'Mission', 'Community', 'Team', 'Cases', 'Early Access']
+const pages = [
+	['Cases',''],
+	['Apply','mailto:apply@gamedao.co'],
+	['Blog','//blog.gamedao.co'],
+	['Community','//discord.gg/rhwtr7p'],
+]
 const settings = ['Profile', 'Account', 'Dashboard', 'Disconnect']
-const features = { mainMenu: true, accountMenu: false }
 
 const Logo = () => <img src="/g-wht-wide.png" height='16px' />
 
 export const Header = () => {
+
 	const router = useRouter()
 
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
 	const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
+
+	// const openUrl = useCallback((url: string) => {
+	// 	window.open(url, '_blank', 'noopener').focus()
+	// }, [])
 
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElNav(event.currentTarget)
@@ -47,24 +57,31 @@ export const Header = () => {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null)
 	}
+	// const handleClickItem = (e) => {
+	// 	if ( e[1].substr(0,2) === '//' ) openUrl(e[1])
+	// 	else router.push( e[0].toLowerCase().replace(' ', '-') )
+	// }
 
-	const handleClickItem = (e) => {
-		router.push(e.toLowerCase().replace(' ', '-'))
-	}
+	// useEffect(()=>)
 
 	return (
 		<AppBar position="sticky" elevation={0} sx={{ backgroundColor: 'transparent' }}>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<Typography variant="h6" noWrap component="div" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-						<Logo/>
-					</Typography>
+
+					<MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
+						<Link href="/">
+							<Typography variant="h6" noWrap component="div" sx={{ mt: '3px', mr: 2 }}>
+								<Logo/>
+							</Typography>
+						</Link>
+					</MenuItem>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 
 						<IconButton
 							size="large"
-							aria-label="account of current user"
+							aria-label="appbar"
 							aria-controls="menu-appbar"
 							aria-haspopup="true"
 							onClick={ handleOpenNavMenu }
@@ -103,12 +120,21 @@ export const Header = () => {
 								</Box>
 
 								<MenuItem key={'GameDAO'} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">GameDAO</Typography>
+									<Link href="/">
+										<Typography textAlign="center">GameDAO</Typography>
+									</Link>
 								</MenuItem>
 
 								{pages.map((page) => (
-									<MenuItem key={page} onClick={handleCloseNavMenu}>
-										<Typography textAlign="center">{page}</Typography>
+									<MenuItem key={page[0]} onClick={ () => handleCloseNavMenu() }>
+										{ ( page[1].substr(0,2) === '//' )
+											? <a href={page[1]} target="_blank" rel="noreferrer">
+												<Typography textAlign="center">{page[0]}</Typography>
+											</a>
+											: <Link href={page[0].toLowerCase().replace(' ', '-')}>
+												<Typography textAlign="center">{page[0]}</Typography>
+											</Link>
+										}
 									</MenuItem>
 								))}
 
@@ -117,29 +143,39 @@ export const Header = () => {
 
 					</Box>
 
-					<Typography
-						variant="h6"
-						noWrap
-						component="div"
-						sx={{ flexGrow: 1, p: 1, display: { xs: 'flex', md: 'none' } }}
-					>
-						<Logo />
-					</Typography>
-
-					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map((page) => (
-							<Button
-								key={page}
-								onClick={() => handleClickItem(page)}
-								sx={{ my: 2, color: 'white', display: 'block' }}
+					<MenuItem sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 1, p: 1 }}>
+						<Link href="/">
+							<Typography
+								variant="h6"
+								noWrap
+								component="div"
+								sx={{  }}
 							>
-								{page}
-							</Button>
+								<Logo />
+							</Typography>
+						</Link>
+					</MenuItem>
+
+					<Box sx={{
+						flexGrow: 1,
+						display: { xs: 'none', md: 'flex' },
+					}}>
+						{pages.map((page) => (
+							<MenuItem key={page[0]} onClick={ () => handleCloseNavMenu() }>
+								{ ( page[1].substr(0,2) === '//' )
+									? <a href={page[1]} target="_blank" rel="noreferrer">
+										<Typography textAlign="center">{page[0]}</Typography>
+									</a>
+									: <Link href={page[0].toLowerCase().replace(' ', '-')}>
+										<Typography textAlign="center">{page[0]}</Typography>
+									</Link>
+								}
+							</MenuItem>
 						))}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
-						<NavLink href="https://beta.gamedao.co">
+						<NavLink href="https://app.gamedao.co">
 							<Button size="small" variant="outlined" color="primary" sx={{ pt: '3px', pb: '5px' }}>
 								Run Beta
 							</Button>
