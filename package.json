@@ -23,6 +23,7 @@
     "@iconify/icons-ic": "^1.2.3",
     "@iconify/react": "^3.2.0",
     "@mui/icons-material": "^5.5.1",
+    "@mui/lab": "^5.0.0-alpha.78",
     "@mui/material": "^5.5.1",
     "cross-undici-fetch": "^0.1.27",
     "deepmerge": "^4.2.2",

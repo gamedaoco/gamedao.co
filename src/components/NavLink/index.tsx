@@ -4,9 +4,10 @@ import { useRouter } from 'next/router'
 type NavLinkProps = {
 	href: string
 	children: ReactNode
+	key?: number|string
 }
 
-export function NavLink({ href, children }: NavLinkProps) {
+export function NavLink({ href, children, key }: NavLinkProps) {
 	const { push } = useRouter()
 
 	const handleClick = useCallback(

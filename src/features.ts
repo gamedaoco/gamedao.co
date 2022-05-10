@@ -1,0 +1,17 @@
+export const features = {
+	hero: true,
+	intro: true,
+	teaser1: false,
+	roadmap: false,
+	how: false,
+	partners: false,
+	supporters: false,
+	header: false,
+	team: false,
+	wallet: false,
+	disclaimer: false,
+	cases: false,
+	apply: false,
+	mainMenu: true,
+	accountMenu: false,
+}
