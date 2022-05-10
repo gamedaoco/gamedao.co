@@ -6,6 +6,7 @@ import { GRADIENT } from '../styles'
 export const Wallet = ({  }) => {
 
 	const theme = useTheme()
+
 	const openUrl = useCallback((url: string) => {
 		window.open(url, '_blank', 'noopener').focus()
 	}, [])
@@ -41,12 +42,16 @@ export const Wallet = ({  }) => {
 					Learn More
 				</Button>
 				<Stack direction="row" justifyContent="end" spacing={4}>
-					<Button size="small" onClick={() => openUrl('https://polkadot.js.org/extension/')}>
-						Get Polkadot Extension
-					</Button>
-					<Button size="small" variant="outlined" onClick={() => openUrl('https://talisman.xyz/')}>
-						Get Talisman Extension
-					</Button>
+					<a href='https://polkadot.js.org/extension/' target="_blank" rel="noreferrer">
+						<Button size="small">
+							Get Polkadot Extension
+						</Button>
+					</a>
+					<a href='https://talisman.xyz/' target="_blank" rel="noreferrer">
+						<Button size="small" variant="outlined">
+							Get Talisman Extension
+						</Button>
+					</a>
 				</Stack>
 			</Stack>
 		</Stack>

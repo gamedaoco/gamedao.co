@@ -22,7 +22,7 @@ const Content = props =>
 const Item = props => {
     return (
 		<Paper sx={{
-			backgroundColor: 'black',
+			backgroundColor: props.item.bg || 'black',
 		}} elevation={10}>
 
 			<Box sx={{
@@ -30,16 +30,18 @@ const Item = props => {
 				width: '100%',
 				height: ['300px','400px','600px'],
 			}}>
-				<Backdrop src={props.item.image||null} />
+				<Backdrop src={props.item.image} />
 			</Box>
 
-			<Box sx={{
-				zIndex: 150,
-				position: 'absolute', left: 0, top: 0,
-				width: '100%', height: ['300px','400px','600px'],
-				// background: 'repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.4) 3px, rgba(0,0,0,0.4) 3px)'
-				background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 50%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 100%)'
-			}} />
+			{ props.item.image &&
+				<Box sx={{
+					zIndex: 150,
+					position: 'absolute', left: 0, top: 0,
+					width: '100%', height: ['300px','400px','600px'],
+					// background: 'repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.4) 3px, rgba(0,0,0,0.4) 3px)'
+					background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 50%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 100%)'
+				}} />
+			}
 
 			<Box sx={{
 				position: 'absolute',

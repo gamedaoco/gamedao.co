@@ -4,19 +4,25 @@ export const team = [
 	[ 'Yonghan', 	'Partnerships', 	'/img/yonghan.png', 'https://linkedin.com/in/yonghanlee' ],
 	[ 'Inan', 		'Product', 			'/img/inan.png', 	'https://linkedin.com/in/inangueder' ],
 	[ 'Tjorven', 	'User Experience', 	'/img/tjorven.png', 'https://linkedin.com/in/tjorvenfitz' ],
+	[ 'Mike', 		'User Experience',	'/img/mike.png', 	'https://linkedin.com/in/mikeplanzer' ],
 
-	[ 'Dirk', 		'Tokenization', 	'/img/marco.png', 	'https://linkedin.com/in/dirkkruwinnus' ],
-	[ 'Olof', 		'Legal', 			'/img/yonghan.png', 'https://linkedin.com/in/olofsundberg' ],
+	[ 'Andre', 		'Engineering',		'/img/andre.png', 	'https://linkedin.com/in/andreschnelzer' ],
+	[ 'Pascal', 	'Engineering',		'/img/pascal.png', 	'https://linkedin.com/in/pascalhuegli' ],
+	[ 'Vova', 		'Engineering',		'/img/vova.png', 	'https://linkedin.com/in/vova' ],
+	[ 'Zhenya', 	'Engineering',		'/img/zhenya.png', 	'https://linkedin.com/in/zhenya' ],
+	[ 'Anton', 		'Engineering',		'/img/anton.png', 	'https://linkedin.com/in/anton' ],
+
 	[ 'Joanna', 	'Communications',	'/img/inan.png', 	'https://linkedin.com/in/joannachan' ],
-	[ 'Mike', 		'User Experience',	'/img/tjorven.png', 'https://linkedin.com/in/mikeplanzer' ],
-
-	[ 'JKLNZ', 		'Growth Hacker', 	'/img/jklnz.png', 	'https://linkedin.com/in/dirkkruwinnus' ],
-	[ 'Kitty', 		'Growth Hacker',	'/img/kitty.png', 	'https://linkedin.com/in/olofsundberg' ],
+	[ 'Scott',	 	'Communications',	'/img/scott.png', 	'https://linkedin.com/in/scott' ],
+	[ 'JKLNZ', 		'Growth Hacker', 	'/img/jklnz.png', 	'https://linkedin.com/in/jklnz' ],
+	[ 'Kitty', 		'Growth Hacker',	'/img/kitty.png', 	'https://linkedin.com/in/kitty' ],
 	[ 'Pascal', 	'Technical Writer',	'/img/huegli.png', 	'https://linkedin.com/in/pascalhuegli' ],
-	[ 'Anon',	 	'Writer',			'/img/anon.png', 	'https://linkedin.com/in/anonymouse' ],
 
 	[ 'Ava', 		'Author',			'/img/ava.png', 	'https://linkedin.com/in/avalocked' ],
 	[ 'BERB', 		'Visual Artist',	'/img/berb.png', 	'https://linkedin.com/in/lukasberbier' ],
+	[ 'Dirk', 		'Tokenization', 	'/img/dirk.png', 	'https://linkedin.com/in/dirkkruwinnus' ],
+	[ 'Olof', 		'Legal', 			'/img/yonghan.png', 'https://linkedin.com/in/olofsundberg' ],
+	[ 'Anon',	 	'Writer',			'/img/anon.png', 	'https://linkedin.com/in/anonymouse' ],
 
 ]
 
@@ -53,37 +59,62 @@ export const supporters = [
 
 export const hero = [
 	{
-		title: `Community Curated Fundraising`,
+		title: `Community Discovery and Curation`,
 		description: 'Get visible traction through community support',
-		image: '/s01/1__128c.png',
+		// image: '/s01/1__128c.png',
 		link_text: '',
-		link_url: ''
-	},
-	{
-		title: 'Democratize Governance',
+		link_url: '',
+		bg: '#ff00ff',
+	},{
+		title: 'Democratisation and Governance',
 		description: 'Coordinate with your team and align with your community',
 		image: ``,
-		link_url: ''
+		link_url: '',
+		bg: '#00ffff',
+	},{
+		title: 'Build, launch and scale your ideas',
+		description: 'Collaborate with the community to get \
+		market proof and raise funds.',
+		image: ``,
+		link_url: '',
+		bg: '#ffff00',
 	}
 ]
 
 
-export const intro = {
-	header1: `GameDAO: For video games and beyond`,
-	text1: `With more than 2.7 billion gamers worldwide,
+export const intro = [{
+	header: `GameDAO: For video games and beyond`,
+	text: `With more than 2.7 billion gamers worldwide,
 		community driven ownership and game creation should be
 		the standard for the video game industry.
 		From forging the initial idea over collaboration
 		to fundraising and finally creating game economies,
-		it is vital to provide gamers with a safe environment to collaborate.`,
-	header2: `A thriving community of Gamers & Creators`,
-	text2: `And with GameDAO we are doing just that:
+		it is vital to provide gamers with a safe environment to collaborate.`
+},{
+	header: `GameDAO: For video games and beyond`,
+	text: `With more than 2.7 billion gamers worldwide,
+		community driven ownership and game creation should be
+		the standard for the video game industry.
+		From forging the initial idea over collaboration
+		to fundraising and finally creating game economies,
+		it is vital to provide gamers with a safe environment to collaborate.`
+},{
+	header: `GameDAO: For video games and beyond`,
+	text: `With more than 2.7 billion gamers worldwide,
+		community driven ownership and game creation should be
+		the standard for the video game industry.
+		From forging the initial idea over collaboration
+		to fundraising and finally creating game economies,
+		it is vital to provide gamers with a safe environment to collaborate.`
+},{
+	header: `A thriving community of Gamers & Creators`,
+	text: `And with GameDAO we are doing just that:
 		Providing an open protocol dedicated to bridge
 		the world of video games with the world of DAO, DeFi and NFTs
 		to shift the empowerment back into the hands of the community.`
-}
+}]
 
-export const section3 = {
+export const teaser1 = {
 	text: `LET’S BRING COMMUNITY POWERED OWNERSHIP TO THE MASSES`
 }
 

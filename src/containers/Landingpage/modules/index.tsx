@@ -8,5 +8,6 @@ export * from './Intro'
 export * from './Team'
 export * from './Partners'
 export * from './Supporters'
-
+export * from './Roadmap'
 export * from './Wallet'
+export * from './Disclaimer'

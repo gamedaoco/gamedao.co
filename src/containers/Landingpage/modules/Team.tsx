@@ -43,7 +43,7 @@ export const Team = (openUrl) => (
 		</Grid>
 
 		<Stack direction="row" justifyContent="end" spacing={4}>
-			<Button size="large" variant="outlined">
+			<Button size="small" variant="outlined">
 				Join us
 			</Button>
 		</Stack>
