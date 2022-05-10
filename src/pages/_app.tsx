@@ -6,6 +6,8 @@ import { CacheProvider, EmotionCache } from '@emotion/react'
 import createEmotionCache from 'src/theme/createEmotionCache'
 import { ThemePrimaryColor } from 'src/components/ThemePrimaryColor/themePrimaryColor'
 
+import config from '../data/config.json'
+
 const clientSideEmotionCache = createEmotionCache()
 
 interface MyAppProps extends AppProps {
@@ -13,17 +15,6 @@ interface MyAppProps extends AppProps {
 	emotionCache: EmotionCache
 	pageProps: object
 }
-
-// should be provided by graph
-const SITE_NAME = 'GameDAO'
-const SITE_TITLE =
-	'Fundraising, coordination, ownership for video games, esports and the creative industry.'
-const SITE_DESCRIPTION =
-	'The DAO for video games, esports and creatives. We connect gamers, creators, publishers and investors for better video games with the power of web3, dao, defi and nft.'
-const SITE_IMAGE = 'https://gamedao.co/assets/gamedao-logo.png'
-const TW_SITE_NAME = '@gamedaoco'
-const TW_SITE_CREATOR = '@zerodotio'
-const CONTACT = 'hey@gamedao.co'
 
 export function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) {
 	return (
@@ -38,17 +29,17 @@ export function MyApp({ Component, emotionCache = clientSideEmotionCache, pagePr
 				<link rel="icon" type="image/png" href="/gamedao_wht_space.png" />
 
 				<meta property="og:type" content="website" />
-				<meta property="og:site_name" content={SITE_NAME} />
-				<meta property="og:title" content={SITE_TITLE} />
-				<meta property="og:description" content={SITE_DESCRIPTION} />
-				<meta property="og:image" content={SITE_IMAGE} />
+				<meta property="og:site_name" content={config.global.SITE_NAME} />
+				<meta property="og:title" content={config.global.SITE_TITLE} />
+				<meta property="og:description" content={config.global.SITE_DESCRIPTION} />
+				<meta property="og:image" content={config.global.SITE_IMAGE} />
 
 				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:creator" content={TW_SITE_CREATOR} />
-				<meta name="twitter:site" content={TW_SITE_NAME} />
-				<meta name="twitter:title" content={SITE_TITLE} />
-				<meta name="twitter:description" content={SITE_DESCRIPTION} />
-				<meta property="twitter:image" content={SITE_IMAGE} />
+				<meta name="twitter:creator" content={config.global.TW_SITE_CREATOR} />
+				<meta name="twitter:site" content={config.global.TW_SITE_NAME} />
+				<meta name="twitter:title" content={config.global.SITE_TITLE} />
+				<meta name="twitter:description" content={config.global.SITE_DESCRIPTION} />
+				<meta property="twitter:image" content={config.global.SITE_IMAGE} />
 			</Head>
 			<CacheProvider value={emotionCache}>
 				<Providers>
