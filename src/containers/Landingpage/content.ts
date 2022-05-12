@@ -54,64 +54,87 @@ export const supporters = [
 ]
 
 //
-//
+//	BOOT
+//	CREATE
+//	PLAY
+//	TRADE
 //
 
 export const hero = [
 	{
-		title: `Community Discovery and Curation`,
-		description: 'Get visible traction through community support',
-		// image: '/s01/1__128c.png',
+		title: `Engage with a kick ass community`,
+		description: `Truly dedicated gamers and creators join forces
+		to create next generation games.`,
+		image: '/s01/1__128c.png',
+		link_text: 'GO',
+		link_url: '#',
+		bg: '#111',
+	},{
+		title: `Discovery + Curation`,
+		description: 'Get visible through community.',
+		image: '/s01/1__128c.png',
 		link_text: '',
 		link_url: '',
-		bg: '#ff00ff',
+		bg: '#111',
 	},{
-		title: 'Democratisation and Governance',
+		title: 'Democratisation + Governance',
 		description: 'Coordinate with your team and align with your community',
-		image: ``,
+		image: '/generic/pexels-photo-7915357.jpg',
 		link_url: '',
 		bg: '#00ffff',
 	},{
-		title: 'Build, launch and scale your ideas',
-		description: 'Collaborate with the community to get \
-		market proof and raise funds.',
-		image: ``,
+		title: 'Build > Launch > Scale',
+		description: 'Get a fair chance and the support you need.',
+		image: '/generic/pexels-photo-7915533-1.jpg',
+		link_url: '',
+		bg: '#ffff00',
+	},{
+		title: 'Battle test your ideas',
+		description: 'Get market proof and raise funds.',
+		image: '/generic/pexels-photo-9069000.jpg',
 		link_url: '',
 		bg: '#ffff00',
 	}
 ]
 
 
+
 export const intro = [{
-	header: `GameDAO: For video games and beyond`,
+	header: `GameDAO`,
 	text: `With more than 2.7 billion gamers worldwide,
-		community driven ownership and game creation should be
-		the standard for the video game industry.
-		From forging the initial idea over collaboration
-		to fundraising and finally creating game economies,
-		it is vital to provide gamers with a safe environment to collaborate.`
+	community driven ownership and game creation should be
+	the standard for the video game industry.
+
+	From forging the initial idea over collaboration
+	to fundraising and finally creating game economies,
+	it is vital to provide gamers with a safe environment to collaborate.
+	`
 },{
-	header: `GameDAO: For video games and beyond`,
-	text: `With more than 2.7 billion gamers worldwide,
-		community driven ownership and game creation should be
-		the standard for the video game industry.
-		From forging the initial idea over collaboration
-		to fundraising and finally creating game economies,
-		it is vital to provide gamers with a safe environment to collaborate.`
-},{
-	header: `GameDAO: For video games and beyond`,
-	text: `With more than 2.7 billion gamers worldwide,
-		community driven ownership and game creation should be
-		the standard for the video game industry.
-		From forging the initial idea over collaboration
-		to fundraising and finally creating game economies,
-		it is vital to provide gamers with a safe environment to collaborate.`
+	header: `BOOT`,
+	text: `GameDAO enables the gaming community to
+	collaboratively fund, organize and own high quality games.
+	We achieve this through community discovery and curation
+	driven by a quality audience and best in class UX, transparency and trust.
+	`
 },{
 	header: `A thriving community of Gamers & Creators`,
-	text: `And with GameDAO we are doing just that:
-		Providing an open protocol dedicated to bridge
-		the world of video games with the world of DAO, DeFi and NFTs
-		to shift the empowerment back into the hands of the community.`
+	text: `GameDAO creates an open protocol dedicated to transform and bridge
+	the world of video games into the world of Web3. DAO, DeFi and NFTs
+	shift the power back where it belongs: into the hands of the community.
+	`
+},{
+	header: `Discovery + Curation`,
+	text: `Community curated by design: Get promoted or invited by the
+	community to become part of top tier creators club: GameDAO is
+	for everyone and curation leads to maximum leverage for the best ideas,
+	No matter if you are a fresh Indy or a seasoned AAA.
+	`
+},{
+	header: `Governance + Democracy`,
+	text: `Voting and directing teams does not need to be boring and
+	gamification drives adoption in governance and participation:
+	Level up voting power through participation and get rewarded.
+	`
 }]
 
 export const teaser1 = {

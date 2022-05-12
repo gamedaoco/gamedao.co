@@ -11,3 +11,5 @@ export * from './Supporters'
 export * from './Roadmap'
 export * from './Wallet'
 export * from './Disclaimer'
+
+export * from './Questions'

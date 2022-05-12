@@ -5,7 +5,7 @@ import { Paper, Typography } from '@mui/material'
 export const Disclaimer = () => {
 
 	return (
-		<Paper elevation={0} sx={{ background: 'none', px: '1rem', mb: '1rem' }}>
+		<Paper elevation={0} sx={{ background: 'black', color: 'white', p: [2,4], mb: '1rem', mt:[2,4] }}>
 			<Typography variant="body1"> Disclaimer </Typography>
 			<Typography variant="caption">
 				The information contained on this page and in the Pinky Paper is not comprehensive and does not claim to be complete.

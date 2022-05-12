@@ -1,4 +1,4 @@
-import { Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material'
+import { Container, Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import { styled } from '@mui/system'
 import Carousel from 'react-material-ui-carousel'
@@ -10,19 +10,23 @@ import Next from '@mui/icons-material/NavigateNext'
 import { hero as items } from '../content'
 
 const Content = props =>
+<Container maxWidth={false}>
 	<Carousel
-		sx={{ mx: -6, height: ['300px','400px','600px'] }}
+		sx={{ mx: -6, height: ['300px','400px','600px'], borderRadius: '1rem' }}
 		duration={250}
 		interval={5000}
 		NextIcon={<Next/>} PrevIcon={<Prev/>}
 		>
 		{items.map( (item, i) => <Item key={i} item={item} /> ) }
 	</Carousel>
+</Container>
+
 
 const Item = props => {
-    return (
+	return (
+
 		<Paper sx={{
-			backgroundColor: props.item.bg || 'black',
+			backgroundColor: props.item.bg || 'black'
 		}} elevation={10}>
 
 			<Box sx={{
@@ -38,8 +42,8 @@ const Item = props => {
 					zIndex: 150,
 					position: 'absolute', left: 0, top: 0,
 					width: '100%', height: ['300px','400px','600px'],
-					// background: 'repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.4) 3px, rgba(0,0,0,0.4) 3px)'
-					background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 50%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 100%)'
+					background: 'repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.6) 3px, rgba(0,0,0,0.4) 3px)'
+					// background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 50%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 100%)'
 				}} />
 			}
 
@@ -71,7 +75,7 @@ const Item = props => {
 			</Box>
 
 		</Paper>
-    )
+	)
 }
 
 const Backdrop = ({ src }) => {
@@ -79,7 +83,7 @@ const Backdrop = ({ src }) => {
 		<Box
 			sx={{
 				height: '100%',
-				backgroundImage: `url(/s01/1__128c.png)`,
+				backgroundImage: `url(${src})`,
 				// backgroundSize: 'cover',
 				backgroundPosition: 'center center',
 				backgroundSize: '150% auto',

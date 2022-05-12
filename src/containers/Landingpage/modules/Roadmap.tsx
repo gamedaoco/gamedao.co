@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Typography } from '@mui/material'
+import { Grid, Paper, Typography } from '@mui/material'
 import Timeline from '@mui/lab/Timeline'
 import TimelineItem from '@mui/lab/TimelineItem'
 import TimelineSeparator from '@mui/lab/TimelineSeparator'
@@ -18,12 +18,12 @@ interface RoadmapItemTypes {
 const RoadmapItem = ({ title, children, last }: RoadmapItemTypes ) => {
 	return (
 		<TimelineItem>
-			<TimelineOppositeContent color="#ff00ff">
+			<TimelineOppositeContent color="#ffffff">
 				{title}
 			</TimelineOppositeContent>
 			<TimelineSeparator>
-				<TimelineDot sx={{ bgcolor: '#00ffff' }}/>
-				{ !last && <TimelineConnector sx={{ bgcolor: '#00ffff' }}/> }
+				<TimelineDot sx={{ bgcolor: 'rgba(255,255,255,.2)' }} />
+				{ !last && <TimelineConnector sx={{ bgcolor: 'rgba(255,255,255,.1)' }}/> }
 			</TimelineSeparator>
 			<TimelineContent color="#00ff00">{children}</TimelineContent>
 		</TimelineItem>
@@ -32,46 +32,75 @@ const RoadmapItem = ({ title, children, last }: RoadmapItemTypes ) => {
 
 export function Roadmap() {
 	return (
-		<>
-		<Typography
-			variant="h3"
-			sx={{
-				background: GRADIENT.blue,
-				WebkitBackgroundClip: 'text',
-				WebkitTextFillColor: 'transparent',
-				fontWeight: 800,
-				lineHeight: '100%',
-			}}
-		>
-			We are creating the most advanced community controlled fundraising, coordination and ownership protocols.
-		</Typography>
+		<Paper sx={{ mx: '2rem', backgroundColor: 'transparent', height: '100%' }} elevation={0}>
+			<Grid container spacing={[0,2,4]} pt={[0,2]}>
 
-			<Timeline position="alternate">
-				<RoadmapItem title='Q1 / 2019'>
-					Protocol core development starts<br/>
-					Research for legal DAOs in Europe
-				</RoadmapItem>
-				<RoadmapItem title='Q3 / 2020'>
-					Testnet Live
-				</RoadmapItem>
-				<RoadmapItem title='Q3 / 2021'>
-					Winner of Top Blockchain Hackathon
-				</RoadmapItem>
-				<RoadmapItem title='Q4 / 2021'>
-					Outlier Ventures<br/>Polkadot Basecamp<br/>Company Setup
-				</RoadmapItem>
-				<RoadmapItem title='Q2 / 2022'>
-					Private Sale
-				</RoadmapItem>
-				<RoadmapItem title='Q3 / 2022'>
-					Community Sale +<br/>
-					Token Generation Event
-				</RoadmapItem>
-				<RoadmapItem title='Q4 / 2022' last>
-					Protocol Launch
-				</RoadmapItem>
+				<Grid container item xs={12} md={6} direction="column" >
+					<Typography
+						variant="h3"
+						pt={[2]}
+						sx={{
+							// background: GRADIENT.orange,
+							// WebkitBackgroundClip: 'text',
+							// WebkitTextFillColor: 'transparent',
+							fontWeight: 400,
+							lineHeight: '100%',
+						}}
+					>
+						Advanced community controlled coordination and ownership protocols.
+						Fully integrated with identity, fundraising and incentives:
+						Setup, build and run next generation video games.
+						<br/><br/>
+					</Typography>
+				</Grid>
 
-			</Timeline>
-		</>
+				<Grid container item xs={12} md={6} direction="column" >
+
+					<Typography
+						variant="h3"
+						pt={[2]}
+						sx={{
+							background: GRADIENT.rainbow,
+							BackgroundClip: 'text',
+							WebkitBackgroundClip: 'text',
+							color: 'rgba(255,255,255,0.4)',
+							WebkitTextFillColor: 'rgba(255,255,255,0.4)',
+							fontWeight: 600,
+							lineHeight: '100%',
+						}}
+					>
+						<Timeline position="alternate">
+							<RoadmapItem title='2019'>
+								Research for legal DAOs in Europe<br/>
+								Protocol core development starts
+							</RoadmapItem>
+							<RoadmapItem title='2020'>
+								Alphaville Testnet Live
+							</RoadmapItem>
+							<RoadmapItem title='2021'>
+								Pinky Paper<br/>
+								Winner of Top Blockchain Hackathon<br/>
+								Outlier Ventures Polkadot Basecamp 1
+							</RoadmapItem>
+							<RoadmapItem title='2022'>
+								Company Setup<br/>
+								Seed Round<br/>
+								Beeblebrox Testnet Live
+							</RoadmapItem>
+							<RoadmapItem title='2022'>
+								Community Sale +<br/>
+								Token Generation Event
+							</RoadmapItem>
+							<RoadmapItem title='ZERO Network' last>
+								Protocol Launch
+							</RoadmapItem>
+						</Timeline>
+
+					</Typography>
+
+				</Grid>
+
+			</Grid>
+		</Paper>
 	)
 }

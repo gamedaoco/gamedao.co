@@ -6,7 +6,7 @@ import { Hero, Team, Partners, Supporters } from './'
 
 export const Intro = () => (
 	<Paper sx={{ mx: '2rem', backgroundColor: 'transparent', height: '100%' }} elevation={0}>
-		<Grid container spacing={2} >
+		<Grid container spacing={[0,2,4]} pt={[0,2]}>
 			{ intro.map( (item, i) => {
 				return(
 					<Grid key={i} container item xs={12} md={6} direction="column" >
