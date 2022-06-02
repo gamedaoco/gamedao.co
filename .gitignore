@@ -2,6 +2,8 @@
 # reject
 *.rej
 
+**/sitemap.xml
+
 .DS_Store
 
 # compiled output

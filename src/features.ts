@@ -6,11 +6,11 @@ export const features = {
 
 	how: true,
 
-	partners: false,
-	supporters: false,
-	team: false,
+	partners: true,
+	supporters: true,
+	team: true,
 
-	wallet: false,
+	wallet: true,
 
 	questions: true,
 	disclaimer: true,
