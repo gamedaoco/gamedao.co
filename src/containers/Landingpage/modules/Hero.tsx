@@ -3,101 +3,109 @@ import { alpha } from '@mui/material/styles'
 import { styled } from '@mui/system'
 import Carousel from 'react-material-ui-carousel'
 import { NavLink } from 'src/components'
+import Link from 'next/link'
 
 import Prev from '@mui/icons-material/NavigateBefore'
 import Next from '@mui/icons-material/NavigateNext'
-
 import { hero as items } from '../content'
+import { GRADIENT } from '../styles'
 
-const Content = props =>
-<Container maxWidth={false}>
+const Teaser = styled(Typography)(
+	({ theme }) => ({
+				background: GRADIENT.rainbow2	,
+				WebkitBackgroundClip: 'text',
+				WebkitTextFillColor: 'transparent',
+		width: '100%',
+		color: theme.palette.text.secondary,
+		fontWeight: 900,
+		lineHeight: "85%",
+		textTransform: 'uppercase',
+		justifyContent: 'middle',
+		verticalAlign: 'center',
+		textAlign: 'left',
+	})
+)
+
+const Backdrop = ({ src }) => {
+	return src ? (
+			<Box
+				sx={{
+					height: '100%',
+					backgroundImage: `url(${src})`,
+					backgroundSize: 'cover',
+					// backgroundPosition: 'center center',
+					// backgroundSize: '150% auto',
+					backgroundRepeat: 'no-repeat',
+				}}
+			>
+				{/*<img src={src} />*/}
+			</Box>
+	) : null
+}
+
+const Item = props => {
+	return (
+		<>
+			<Box sx={{
+					zIndex: 10,
+					width: '100%',
+					height: '100vh',
+				}}>
+				<Backdrop src={props.item.image} />
+			</Box>
+
+			<Box sx={{
+				zIndex: 20,
+				width: '100%',
+				height: '100vh',
+				position: 'absolute',
+				top: 0,
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'end',
+				padding: '5rem',
+			}}>
+				<Container>
+					{props.item.img &&
+						<Box px={[2,4,6]} pb={2}>
+							<img src={props.item.img} height="64px" width="auto"/>
+						</Box>
+					}
+					{ !props.item.img &&
+						<Teaser variant="h2" px={[2,4,6]}>
+							{props.item.title}
+						</Teaser>
+					}
+					<Typography variant={'hero2'} px={[2,4,6]} pt={2} sx={{ lineHeight: '85%' }}>
+						{props.item.description}
+					</Typography>
+					<Typography variant={'hero2'} px={[2,4,6]} pt={2} sx={{ lineHeight: '85%' }}>
+						{ props.item.link_url && <Link href={props.item.link_url}><Button size="medium" variant="outlined">{`${props.item.link_text||'More'}`}</Button></Link> }
+					</Typography>
+				</Container>
+			</Box>
+		</>
+	)
+}
+
+
+const Content = () =>
 	<Carousel
-		sx={{ mx: -6, height: ['300px','400px','600px'], borderRadius: '1rem' }}
-		duration={250}
-		interval={5000}
+		sx={{ borderRadius: 0 }}
+		duration={ 250 }
+		interval={ 5000 }
 		NextIcon={<Next/>} PrevIcon={<Prev/>}
 		>
 		{items.map( (item, i) => <Item key={i} item={item} /> ) }
 	</Carousel>
-</Container>
 
-
-const Item = props => {
-	return (
-
-		<Paper sx={{
-			backgroundColor: props.item.bg || 'black'
-		}} elevation={10}>
-
-			<Box sx={{
-				zIndex: 100,
-				width: '100%',
-				height: ['300px','400px','600px'],
-			}}>
-				<Backdrop src={props.item.image} />
-			</Box>
-
-			{ props.item.image &&
-				<Box sx={{
-					zIndex: 150,
-					position: 'absolute', left: 0, top: 0,
-					width: '100%', height: ['300px','400px','600px'],
-					background: 'repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.6) 3px, rgba(0,0,0,0.4) 3px)'
-					// background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 50%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 100%)'
-				}} />
-			}
-
-			<Box sx={{
-				position: 'absolute',
-				left: 0,
-				top: 0,
-				width: '100%',
-				// height: ['300px','400px','600px'],
-				zIndex: 200,
-			}}>
-				<Box sx={{
-					display: 'flex',
-					width: '100%',
-					height: ['300px','400px','600px'],
-					flexDirection: 'column',
-					justifyContent: 'end',
-					padding: '5rem',
-				}}>
-
-					<Typography variant={'hero1'} pt={2} sx={{ lineHeight: '85%' }}>
-						{props.item.title}
-					</Typography>
-					<Typography variant={'hero2'} pt={2} sx={{ lineHeight: '85%' }}>
-						{props.item.description}
-					</Typography>
-					{ props.item.link_url && <Button>{`${props.item.link_text||'More'}`}</Button> }
-				</Box>
-			</Box>
-
-		</Paper>
-	)
-}
-
-const Backdrop = ({ src }) => {
-	return src ? (
-		<Box
-			sx={{
-				height: '100%',
-				backgroundImage: `url(${src})`,
-				// backgroundSize: 'cover',
-				backgroundPosition: 'center center',
-				backgroundSize: '150% auto',
-				backgroundRepeat: 'no-repeat',
-			}}
-		>
-			{/*<img src={src} />*/}
-		</Box>
-	) : null
-}
-
-export const Hero = () => {
-	// return <>Hello</>
-	return (
+export const Hero = () =>
+	<Box sx={{
+		height: '100vh',
+		m: 0,
+		p: 0,
+		mb: [4,2]
+	}}>
 		<Content/>
-	)
-}
+	</Box>
+

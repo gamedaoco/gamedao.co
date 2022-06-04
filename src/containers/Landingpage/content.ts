@@ -61,39 +61,48 @@ export const supporters = [
 //
 
 export const hero = [
+	// {
+	// 	title: `Engage with a kick ass community`,
+	// 	description: `Truly dedicated gamers and creators join forces
+	// 	to create next generation games.`,
+	// 	image: '/s01/1__128c.png',
+	// 	link_text: 'GO',
+	// 	link_url: '#',
+	// 	bg: '#111',
 	{
-		title: `Engage with a kick ass community`,
-		description: `Truly dedicated gamers and creators join forces
-		to create next generation games.`,
-		image: '/s01/1__128c.png',
-		link_text: 'GO',
-		link_url: '#',
+		title: `GAMEDAO`,
+		description: `We empower creators to build frictionless economies and new business models.`,
+		image: '/art/IP39-DeepMarket.jpg',
+		link_text: 'LEARN MORE',
+		link_url: '/cases',
 		bg: '#111',
+		img: 'g-wht-wide.svg',
 	},{
-		title: `Discovery + Curation`,
-		description: 'Get visible through community.',
-		image: '/s01/1__128c.png',
+		title: `DISCOVER + CURATE`,
+		description: 'Become visible through community.',
+		image: '/art/IP39-Overrun.jpg',
 		link_text: '',
 		link_url: '',
 		bg: '#111',
-	},{
-		title: 'Democratisation + Governance',
-		description: 'Coordinate with your team and align with your community',
-		image: '/generic/pexels-photo-7915357.jpg',
-		link_url: '',
-		bg: '#00ffff',
-	},{
-		title: 'Build > Launch > Scale',
-		description: 'Get a fair chance and the support you need.',
-		image: '/generic/pexels-photo-7915533-1.jpg',
-		link_url: '',
-		bg: '#ffff00',
-	},{
-		title: 'Battle test your ideas',
-		description: 'Get market proof and raise funds.',
-		image: '/generic/pexels-photo-9069000.jpg',
-		link_url: '',
-		bg: '#ffff00',
+		img: '',
+	// },{
+	// 	title: 'Democratisation + Governance',
+	// 	description: 'Coordinate with your team and align with your community',
+	// 	image: '/generic/pexels-photo-7915357.jpg',
+	// 	link_url: '',
+	// 	bg: '#00ffff',
+	// },{
+	// 	title: 'Build > Launch > Scale',
+	// 	description: 'Get a fair chance and the support you need.',
+	// 	image: '/generic/pexels-photo-7915533-1.jpg',
+	// 	link_url: '',
+	// 	bg: '#ffff00',
+	// },{
+	// 	title: 'Battle test your ideas',
+	// 	description: 'Get market proof and raise funds.',
+	// 	image: '/generic/pexels-photo-9069000.jpg',
+	// 	link_url: '',
+	// 	bg: '#ffff00',
 	}
 ]
 
@@ -110,17 +119,17 @@ export const intro = [{
 	it is vital to provide gamers with a safe environment to collaborate.
 	`
 },{
-	header: `BOOT`,
-	text: `GameDAO enables the gaming community to
-	collaboratively fund, organize and own high quality games.
-	We achieve this through community discovery and curation
-	driven by a quality audience and best in class UX, transparency and trust.
-	`
-},{
 	header: `A thriving community of Gamers & Creators`,
-	text: `GameDAO creates an open protocol dedicated to transform and bridge
+	text: `GameDAO creates open protocols dedicated to transform and bridge
 	the world of video games into the world of Web3. DAO, DeFi and NFTs
 	shift the power back where it belongs: into the hands of the community.
+	`
+},{
+	header: `The Protocol`,
+	text: `GameDAO enables the gaming community to
+	collaboratively coordinate, own and fund high quality games.
+	We achieve this through community discovery and curation
+	driven by a quality audience and best in class UX, transparency.
 	`
 },{
 	header: `Discovery + Curation`,

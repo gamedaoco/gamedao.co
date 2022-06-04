@@ -6,7 +6,7 @@ import { features } from '../../features'
 import { Layout } from 'src/layouts/default'
 import { NavLink } from 'src/components'
 
-import { Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import { Hero, Intro, Teaser, Wallet, Team, Partners, Supporters, Roadmap, Disclaimer, Questions } from './modules'
 
 const Wrapper = styled(Box)(
@@ -25,25 +25,32 @@ export function Landingpage() {
 	const { hero, intro, teaser1, roadmap, team, partners, supporters, wallet, disclaimer, questions } = features
 
 	return (
-		<Wrapper>
+		<Box>
+
 			{ hero && <Hero /> }
-			{ intro && <Intro/> }
-			{ teaser1 && <Teaser variant="h2" padding={[2,4,6]}>
-				Let's bring Community powered ownership to the masses
-				</Teaser>
-			}
 
-			{ roadmap && <Roadmap/> }
+			<Container maxWidth="xl">
 
-			{ team && <Team/> }
-			{ partners && <Partners/> }
-			{ supporters && <Supporters/> }
+				{ intro && <Intro/> }
+				{ teaser1 && <Teaser variant="h2" padding={[2,4,6]}>
+					Let's bring Community powered ownership to the masses
+					</Teaser>
+				}
 
-			{ wallet && <Wallet /> }
+				{ roadmap && <Roadmap/> }
 
-			{ questions && <Questions /> }
-			{ disclaimer && <Disclaimer/> }
-		</Wrapper>
+				{ team && <Team/> }
+				{ partners && <Partners/> }
+				{ supporters && <Supporters/> }
+
+				{ wallet && <Wallet /> }
+
+				{ questions && <Questions /> }
+				{ disclaimer && <Disclaimer/> }
+
+			</Container>
+
+		</Box>
 	)
 
 }

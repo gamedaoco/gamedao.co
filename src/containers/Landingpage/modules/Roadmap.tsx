@@ -47,8 +47,8 @@ export function Roadmap() {
 							lineHeight: '100%',
 						}}
 					>
-						Advanced community controlled coordination and ownership protocols.
-						Fully integrated with identity, fundraising and incentives:
+						Community discovery, curation, coordination and ownership protocols.
+						Fully integrated with identity, fundraising and rewards:
 						Setup, build and run next generation video games.
 						<br/><br/>
 					</Typography>
