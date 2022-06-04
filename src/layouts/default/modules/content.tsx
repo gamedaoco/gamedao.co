@@ -10,10 +10,8 @@ export const Content = ({ children }: ComponentProps) => {
 	const theme = useTheme()
 
 	return (
-		<Container>
-			<Box py={{ xs: '1rem', md: '2rem' }}>
+			<Box mt={-8}>
 				{ children || null }
 			</Box>
-		</Container>
 	)
 }

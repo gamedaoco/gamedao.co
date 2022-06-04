@@ -21,7 +21,7 @@ import {
 	MenuItem,
 } from '@mui/material'
 
-import { Drawer } from '@mui/material'
+import { Drawer, Fade } from '@mui/material'
 import { NavLink } from 'src/components'
 
 const pages = [
@@ -65,7 +65,7 @@ export const Header = () => {
 	// useEffect(()=>)
 
 	return (
-		<AppBar position="sticky" elevation={0} sx={{ backgroundColor: 'transparent' }}>
+		<AppBar position="static" color="transparent" elevation={0} sx={{ zIndex: 9000 }}>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 
@@ -90,56 +90,57 @@ export const Header = () => {
 							<MenuIcon />
 						</IconButton>
 
-						<Drawer
-							variant="temporary"
-							transitionDuration={0}
-							elevation={0}
-							anchor="top"
-							open={ Boolean(anchorElNav) }
-							onClose={ handleCloseNavMenu }
-						>
-							<Box sx={{
-								px: ['1rem','3rem'],
-								py: ['0.25rem','0.5rem'],
-								height: '100vh',
-								backgroundColor: 'black'
-							}}>
-
-
+							<Drawer
+								variant="temporary"
+								transitionDuration={0}
+								elevation={0}
+								anchor="top"
+								open={ Boolean(anchorElNav) }
+								onClose={ handleCloseNavMenu }
+								sx={{ zIndex: 9001 }}
+							>
 								<Box sx={{
-									flexGrow: 1,
+									px: ['1rem','3rem'],
+									py: ['0.25rem','0.5rem'],
+									height: '100vh',
+									backgroundColor: 'rgba(0,0,0)',
 								}}>
-									<IconButton
-										size="large"
-										onClick={handleCloseNavMenu}
-										color="inherit"
-										aria-controls="close"
-									>
-										<CloseIcon />
-									</IconButton>
-								</Box>
 
-								<MenuItem key={'GameDAO'} onClick={handleCloseNavMenu}>
-									<Link href="/">
-										<Typography textAlign="center">GameDAO</Typography>
-									</Link>
-								</MenuItem>
 
-								{pages.map((page) => (
-									<MenuItem key={page[0]} onClick={ () => handleCloseNavMenu() }>
-										{ ( page[1].substr(0,2) === '//' )
-											? <a href={page[1]} target="_blank" rel="noreferrer">
-												<Typography textAlign="center">{page[0]}</Typography>
-											</a>
-											: <Link href={page[0].toLowerCase().replace(' ', '-')}>
-												<Typography textAlign="center">{page[0]}</Typography>
-											</Link>
-										}
+									<Box sx={{
+										flexGrow: 1,
+									}}>
+										<IconButton
+											size="large"
+											onClick={handleCloseNavMenu}
+											color="inherit"
+											aria-controls="close"
+										>
+											<CloseIcon />
+										</IconButton>
+									</Box>
+
+									<MenuItem key={'GameDAO'} onClick={handleCloseNavMenu}>
+										<Link href="/">
+											<Typography variant="h4" textAlign="center">GameDAO</Typography>
+										</Link>
 									</MenuItem>
-								))}
 
-							</Box>
-						</Drawer>
+									{pages.map((page) => (
+										<MenuItem key={page[0]} onClick={ () => handleCloseNavMenu() }>
+											{ ( page[1].substr(0,2) === '//' )
+												? <a href={page[1]} target="_blank" rel="noreferrer">
+													<Typography variant="h4" textAlign="center">{page[0]}</Typography>
+												</a>
+												: <Link href={page[0].toLowerCase().replace(' ', '-')}>
+													<Typography variant="h4" textAlign="center">{page[0]}</Typography>
+												</Link>
+											}
+										</MenuItem>
+									))}
+
+								</Box>
+							</Drawer>
 
 					</Box>
 
@@ -176,7 +177,7 @@ export const Header = () => {
 
 					<Box sx={{ flexGrow: 0 }}>
 						<NavLink href="https://app.gamedao.co">
-							<Button size="small" variant="outlined" color="primary" sx={{ pt: '3px', pb: '5px' }}>
+							<Button size="small" variant="outlined" sx={{ pt: '3px', pb: '5px' }}>
 								Run Beta
 							</Button>
 						</NavLink>

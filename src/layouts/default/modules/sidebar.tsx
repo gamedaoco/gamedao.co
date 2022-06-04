@@ -78,7 +78,7 @@ export function Sidebar({ showHeader, onClose, open, variant }: ComponentProps) 
 					top: { xs: 0, md: showHeader ? 64 : 0 },
 					bottom: 0,
 					height: 'auto',
-					backgroundColor: theme.palette.background.default,
+					// backgroundColor: theme.palette.background.default,
 					borderRight: `1px solid ${theme.palette.grey[500_32]}`,
 				},
 			}}

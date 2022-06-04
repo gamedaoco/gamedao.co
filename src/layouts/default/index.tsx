@@ -20,7 +20,8 @@ export function Layout({ showHeader, showFooter, showSidebar, children, noContai
 	const theme = useTheme()
 
 	return (
-		<>
+		<Box>
+
 			<Head>
 				<title> {title ? `${title} · ${SITE_NAME}` : `${SITE_NAME}`} </title>
 			</Head>
@@ -29,9 +30,11 @@ export function Layout({ showHeader, showFooter, showSidebar, children, noContai
 				sx={{
 					width: '100%',
 					background: theme.palette.background.ocean,
+					p: 0, m: 0
 				}}
 			>
-				<Container sx={{ minHeight: '100vh', p: 0 }}>
+
+				<Box sx={{ minHeight: '100vh', p: 0, m: 0 }}>
 					<Box
 						sx={{
 							overflowX: 'hidden',
@@ -44,8 +47,10 @@ export function Layout({ showHeader, showFooter, showSidebar, children, noContai
 						{ noContainer ? { children } : <Content>{children}</Content> }
 					</Box>
 					{ showFooter && <Footer /> }
-				</Container>
+				</Box>
+
 			</Box>
-		</>
+
+		</Box>
 	)
 }
