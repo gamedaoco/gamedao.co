@@ -67,21 +67,27 @@ const Item = props => {
 			}}>
 				<Container>
 					{props.item.img &&
-						<Box px={[2,4,6]} pb={2}>
-							<img src={props.item.img} height="64px" width="auto"/>
+						<Box px={[2,4,6]}>
+							<img src={props.item.img} height={props.item.img_height} width="auto"/>
 						</Box>
 					}
 					{ !props.item.img &&
-						<Teaser variant="h2" px={[2,4,6]}>
+						<Teaser variant="h1" px={[2,4,6]}>
 							{props.item.title}
 						</Teaser>
 					}
-					<Typography variant={'hero2'} px={[2,4,6]} pt={2} sx={{ lineHeight: '85%' }}>
+					<Typography variant={'hero2'} px={[2,4,6]} pt={4} sx={{ lineHeight: '95%' }}>
 						{props.item.description}
 					</Typography>
-					<Typography variant={'hero2'} px={[2,4,6]} pt={2} sx={{ lineHeight: '85%' }}>
-						{ props.item.link_url && <Link href={props.item.link_url}><Button size="medium" variant="outlined">{`${props.item.link_text||'More'}`}</Button></Link> }
-					</Typography>
+					{ props.item.link_url &&
+						<Typography variant={'hero2'} px={[2,4,6]} pt={4} sx={{ lineHeight: '95%' }}>
+							 <Link href={props.item.link_url}>
+							 	<Button size="medium" variant="outlined">
+							 		{`${props.item.link_text||'More'}`}
+							 	</Button>
+							 </Link>
+						</Typography>
+					}
 				</Container>
 			</Box>
 		</>
@@ -91,7 +97,7 @@ const Item = props => {
 
 const Content = () =>
 	<Carousel
-		sx={{ borderRadius: 0 }}
+		sx={{ borderRadius: 0, height: '100%' }}
 		duration={ 250 }
 		interval={ 5000 }
 		NextIcon={<Next/>} PrevIcon={<Prev/>}

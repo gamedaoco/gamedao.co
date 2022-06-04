@@ -25,10 +25,10 @@ import { Drawer, Fade } from '@mui/material'
 import { NavLink } from 'src/components'
 
 const pages = [
-	['Cases',''],
-	['Apply','mailto:apply@gamedao.co'],
+	// ['Cases',''],
 	['Blog','//blog.gamedao.co'],
 	['Community','//discord.gg/rhwtr7p'],
+	['Contact','hey@gamedao.co'],
 ]
 const settings = ['Profile', 'Account', 'Dashboard', 'Disconnect']
 

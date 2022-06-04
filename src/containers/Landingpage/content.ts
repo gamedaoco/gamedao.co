@@ -71,20 +71,27 @@ export const hero = [
 	// 	bg: '#111',
 	{
 		title: `GAMEDAO`,
-		description: `We empower creators to build frictionless economies and new business models.`,
+		description: `We empower creators
+		to build frictionless economies
+		and next generation business models
+		for video games.`,
 		image: '/art/IP39-DeepMarket.jpg',
 		link_text: 'LEARN MORE',
 		link_url: '/cases',
 		bg: '#111',
 		img: 'g-wht-wide.svg',
+		img_height: '64px',
 	},{
-		title: `DISCOVER + CURATE`,
-		description: 'Become visible through community.',
+		title: `DISCOVERY + CURATION`,
+		description: `Take the leap and
+		become visible by the power of
+		kick ass community`,
 		image: '/art/IP39-Overrun.jpg',
-		link_text: '',
-		link_url: '',
+		link_text: 'JOIN NOW',
+		link_url: 'https://app.gamedao.co',
 		bg: '#111',
-		img: '',
+		img: 'bettergames-outline.svg',
+		img_height: '128px',
 	// },{
 	// 	title: 'Democratisation + Governance',
 	// 	description: 'Coordinate with your team and align with your community',
