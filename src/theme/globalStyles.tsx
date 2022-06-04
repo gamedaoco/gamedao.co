@@ -36,7 +36,7 @@ export default function GlobalStyles() {
 				body: {
 					width: '100%',
 					height: '100%',
-					background: 'green',
+					background: 'black',
 				},
 				'#__next': {
 					width: '100%',

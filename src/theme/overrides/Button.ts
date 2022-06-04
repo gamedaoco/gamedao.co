@@ -43,12 +43,18 @@ export default function Button(theme: Theme) {
 				},
 				// outlined
 				outlinedInherit: {
-					border: `1px solid ${theme.palette.grey[500_32]}`,
+					border: `2px solid ${theme.palette.grey[500_32]}`,
 					'&:hover': {
 						backgroundColor: theme.palette.action.hover,
 					},
 					height: 48,
 					padding: 200,
+				},
+				outlinedPrimary: {
+					border: `1px solid ${theme.palette.grey[500_32]}`,
+					// '&:hover': {
+					// 	backgroundColor: theme.palette.action.hover,
+					// },
 				},
 				textInherit: {
 					'&:hover': {

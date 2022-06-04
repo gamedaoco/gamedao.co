@@ -6,13 +6,13 @@ export const features = {
 
 	how: true,
 
-	partners: true,
-	supporters: true,
-	team: true,
+	partners: false,
+	supporters: false,
+	team: false,
 
-	wallet: true,
+	wallet: false,
 
-	questions: true,
+	questions: false,
 	disclaimer: true,
 
 	// nav

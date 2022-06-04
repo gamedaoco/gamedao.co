@@ -34,6 +34,7 @@ export function ThemeProvider({ children }: ComponentProps) {
 			direction: themeDirection,
 			shadows: isLight ? shadows.light : shadows.dark,
 			customShadows: isLight ? customShadows.light : customShadows.dark,
+			components: {}
 		}),
 		[isLight, themeDirection],
 	)
