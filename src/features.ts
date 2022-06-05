@@ -3,7 +3,7 @@ export const features = {
 	intro: true,
 	teaser1: true,
 	roadmap: true,
-
+	transform: true,
 	how: true,
 
 	partners: false,

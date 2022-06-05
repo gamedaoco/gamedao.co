@@ -120,6 +120,7 @@ const typography = {
 	body1: {
 		lineHeight: 1.5,
 		fontSize: pxToRem(16),
+		...responsiveFontSizes({ sm: 16, md: 20, lg: 24 }),
 	},
 	body2: {
 		lineHeight: 22 / 14,

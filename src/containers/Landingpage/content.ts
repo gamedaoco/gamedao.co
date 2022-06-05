@@ -71,10 +71,9 @@ export const hero = [
 	// 	bg: '#111',
 	{
 		title: `GAMEDAO`,
-		description: `We empower creators
-		to build frictionless economies
-		and next generation business models
-		for video games.`,
+		description: `Empowering creators to
+		build better games through
+		democratization and community ownership.`,
 		image: '/art/IP39-DeepMarket.jpg',
 		link_text: 'LEARN MORE',
 		link_url: '/cases',
@@ -82,10 +81,10 @@ export const hero = [
 		img: 'g-wht-wide.svg',
 		img_height: '64px',
 	},{
-		title: `DISCOVERY + CURATION`,
+		title: `COMMUNITY DISCOVERY`,
 		description: `Take the leap and
-		become visible by the power of
-		kick ass community`,
+		leverage the power of community
+		to get early market proof and support.`,
 		image: '/art/IP39-Overrun.jpg',
 		link_text: 'JOIN NOW',
 		link_url: 'https://app.gamedao.co',
@@ -127,12 +126,6 @@ export const intro = [{
 	`
 },{
 	header: `A thriving community of Gamers & Creators`,
-	text: `GameDAO creates open protocols dedicated to transform and bridge
-	the world of video games into the world of Web3. DAO, DeFi and NFTs
-	shift the power back where it belongs: into the hands of the community.
-	`
-},{
-	header: `The Protocol`,
 	text: `GameDAO enables the gaming community to
 	collaboratively coordinate, own and fund high quality games.
 	We achieve this through community discovery and curation
@@ -149,35 +142,47 @@ export const intro = [{
 	header: `Governance + Democracy`,
 	text: `Voting and directing teams does not need to be boring and
 	gamification drives adoption in governance and participation:
-	Level up voting power through participation and get rewarded.
+	Level up voting power and get rewarded through contribution.
+	`
+},{
+	header: `Open Protocols built in web3`,
+	text: `GameDAO creates open protocols dedicated to transform and bridge
+	the world of video games into the world of Web3. DAO, DeFi and NFTs
+	shift the power back where it belongs: into the hands of the community.
 	`
 }]
 
 export const teaser1 = {
-	text: `LET’S BRING COMMUNITY POWERED OWNERSHIP TO THE MASSES`
+	text: `COMMUNITY POWERED OWNERSHIP FOR ALL`
 }
 
-export const section4 = {
-	title: `How we are transforming the Gaming Industry`,
-	content: [
-		`WE ENABLE CONTRIBUTING
-		Creators can fund their projects
-		Gamers can support teams they love
-		Offering investors a new industry
-		traditional fundraising + borrowing of funds`,
-
-		`WE ENABLE COORDINATION
-		democratic governance + ownership for teams
-		Integrating gamers as active stakeholders
-		Creating more sustainable business models
-		Enable early market proof for projects`,
-
-		`WE PROVIDE TRUST
-		Providing Ecosystem-wide decentralised identities
-		common treasury powering community initiatives
-		A utility $GAME token for access and governance
-		Transparent Due Diligence and Compliance tools`
-	]
+export const transform = {
+	title: `Transforming the Gaming Industry`,
+	content: [{
+		title: `🩸 Enable Contribution`,
+		content: [
+			`Creators can fund their projects`,
+			`Gamers can support teams they love`,
+			`Offering investors a new industry`,
+			`Traditional fundraising + borrowing of funds`
+		]
+	},{
+		title: `👑 Enable Coordination`,
+		content: [
+			`Democratic governance + ownership for teams`,
+			`Integrating gamers as active stakeholders`,
+			`Creating more sustainable business models`,
+			`Enable early market proof for projects`
+		],
+	},{
+		title: `☔ Provide Trust`,
+		content: [
+			`Providing ecosystem-wide decentralised identities`,
+			`Common treasury powering community initiatives`,
+			`A utility $GAME token for access and governance`,
+			`Transparent Due Diligence and Compliance tools`
+		]
+	}]
 }
 
 export const section5 = {

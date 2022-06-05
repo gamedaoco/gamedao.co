@@ -7,7 +7,7 @@ import { Layout } from 'src/layouts/default'
 import { NavLink } from 'src/components'
 
 import { Box, Container } from '@mui/material'
-import { Hero, Intro, Teaser, Wallet, Team, Partners, Supporters, Roadmap, Disclaimer, Questions } from './modules'
+import { Hero, Intro, Transform, Teaser, Wallet, Team, Partners, Supporters, Roadmap, Disclaimer, Questions } from './modules'
 
 const Wrapper = styled(Box)(
 	({ theme }) => ({
@@ -22,7 +22,7 @@ const Wrapper = styled(Box)(
 
 export function Landingpage() {
 
-	const { hero, intro, teaser1, roadmap, team, partners, supporters, wallet, disclaimer, questions } = features
+	const { hero, intro, transform, teaser1, roadmap, team, partners, supporters, wallet, disclaimer, questions } = features
 
 	return (
 		<Box>
@@ -33,9 +33,11 @@ export function Landingpage() {
 
 				{ intro && <Intro/> }
 				{ teaser1 && <Teaser variant="h2" padding={[2,4,6]}>
-					Let's bring Community powered ownership to the masses
+					Community powered ownership for all
 					</Teaser>
 				}
+
+				{ transform && <Transform/> }
 
 				{ roadmap && <Roadmap/> }
 

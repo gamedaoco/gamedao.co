@@ -51,7 +51,7 @@ export default function Button(theme: Theme) {
 					padding: 200,
 				},
 				outlinedPrimary: {
-					border: `1px solid ${theme.palette.grey[500_32]}`,
+					border: `1px solid white`,
 					// '&:hover': {
 					// 	backgroundColor: theme.palette.action.hover,
 					// },

@@ -13,3 +13,4 @@ export * from './Wallet'
 export * from './Disclaimer'
 
 export * from './Questions'
+export * from './Transform'
