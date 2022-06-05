@@ -84,7 +84,9 @@ export function Roadmap() {
 							</RoadmapItem>
 							<RoadmapItem title='2022'>
 								Company Setup<br/>
-								Seed Round<br/>
+								Seed Round
+							</RoadmapItem>
+							<RoadmapItem title='2022'>
 								Beeblebrox Testnet Live
 							</RoadmapItem>
 							<RoadmapItem title='2022'>
