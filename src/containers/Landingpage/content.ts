@@ -157,9 +157,9 @@ export const teaser1 = {
 }
 
 export const transform = {
-	title: `Transforming the Gaming Industry`,
+	title: `We are transforming the Games Industry`,
 	content: [{
-		title: `🩸 Enable Contribution`,
+		title: `🪙 Enable Contribution`,
 		content: [
 			`Creators can fund their projects`,
 			`Gamers can support teams they love`,
