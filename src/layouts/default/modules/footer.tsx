@@ -1,18 +1,19 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Box, Container, Grid, Link as MUILink, Stack, Typography } from '@mui/material'
 import { SiDiscord, SiGithub, SiLinkedin, SiTelegram, SiTwitter } from 'react-icons/si'
 import { useTheme } from '@mui/material/styles'
 import { FontIcons } from 'src/components/Icons/icons'
 
-const Link = ({ href, children }) => (
-	<Box>
-		<MUILink variant="body2" href={href} target="_blank" underline="none" rel="noreferrer" color="inherit">
-			{children}
-		</MUILink>
-	</Box>
-)
+// const Link = ({ href, children }) => (
+// 	<Box>
+// 		<MUILink variant="body2" href={href} target="_blank" underline="none" rel="noreferrer" color="inherit">
+// 			{children}
+// 		</MUILink>
+// 	</Box>
+// )
 
 const SocialLinks = () => (
 	<Stack
@@ -65,21 +66,22 @@ export function Footer() {
 		>
 			<Container>
 				<Grid columns={12}>
-					<Grid container direction="row" mt={4} mb={4} spacing={4}>
+					<Grid container direction="row" mt={4} mb={4} spacing={8}>
 						{/*
-						<Grid item xs={12} md={2} mb={4}>
-						</Grid>*/}
+					*/}
+						<Grid item xs={12}>
+							<Link href="/">
+								<Image src="/gamedao_wht_space.svg" width={'48'} height={'48'} />
+							</Link>
+						</Grid>
 
 						<Grid item xs={12} md={6} mb={4}>
-							<MUILink href="/">
-								<Image src="/gamedao_wht_space.svg" width={'48'} height={'48'} />
-							</MUILink>
 							<Typography variant="h6" mb={2}>
 								GameDAO.
 								<br />
 								For the Creator and Player Economy.
 							</Typography>
-							<Typography mb={2}>
+							<Typography mb={2} variant="body1">
 								Community driven ownership and creation will be a vital part of how we see video games
 								in the near future. The transition to token driven economies is already in progress but
 								is still in its early stages, only treating the symptoms of a broken, financial
@@ -100,36 +102,36 @@ export function Footer() {
 
 						<Grid item xs={6} md={2} mb={4}>
 							<Typography variant="h6" mb={2}>
-								About
+								About<br /><br />
 							</Typography>
-							<Typography variant="caption" mb={2}>
+							<Typography variant="body1" mb={2}>
 								<Link href="https://blog.gamedao.co/the-gamedao-pinky-paper-8dcda7f2e1ca">
 									pinky paper
-								</Link>
-								<Link href="https://blog.gamedao.co">news + articles</Link>
-								<Link href="https://docs.gamedao.co">documentation</Link>
-								<br />
-								<Link href="https://discord.gg/rhwtr7p">discord</Link>
-								<Link href="https://t.me/gamedaoco">telegram</Link>
-								<Link href="https://twitter.com/gamedaoco">twitter</Link>
-								<Link href="https://www.linkedin.com/company/gamedaoco">linkedin</Link>
+								</Link><br/>
+								<Link href="https://blog.gamedao.co">news + articles</Link><br/>
+								<Link href="https://docs.gamedao.co">documentation</Link><br/>
+								<br /><br/>
+								<Link href="https://discord.gg/rhwtr7p">discord</Link><br/>
+								<Link href="https://t.me/gamedaoco">telegram</Link><br/>
+								<Link href="https://twitter.com/gamedaoco">twitter</Link><br/>
+								<Link href="https://www.linkedin.com/company/gamedaoco">linkedin</Link><br/>
 							</Typography>
 						</Grid>
 						<Grid item xs={6} md={2} mb={4}>
 							<Typography variant="h6" mb={2}>
-								How we build
+								How we build<br /><br />
 							</Typography>
-							<Typography variant="caption" mb={2}>
-								<Link href="https://zero.io">zero.io</Link>
-								<Link href="https://acala.network">acala.network</Link>
-								<Link href="https://substrate.dev">substrate.dev</Link>
-								<Link href="https://kilt.io">kilt protocol</Link>
-								<Link href="https://fractal.id">fractal id</Link>
-								<br />
-								<Link href="https://github.com/gamedaoco">github</Link>
+							<Typography variant="body1" mb={2}>
+								<Link href="https://zero.io">zero.io</Link><br/>
+								<Link href="https://acala.network">acala.network</Link><br/>
+								<Link href="https://substrate.dev">substrate.dev</Link><br/>
+								<Link href="https://kilt.io">kilt protocol</Link><br/>
+								<Link href="https://fractal.id">fractal id</Link><br/>
+								<br /><br/>
+								<Link href="https://github.com/gamedaoco">github</Link><br/>
 								<Link href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Falphaville.zero.io#/explorer">
 									Polkadot Explorer
-								</Link>
+								</Link><br/>
 							</Typography>
 						</Grid>
 					</Grid>
@@ -141,6 +143,8 @@ export function Footer() {
 					<Grid container direction="row">
 						<Typography variant="body2">
 							{`© 2019-${new Date().getFullYear()} `}GAMEDAO AG, Vaduz, Liechtenstein. Powered by ZERO.IO
+							<br/>
+							Build {process.env.BUILD_TIME}
 						</Typography>
 					</Grid>
 				</Grid>

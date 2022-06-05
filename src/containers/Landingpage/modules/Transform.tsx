@@ -20,7 +20,7 @@ export const Transform = () => (
 							{ item.content.map( ( listItem, j) => {
 								return(
 									<ListItem sx={{p:0}}>
-										<Typography variant={'body2'} pb={2}>{`${listItem}`} </Typography>
+										<Typography variant={'body1'} pb={2}>{`${listItem}`} </Typography>
 									</ListItem>
 								)
 							})}
