@@ -28,7 +28,7 @@ const pages = [
 	// ['Cases',''],
 	['Blog','//blog.gamedao.co'],
 	['Community','//discord.gg/rhwtr7p'],
-	['Contact','hey@gamedao.co'],
+	// ['Contact','mailto:hey@gamedao.co'],
 ]
 const settings = ['Profile', 'Account', 'Dashboard', 'Disconnect']
 
