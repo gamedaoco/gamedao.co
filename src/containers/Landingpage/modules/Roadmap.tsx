@@ -34,7 +34,7 @@ export function Roadmap() {
 	return (
 
 		<Box>
-			<Typography variant={'h3'} px={'2rem'}>Roadmap</Typography>
+			<Typography variant={'h3'} px={'2rem'} pb={'2rem'}>Roadmap</Typography>
 
 {/*
 		<Paper sx={{ mx: '2rem', backgroundColor: 'transparent', height: '100%' }} elevation={0}>
