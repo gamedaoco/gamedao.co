@@ -32,7 +32,7 @@ const pages = [
 ]
 const settings = ['Profile', 'Account', 'Dashboard', 'Disconnect']
 
-const Logo = () => <img src="/g-wht-wide.png" height='16px' />
+const Logo = () => <img src="/g-col-wht-wide.svg" height='16px' />
 
 export const Header = () => {
 

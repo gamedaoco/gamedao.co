@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Grid, Paper, Typography } from '@mui/material'
+import { Grid, Paper, Typography, Box } from '@mui/material'
 import Timeline from '@mui/lab/Timeline'
 import TimelineItem from '@mui/lab/TimelineItem'
 import TimelineSeparator from '@mui/lab/TimelineSeparator'
@@ -32,9 +32,13 @@ const RoadmapItem = ({ title, children, last }: RoadmapItemTypes ) => {
 
 export function Roadmap() {
 	return (
+
+		<Box>
+			<Typography variant={'h3'} px={'2rem'}>Roadmap</Typography>
+
+{/*
 		<Paper sx={{ mx: '2rem', backgroundColor: 'transparent', height: '100%' }} elevation={0}>
 			<Grid container spacing={[0,2,4]} pt={[0,2]}>
-
 				<Grid container item xs={12} md={6} direction="column" >
 					<Typography
 						variant="h3"
@@ -53,8 +57,8 @@ export function Roadmap() {
 						<br/><br/>
 					</Typography>
 				</Grid>
-
-				<Grid container item xs={12} md={6} direction="column" >
+				<Grid container item xs={12} md={6} direction="column">
+			*/}
 
 					<Typography
 						variant="h3"
@@ -100,9 +104,11 @@ export function Roadmap() {
 
 					</Typography>
 
+{/*
 				</Grid>
-
 			</Grid>
 		</Paper>
+		*/}
+		</Box>
 	)
 }

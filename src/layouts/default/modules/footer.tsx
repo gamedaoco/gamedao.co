@@ -71,7 +71,7 @@ export function Footer() {
 					*/}
 						<Grid item xs={12}>
 							<Link href="/">
-								<Image src="/gamedao_wht_space.svg" width={'48'} height={'48'} />
+								<Image src="/g-col.svg" width={'48'} height={'48'} />
 							</Link>
 						</Grid>
 
@@ -141,8 +141,9 @@ export function Footer() {
 					</Grid>
 
 					<Grid container direction="row">
-						<Typography variant="body2">
-							{`© 2019-${new Date().getFullYear()} `}GAMEDAO AG, Vaduz, Liechtenstein. Powered by ZERO.IO
+						<Typography variant="caption">
+							{`© 2019-${new Date().getFullYear()} `}GAMEDAO AG, Vaduz, Liechtenstein.<br/>
+							Powered by ZERO.IO
 							<br/>
 							Build {process.env.BUILD_TIME}
 						</Typography>
