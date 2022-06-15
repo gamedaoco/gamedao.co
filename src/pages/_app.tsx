@@ -1,5 +1,8 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import { AppProps, NextWebVitalsMetric } from 'next/app'
+import { useRouter } from 'next/router'
+import * as Fathom from 'fathom-client'
 import { Providers } from 'src/providers'
 
 import { CacheProvider, EmotionCache } from '@emotion/react'
@@ -17,6 +20,23 @@ interface MyAppProps extends AppProps {
 }
 
 export function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) {
+
+
+ const router = useRouter();
+  useEffect(() => {
+    Fathom.load('XLUUAYWU', {
+    	url: 'brilliant-truthful.gamedao.co/script.js',
+      	includedDomains: ['gamedao.co'],
+    })
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
+    router.events.on('routeChangeComplete', onRouteChangeComplete);
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete);
+    }
+  }, [])
+
 	return (
 		<>
 			<Head>

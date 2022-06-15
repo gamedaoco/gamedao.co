@@ -28,6 +28,7 @@
     "cross-undici-fetch": "^0.1.27",
     "deepmerge": "^4.2.2",
     "express": "^4.17.3",
+    "fathom-client": "^3.4.1",
     "lodash": "^4.17.21",
     "next": "12.1.0",
     "react": "^17.0.2",
