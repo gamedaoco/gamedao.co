@@ -25,7 +25,7 @@ export function MyApp({ Component, emotionCache = clientSideEmotionCache, pagePr
  const router = useRouter();
   useEffect(() => {
     Fathom.load('XLUUAYWU', {
-    	url: 'brilliant-truthful.gamedao.co/script.js',
+    	url: 'https://brilliant-truthful.gamedao.co/script.js',
       	includedDomains: ['gamedao.co'],
     })
     function onRouteChangeComplete() {
