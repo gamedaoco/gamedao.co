@@ -22,8 +22,12 @@ const RoadmapItem = ({ title, children, last }: RoadmapItemTypes ) => {
 				{title}
 			</TimelineOppositeContent>
 			<TimelineSeparator>
-				<TimelineDot sx={{ bgcolor: 'rgba(255,255,255,.2)' }} />
-				{ !last && <TimelineConnector sx={{ bgcolor: 'rgba(255,255,255,.1)' }}/> }
+				<TimelineDot sx={{
+					bgcolor: 'rgba(255,255,255,1)'
+				}} />
+				{ !last && <TimelineConnector sx={{
+					bgcolor: 'rgba(255,255,255,1)'
+				}}/> }
 			</TimelineSeparator>
 			<TimelineContent color="#00ff00">{children}</TimelineContent>
 		</TimelineItem>
@@ -67,8 +71,8 @@ export function Roadmap() {
 							background: GRADIENT.rainbow,
 							BackgroundClip: 'text',
 							WebkitBackgroundClip: 'text',
-							color: 'rgba(255,255,255,0.4)',
-							WebkitTextFillColor: 'rgba(255,255,255,0.4)',
+							color: 'rgba(255,255,255,1)',
+							WebkitTextFillColor: 'rgba(255,255,255,1)',
 							fontWeight: 600,
 							lineHeight: '100%',
 						}}
