@@ -4,7 +4,7 @@ import { styled } from '@mui/system'
 import { GRADIENT } from './styles'
 import { features } from '../../features'
 import { Layout } from 'src/layouts/default'
-import { NavLink } from 'src/components'
+import { NavLink, Newsletter } from 'src/components'
 
 import { Box, Container } from '@mui/material'
 import { Hero, Intro, Transform, Teaser, Wallet, Team, Partners, Supporters, Roadmap, Disclaimer, Questions } from './modules'
@@ -32,10 +32,14 @@ export function Landingpage() {
 			<Container maxWidth="xl">
 
 				{ intro && <Intro/> }
+
+				<Newsletter/>
+
 				{ teaser1 && <Teaser variant="h2" padding={[2,4,6]}>
 					Community powered ownership for all
 					</Teaser>
 				}
+
 
 				{ transform && <Transform/> }
 
