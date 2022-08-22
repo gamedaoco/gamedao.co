@@ -35,18 +35,20 @@ export function Layout({ showHeader, showFooter, showSidebar, children, noContai
 			>
 
 				<Box sx={{ minHeight: '100vh', p: 0, m: 0 }}>
-					<Box
-						sx={{
-							overflowX: 'hidden',
-							minHeight: '100vh',
-							display: 'flex',
-							flexDirection: 'column',
-						}}
-					>
-						{ showHeader && <Header /> }
-						{ noContainer ? { children } : <Content>{children}</Content> }
-					</Box>
-					{ showFooter && <Footer /> }
+					<>
+						<Box
+							sx={{
+								overflowX: 'hidden',
+								minHeight: '100vh',
+								display: 'flex',
+								flexDirection: 'column',
+							}}
+						><>
+							{ showHeader && <Header /> }
+							{ noContainer ? { children } : <Content>{children}</Content> }
+						</></Box>
+						{ showFooter && <Footer /> }
+					</>
 				</Box>
 
 			</Box>

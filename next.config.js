@@ -26,8 +26,9 @@ module.exports = {
 		APP_VERSION: pkg.version,
 		VERCEL_GITHUB_COMMIT_REF: process.env.VERCEL_GITHUB_COMMIT_REF || 'unknown',
 	},
-	poweredByHeader: 'gamedao.co loves you',
-	experiments: {
-		topLevelAwait: true,
-	}
+	poweredByHeader: false,
+	// 'gamedao.co loves you',
+	// experiments: {
+	// 	topLevelAwait: true,
+	// }
 }
