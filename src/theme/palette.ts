@@ -149,7 +149,7 @@ const GRADIENTS = {
 	success: createGradient(SUCCESS.light, SUCCESS.main),
 	warning: createGradient(WARNING.light, WARNING.main),
 	error: createGradient(ERROR.light, ERROR.main),
-	ocean: createGradient('#000000', '#002233'),
+	ocean: createGradient('#102', '#102'),
 	rainbowH: `linear-gradient( to right, 0deg,
 		#00f2c4 0%, #66f16d 13%, #b5e653 25%,
 		#f6e900 38%, #ffcc00 50%, #ffb316 63%,

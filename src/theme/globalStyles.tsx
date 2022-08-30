@@ -28,7 +28,7 @@ export default function GlobalStyles() {
 				},
 				'::-webkit-scrollbar': {
 					// width: '2px',
-					background: 'black',
+					background: '#102',
 				},
 				'::-webkit-scrollbar-thumb': {
 					background: 'rgba( 255, 0, 255, 1 )',
@@ -36,7 +36,7 @@ export default function GlobalStyles() {
 				body: {
 					width: '100%',
 					height: '100%',
-					background: 'black',
+					background: '#102',
 				},
 				'#__next': {
 					width: '100%',
