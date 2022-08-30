@@ -78,7 +78,7 @@ export const hero = [
 		link_text: 'LEARN MORE',
 		link_url: '/cases',
 		bg: '#111',
-		img: 'g-wht-wide.svg',
+		img: 'gamedao-tangram-h-wht-wht.svg',
 		img_height: '64px',
 	},{
 		title: `COMMUNITY DISCOVERY`,

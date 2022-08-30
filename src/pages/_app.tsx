@@ -20,22 +20,20 @@ interface MyAppProps extends AppProps {
 }
 
 export function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) {
-
-
- const router = useRouter();
-  useEffect(() => {
-    Fathom.load('XLUUAYWU', {
-    	url: 'https://brilliant-truthful.gamedao.co/script.js',
-      	includedDomains: ['gamedao.co'],
-    })
-    function onRouteChangeComplete() {
-      Fathom.trackPageview();
-    }
-    router.events.on('routeChangeComplete', onRouteChangeComplete);
-    return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete);
-    }
-  }, [])
+	const router = useRouter()
+	useEffect(() => {
+		Fathom.load('XLUUAYWU', {
+			url: 'https://brilliant-truthful.gamedao.co/script.js',
+			includedDomains: ['gamedao.co'],
+		})
+		function onRouteChangeComplete() {
+			Fathom.trackPageview()
+		}
+		router.events.on('routeChangeComplete', onRouteChangeComplete)
+		return () => {
+			router.events.off('routeChangeComplete', onRouteChangeComplete)
+		}
+	}, [])
 
 	return (
 		<>

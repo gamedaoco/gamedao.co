@@ -14,7 +14,7 @@ export default function GlobalStyles() {
 					margin: 0,
 					padding: 0,
 					boxSizing: 'border-box',
-					transitionDuration:'150ms',
+					transitionDuration: '150ms',
 				},
 				html: {
 					width: '100%',
@@ -28,10 +28,10 @@ export default function GlobalStyles() {
 				},
 				'::-webkit-scrollbar': {
 					// width: '2px',
-					background: 'black'
+					background: 'black',
 				},
 				'::-webkit-scrollbar-thumb': {
-					background: 'rgba( 255, 0, 255, 1 )'
+					background: 'rgba( 255, 0, 255, 1 )',
 				},
 				body: {
 					width: '100%',
@@ -70,7 +70,7 @@ export default function GlobalStyles() {
 						color: theme.palette.text.disabled,
 					},
 				},
-				'a, :hover, :visited' : {
+				'a, :hover, :visited': {
 					textDecoration: 'none',
 					color: theme.palette.text.primary,
 				},

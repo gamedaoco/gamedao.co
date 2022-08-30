@@ -8,11 +8,7 @@ import { NavLink } from 'src/components'
 import { Landingpage } from '../containers/Landingpage'
 
 export function Page() {
-	return (
-		<Layout showFooter showHeader>
-
-		</Layout>
-	)
+	return <Layout showFooter showHeader></Layout>
 }
 
 export default Page
