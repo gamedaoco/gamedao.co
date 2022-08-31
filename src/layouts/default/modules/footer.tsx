@@ -126,7 +126,7 @@ export function Footer() {
 								<Link href="https://acala.network">acala.network</Link><br/>
 								<Link href="https://substrate.dev">substrate.dev</Link><br/>
 								<Link href="https://kilt.io">kilt protocol</Link><br/>
-								<Link href="https://fractal.id">fractal id</Link><br/>
+								{/*<Link href="https://fractal.id">fractal id</Link><br/>*/}
 								<br /><br/>
 								<Link href="https://github.com/gamedaoco">github</Link><br/>
 								<Link href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Falphaville.zero.io#/explorer">
@@ -134,10 +134,6 @@ export function Footer() {
 								</Link><br/>
 							</Typography>
 						</Grid>
-					</Grid>
-
-					<Grid container direction="row">
-						<SocialLinks />
 					</Grid>
 
 					<Grid container direction="row">

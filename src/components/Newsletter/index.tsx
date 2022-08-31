@@ -32,17 +32,24 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 	}
 
 	return (
-		<Box p={4} sx={{ backgroundColor: '#660099'}}>
+		<Box p={4} sx={{ backgroundColor: '#330066'}}>
 			<Stack direction="column" justifyContent="center" alignItems="center">
 
 				<Typography pb={2} variant="h3">Know it first and subscribe to our newsletter</Typography>
 
-				<Stack direction="row" spacing={2} >
+				<Stack direction="row" spacing={2}>
 					<Input
+						sx={{
+							'& input::-webkit-input-placeholder': { color: '#fff' },
+							'& input::placeholder': { color: '#fff' },
+							'& input::-ms-input-placeholder': { color: '#fff' }
+						}}
 						id="email"
 						startAdornment={
 							<InputAdornment position="start">
-								<Email sx={{ color: '#fff' }}/>
+								<Email sx={{
+									color: '#fff',
+								}}/>
 							</InputAdornment>
 						}
 						type="email"

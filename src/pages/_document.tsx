@@ -58,6 +58,10 @@ export default class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
+					<link
+						rel="stylesheet"
+						href="https://fonts.googleapis.com/css?family=Inter:400,600,800&display=swap"
+					/>
 					<link rel="stylesheet" href="https://use.typekit.net/glg5whl.css" />
 					<link rel="stylesheet" href="/iconfont.css" />
 				</Head>
