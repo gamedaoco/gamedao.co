@@ -23,11 +23,11 @@ export default function GlobalStyles() {
 					overflowX: 'hidden',
 					scrollBehavior: 'smooth',
 					WebkitOverflowScrolling: 'touch',
-					// scrollbarWidth: 'thin',
+					scrollbarWidth: 'thin',
 					scrollbarColor: 'rgba( 255, 0, 255, 1 )',
 				},
 				'::-webkit-scrollbar': {
-					// width: '2px',
+					width: '8px',
 					background: '#102',
 				},
 				'::-webkit-scrollbar-thumb': {
