@@ -37,7 +37,7 @@ export function Landingpage() {
 
 
 				{ teaser1 &&
-					<Teaser variant="h2" padding={[4,6]} sx={{ backgroundColor: '#ee4693', color: '#f3cb14'}}>
+					<Teaser variant="h2" fontSize={['2rem','4rem']} padding={[4,6]} sx={{ backgroundColor: '#ee4693', color: '#f3cb14'}}>
 						Building<br/>better games<br/>together.
 					</Teaser>
 				}

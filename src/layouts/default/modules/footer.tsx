@@ -71,7 +71,7 @@ export function Footer() {
 					*/}
 						<Grid item xs={12}>
 							<Link href="/">
-								<Image src="/g-col.svg" width={'48'} height={'48'} />
+								<Image src="/svg/g-col.svg" width={'48'} height={'48'} />
 							</Link>
 						</Grid>
 

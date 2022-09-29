@@ -85,7 +85,7 @@ export const hero = [
 			icon: 'Discord',
 		}],
 		bg: '#111',
-		img: 'gamedao-tangram-h-wht-wht.svg',
+		img: '/svg/g-col-wht-wide.svg',
 		img_height: '64px',
 	// },{
 	// 	title: `COMMUNITY DISCOVERY`,

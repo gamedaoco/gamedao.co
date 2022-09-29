@@ -32,7 +32,7 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 	}
 
 	return (
-		<Box m={0} p={4} sx={{ backgroundColor: '#8e2456'}}>
+		<Box m={0} p={4} sx={{ backgroundColor: '#202'}}>
 			<Stack direction="column" justifyContent="center" alignItems="center">
 
 				<Typography pb={2} variant="h3">Know it first and subscribe to our newsletter</Typography>
