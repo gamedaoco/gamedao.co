@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { GRADIENT } from '../styles'
-import { Paper, Typography } from '@mui/material'
+import { Paper, Typography, Box } from '@mui/material'
 
 export const Disclaimer = () => {
 
 	return (
-		<Paper elevation={0} sx={{ background: 'rgba(0,0,0,0.1)', color: 'white', p: [2,4], mb: '1rem', mt:[2,4] }}>
-			<Typography variant="body1"> Disclaimer </Typography>
-			<Typography variant="caption">
+		<Box p={[2,4]} mb={[2,4]} mx={'2rem'} sx={{ backgroundColor: '#000', color: '#fff' }}>
+			<Typography variant={'h3'} pb={'2rem'}>Disclaimer</Typography>
+			<Typography variant="caption" pb={'2rem'}>
 				The information contained on this page and in the Pinky Paper is not comprehensive and does not claim to be complete.
 				There is no assurance as to the accuracy or completeness of such information and no representation,
 				warranty or undertaking is or purported to be provided as to the accuracy or completeness of such information.
@@ -20,7 +20,7 @@ export const Disclaimer = () => {
 				Further, this website and the Pinky Paper may be amended or replaced from time to time.
 				Any liability for the content of the Pinky paper is excluded. This includes both material and immaterial damage.
 			</Typography>
-		</Paper>
+		</Box>
 	)
 }
 

@@ -135,7 +135,7 @@ export const intro = [{
 	it is vital to provide gamers with a safe environment to collaborate.
 	`
 },{
-	header: `A thriving community of Gamers & Creators`,
+	header: `For Gamers + Creators`,
 	text: `GameDAO enables the gaming community to
 	collaboratively coordinate, own and fund high quality games.
 	We achieve this through community discovery and curation

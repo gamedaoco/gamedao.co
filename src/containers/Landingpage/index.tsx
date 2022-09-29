@@ -29,19 +29,21 @@ export function Landingpage() {
 
 			{ hero && <Hero /> }
 
-			<Container maxWidth="xl">
-
-				{ intro && <Intro/> }
+			<Container maxWidth="xl" disableGutters>
 
 				<Newsletter/>
 
-				{ teaser1 && <Teaser variant="h2" padding={[2,4,6]}>
-					Community powered ownership for all
+				{ intro && <Intro/> }
+
+
+				{ teaser1 &&
+					<Teaser variant="h2" padding={[4,6]} sx={{ backgroundColor: '#ee4693', color: '#f3cb14'}}>
+						Building<br/>better games<br/>together.
 					</Teaser>
 				}
 
 
-				{ transform && <Transform/> }
+				{/*{ transform && <Transform/> }*/}
 
 				{ roadmap && <Roadmap/> }
 

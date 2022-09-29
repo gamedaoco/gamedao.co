@@ -23,20 +23,20 @@ export default function GlobalStyles() {
 					overflowX: 'hidden',
 					scrollBehavior: 'smooth',
 					WebkitOverflowScrolling: 'touch',
-					scrollbarWidth: 'thin',
-					scrollbarColor: 'rgba( 255, 0, 255, 1 )',
+					// scrollbarWidth: 'thin',
+					scrollbarColor: '#ee4693',
 				},
 				'::-webkit-scrollbar': {
-					width: '8px',
-					background: '#102',
+					// width: '16px',
+					// background: '#2e0d41',
 				},
 				'::-webkit-scrollbar-thumb': {
-					background: 'rgba( 255, 0, 255, 1 )',
+					background: '#ee4693',
 				},
 				body: {
 					width: '100%',
 					height: '100%',
-					background: '#102',
+					background: '#2e0d41',
 				},
 				'#__next': {
 					width: '100%',

@@ -116,7 +116,7 @@ export const Hero = () =>
 		height: '100vh',
 		m: 0,
 		p: 0,
-		mb: [4,2]
+		mb: 0
 	}}>
 		<Content/>
 	</Box>

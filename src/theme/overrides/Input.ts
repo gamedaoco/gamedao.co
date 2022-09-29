@@ -23,7 +23,7 @@ export default function Input(theme: Theme) {
 			styleOverrides: {
 				underline: {
 					'&:before': {
-						borderBottomColor: theme.palette.grey[500_56],
+						// borderBottomColor: theme.palette.grey[500_56],
 					},
 				},
 			},
@@ -44,7 +44,7 @@ export default function Input(theme: Theme) {
 				},
 				underline: {
 					'&:before': {
-						borderBottomColor: theme.palette.grey[500_56],
+						// borderBottomColor: theme.palette.grey[500_56],
 					},
 				},
 			},

@@ -32,7 +32,7 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 	}
 
 	return (
-		<Box p={4} sx={{ backgroundColor: '#330066'}}>
+		<Box m={0} p={4} sx={{ backgroundColor: '#8e2456'}}>
 			<Stack direction="column" justifyContent="center" alignItems="center">
 
 				<Typography pb={2} variant="h3">Know it first and subscribe to our newsletter</Typography>
@@ -56,7 +56,7 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 						placeholder="Your email"
 						onChange={handleOnChange}
 					/>
-					<Button onClick={handleOnSubmit} variant="outlined">
+					<Button onClick={handleOnSubmit} size="medium" variant="outlined">
 						Submit
 					</Button>
 				</Stack>

@@ -59,11 +59,11 @@ export default class MyDocument extends Document {
 			<Html lang="en">
 				<Head>
 					<link
+						href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&family=Noto+Sans:wght@400;600&display=swap"
 						rel="stylesheet"
-						href="https://fonts.googleapis.com/css?family=Inter:400,600,800&display=swap"
 					/>
-					<link rel="stylesheet" href="https://use.typekit.net/glg5whl.css" />
-					<link rel="stylesheet" href="/iconfont.css" />
+					{/*<link rel="stylesheet" href="https://use.typekit.net/glg5whl.css" />*/}
+					{/*<link rel="stylesheet" href="/iconfont.css" />*/}
 				</Head>
 				<body
 					style={{

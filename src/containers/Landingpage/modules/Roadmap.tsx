@@ -37,7 +37,7 @@ const RoadmapItem = ({ title, children, last }: RoadmapItemTypes ) => {
 export function Roadmap() {
 	return (
 
-		<Box>
+		<Box pt={[2,4]}>
 			<Typography variant={'h3'} px={'2rem'} pb={'2rem'}>Roadmap</Typography>
 
 {/*
