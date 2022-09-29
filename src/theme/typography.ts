@@ -162,8 +162,8 @@ const typography = {
 		...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
 		float: 'left',
 		textShadow: 'rgba(0,0,0,1) 0 5px 20px',
-		'-webkit-text-stroke-width': '1px',
-		'-webkit-text-stroke-color': 'rgba(0,0,0,0.2)',
+		WebkitTextStrokeWidth: '1px',
+		WebkitTextStrokeColor: 'rgba(0,0,0,0.2)',
 	},
 	hero2: {
 		fontFamily: FONT_HEADER,
@@ -173,8 +173,8 @@ const typography = {
 		...responsiveFontSizes({ sm: 40, md: 44, lg: 48 }),
 		float: 'left',
 		textShadow: 'rgba(0,0,0,1) 0 5px 20px',
-		'-webkit-text-stroke-width': '1px',
-		'-webkit-text-stroke-color': 'rgba(0,0,0,0.2)',
+		WebkitTextStrokeWidth: '1px',
+		WebkitTextStrokeColor: 'rgba(0,0,0,0.2)',
 	},
 } as const
 

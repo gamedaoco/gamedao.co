@@ -5,6 +5,8 @@ import Carousel from 'react-material-ui-carousel'
 import { NavLink } from 'src/components'
 import Link from 'next/link'
 
+import Icon from '@mui/material/Icon'
+
 import Prev from '@mui/icons-material/NavigateBefore'
 import Next from '@mui/icons-material/NavigateNext'
 import { hero as items } from '../content'
@@ -79,13 +81,17 @@ const Item = props => {
 					<Typography variant={'hero2'} px={[2,4,6]} pt={4} sx={{ lineHeight: '95%' }}>
 						{props.item.description}
 					</Typography>
-					{ props.item.link_url &&
+					{ props.item.links &&
 						<Typography variant={'hero2'} px={[2,4,6]} pt={4} sx={{ lineHeight: '95%' }}>
-							 <Link href={props.item.link_url}>
-							 	<Button size="medium" variant="outlined">
-							 		{`${props.item.link_text||'More'}`}
-							 	</Button>
-							 </Link>
+
+							{ props.item.links.map( (e,i) =>
+								 <Link href={e.url} key={i}>
+								 	<Button size="medium" variant="outlined" sx={{ mr: 2}}>
+								 		{`${e.text || 'More'}`}
+								 	</Button>
+								 </Link>
+							)}
+
 						</Typography>
 					}
 				</Container>

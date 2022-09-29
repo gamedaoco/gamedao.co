@@ -18,12 +18,15 @@ const SITE_NAME = 'GameDAO'
 
 export function Layout({ showHeader, showFooter, showSidebar, children, noContainer, title }: ComponentProps) {
 	const theme = useTheme()
+	const t = title
+		? `${ title } · ${ SITE_NAME }`
+		: `${ SITE_NAME }`
 
 	return (
 		<Box>
 
 			<Head>
-				<title> {title ? `${title} · ${SITE_NAME}` : `${SITE_NAME}`} </title>
+				<title>{ t }</title>
 			</Head>
 
 			<Box

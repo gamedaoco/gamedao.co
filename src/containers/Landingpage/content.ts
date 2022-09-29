@@ -75,22 +75,32 @@ export const hero = [
 		build better games through
 		democratization and community ownership.`,
 		image: '/art/IP39-DeepMarket.jpg',
-		link_text: 'LEARN MORE',
-		link_url: '/cases',
+		links: [{
+			text: 'READ PINKY PAPER',
+			url: 'https://blog.gamedao.co/the-gamedao-pinky-paper-8dcda7f2e1ca',
+			icon: 'Book',
+		},{
+			text: 'JOIN WAITLIST',
+			url: 'https://discord.gg/kr8Q9Jam2N',
+			icon: 'Discord',
+		}],
 		bg: '#111',
 		img: 'gamedao-tangram-h-wht-wht.svg',
 		img_height: '64px',
-	},{
-		title: `COMMUNITY DISCOVERY`,
-		description: `Take the leap and
-		leverage the power of community
-		to get early market proof and support.`,
-		image: '/art/IP39-Overrun.jpg',
-		link_text: 'JOIN NOW',
-		link_url: 'https://app.gamedao.co',
-		bg: '#111',
-		img: 'bettergames-outline.svg',
-		img_height: '128px',
+	// },{
+	// 	title: `COMMUNITY DISCOVERY`,
+	// 	description: `Take the leap and
+	// 	leverage the power of community
+	// 	to get early market proof and support.`,
+	// 	image: '/art/IP39-Overrun.jpg',
+	// 	links: [{
+	// 		text: 'JOIN WAITLIST',
+	// 		url: 'https://discord.gg/4A9CC6K8',
+	// 		icon: 'discord',
+	// 	}],
+	// 	bg: '#111',
+	// 	img: 'bettergames-outline.svg',
+	// 	img_height: '128px',
 	// },{
 	// 	title: 'Democratisation + Governance',
 	// 	description: 'Coordinate with your team and align with your community',
