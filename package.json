@@ -47,7 +47,6 @@
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@commitlint/prompt-cli": "^17.0.3",
-    "@picgo/bump-version": "^1.0.3",
     "@types/node": "^18.7.9",
     "@types/react": "^18.0.17",
     "commitizen": "^4.2.5",
