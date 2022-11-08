@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from 'components/Link'
 
 import { Box, Container, Grid, Link as MUILink, Stack, Typography } from '@mui/material'
 import { SiDiscord, SiGithub, SiLinkedin, SiTelegram, SiTwitter } from 'react-icons/si'
@@ -71,7 +71,7 @@ export function Footer() {
 					*/}
 						<Grid item xs={12}>
 							<Link href="/">
-								<Image src="/svg/g-col.svg" width={'48'} height={'48'} />
+								<Image src="/v3/svg/GameDAO-color.svg" width={'48'} height={'48'} />
 							</Link>
 						</Grid>
 
@@ -138,8 +138,8 @@ export function Footer() {
 
 					<Grid container direction="row">
 						<Typography variant="caption">
-							{`© 2019-${new Date().getFullYear()} `}GAMEDAO AG, Vaduz, Liechtenstein.<br/>
-							Powered by ZERO.IO
+							{`© 2019-${new Date().getFullYear()} `}GAMEDAO AG, Vaduz, Liechtenstein<br/>
+							GameDAO is powered by you!
 							<br/>
 							Build {process.env.BUILD_TIME}
 						</Typography>

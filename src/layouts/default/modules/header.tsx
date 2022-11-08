@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { features } from '../../../features'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
+import Link from 'components/Link'
 
 import {
 	AppBar,
@@ -22,7 +22,6 @@ import {
 } from '@mui/material'
 
 import { Drawer, Fade } from '@mui/material'
-import { NavLink } from 'src/components'
 
 const pages = [
 	// ['Cases',''],
@@ -32,7 +31,7 @@ const pages = [
 ]
 const settings = ['Profile', 'Account', 'Dashboard', 'Disconnect']
 
-const Logo = () => <img src="/svg/g-col-wht-wide.svg" height='16px' />
+const Logo = () => <img src="/v3/svg/GameDAO-color-h-wht-m.svg" height='16px' />
 
 export const Header = () => {
 
@@ -71,7 +70,7 @@ export const Header = () => {
 
 					<MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
 						<Link href="/">
-							<Typography variant="h6" noWrap component="div" sx={{ mt: '3px', mr: 2 }}>
+							<Typography variant="h5" noWrap component="div" sx={{ mt: '3px',mr: 2 }}>
 								<Logo/>
 							</Typography>
 						</Link>
