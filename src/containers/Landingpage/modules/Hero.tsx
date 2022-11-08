@@ -2,8 +2,7 @@ import { Container, Box, Grid, Card, Paper, Typography, Button, Stack } from '@m
 import { alpha } from '@mui/material/styles'
 import { styled } from '@mui/system'
 import Carousel from 'react-material-ui-carousel'
-import { NavLink } from 'src/components'
-import Link from 'next/link'
+import Link from 'components/Link'
 
 import Icon from '@mui/material/Icon'
 

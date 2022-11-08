@@ -1,7 +1,8 @@
 import React, { useState, FC } from 'react'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
-import { Box, Input, InputAdornment, Typography, Button, Stack } from '@mui/material'
+import { Container, Box, Input, InputAdornment, Typography, Button, Stack } from '@mui/material'
 import Email from '@mui/icons-material/EmailOutlined'
+import Person from '@mui/icons-material/PersonOutlined'
 
 const MAILCHIMP = process.env.MAILCHIMP
 
@@ -24,20 +25,38 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 	}
 
 	const handleOnSubmit = (e) => {
-		console.log('click', inputs.email)
 		inputs.email.indexOf('@') > -1 &&
 			onValidated({
 				EMAIL: inputs.email,
+				NAME: inputs.name
 			})
 	}
 
 	return (
-		<Box m={0} p={4} sx={{ backgroundColor: '#202'}}>
+		<Box m={0} p={4} sx={{ backgroundColor: '#95b1dc'}}>
 			<Stack direction="column" justifyContent="center" alignItems="center">
 
 				<Typography pb={2} variant="h3">Know it first and subscribe to our newsletter</Typography>
 
 				<Stack direction="row" spacing={2}>
+					<Input
+						sx={{
+							'& input::-webkit-input-placeholder': { color: '#fff' },
+							'& input::placeholder': { color: '#fff' },
+							'& input::-ms-input-placeholder': { color: '#fff' }
+						}}
+						id="name"
+						startAdornment={
+							<InputAdornment position="start">
+								<Person sx={{
+									color: '#fff',
+								}}/>
+							</InputAdornment>
+						}
+						type="name"
+						placeholder="your name"
+						onChange={handleOnChange}
+					/>
 					<Input
 						sx={{
 							'& input::-webkit-input-placeholder': { color: '#fff' },
@@ -53,7 +72,7 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 							</InputAdornment>
 						}
 						type="email"
-						placeholder="Your email"
+						placeholder="your email"
 						onChange={handleOnChange}
 					/>
 					<Button onClick={handleOnSubmit} size="medium" variant="outlined">

@@ -37,8 +37,8 @@ const RoadmapItem = ({ title, children, last }: RoadmapItemTypes ) => {
 export function Roadmap() {
 	return (
 
-		<Box pt={[2,4]}>
-			<Typography variant={'h3'} px={'2rem'} pb={'2rem'}>Roadmap</Typography>
+		<Box py={[2,4]}>
+			<Typography variant={'h3'} px={'2rem'} pb={'2rem'}>Roadmap + Key Milestones</Typography>
 
 {/*
 		<Paper sx={{ mx: '2rem', backgroundColor: 'transparent', height: '100%' }} elevation={0}>
@@ -65,7 +65,7 @@ export function Roadmap() {
 			*/}
 
 					<Typography
-						variant="h3"
+						variant="time"
 						pt={[2]}
 						sx={{
 							background: GRADIENT.rainbow,
@@ -90,19 +90,36 @@ export function Roadmap() {
 								Winner of Top Blockchain Hackathon<br/>
 								Outlier Ventures Polkadot Basecamp 1
 							</RoadmapItem>
-							<RoadmapItem title='2022'>
+							<RoadmapItem title='Q1 22'>
 								Company Setup<br/>
-								Seed Round
+								Seed Round<br/>
+								Acala and Kilt Partnership
 							</RoadmapItem>
-							<RoadmapItem title='2022'>
-								Beeblebrox Testnet Live
+							<RoadmapItem title='Q2 22'>
+								Substrate Builders Program<br/>
+								Launched Beta One with 200 OG Keys<br/>
+								Joined Outlier Ventures Ascent
 							</RoadmapItem>
-							<RoadmapItem title='2022'>
-								Community Sale +<br/>
-								Token Generation Event
+							<RoadmapItem title='Q3 22'>
+								Rococo Slot Acquired for ZERO<br/>
+								Talisman Wallet +<br/>
+								PolkaWallet Integration<br/>
+								WAVE & SPARXX Partnership
 							</RoadmapItem>
-							<RoadmapItem title='ZERO Network' last>
-								Protocol Launch
+							<RoadmapItem title='Q4 22'>
+								Guild Beta with WAVE Esports<br/>
+								Private Sale<br/>
+								ZERO Parachain
+							</RoadmapItem>
+							<RoadmapItem title='Q1 23'>
+								$GAME Public Sale + TGE<br/>
+								Protocol Launch<br/>
+								Scale Up Guild Case
+							</RoadmapItem>
+							<RoadmapItem title='Q2 23' last>
+								Seed Fund Creator Teams<br/>
+								Investor Syndicates<br/>
+								Mobile
 							</RoadmapItem>
 						</Timeline>
 

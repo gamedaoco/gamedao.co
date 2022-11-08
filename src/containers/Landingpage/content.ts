@@ -76,8 +76,12 @@ export const hero = [
 		democratization and community ownership.`,
 		image: '/art/IP39-DeepMarket.jpg',
 		links: [{
-			text: 'READ PINKY PAPER',
+			text: 'PINKY PAPER',
 			url: 'https://blog.gamedao.co/the-gamedao-pinky-paper-8dcda7f2e1ca',
+			icon: 'Book',
+		},{
+			text: 'ONE PAGER',
+			url: 'https://docsend.com/view/vxt3jvad6fgpasmw',
 			icon: 'Book',
 		},{
 			text: 'JOIN WAITLIST',
@@ -85,7 +89,7 @@ export const hero = [
 			icon: 'Discord',
 		}],
 		bg: '#111',
-		img: '/svg/g-col-wht-wide.svg',
+		img: '/v3/svg/GameDAO-color-h-wht-m.svg',
 		img_height: '64px',
 	// },{
 	// 	title: `COMMUNITY DISCOVERY`,
