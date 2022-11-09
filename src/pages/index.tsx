@@ -1,23 +1,16 @@
-/**
-           _______________________________ ________
-           \____    /\_   _____/\______   \\_____  \
-             /     /  |    __)_  |       _/ /   |   \
-            /     /_  |        \ |    |   \/    |    \
-           /_______ \/_______  / |____|_  /\_______  /
-                   \/        \/         \/         \/
-		   Z  E  R  O  .  I  O     N  E  T  W  O  R  K
-		   © C O P Y R I O T   2 0 7 5   Z E R O . I O
-**/
+import React, { useCallback } from 'react'
+import { Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material'
+import { Layout } from 'src/layouts/default'
 
-import * as React from 'react'
+import { styled } from '@mui/system'
+import { NavLink } from 'src/components'
 
-import Layout from 'layouts'
-import { Home } from 'containers'
+import { Landingpage } from '../containers/Landingpage'
 
-const Page = (props) => {
+export function Page() {
 	return (
-		<Layout>
-			<Home />
+		<Layout showFooter showHeader>
+			<Landingpage />
 		</Layout>
 	)
 }

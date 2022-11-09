@@ -1,36 +1,17 @@
 {
-	"global": {
-		"SITE_NAME": "GameDAO",
-		"SITE_TITLE": "Crowdfunding for videogames",
-		"SITE_DESCRIPTION": "GameDAO is the community powered operating system for video games, metaverses and esports.",
-		"SITE_IMAGE": "https://gamedao.co/synthwave.jpg",
-		"TW_SITE_NAME": "@gamedaoco",
-		"TW_SITE_CREATOR": "@marcobahn",
-		"CONTACT": "hey@gamedao.co",
-		"GQL_URI": "http://localhost:28080/v1/graphql",
-		"GQL_KEY": "i-HFXk_txMvwZL4Ej7dphgCZ"
-	},
-	"dev": {
-		"SUB_APPNAME": "",
-		"ZERO_URI": "ws://localhost:9944",
-		"ETH_URI": "http://localhost:8545",
-		"IPFS_URI": "http://localhost:5001",
-		"GQL_URI": "https://graph.zero.io/v1/graphql",
-		"GQL_KEY": "i-HFXk_txMvwZL4Ej7dphgCZ"
-	},
-	"production": {
-		"ETH_URI": "https://eth.zero.io:8545",
-		"ZERO_URI": "https://sub.zero.io:9944",
-		"IPFS_URI": "https://ipfs.zero.io:5001",
-		"GQL_URI": "https://graph.zero.io/v1/graphql",
-		"GQL_KEY": "i-HFXk_txMvwZL4Ej7dphgCZ"
-	},
-	"identity": {
-		"provider": "fractal.id",
-		"url": "https://next.fractal.id/authorize",
-		"client_id": "USM9o1aifkcKnrUr-wMuYHNEO7AwUeQYTy2FevLEElw",
-		"redirect_uri": "https%3A%2F%2Fdao.zero.io%2Faccount%2Fcb",
-		"response_type": "code",
-		"scope": "email%3Aread%20verification.basic%3Aread%20verification.basic.details%3Aread%20verification.liveness%3Aread%20verification.liveness.details%3Aread"
-	}
+  "global": {
+    "SITE_NAME": "GameDAO",
+    "SITE_TITLE": "Fundraising, coordination, ownership for video games, esports and the creative industry.",
+    "SITE_DESCRIPTION": "The DAO for video games, esports and creatives. We connect gamers, creators, publishers and investors for better video games with the power of web3, dao, defi and nft.",
+    "SITE_IMAGE": "https://gamedao.co/headerimage.png",
+    "TW_SITE_NAME": "@gamedaoco",
+    "TW_SITE_CREATOR": "@marcobahn",
+    "CONTACT": "hey@gamedao.co"
+  },
+  "dev": {
+  },
+  "production": {
+  },
+  "identity": {
+  }
 }

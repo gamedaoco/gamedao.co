@@ -1,58 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react'
-
+import React, { useState, FC } from 'react'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
+import { Box, Input, InputAdornment, Typography, Button, Stack } from '@mui/material'
+import Email from '@mui/icons-material/EmailOutlined'
 
-import styled from 'styled-components'
-import { Flex, Box, Card, Heading } from 'rebass'
-import { Button } from 'components'
-
-// import { globalState } from 'src/hooks/GlobalContext'
-
-const Wrapper = styled.div`
-	width: 100%;
-	height: 100px;
-	text-align: 'middle';
-	background-color: none;
-
-	padding: 0;
-	margin: 0;
-
-	.bar {
-		width: 100%;
-		display: table-cell;
-	}
-
-	.email {
-		width: 100%;
-		height: 30px;
-		border: none;
-		border-bottom: 1px dotted white;
-		background: none;
-		font-size: 15px;
-		color: white;
-	}
-
-	button {
-		margin-left: 20px;
-		display: table-cell;
-	}
-
-	a {
-		color: white;
-		text-decoration: none;
-	}
-	a:hover {
-		border-bottom: none;
-	}
-
-	.formWrapper {
-		display: table;
-		width: 100%;
-		a {
-			font-size: 15px;
-		}
-	}
-`
+const MAILCHIMP = process.env.MAILCHIMP
 
 type FormProps = {
 	status: string | null
@@ -60,8 +11,9 @@ type FormProps = {
 	onValidated: Function
 }
 
-const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
-	const [inputs, setInputState] = useState({ email: '' })
+const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
+
+	const [ inputs, setInputState ] = useState({ email: '' })
 
 	const handleOnChange = (e) => {
 		e.persist()
@@ -72,7 +24,7 @@ const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 	}
 
 	const handleOnSubmit = (e) => {
-		e.preventDefault()
+		console.log('click', inputs.email)
 		inputs.email.indexOf('@') > -1 &&
 			onValidated({
 				EMAIL: inputs.email,
@@ -80,39 +32,55 @@ const CustomForm: React.FC<FormProps> = ({ status, message, onValidated }) => {
 	}
 
 	return (
-		<div>
-			<div className="formWrapper">
-				<div className="bar">
-					<input id="email" className="email" type="email" placeholder="Your email" onChange={handleOnChange} />
-				</div>
-				<a onClick={handleOnSubmit}>
-					<Button bType="sm" type="submit">
+		<Box m={0} p={4} sx={{ backgroundColor: '#202'}}>
+			<Stack direction="column" justifyContent="center" alignItems="center">
+
+				<Typography pb={2} variant="h3">Know it first and subscribe to our newsletter</Typography>
+
+				<Stack direction="row" spacing={2}>
+					<Input
+						sx={{
+							'& input::-webkit-input-placeholder': { color: '#fff' },
+							'& input::placeholder': { color: '#fff' },
+							'& input::-ms-input-placeholder': { color: '#fff' }
+						}}
+						id="email"
+						startAdornment={
+							<InputAdornment position="start">
+								<Email sx={{
+									color: '#fff',
+								}}/>
+							</InputAdornment>
+						}
+						type="email"
+						placeholder="Your email"
+						onChange={handleOnChange}
+					/>
+					<Button onClick={handleOnSubmit} size="medium" variant="outlined">
 						Submit
 					</Button>
-				</a>
-			</div>
-			{status === 'sending' && <div style={{ color: 'white', fontSize: '15x', paddingTop: '15px' }}>sending...</div>}
-			{status === 'error' && <div style={{ color: 'red', fontSize: '15px', paddingTop: '15px' }} dangerouslySetInnerHTML={{ __html: message || '' }} />}
-			{status === 'success' && (
-				<div style={{ color: 'white', fontSize: '15px', paddingTop: '15px' }} dangerouslySetInnerHTML={{ __html: message || '' }} />
-			)}
-		</div>
+				</Stack>
+
+				{ status === 'sending' && (<Typography pt={2}>sending...</Typography> ) }
+				{ status === 'error' && (<Typography pt={2} dangerouslySetInnerHTML={{ __html: message || '' }} /> ) }
+				{ status === 'success' && (<Typography pt={2} dangerouslySetInnerHTML={{ __html: message || '' }} /> ) }
+
+			</Stack>
+		</Box>
 	)
 }
 
-const Newsletter: React.FC = () => {
-	// const { config } = globalState
-	// useEffect( () => {
-	// console.log( 'mailchimp config', config.MAILCHIMP || 'undefined' )
-	// }, [ config ] )
-
-	return (
-		<Wrapper>
-			<MailchimpSubscribe
-				url={'https://zero.us5.list-manage.com/subscribe/post?u=9b3f3ef14c871758185754652&amp;id=d09264f8c7'}
-				render={({ subscribe, status, message }) => <CustomForm status={status} message={message} onValidated={(formData) => subscribe(formData)} />}
+export const Newsletter: React.FC = () => (
+	<MailchimpSubscribe
+		url={'https://zero.us5.list-manage.com/subscribe/post?u=9b3f3ef14c871758185754652&amp;id=d09264f8c7'}
+		render={({ subscribe, status, message }) => (
+			<CustomForm
+				status={status}
+				message={message}
+				onValidated={(formData) => subscribe(formData)}
 			/>
-		</Wrapper>
-	)
-}
+		)}
+	/>
+)
+
 export default Newsletter
