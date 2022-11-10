@@ -72,7 +72,7 @@ export const Header = () => {
 					<MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
 						<Link href="/" >
 							<Typography variant="h5" noWrap component="div" sx={{ mr: 2 }}>
-								<Logo justifyContent="center" alignItems="center"/>
+								<Logo/>
 							</Typography>
 						</Link>
 					</MenuItem>

@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import { Box, Grid, Card, Paper, Typography, Button, Stack } from '@mui/material'
 import { styled } from '@mui/system'
-import { NavLink } from 'src/components'
 
 import { GRADIENT } from '../styles'
 import { team } from '../content'

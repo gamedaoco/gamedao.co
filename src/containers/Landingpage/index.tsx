@@ -4,7 +4,7 @@ import { styled } from '@mui/system'
 import { GRADIENT } from './styles'
 import { features } from '../../features'
 import { Layout } from 'src/layouts/default'
-import { NavLink, Newsletter } from 'src/components'
+import { Newsletter } from 'src/components'
 
 import { Box, Container } from '@mui/material'
 import { Hero, Intro, Transform, Teaser, Wallet, Team, Partners, Supporters, Roadmap, Disclaimer, Questions } from './modules'

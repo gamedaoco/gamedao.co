@@ -65,7 +65,7 @@ export function Roadmap() {
 			*/}
 
 					<Typography
-						variant="time"
+						// variant="time"
 						pt={[2]}
 						sx={{
 							background: GRADIENT.rainbow,

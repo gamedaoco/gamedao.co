@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'components/Link'
 
 import { Box, Container, Grid, Link as MUILink, Stack, Typography } from '@mui/material'
@@ -71,7 +70,7 @@ export function Footer() {
 					*/}
 						<Grid item xs={12}>
 							<Link href="/">
-								<Image src="/v3/svg/GameDAO-color.svg" width={'48'} height={'48'} />
+								<img src="/v3/svg/GameDAO-color.svg" width={'48'} height={'48'} />
 							</Link>
 						</Grid>
 
