@@ -68,7 +68,10 @@ const Item = props => {
 			}}>
 				<Container>
 					{props.item.img &&
-						<Box px={[2,4,6]}>
+						<Box px={[2,4,6]} sx={{
+							'-webkit-filter': 'drop-shadow( 0 15px 20px rgba(0,0,0,1) )',
+							filter: 'drop-shadow( 0 15px 20px rgba(0,0,0,1) )'
+						}}>
 							<img src={props.item.img} height={props.item.img_height} width="auto"/>
 						</Box>
 					}
@@ -85,7 +88,7 @@ const Item = props => {
 
 							{ props.item.links.map( (e,i) =>
 								 <Link href={e.url} key={i}>
-								 	<Button size="medium" variant="outlined" sx={{ mr: 2}}>
+								 	<Button size="medium" variant="outlined" sx={{ mr: 2, mb: 2}}>
 								 		{`${e.text || 'More'}`}
 								 	</Button>
 								 </Link>

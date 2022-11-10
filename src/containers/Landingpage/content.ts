@@ -79,10 +79,10 @@ export const hero = [
 			text: 'PINKY PAPER',
 			url: 'https://blog.gamedao.co/the-gamedao-pinky-paper-8dcda7f2e1ca',
 			icon: 'Book',
-		},{
-			text: 'ONE PAGER',
-			url: 'https://docsend.com/view/vxt3jvad6fgpasmw',
-			icon: 'Book',
+		// },{
+		// 	text: 'ONE PAGER',
+		// 	url: 'https://docsend.com/view/vxt3jvad6fgpasmw',
+		// 	icon: 'Book',
 		},{
 			text: 'JOIN WAITLIST',
 			url: 'https://discord.gg/kr8Q9Jam2N',
@@ -91,7 +91,24 @@ export const hero = [
 		bg: '#111',
 		img: '/v3/svg/GameDAO-color-h-wht-m.svg',
 		img_height: '64px',
-	// },{
+	// },	{
+	// 	title: `WAVE ESPORTS`,
+	// 	description: `Join the leading Esports team in Europe
+	// 	and enjoy kick ass treats for playing with us:
+	// 	BattlePass awaits!`,
+	// 	image: '/art/IP39-DeepMarket.jpg',
+	// 	links: [{
+	// 		text: 'LEARN MORE',
+	// 		url: 'https://app.gamedao.co/cases/esports',
+	// 		icon: 'Joystick',
+	// 	},{
+	// 		text: 'JOIN WAITLIST',
+	// 		url: 'https://discord.gg/kr8Q9Jam2N',
+	// 		icon: 'Discord',
+	// 	}],
+	// 	bg: '#111',
+	// 	img: '/partners/wave-esports-white.png',
+	// 	img_height: '128px',
 	// 	title: `COMMUNITY DISCOVERY`,
 	// 	description: `Take the leap and
 	// 	leverage the power of community

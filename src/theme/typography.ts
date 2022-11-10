@@ -41,9 +41,10 @@ function responsiveFontSizes({ sm, md, lg }: { sm: number; md: number; lg: numbe
 	}
 }
 
-const FONT_HEADER = 'Archivo, Helvetica Neue, Helvetica, sans-serif'
-const FONT_PRIMARY = 'Noto, sans-serif'
-const FONT_SECONDARY = 'Noto Serif, Times New Roman, serif'
+const FONT_HEADER = 'fatfrank, Helvetica Neue, Helvetica, sans-serif'
+const FONT_PRIMARY = 'Inter, sans-serif'
+const FONT_UI = 'Inter, sans-serif'
+const FONT_SECONDARY = 'Times New Roman, serif'
 
 const typography = {
 	fontFamily: FONT_PRIMARY,
@@ -132,6 +133,7 @@ const typography = {
 		textTransform: 'uppercase',
 	},
 	button: {
+		fontFamily: FONT_UI,
 		fontWeight: 400,
 		lineHeight: 24 / 14,
 		fontSize: pxToRem(14),

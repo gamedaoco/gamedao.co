@@ -31,7 +31,7 @@ const pages = [
 ]
 const settings = ['Profile', 'Account', 'Dashboard', 'Disconnect']
 
-const Logo = () => <img src="/v3/svg/GameDAO-color-h-wht-m.svg" height='16px' />
+const Logo = () => <img src="/v3/svg/GameDAO-mono-h-wht-scaled.svg" height='16px' />
 
 export const Header = () => {
 
@@ -68,14 +68,29 @@ export const Header = () => {
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 
+{/* desktop logo */}
 					<MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
-						<Link href="/">
-							<Typography variant="h5" noWrap component="div" sx={{ mt: '3px',mr: 2 }}>
-								<Logo/>
+						<Link href="/" >
+							<Typography variant="h5" noWrap component="div" sx={{ mr: 2 }}>
+								<Logo justifyContent="center" alignItems="center"/>
 							</Typography>
 						</Link>
 					</MenuItem>
+{/* mobile logo */}
+					<MenuItem sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 1, p: 1 }}>
+						<Link href="/">
+							<Typography
+								variant="h6"
+								noWrap
+								component="div"
+								sx={{  }}
 
+							>
+								<Logo />
+							</Typography>
+						</Link>
+					</MenuItem>
+{/* mobile nav */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 
 						<IconButton
@@ -142,21 +157,8 @@ export const Header = () => {
 							</Drawer>
 
 					</Box>
-
-					<MenuItem sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 1, p: 1 }}>
-						<Link href="/">
-							<Typography
-								variant="h6"
-								noWrap
-								component="div"
-								sx={{  }}
-							>
-								<Logo />
-							</Typography>
-						</Link>
-					</MenuItem>
-
-					<Box sx={{
+{/* desktop nav */}
+					<Box justifyContent="left" alignItems="center" sx={{
 						flexGrow: 1,
 						display: { xs: 'none', md: 'flex' },
 					}}>
