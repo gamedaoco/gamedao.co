@@ -28,7 +28,7 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 		inputs.email.indexOf('@') > -1 &&
 			onValidated({
 				EMAIL: inputs.email,
-				NAME: inputs.name
+				UNAME: inputs.uname
 			})
 	}
 
@@ -45,7 +45,7 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 							'& input::placeholder': { color: '#fff' },
 							'& input::-ms-input-placeholder': { color: '#fff' }
 						}}
-						id="name"
+						id="uname"
 						startAdornment={
 							<InputAdornment position="start">
 								<Person sx={{
@@ -53,8 +53,8 @@ const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 								}}/>
 							</InputAdornment>
 						}
-						type="name"
-						placeholder="your name"
+						type="string"
+						placeholder="name"
 						onChange={handleOnChange}
 					/>
 					<Input
