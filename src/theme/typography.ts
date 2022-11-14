@@ -3,12 +3,14 @@ declare module '@mui/material/styles' {
 		hero1: React.CSSProperties
 		hero2: React.CSSProperties
 		time: React.CSSProperties
+		button: React.CSSProperties
 	}
 	// allow configuration using `createTheme`
 	interface TypographyVariantsOptions {
 		hero1?: React.CSSProperties
 		hero2?: React.CSSProperties
 		time: React.CSSProperties
+		button: React.CSSProperties
 	}
 }
 
@@ -17,7 +19,7 @@ declare module '@mui/material/Typography' {
 	interface TypographyPropsVariantOverrides {
 		hero1: true
 		hero2: true
-		time: React.CSSProperties
+		button: React.CSSProperties
 	}
 }
 

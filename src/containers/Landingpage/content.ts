@@ -79,10 +79,10 @@ export const hero = [
 			text: 'PINKY PAPER',
 			url: 'https://blog.gamedao.co/the-gamedao-pinky-paper-8dcda7f2e1ca',
 			icon: 'Book',
-		// },{
-		// 	text: 'ONE PAGER',
-		// 	url: 'https://docsend.com/view/vxt3jvad6fgpasmw',
-		// 	icon: 'Book',
+		},{
+			text: 'ONE PAGER',
+			url: 'https://docsend.com/view/gesqag6cbemye63f',
+			icon: 'Book',
 		},{
 			text: 'JOIN WAITLIST',
 			url: 'https://discord.gg/kr8Q9Jam2N',

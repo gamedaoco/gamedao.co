@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import { AppProps, NextWebVitalsMetric } from 'next/app'
+import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import * as Fathom from 'fathom-client'
 import { Providers } from 'src/providers'
@@ -66,10 +66,6 @@ export function MyApp({ Component, emotionCache = clientSideEmotionCache, pagePr
 			</CacheProvider>
 		</>
 	)
-}
-
-export function reportWebVitals(metric: NextWebVitalsMetric) {
-	// console.log(metric)
 }
 
 export default MyApp

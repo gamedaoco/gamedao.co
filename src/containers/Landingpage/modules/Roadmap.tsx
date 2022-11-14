@@ -64,20 +64,17 @@ export function Roadmap() {
 				<Grid container item xs={12} md={6} direction="column">
 			*/}
 
-					<Typography
-						// variant="time"
-						pt={[2]}
-						sx={{
-							background: GRADIENT.rainbow,
-							BackgroundClip: 'text',
-							WebkitBackgroundClip: 'text',
-							color: 'rgba(255,255,255,1)',
-							WebkitTextFillColor: 'rgba(255,255,255,1)',
-							fontWeight: 600,
-							lineHeight: '100%',
-						}}
-					>
-						<Timeline position="alternate">
+						<Timeline position="alternate"
+							pt={[2]}
+							sx={{
+								background: GRADIENT.rainbow,
+								BackgroundClip: 'text',
+								WebkitBackgroundClip: 'text',
+								color: 'rgba(255,255,255,1)',
+								WebkitTextFillColor: 'rgba(255,255,255,1)',
+								fontWeight: 600,
+								lineHeight: '100%',
+							}}>
 							<RoadmapItem title='2019'>
 								Research for legal DAOs in Europe<br/>
 								Protocol core development starts
@@ -122,8 +119,6 @@ export function Roadmap() {
 								Mobile
 							</RoadmapItem>
 						</Timeline>
-
-					</Typography>
 
 {/*
 				</Grid>
