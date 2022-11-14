@@ -65,7 +65,6 @@ export function Roadmap() {
 			*/}
 
 						<Timeline position="alternate"
-							pt={[2]}
 							sx={{
 								background: GRADIENT.rainbow,
 								BackgroundClip: 'text',

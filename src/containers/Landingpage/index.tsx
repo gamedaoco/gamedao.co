@@ -7,7 +7,7 @@ import { Layout } from 'src/layouts/default'
 import { Newsletter } from 'src/components'
 
 import { Box, Container } from '@mui/material'
-import { Hero, Intro, Transform, Teaser, Wallet, Team, Partners, Supporters, Roadmap, Disclaimer, Questions } from './modules'
+import { Hero, Intro, Transform, Teaser, Wallet, Team, Partners, Supporters, Roadmap, Disclaimer, Questions } from './components'
 
 const Wrapper = styled(Box)(
 	({ theme }) => ({
