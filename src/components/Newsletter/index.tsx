@@ -14,7 +14,7 @@ type FormProps = {
 
 const CustomForm: FC<FormProps> = ({ status, message, onValidated }) => {
 
-	const [ inputs, setInputState ] = useState({ name: '', email: '' })
+	const [ inputs, setInputState ] = useState({ uname: '', email: '' })
 
 	const handleOnChange = (e) => {
 		e.persist()
