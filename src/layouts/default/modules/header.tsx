@@ -178,12 +178,12 @@ export const Header = () => {
 
 					<Box sx={{ flexGrow: 0 }}>
 
-{/*						<NavLink href="https://app.gamedao.co">
-							<Button size="small" variant="outlined" sx={{ pt: '3px', pb: '5px' }}>
+						<Link href="https://stage.gamedao.co">
+							<Button size="medium" variant="outlined">
 								Run Beta
 							</Button>
-						</NavLink>
-*/}
+						</Link>
+
 						{/*
 						<Tooltip title="Enter Beta">
 						</Tooltip>
