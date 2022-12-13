@@ -114,6 +114,7 @@ export function Footer() {
 								<Link href="https://t.me/gamedaoco">telegram</Link><br/>
 								<Link href="https://twitter.com/gamedaoco">twitter</Link><br/>
 								<Link href="https://www.linkedin.com/company/gamedaoco">linkedin</Link><br/>
+								<Link href="https://drive.google.com/drive/folders/1QuuxmyMu3FkCrT6MVEciY4YrVOu2Z9S1?usp=share_link">Media Kit</Link><br/>
 							</Typography>
 						</Grid>
 						<Grid item xs={6} md={2} mb={4}>
