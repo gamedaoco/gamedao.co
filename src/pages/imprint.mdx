@@ -1,0 +1,19 @@
+import { Layout } from 'layouts/default'
+import Box from '@mui/material/Box'
+
+# Imprint
+
+GameDAO AG<br/>
+Werdenbergerweg 11<br/>
+Vaduz, Liechtenstein<br/>
+
+export default ({ children }) =>
+	<Layout showHeader showFooter>
+		<Box sx={{
+            my:'100px',
+            px: ['1rem', '5rem', '5rem'], minHeight: '100vh',
+            h2: { py:[1,2] },
+		}}>
+			{ children }
+		</Box>
+	</Layout>

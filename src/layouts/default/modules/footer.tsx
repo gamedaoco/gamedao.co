@@ -141,6 +141,9 @@ export function Footer() {
 							{`© 2019-${new Date().getFullYear()} `}GAMEDAO AG, Vaduz, Liechtenstein<br/>
 							GameDAO is powered by you!
 							<br/>
+							<Link href="/imprint">Imprint</Link>.{' '}
+							<Link href="/terms">Terms + Conditions</Link>.
+							<br/>
 							Build {process.env.BUILD_TIME}
 						</Typography>
 					</Grid>
