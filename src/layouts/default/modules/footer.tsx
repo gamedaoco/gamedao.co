@@ -142,6 +142,7 @@ export function Footer() {
 							GameDAO is powered by you!
 							<br/>
 							<Link href="/imprint">Imprint</Link>.{' '}
+							<Link href="/privacy-policy">Privacy Policy</Link>.{' '}
 							<Link href="/terms">Terms + Conditions</Link>.
 							<br/>
 							Build {process.env.BUILD_TIME}

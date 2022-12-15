@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import * as Fathom from 'fathom-client'
+
+import { MDXProvider } from '@mdx-js/react'
 import { Providers } from 'src/providers'
 
 import { CacheProvider, EmotionCache } from '@emotion/react'
@@ -12,6 +14,20 @@ import { ThemePrimaryColor } from 'src/components/ThemePrimaryColor/themePrimary
 import config from '../data/config.json'
 
 const clientSideEmotionCache = createEmotionCache()
+
+import { Typography } from '@mui/material'
+import { styled } from '@mui/system'
+
+const Header = styled(Typography)({
+	paddingTop:'1rem',
+	paddingBottom:'1rem'
+});
+
+const components = {
+  // h1: Header,
+  // h2: Header,
+  p: Header,
+}
 
 interface MyAppProps extends AppProps {
 	Component: any
@@ -61,7 +77,9 @@ export function MyApp({ Component, emotionCache = clientSideEmotionCache, pagePr
 			</Head>
 			<CacheProvider value={emotionCache}>
 				<Providers>
+				    <MDXProvider components={components}>
 					<Component {...pageProps} />
+					</MDXProvider>
 				</Providers>
 			</CacheProvider>
 		</>
