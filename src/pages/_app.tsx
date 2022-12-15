@@ -18,7 +18,7 @@ const clientSideEmotionCache = createEmotionCache()
 import { Typography } from '@mui/material'
 import { styled } from '@mui/system'
 
-const Header = styled(Typography)({
+const Header = styled('p')({
 	paddingTop:'1rem',
 	paddingBottom:'1rem'
 });
