@@ -71,9 +71,16 @@ export const hero = [
 	// 	bg: '#111',
 	{
 		title: `GAMEDAO`,
-		description: `Empowering creators to
-		build better games through
-		democratization and community ownership.`,
+		// Empowering creators to
+		// build better games through
+		// democratization and community ownership.
+		sub: `Enhance your gaming experience with GameDAO`,
+		description: `
+		The ultimate platform for community-driven
+		fan engagement, governance, fundraising, and collectibles.
+		Connect with other gamers, creators, and investors
+		to build better games together.
+		`,
 		image: '/art/IP39-DeepMarket.jpg',
 		links: [{
 			text: 'PINKY PAPER',
@@ -90,7 +97,7 @@ export const hero = [
 		}],
 		bg: '#111',
 		img: '/v3/svg/GameDAO-color-h-wht-m.svg',
-		img_height: '64px',
+		img_height: '48px',
 	// },	{
 	// 	title: `WAVE ESPORTS`,
 	// 	description: `Join the leading Esports team in Europe

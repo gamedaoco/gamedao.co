@@ -64,7 +64,7 @@ const Item = props => {
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'end',
-				padding: '5rem',
+				padding: [1,4,'5rem'],
 			}}>
 				<Container>
 					{props.item.img &&
@@ -80,7 +80,12 @@ const Item = props => {
 							{props.item.title}
 						</Teaser>
 					}
-					<Typography variant={'hero2'} px={[2,4,6]} pt={4} sx={{ lineHeight: '95%' }}>
+					{ props.item.sub &&
+						<Typography variant={'hero1'} px={[2,4,6]} pt={4} sx={{ lineHeight: '95%' }}>
+							{props.item.sub}
+						</Typography>
+					}
+					<Typography variant={'hero2'} px={[2,4,6]} pt={2} >
 						{props.item.description}
 					</Typography>
 					{ props.item.links &&
@@ -88,7 +93,7 @@ const Item = props => {
 
 							{ props.item.links.map( (e,i) =>
 								 <Link href={e.url} key={i}>
-								 	<Button size="medium" variant="outlined" sx={{ mr: 2, mb: 2}}>
+								 	<Button size="small" variant="outlined" sx={{ mr: 2, mb: 2}}>
 								 		{`${e.text || 'More'}`}
 								 	</Button>
 								 </Link>

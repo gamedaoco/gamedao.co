@@ -19,7 +19,7 @@ declare module '@mui/material/Typography' {
 	interface TypographyPropsVariantOverrides {
 		hero1: true
 		hero2: true
-		button: React.CSSProperties
+		button: true
 	}
 }
 
@@ -49,6 +49,7 @@ const FONT_UI = 'Inter, sans-serif'
 const FONT_SECONDARY = 'Times New Roman, serif'
 
 const typography = {
+
 	fontFamily: FONT_PRIMARY,
 
 	fontWeightRegular: 400,
@@ -148,23 +149,23 @@ const typography = {
 		fontFamily: FONT_HEADER,
 		fontWeight: 900,
 		lineHeight: 80 / 64,
-		fontSize: pxToRem(40),
-		...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
+		fontSize: pxToRem(32),
+		...responsiveFontSizes({ sm: 32, md: 36, lg: 40 }),
 		float: 'left',
 		textShadow: 'rgba(0,0,0,1) 0 5px 20px',
-		WebkitTextStrokeWidth: '1px',
-		WebkitTextStrokeColor: 'rgba(0,0,0,0.2)',
+		// WebkitTextStrokeWidth: '1px',
+		// WebkitTextStrokeColor: 'rgba(0,0,0,0.2)',
 	},
 	hero2: {
-		fontFamily: FONT_HEADER,
-		fontWeight: 900,
-		lineHeight: 64 / 48,
-		fontSize: pxToRem(32),
-		...responsiveFontSizes({ sm: 40, md: 44, lg: 48 }),
+		fontFamily: FONT_PRIMARY,
+		fontWeight: 400,
+		lineHeight: 80 / 64,
+		fontSize: pxToRem(24),
+		...responsiveFontSizes({ sm: 24, md: 28, lg: 32 }),
 		float: 'left',
 		textShadow: 'rgba(0,0,0,1) 0 5px 20px',
-		WebkitTextStrokeWidth: '1px',
-		WebkitTextStrokeColor: 'rgba(0,0,0,0.2)',
+		// WebkitTextStrokeWidth: '1px',
+		// WebkitTextStrokeColor: 'rgba(0,0,0,0.2)',
 	},
 } as const
 
