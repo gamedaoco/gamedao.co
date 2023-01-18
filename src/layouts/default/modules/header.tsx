@@ -178,9 +178,14 @@ export const Header = () => {
 
 					<Box sx={{ flexGrow: 0 }}>
 
-						<Link href="https://stage.gamedao.co">
-							<Button size="medium" variant="outlined">
-								Run Beta
+						<Link href="https://zeroio.notion.site/GameDAO-Ambassador-Program-23-a024bddb6be544688914fb9ca04e531e">
+							<Button size="small" variant="" sx={{ mr: 2 }}>
+								Edgerunner
+							</Button>
+						</Link>
+						<Link href="https://dev.gamedao.co">
+							<Button size="small" variant="outlined">
+								Spy Mode™
 							</Button>
 						</Link>
 

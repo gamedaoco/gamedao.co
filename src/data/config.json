@@ -1,11 +1,11 @@
 {
   "global": {
     "SITE_NAME": "GameDAO",
-    "SITE_TITLE": "Fundraising, coordination, ownership for video games, esports and the creative industry.",
-    "SITE_DESCRIPTION": "The DAO for video games, esports and creatives. We connect gamers, creators, publishers and investors for better video games with the power of web3, dao, defi and nft.",
+    "SITE_TITLE": "The DAO for video games, esports and the creative industry.",
+    "SITE_DESCRIPTION": "Enhance your gaming experience with GameDAO — the ultimate platform for community-driven fan engagement, governance, fundraising, and collectibles. Connect with other gamers, creators, and investors to build better games together.",
     "SITE_IMAGE": "https://gamedao.co/headerimage.png",
     "TW_SITE_NAME": "@gamedaoco",
-    "TW_SITE_CREATOR": "@marcobahn",
+    "TW_SITE_CREATOR": "@gamedaoco",
     "CONTACT": "hey@gamedao.co"
   },
   "dev": {

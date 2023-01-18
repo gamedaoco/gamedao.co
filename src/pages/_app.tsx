@@ -19,14 +19,14 @@ import { Typography } from '@mui/material'
 import { styled } from '@mui/system'
 
 const Header = styled('p')({
-	paddingTop:'1rem',
-	paddingBottom:'1rem'
-});
+	paddingTop: '1rem',
+	paddingBottom: '1rem',
+})
 
 const components = {
-  // h1: Header,
-  // h2: Header,
-  p: Header,
+	// h1: Header,
+	// h2: Header,
+	p: Header,
 }
 
 interface MyAppProps extends AppProps {
@@ -67,6 +67,7 @@ export function MyApp({ Component, emotionCache = clientSideEmotionCache, pagePr
 				<meta property="og:title" content={config.global.SITE_TITLE} />
 				<meta property="og:description" content={config.global.SITE_DESCRIPTION} />
 				<meta property="og:image" content={config.global.SITE_IMAGE} />
+				<meta property="og:url" content="https://gamedao.co/" />
 
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:creator" content={config.global.TW_SITE_CREATOR} />
@@ -77,8 +78,8 @@ export function MyApp({ Component, emotionCache = clientSideEmotionCache, pagePr
 			</Head>
 			<CacheProvider value={emotionCache}>
 				<Providers>
-				    <MDXProvider components={components}>
-					<Component {...pageProps} />
+					<MDXProvider components={components}>
+						<Component {...pageProps} />
 					</MDXProvider>
 				</Providers>
 			</CacheProvider>
